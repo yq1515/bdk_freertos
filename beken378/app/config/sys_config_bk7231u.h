@@ -94,6 +94,7 @@
 #define CFG_SUPPORT_UVC                            0
 #endif
 #define CFG_USE_USB_CHARGE                         0
+#define CFG_SUPPORT_CHERRYUSB                      0
 
 
 /*section 4-----DEBUG macro config-----*/

@@ -149,31 +149,31 @@ INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/ssl_mqtt
 INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/tcp_mqtt
 
 ifeq ($(CFG_SUPPORT_BLE),1)
-#ifeq ($(CFG_BLE_VERSION),$(BLE_VERSION_4_2))
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/controller/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/hci/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/host/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/sys/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/config
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/modules/app/api
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/modules/gernel_api
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/modules/mesh_model/ali
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/arch
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/ble_icu
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/ir
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/reg
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/sys_ctrl
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/uart
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/modules/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/profiles/comm/api
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/profiles/prf/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/profiles/sdp/api
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/mesh/include
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/mesh/src/dbg
-#INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/mesh/src/models/include
-#endif
+ifeq ($(CFG_BLE_VERSION),$(BLE_VERSION_4_2))
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/controller/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/hci/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/host/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/sys/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/config
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/modules/app/api
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/modules/gernel_api
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/modules/mesh_model/ali
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/arch
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/ble_icu
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/ir
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/reg
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/sys_ctrl
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/driver/uart
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/plactform/modules/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/profiles/comm/api
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/profiles/prf/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/profiles/sdp/api
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/mesh/include
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/mesh/src/dbg
+INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble/beken_ble_sdk/mesh/src/models/include
+endif
 ifeq ($(CFG_BLE_VERSION),$(BLE_VERSION_5_x))
 INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/hl/api
 INCLUDES += -I$(BEKEN_DIR)/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/hl/inc
@@ -262,6 +262,21 @@ INCLUDES += -I$(BEKEN_DIR)/beken378/func/at_server/_at_server
 INCLUDES += -I$(BEKEN_DIR)/beken378/func/at_server/_at_server_port
 INCLUDES += -I$(BEKEN_DIR)/beken378/func/at_server/at_server_func
 INCLUDES += -I$(BEKEN_DIR)/beken378/func/at_server/atsvr_cmd
+endif
+
+# CherryUSB
+ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/common
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/core
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/osal
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/class/cdc
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/class/hid
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/class/msc
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/class/audio
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/class/video
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/class/hub
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/demo
+INCLUDES += -I$(BEKEN_DIR)/beken378/func/CherryUSB/demo/beken/usb_device
 endif
 
 # -------------------------------------------------------------------
@@ -719,6 +734,15 @@ SRC_C += $(BEKEN_DIR)/beken378/func/usb/fusb.c
 endif
 
 SRC_C += $(BEKEN_DIR)/beken378/func/ble_wifi_exchange/ble_wifi_port.c
+
+# CherryUSB
+#
+ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
+SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/core/usbd_core.c
+SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
+SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
+SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/class/cdc/usbd_cdc.c
+endif
 
 #assembling files
 SRC_S +=  $(BEKEN_DIR)/beken378/driver/entry/boot_handlers.S

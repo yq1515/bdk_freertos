@@ -2576,6 +2576,24 @@ static void bk_wifi_aware_command(char *pcWriteBuffer, int xWriteBufferLen,
 }
 #endif
 
+#if CFG_SUPPORT_CHERRYUSB
+extern void hid_custom_init();
+void cdc_acm_init(void);
+void cdc_acm_data_send_with_dtr_test(void);
+
+static void cli_usb_device_cdc(char *pcWriteBuffer, int xWriteBufferLen, int argc, char **argv)
+{
+	if (os_strcmp(argv[1], "init") == 0)
+	{
+		cdc_acm_init();
+	}
+	else if (os_strcmp(argv[1], "tx") == 0)
+	{
+		cdc_acm_data_send_with_dtr_test();
+	}
+}
+#endif
+
 static const struct cli_command built_ins[] =
 {
     {"help", NULL, help_command},
@@ -2678,6 +2696,9 @@ static const struct cli_command built_ins[] =
 #endif
 #if CFG_BK_AWARE
 	{"bk_aware", "bk_aware", bk_wifi_aware_command},
+#endif
+#if CFG_SUPPORT_CHERRYUSB
+	{"usb_cdc", "usb_cdc", cli_usb_device_cdc},
 #endif
 };
 
