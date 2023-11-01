@@ -100,7 +100,7 @@ typedef struct MQTTConnackData
 
 typedef struct MQTTSubackData
 {
-    enum QoS grantedQoS;
+    int grantedQoS;
 } MQTTSubackData;
 
 typedef void (*messageHandler)(MessageData*);
