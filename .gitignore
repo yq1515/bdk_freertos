@@ -1,0 +1,13 @@
+.platform
+.config
+config/
+out/
+beken378/lib/libble.a
+beken378/lib/libcal.a
+beken378/lib/librf_test.a
+beken378/lib/librf_use.a
+beken378/lib/librwnx.a
+beken378/lib/libsupplicant.a
+beken378/lib/libuart_debug.a
+beken378/lib/libwpa.a
+
