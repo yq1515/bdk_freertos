@@ -1,9 +1,8 @@
 OS := $(shell uname)
 
-GREEN := 
-RED := 
-NC := 
-
+GREEN := \033[0;32m
+RED := \033[0;31m
+NC := \033[0m # No Color
 
 ifeq ($(findstring bash, $(shell readlink $(SHELL))), bash)
 ECHO = echo -e
@@ -31,9 +30,6 @@ endef
 	@touch .config
 else
 
-GREEN := \033[0;32m
-RED := \033[0;31m
-NC := \033[0m # No Color
 
 define update_sys_config_if_needed
 	./tools/scripts/generate_sys_config.sh $(1)

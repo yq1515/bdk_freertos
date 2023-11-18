@@ -141,12 +141,12 @@ INCLUDES += -I$(BEKEN_DIR)/beken378/func/wolfssl
 endif
 
 #paho-mqtt
-INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/client
-INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/client/src
-INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src
-INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui
-INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/ssl_mqtt
-INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/tcp_mqtt
+# INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/client
+# INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/client/src
+# INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src
+# INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui
+# INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/ssl_mqtt
+# INCLUDES += -I$(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/tcp_mqtt
 
 ifeq ($(CFG_SUPPORT_BLE),1)
 ifeq ($(CFG_BLE_VERSION),$(BLE_VERSION_4_2))
@@ -515,23 +515,23 @@ SRC_C += $(BEKEN_DIR)/beken378/func/easy_flash/src/ef_utils.c
 SRC_C += $(BEKEN_DIR)/beken378/func/easy_flash/port/ef_port.c
 
 #paho-mqtt
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/client/src/MQTTClient.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/client/src/MQTTFreeRTOS.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/client/paho_mqtt_udp.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTConnectClient.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTConnectServer.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTDeserializePublish.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTFormat.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTPacket.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTSerializePublish.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTSubscribeClient.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTSubscribeServer.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTUnsubscribeClient.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTUnsubscribeServer.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/ssl_mqtt/ssl_mqtt_client_port.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/tcp_mqtt/tcp_mqtt_client_port.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/mqtt_client_core.c
-SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/mqtt_client_com_port.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/client/src/MQTTClient.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/client/src/MQTTFreeRTOS.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/client/paho_mqtt_udp.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTConnectClient.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTConnectServer.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTDeserializePublish.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTFormat.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTPacket.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTSerializePublish.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTSubscribeClient.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTSubscribeServer.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTUnsubscribeClient.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/packet/src/MQTTUnsubscribeServer.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/ssl_mqtt/ssl_mqtt_client_port.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/tcp_mqtt/tcp_mqtt_client_port.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/mqtt_client_core.c
+# SRC_C += $(BEKEN_DIR)/beken378/func/paho-mqtt/mqtt_ui/mqtt_client_com_port.c
 
 
 ifeq ("${CFG_MBEDTLS}", "1")
