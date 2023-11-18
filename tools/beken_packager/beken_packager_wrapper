@@ -80,7 +80,14 @@ out_json = json.dumps(out_json, sort_keys=True, indent=4)
 with open(str(out_path), "w") as f:
     f.write(out_json)
 
-os.system("./beken_packager {}".format(out_path))
+if sys.platform == "win32":
+    packager_exe = "beken_packager.exe"
+elif sys.platform == "darwin":
+    packager_exe = "beken_packager.darwin"
+elif sys.platform == "linux":
+    packager_exe = "beken_packager"
+
+os.system("./{} {}".format(packager_exe, out_path))
 os.system("mv all_2M.1220.bin ../../out/")
 os.system("mv beken7231_bsp_uart_2M.1220.bin ../../out/")
 os.system("cp " + bootloader_str + " ../../out/")

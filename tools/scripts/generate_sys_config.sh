@@ -11,7 +11,7 @@ fi
 
 OS=`uname -s`
 if [ "${OS}" = "Darwin" ]; then
-MD5=md5 -r
+MD5="md5 -r"
 else
 MD5=md5sum
 fi
