@@ -5,14 +5,14 @@
  *  duplicated in any form, in whole or in part, without the prior written
  *  permission of BEKEN Corporation.
  */
- 
+
 #ifndef __WLAN_CLI_PUB_H__
 #define __WLAN_CLI_PUB_H__
 
 #include "include.h"
 #include "BkDriverUart.h"
 
-#define CLI_UART                      BK_UART_2
+#define CLI_UART                      BK_UART_1
 
 #define RX_WAIT                       BEKEN_WAIT_FOREVER
 #define SEND_WAIT                     BEKEN_WAIT_FOREVER
@@ -46,10 +46,10 @@ struct cli_st
     const struct cli_command *commands[MAX_COMMANDS];
     unsigned int num_commands;
     int echo_disabled;
-	
+
     unsigned int bp;	/* buffer pointer */
     char inbuf[INBUF_SIZE];
-	
+
     char outbuf[OUTBUF_SIZE];
 } ;
 

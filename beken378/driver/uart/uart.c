@@ -25,7 +25,7 @@
 #include "uart1_tcp_server_demo.h"
 #endif
 
-int uart_print_port = UART2_PORT;
+int uart_print_port = UART1_PORT;
 static struct uart_callback_des uart_receive_callback[2] = {{NULL}, {NULL}};
 static struct uart_callback_des uart_txfifo_needwr_callback[2] = {{NULL}, {NULL}};
 static struct uart_callback_des uart_tx_end_callback[2] = {{NULL}, {NULL}};
@@ -215,7 +215,7 @@ void uart_hw_init(UINT8 uport)
         intr_reg_addr = REG_UART2_INTR_ENABLE;
     }
     baud_div = baud_div - 1;
-	
+
     reg = UART_TX_ENABLE
           | (UART_RX_ENABLE & (~UART_IRDA))
           | (((DEF_DATA_LEN & UART_DATA_LEN_MASK) << UART_DATA_LEN_POSI)
@@ -607,12 +607,12 @@ void uart1_init(void)
     UINT32 ret;
     UINT32 param;
     UINT32 intr_status;
-	
+
 #if UART1_USE_FIFO_REC
     ret = uart_sw_init(UART1_PORT);
     ASSERT(UART_SUCCESS == ret);
 #endif
-	
+
     ddev_register_dev(UART1_DEV_NAME, &uart1_op);
 
     intc_service_register(IRQ_UART1, PRI_IRQ_UART1, uart1_isr);
