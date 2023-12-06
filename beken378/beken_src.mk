@@ -1,8 +1,5 @@
 
-WPA_VERSION := wpa_supplicant_2_9
-ifeq ($(CFG_USE_WPA_29),0)
-WPA_VERSION := hostapd-2.5
-endif
+WPA_VERSION := wpa_supplicant-2.9
 
 AT_SERVICE_CFG ?= 0
 ifeq ($(AT_SERVICE_CFG),1)

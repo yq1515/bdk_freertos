@@ -18,7 +18,7 @@
 #include "config_ssid.h"
 #include "wmm_ac.h"
 #if CFG_WPA_CTRL_IFACE
-#include "notifier.h"
+#include "notifier_pub.h"
 #endif
 
 extern const char *const wpa_supplicant_version;
