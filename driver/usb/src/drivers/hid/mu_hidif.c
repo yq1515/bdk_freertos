@@ -544,7 +544,7 @@ static void MGC_HidOpenIntrPipe(MGC_HidDevice *pHidDevice)
     uint8_t bEnd;
     uint32_t dwStatus;
     const MUSB_EndpointDescriptor *pEnd;
-    const MUSB_EndpointDescriptor *pInEnd;
+    const MUSB_EndpointDescriptor *pInEnd = NULL;
     MUSB_DeviceEndpoint end;
 
     /* find suitable endpoint */

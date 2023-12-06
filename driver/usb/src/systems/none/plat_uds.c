@@ -172,7 +172,7 @@ static uint8_t MGC_NoneUnlock(void *pPrivate, uint16_t wIndex)
  */
 static uint8_t MGC_NoneControllerIsr(void *pPrivateData)
 {
-    int isrValue;
+    int isrValue = 0;
     volatile MGC_NoneSystem *pSystem = (MGC_NoneSystem *)pPrivateData;
 
     MUSB_NPRT("[MGC] NoneControllerIsr\r\n");
