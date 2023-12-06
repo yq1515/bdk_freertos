@@ -670,7 +670,7 @@ uint8_t MGC_FunctionParseSetup(MGC_Port *pPort, uint8_t *pbStatus)
                         pPort->pfProgramHaltEndpoint(pPort, pEnd,
                                                      bEnd & MUSB_ENDPOINT_DIR_MASK, FALSE);
                         /* start any pending bulk/interrupt Tx */
-                        switch(pEnd->bTrafficType)
+                        switch(pEnd->bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK)
                         {
                         case MUSB_ENDPOINT_XFER_BULK:
                         case MUSB_ENDPOINT_XFER_INT:

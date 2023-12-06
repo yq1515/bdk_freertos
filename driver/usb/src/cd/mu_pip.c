@@ -197,7 +197,7 @@ uint8_t MGC_PipeTransmitReady(MGC_Port *pPort, MGC_EndpointResource *pEnd)
 
     if(pEnd->pTxIrp)
     {
-        switch(pEnd->bTrafficType)
+        switch(pEnd->bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK)
         {
         case MUSB_ENDPOINT_XFER_BULK:
         case MUSB_ENDPOINT_XFER_INT:
@@ -329,6 +329,7 @@ uint8_t MGC_CompleteIrp(MGC_BsrItem *pItem, MGC_EndpointResource *pEnd,
         {
             pEnd->pRxIrp = NULL;
         }
+		break;
     }
 
     /* fill info for queue */
@@ -474,7 +475,7 @@ uint8_t MGC_StartNextIrp(MGC_Port *pPort, MGC_EndpointResource *pEnd,
         pPipe = (MGC_Pipe *)pIrp->hPipe;
         bTrafficType = bIsTx ? pEnd->bTrafficType : pEnd->bRxTrafficType;
         /* now cast according to type */
-        switch(bTrafficType)
+        switch(bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK)
         {
         case MUSB_ENDPOINT_XFER_BULK:
         case MUSB_ENDPOINT_XFER_INT:
@@ -499,7 +500,7 @@ uint8_t MGC_StartNextIrp(MGC_Port *pPort, MGC_EndpointResource *pEnd,
             }
 
             /* program it */
-            switch(bTrafficType)
+            switch(bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK)
             {
             case MUSB_ENDPOINT_XFER_BULK:
             case MUSB_ENDPOINT_XFER_INT:
@@ -514,7 +515,7 @@ uint8_t MGC_StartNextIrp(MGC_Port *pPort, MGC_EndpointResource *pEnd,
             if(bIsTx)
             {
                 /* start next Tx if not interrupt protocol */
-                if(MUSB_ENDPOINT_XFER_INT != bTrafficType)
+                if(MUSB_ENDPOINT_XFER_INT != (bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK))
                 {
                     pEnd->pTxIrp = pNextIrp;
                     pPort->pfProgramStartTransmit(pPort, pEnd, pBuffer, dwReqLength, pNextIrp);
@@ -606,7 +607,7 @@ uint32_t MUSB_StartTransfer(MUSB_Irp *pIrp)
         pServices->pfLock(pServices->pPrivateData, 1 + pEnd->bLocalEnd);
     }
 
-    switch(bTrafficType)
+    switch(bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK)
     {
     case MUSB_ENDPOINT_XFER_CONTROL:
     case MUSB_ENDPOINT_XFER_ISOC:
@@ -617,9 +618,9 @@ uint32_t MUSB_StartTransfer(MUSB_Irp *pIrp)
     case MUSB_ENDPOINT_XFER_INT:
         /* since lists use dynamic memory, try only if necessary */
         pCurrentIrp = bIsTx ? pEnd->pTxIrp : pEnd->pRxIrp;
-        if(pCurrentIrp)
+        if(pCurrentIrp && pCurrentIrp != pIrp)
         {
-            if(MUSB_ENDPOINT_XFER_INT == bTrafficType)
+            if(MUSB_ENDPOINT_XFER_INT == (bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK))
             {
                 status = MUSB_STATUS_ENDPOINT_BUSY;
             }
@@ -792,7 +793,7 @@ uint32_t MUSB_ScheduleIsochTransfer(
     }
     else
     {
-        switch(bTrafficType)
+        switch(bTrafficType & MUSB_ENDPOINT_XFERTYPE_MASK)
         {
         case MUSB_ENDPOINT_XFER_CONTROL:
         case MUSB_ENDPOINT_XFER_BULK:

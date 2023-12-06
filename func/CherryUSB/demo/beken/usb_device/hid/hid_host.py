@@ -6,6 +6,7 @@ import os
 h = hid.device()
 h.open(0xffff, 0xffff)
 
-h.write(b'12345678')
-r = h.read(100)
-print(r)
+while True:
+    h.write(b'1234567890abcdefghijklmnopqrst')
+    r = h.read(100)
+    print(r)

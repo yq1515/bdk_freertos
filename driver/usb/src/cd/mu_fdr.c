@@ -185,11 +185,9 @@ int MGC_FdrcIsr(void *pParam)
     uint8_t *pBase = (uint8_t *)pControllerImpl->pControllerAddressIst;
     uint8_t bIndex = MGC_Read8(pBase, MGC_O_FDRC_INDEX);
 
-    bIntrUsbValue = MGC_Read8(pBase, MGC_O_FDRC_INTRUSB) & ~(0xc0);
-    wIntrTxValue = MGC_Read16(pBase, MGC_O_FDRC_INTRTX1)
-                   | ( MGC_Read16(pBase, MGC_O_FDRC_INTRTX2) << 8 );
-    wIntrRxValue = MGC_Read16(pBase, MGC_O_FDRC_INTRRX1)
-                   | ( MGC_Read16(pBase, MGC_O_FDRC_INTRRX2) << 8 );
+    bIntrUsbValue = MGC_Read8(pBase, MGC_O_FDRC_INTRUSB);
+    wIntrTxValue = MGC_Read8(pBase, MGC_O_FDRC_INTRTX1) | ( MGC_Read8(pBase, MGC_O_FDRC_INTRTX2) << 8 );
+    wIntrRxValue = MGC_Read8(pBase, MGC_O_FDRC_INTRRX1) | ( MGC_Read8(pBase, MGC_O_FDRC_INTRRX2) << 8 );
 
     result = MGC_DrcIsr(pControllerImpl, bIntrUsbValue, wIntrTxValue, wIntrRxValue);
 
