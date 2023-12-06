@@ -615,7 +615,7 @@ UINT32 rwm_transfer(UINT8 vif_idx, UINT8 *buf, UINT32 len, int sync, void *args)
         txl_cntrl_dec_pck_cnt();
         #endif
 
-        os_printf("rwm_transfer no node\r\n");
+        // os_printf("rwm_transfer no node\r\n");
         goto tx_exit;
     }
     rwm_tx_msdu_renew(buf, len, node->msdu_ptr);
@@ -749,7 +749,7 @@ UINT32 rwm_transfer_node(MSDU_NODE_T *node, u8 flag)
     txdesc_new = tx_txdesc_prepare(queue_idx);
     if(TXDESC_STA_USED == txdesc_new->status)
     {
-        os_printf("rwm_transfer no txdesc \r\n");
+        // os_printf("rwm_transfer no txdesc \r\n");
         goto tx_exit;
     }
 

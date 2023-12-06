@@ -120,7 +120,7 @@ static UINT32 last_WR_addr = 0;
 /******************************************************************************/
 static void sdcard_clock_set(uint8 clk_index)
 {
-	if(clk_index <= CLK_200K);
+	if (clk_index <= CLK_200K)
 	{
 		sdio_set_clock(clk_index);
 		sdcard.clk_cfg = clk_index;

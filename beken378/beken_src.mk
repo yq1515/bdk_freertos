@@ -740,8 +740,10 @@ SRC_C += $(BEKEN_DIR)/beken378/func/ble_wifi_exchange/ble_wifi_port.c
 ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
 SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/core/usbd_core.c
 SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
-SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
-SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/class/cdc/usbd_cdc.c
+#SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
+#SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/class/cdc/usbd_cdc.c
+SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/demo/beken/usb_device/hid/hid_common.c
+SRC_C += $(BEKEN_DIR)/beken378/func/CherryUSB/class/hid/usbd_hid.c
 endif
 
 #assembling files

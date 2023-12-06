@@ -94,7 +94,7 @@
 #define CFG_SUPPORT_UVC                            0
 #endif
 #define CFG_USE_USB_CHARGE                         0
-#define CFG_SUPPORT_CHERRYUSB                      0
+#define CFG_SUPPORT_CHERRYUSB                      1
 
 
 /*section 4-----DEBUG macro config-----*/
@@ -103,7 +103,7 @@
 #define CFG_BACKGROUND_PRINT                       0
 #define CFG_SUPPORT_BKREG                          1
 #define CFG_ENABLE_WPA_LOG                         0
-#define CFG_IPERF_TEST                             0
+#define CFG_IPERF_TEST                             1
 #define CFG_TCP_SERVER_TEST                        0
 #define CFG_AIRKISS_TEST                           0
 #define CFG_ENABLE_DEMO_TEST                       0

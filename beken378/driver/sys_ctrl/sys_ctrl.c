@@ -3433,4 +3433,56 @@ UINT32 sctrl_ctrl(UINT32 cmd, void *param)
     return ret;
 }
 
+#if (CFG_SOC_NAME == SOC_BK7231N) || (CFG_SOC_NAME == SOC_BK7231U)
+extern void flash_set_clk(UINT8 clk_conf);
+static uint32_t sctrl_overclock_refcnt __maybe_unused = 0;
+void sctrl_overclock(int enable)
+{
+	UINT32 param;
+
+	GLOBAL_INT_DECLARATION();
+
+	if (enable) {
+		GLOBAL_INT_DISABLE();
+		 /* already enabled */
+		if (sctrl_overclock_refcnt++)
+			goto out;
+
+		param = REG_READ(SCTRL_CONTROL);
+		param &= ~(MCLK_DIV_MASK << MCLK_DIV_POSI);
+		param |= ((MCLK_DIV_2 & MCLK_DIV_MASK) << MCLK_DIV_POSI);
+		REG_WRITE(SCTRL_CONTROL, param);
+		flash_set_clk(8);
+	} else {
+		GLOBAL_INT_DISABLE();
+		if (sctrl_overclock_refcnt)
+			--sctrl_overclock_refcnt;
+
+		/* other API still hold overclock */
+		if (sctrl_overclock_refcnt)
+			goto out;
+
+		/*config main clk*/
+#if !USE_DCO_CLK_POWON
+		param = REG_READ(SCTRL_CONTROL);
+		param &= ~(MCLK_DIV_MASK << MCLK_DIV_POSI);
+#if CFG_SYS_REDUCE_NORMAL_POWER
+		param |= ((MCLK_DIV_7 & MCLK_DIV_MASK) << MCLK_DIV_POSI);
+#else
+		param |= ((MCLK_DIV_5 & MCLK_DIV_MASK) << MCLK_DIV_POSI);
+#endif // CFG_SYS_REDUCE_NORMAL_POWER
+		REG_WRITE(SCTRL_CONTROL, param);
+#endif /*(!USE_DCO_CLK_POWON)*/
+
+#if CFG_USE_STA_PS
+		flash_set_clk(9);
+#else
+		flash_set_clk(5);
+#endif
+	}
+out:
+	GLOBAL_INT_RESTORE();
+}
+#endif
+
 // EOF
