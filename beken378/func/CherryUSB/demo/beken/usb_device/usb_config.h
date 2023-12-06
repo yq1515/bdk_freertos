@@ -20,7 +20,7 @@
 #define usb_free(ptr)    os_free(ptr)
 
 #ifndef CONFIG_USB_DBG_LEVEL
-#define CONFIG_USB_DBG_LEVEL USB_DBG_LOG
+#define CONFIG_USB_DBG_LEVEL USB_DBG_WARNING
 #endif
 
 /* Enable print with color */
@@ -32,7 +32,8 @@
 #endif
 
 /* attribute data into no cache ram */
-#define USB_NOCACHE_RAM_SECTION __attribute__((section(".noncacheable")))
+// #define USB_NOCACHE_RAM_SECTION __attribute__((section(".noncacheable")))
+#define USB_NOCACHE_RAM_SECTION
 
 /* ================= USB Device Stack Configuration ================ */
 

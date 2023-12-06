@@ -132,6 +132,12 @@
 #define AUDIO_FORMAT_ALAW             0x0004
 #define AUDIO_FORMAT_MULAW            0x0005
 
+#define AUDIO_V2_FORMAT_PCM              0x00000001
+#define AUDIO_V2_FORMAT_PCM8             0x00000002
+#define AUDIO_V2_FORMAT_IEEE_FLOAT       0x00000004
+#define AUDIO_V2_FORMAT_ALAW             0x00000008
+#define AUDIO_V2_FORMAT_MULAW            0x00000010
+
 /* bmChannelConfig: a bitmap field that indicates which spatial locations
  * are occupied by the channels present in the cluster. The bit allocations
  * are as follows:
@@ -640,7 +646,7 @@ struct audio_cs_if_ac_feature_unit_descriptor {
     uint8_t iFeature;
 } __PACKED;
 
-#define AUDIO_SIZEOF_AC_FEATURE_UNIT_DESC(ch, n) (7 + ch * n)
+#define AUDIO_SIZEOF_AC_FEATURE_UNIT_DESC(ch, n) (7 + (ch + 1) * n)
 
 struct audio_cs_if_as_general_descriptor {
     uint8_t bLength;
@@ -754,7 +760,7 @@ struct audio_cs_ep_ep_general_descriptor {
     __VA_ARGS__,                     /* bmaControls(0) Mute */                   \
     0x00                             /* iTerminal */
 
-#define AUDIO_AS_DESCRIPTOR_INIT(bInterfaceNumber, bTerminalLink, bNrChannels, bEndpointAddress, wMaxPacketSize, bInterval, ...) \
+#define AUDIO_AS_DESCRIPTOR_INIT(bInterfaceNumber, bTerminalLink, bNrChannels, bSubFrameSize, bBitResolution, bEndpointAddress, bmAttributes, wMaxPacketSize, bInterval, ...) \
     0x09,                            /* bLength */                                                                       \
     USB_DESCRIPTOR_TYPE_INTERFACE,   /* bDescriptorType */                                                               \
     bInterfaceNumber,                /* bInterfaceNumber */                                                              \
@@ -784,14 +790,14 @@ struct audio_cs_ep_ep_general_descriptor {
     AUDIO_STREAMING_FORMAT_TYPE,     /* bDescriptorSubtype */                                                            \
     AUDIO_FORMAT_TYPE_I,             /* bFormatType */                                                                   \
     bNrChannels,                     /* bNrChannels */                                                                   \
-    0x02,                            /* bSubFrameSize : 2 Bytes per audio subframe */                                    \
-    0x10,                            /* bBitResolution : 16 bits per sample */                                           \
+    bSubFrameSize,                   /* bSubFrameSize : Bytes per audio subframe */                                      \
+    bBitResolution,                  /* bBitResolution : bits per sample */                                              \
     (PP_NARG(__VA_ARGS__)/3),        /* bSamFreqType : only one frequency supported */                                   \
     __VA_ARGS__,                     /* tSamFreq : Audio sampling frequency coded on 3 bytes */                          \
     0x09,                            /* bLength */                                                                       \
     USB_DESCRIPTOR_TYPE_ENDPOINT,    /* bDescriptorType */                                                               \
     bEndpointAddress,                /* bEndpointAddress : IN endpoint 1 */                                              \
-    0x01,                            /* bmAttributes */                                                                  \
+    bmAttributes,                    /* bmAttributes */                                                                  \
     WBVAL(wMaxPacketSize),           /* wMaxPacketSize */                                                                \
     bInterval,                       /* bInterval : one packet per frame */                                              \
     0x00,                            /* bRefresh */                                                                      \
@@ -805,6 +811,19 @@ struct audio_cs_ep_ep_general_descriptor {
     0x00
 
 #define AUDIO_AS_DESCRIPTOR_INIT_LEN(n) (0x09 + 0x09 + 0x07 + 0x08 + 3 * n + 0x09 + 0x07)
+
+#define AUDIO_MS_STANDARD_DESCRIPTOR_INIT(bInterfaceNumber, bNumEndpoints)                                               \
+    0x09,                            /* bLength */                                                                       \
+    USB_DESCRIPTOR_TYPE_INTERFACE,   /* bDescriptorType */                                                               \
+    bInterfaceNumber,                /* bInterfaceNumber */                                                              \
+    0x00,                            /* bAlternateSetting */                                                             \
+    bNumEndpoints,                   /* bNumEndpoints */                                                                 \
+    USB_DEVICE_CLASS_AUDIO,          /* bInterfaceClass */                                                               \
+    AUDIO_SUBCLASS_MIDISTREAMING,    /* bInterfaceSubClass */                                                            \
+    AUDIO_PROTOCOL_UNDEFINED,        /* bInterfaceProtocol */                                                            \
+    0x00                             /* iInterface */
+
+#define AUDIO_MS_STANDARD_DESCRIPTOR_INIT_LEN 0x09
 
 struct audio_v2_channel_cluster_descriptor {
     uint8_t bNrChannels;
@@ -905,7 +924,7 @@ struct audio_v2_cs_if_ac_feature_unit_descriptor {
     uint8_t iFeature;
 } __PACKED;
 
-#define AUDIO_V2_SIZEOF_AC_FEATURE_UNIT_DESC(ch) (6 + ch * 4)
+#define AUDIO_V2_SIZEOF_AC_FEATURE_UNIT_DESC(ch) (6 + (ch + 1) * 4)
 
 struct audio_v2_cs_if_as_general_descriptor {
     uint8_t bLength;
@@ -959,7 +978,7 @@ struct audio_v2_control_range3_param_block {
     bFirstInterface,                                                                                                             \
     bInterfaceCount,                                                                                                             \
     USB_DEVICE_CLASS_AUDIO,                                                                                                      \
-    AUDIO_SUBCLASS_AUDIOCONTROL,                                                                                                 \
+    AUDIO_SUBCLASS_UNDEFINED,                                                                                                    \
     AUDIO_PROTOCOLv20,                                                                                                           \
     0x00,                                                                                                                        \
     /* ------------------ AudioControl Interface ------------------ */\
@@ -1027,7 +1046,7 @@ struct audio_v2_control_range3_param_block {
     __VA_ARGS__,                     /* bmaControls(0) Mute */        \
     0x00                             /* iTerminal */
 
-#define AUDIO_V2_AS_DESCRIPTOR_INIT(bInterfaceNumber, bTerminalLink, bNrChannels, bmChannelConfig, bSubslotSize, bBitResolution, bEndpointAddress, wMaxPacketSize, bInterval) \
+#define AUDIO_V2_AS_DESCRIPTOR_INIT(bInterfaceNumber, bTerminalLink, bNrChannels, bmChannelConfig, bSubslotSize, bBitResolution, bEndpointAddress, bmAttributes, wMaxPacketSize, bInterval) \
     0x09,                            /* bLength */                                                                                                                        \
     USB_DESCRIPTOR_TYPE_INTERFACE,   /* bDescriptorType */                                                                                                                \
     bInterfaceNumber,                /* bInterfaceNumber */                                                                                                               \
@@ -1049,10 +1068,10 @@ struct audio_v2_control_range3_param_block {
     0x10,                            /* bLength */                                                                                                                        \
     AUDIO_INTERFACE_DESCRIPTOR_TYPE, /* bDescriptorType */                                                                                                                \
     AUDIO_STREAMING_GENERAL,         /* bDescriptorSubtype */                                                                                                             \
-    bTerminalLink,                   /* bTerminalLink : Unit ID of the Output Terminal*/                                                                                  \
+    bTerminalLink,                   /* bTerminalLink : Unit ID of the Output or Input Terminal*/                                                                         \
     0x00,                            /* bmControls */                                                                                                                     \
     AUDIO_FORMAT_TYPE_I,             /* bFormatType : AUDIO_FORMAT_TYPE_I */                                                                                              \
-    DBVAL(AUDIO_FORMAT_PCM),         /* bmFormats PCM */                                                                                                                  \
+    DBVAL(AUDIO_V2_FORMAT_PCM),      /* bmFormats PCM */                                                                                                                  \
     bNrChannels,                     /* bNrChannels */                                                                                                                    \
     DBVAL(bmChannelConfig),          /* bmChannelConfig */                                                                                                                \
     0x00,                            /* iChannelNames */                                                                                                                  \
@@ -1063,10 +1082,10 @@ struct audio_v2_control_range3_param_block {
     bSubslotSize,                    /* bSubslotSize */                                                                                                                   \
     bBitResolution,                  /* bBitResolution */                                                                                                                 \
     0x07,                            /* bLength */                                                                                                                        \
-    0x05,                            /* bDescriptorType */                                                                                                                \
+    USB_DESCRIPTOR_TYPE_ENDPOINT,    /* bDescriptorType */                                                                                                                \
     bEndpointAddress,                /* bEndpointAddress 3 out endpoint for Audio */                                                                                      \
-    0x01,                            /* bmAttributes */                                                                                                                   \
-    WBVAL(wMaxPacketSize),           /* XXXX wMaxPacketSize in Bytes (Freq(Samples)*2(Stereo)*2(HalfWord)) */                                                             \
+    bmAttributes,                    /* bmAttributes */                                                                                                                   \
+    WBVAL(wMaxPacketSize),           /* XXXX wMaxPacketSize in Bytes (SampleRate * SlotByteSize * NumChannels) */                                                         \
     bInterval,                       /* bInterval */                                                                                                                      \
     0x08,                            /* bLength */                                                                                                                        \
     AUDIO_ENDPOINT_DESCRIPTOR_TYPE,  /* bDescriptorType */                                                                                                                \
@@ -1077,9 +1096,66 @@ struct audio_v2_control_range3_param_block {
     0x00,                            /* wLockDelay */                                                                                                                     \
     0x00
 
+#define AUDIO_V2_AS_FEEDBACK_DESCRIPTOR_INIT(bInterfaceNumber, bTerminalLink, bNrChannels, bmChannelConfig, bSubslotSize, bBitResolution, bEndpointAddress, wMaxPacketSize, bInterval, bFeedbackEndpointAddress) \
+    0x09,                            /* bLength */                                                                                                                        \
+    USB_DESCRIPTOR_TYPE_INTERFACE,   /* bDescriptorType */                                                                                                                \
+    bInterfaceNumber,                /* bInterfaceNumber */                                                                                                               \
+    0x00,                            /* bAlternateSetting */                                                                                                              \
+    0x00,                            /* bNumEndpoints */                                                                                                                  \
+    USB_DEVICE_CLASS_AUDIO,          /* bInterfaceClass */                                                                                                                \
+    AUDIO_SUBCLASS_AUDIOSTREAMING,   /* bInterfaceSubClass */                                                                                                             \
+    AUDIO_PROTOCOLv20,               /* bInterfaceProtocol */                                                                                                             \
+    0x00,                            /* iInterface */                                                                                                                     \
+    0x09,                            /* bLength */                                                                                                                        \
+    USB_DESCRIPTOR_TYPE_INTERFACE,   /* bDescriptorType */                                                                                                                \
+    bInterfaceNumber,                /* bInterfaceNumber */                                                                                                               \
+    0x01,                            /* bAlternateSetting */                                                                                                              \
+    0x02,                            /* bNumEndpoints */                                                                                                                  \
+    USB_DEVICE_CLASS_AUDIO,          /* bInterfaceClass */                                                                                                                \
+    AUDIO_SUBCLASS_AUDIOSTREAMING,   /* bInterfaceSubClass */                                                                                                             \
+    AUDIO_PROTOCOLv20,               /* bInterfaceProtocol */                                                                                                             \
+    0x00,                            /* iInterface */                                                                                                                     \
+    0x10,                            /* bLength */                                                                                                                        \
+    AUDIO_INTERFACE_DESCRIPTOR_TYPE, /* bDescriptorType */                                                                                                                \
+    AUDIO_STREAMING_GENERAL,         /* bDescriptorSubtype */                                                                                                             \
+    bTerminalLink,                   /* bTerminalLink : Unit ID of the Output or Input Terminal*/                                                                         \
+    0x00,                            /* bmControls */                                                                                                                     \
+    AUDIO_FORMAT_TYPE_I,             /* bFormatType : AUDIO_FORMAT_TYPE_I */                                                                                              \
+    DBVAL(AUDIO_V2_FORMAT_PCM),      /* bmFormats PCM */                                                                                                                  \
+    bNrChannels,                     /* bNrChannels */                                                                                                                    \
+    DBVAL(bmChannelConfig),          /* bmChannelConfig */                                                                                                                \
+    0x00,                            /* iChannelNames */                                                                                                                  \
+    0x06,                            /* bLength */                                                                                                                        \
+    AUDIO_INTERFACE_DESCRIPTOR_TYPE, /* bDescriptorType */                                                                                                                \
+    AUDIO_STREAMING_FORMAT_TYPE,     /* bDescriptorSubtype */                                                                                                             \
+    AUDIO_FORMAT_TYPE_I,             /* bFormatType */                                                                                                                    \
+    bSubslotSize,                    /* bSubslotSize */                                                                                                                   \
+    bBitResolution,                  /* bBitResolution */                                                                                                                 \
+    0x07,                            /* bLength */                                                                                                                        \
+    USB_DESCRIPTOR_TYPE_ENDPOINT,    /* bDescriptorType */                                                                                                                \
+    bEndpointAddress,                /* bEndpointAddress 3 out endpoint for Audio */                                                                                      \
+    0x05,                            /* bmAttributes: TransferType=Isochronous  SyncType=Asynchronous  EndpointType=Data*/                                                \
+    WBVAL(wMaxPacketSize),           /* XXXX wMaxPacketSize in Bytes (SampleRate * SlotByteSize * NumChannels) */                                                         \
+    bInterval,                       /* bInterval */                                                                                                                      \
+    0x08,                            /* bLength */                                                                                                                        \
+    AUDIO_ENDPOINT_DESCRIPTOR_TYPE,  /* bDescriptorType */                                                                                                                \
+    AUDIO_ENDPOINT_GENERAL,          /* bDescriptor */                                                                                                                    \
+    0x00,                            /* bmAttributes */                                                                                                                   \
+    0x00,                            /* bmControls */                                                                                                                     \
+    0x00,                            /* bLockDelayUnits */                                                                                                                \
+    0x00,                            /* wLockDelay */                                                                                                                     \
+    0x00,                                                                                                                                                                 \
+    0x07,                            /* bLength */                                                                                                                        \
+    USB_DESCRIPTOR_TYPE_ENDPOINT,    /* bDescriptorType */                                                                                                                \
+    bFeedbackEndpointAddress,        /* bFeedbackEndpointAddress Revise Dir to bEndpointAddress */                                                                        \
+    0x11,                            /* bmAttributes: TransferType=Isochronous  SyncType=None  EndpointType=Feedback */                                                   \
+    WBVAL(4),                        /* XXXX wMaxPacketSize in Bytes */                                                                                                   \
+    bInterval                        /* bInterval */                                                                                                                      \
+
 // clang-format on
 
 #define AUDIO_V2_AS_DESCRIPTOR_INIT_LEN (0x09 + 0x09 + 0x10 + 0x06 + 0x07 + 0x08)
+#define AUDIO_V2_AS_FEEDBACK_DESCRIPTOR_INIT_LEN (0x09 + 0x09 + 0x10 + 0x06 + 0x07 + 0x08 + 0x07)
 
 #define AUDIO_SAMPLE_FREQ_NUM(num) (uint8_t)(num), (uint8_t)((num >> 8))
 #define AUDIO_SAMPLE_FREQ_3B(frq)  (uint8_t)(frq), (uint8_t)((frq >> 8)), (uint8_t)((frq >> 16))

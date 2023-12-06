@@ -56,6 +56,7 @@ struct usbh_urb {
     uint32_t timeout;
     int errorcode;
     uint32_t num_of_iso_packets;
+    uint32_t start_frame;
     usbh_complete_callback_t complete;
     void *arg;
     struct usbh_iso_frame_packet iso_packet[0];
@@ -69,6 +70,12 @@ struct usbh_urb {
 int usb_hc_init(void);
 
 /**
+ * @brief Get frame number.
+ *
+ * @return frame number.
+ */
+uint16_t usbh_get_frame_number(void);
+/**
  * @brief control roothub.
  *
  * @param setup setup request buffer.
@@ -78,15 +85,15 @@ int usb_hc_init(void);
 int usbh_roothub_control(struct usb_setup_packet *setup, uint8_t *buf);
 
 /**
- * @brief reconfig control endpoint pipe.
+ * @brief reconfig endpoint pipe.
  *
  * @param pipe A memory allocated for pipe.
  * @param dev_addr device address.
- * @param ep_mps control endpoint max packet size.
- * @param speed port speed
+ * @param ep_mps endpoint max packet size.
+ * @param mult endpoint additional transcation
  * @return On success will return 0, and others indicate fail.
  */
-int usbh_ep0_pipe_reconfigure(usbh_pipe_t pipe, uint8_t dev_addr, uint8_t ep_mps, uint8_t speed);
+int usbh_ep_pipe_reconfigure(usbh_pipe_t pipe, uint8_t dev_addr, uint8_t ep_mps, uint8_t mult);
 
 /**
  * @brief Allocate pipe for endpoint

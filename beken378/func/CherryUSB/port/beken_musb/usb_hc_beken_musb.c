@@ -166,9 +166,9 @@ struct musb_pipe {
 };
 
 struct musb_hcd {
-    volatile bool port_csc;
-    volatile bool port_pec;
-    volatile bool port_pe;
+    volatile bool port_csc; /* Connection Status Change */
+    volatile bool port_pec; /* Port Enable Change */
+    volatile bool port_pe; /* Port Enable */
     struct musb_pipe pipe_pool[CONFIG_USBHOST_PIPE_NUM][2]; /* Support Bidirectional ep */
 } g_musb_hcd;
 

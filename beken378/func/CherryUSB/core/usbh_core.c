@@ -10,6 +10,7 @@ struct usbh_class_info *usbh_class_info_table_begin = NULL;
 struct usbh_class_info *usbh_class_info_table_end = NULL;
 
 USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t ep0_request_buffer[CONFIG_USBHOST_REQUEST_BUFFER_LEN];
+USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX struct usb_setup_packet g_setup[CONFIG_USBHOST_MAX_EXTHUBS + 1][CONFIG_USBHOST_MAX_EHPORTS];
 
 /* general descriptor field offsets */
 #define DESC_bLength         0 /** Length offset */
@@ -109,7 +110,11 @@ static const struct usbh_class_driver *usbh_find_class_driver(uint8_t class, uin
             if (index->vid == vid && index->pid == pid && index->class == class) {
                 return index->class_driver;
             }
-        } else if (index->match_flags & (USB_CLASS_MATCH_INTF_CLASS)) {
+        } else if ((index->match_flags & (USB_CLASS_MATCH_INTF_CLASS | USB_CLASS_MATCH_INTF_SUBCLASS)) == (USB_CLASS_MATCH_INTF_CLASS | USB_CLASS_MATCH_INTF_SUBCLASS)) {
+            if (index->class == class && index->subclass == subclass) {
+                return index->class_driver;
+            }
+        } else if ((index->match_flags & (USB_CLASS_MATCH_INTF_CLASS)) == USB_CLASS_MATCH_INTF_CLASS) {
             if (index->class == class) {
                 return index->class_driver;
             }
@@ -407,15 +412,13 @@ int usbh_enumerate(struct usbh_hubport *hport)
 {
     struct usb_interface_descriptor *intf_desc;
     struct usb_setup_packet *setup;
+    struct usb_device_descriptor *dev_desc;
     int dev_addr;
     uint16_t ep_mps;
     int ret;
 
-#define USB_REQUEST_BUFFER_SIZE 256
-    setup = &hport->setup;
-
-    /* Configure EP0 with the default maximum packet size */
-    usbh_hport_activate_ep0(hport);
+    hport->setup = &g_setup[hport->parent->index - 1][hport->port - 1];
+    setup = hport->setup;
 
     /* Read the first 8 bytes of the device descriptor */
     setup->bmRequestType = USB_REQUEST_DIR_IN | USB_REQUEST_STANDARD | USB_REQUEST_RECIPIENT_DEVICE;
@@ -433,10 +436,19 @@ int usbh_enumerate(struct usbh_hubport *hport)
     parse_device_descriptor(hport, (struct usb_device_descriptor *)ep0_request_buffer, 8);
 
     /* Extract the correct max packetsize from the device descriptor */
-    ep_mps = ((struct usb_device_descriptor *)ep0_request_buffer)->bMaxPacketSize0;
+    dev_desc = (struct usb_device_descriptor *)ep0_request_buffer;
+    if (dev_desc->bcdUSB >= USB_3_0) {
+        ep_mps = 1 << dev_desc->bMaxPacketSize0;
+    } else {
+        ep_mps = dev_desc->bMaxPacketSize0;
+    }
+
+    USB_LOG_DBG("Device rev=%04x cls=%02x sub=%02x proto=%02x size=%d\r\n",
+                dev_desc->bcdUSB, dev_desc->bDeviceClass, dev_desc->bDeviceSubClass,
+                dev_desc->bDeviceProtocol, ep_mps);
 
     /* Reconfigure EP0 with the correct maximum packet size */
-    usbh_ep0_pipe_reconfigure(hport->ep0, 0, ep_mps, hport->speed);
+    usbh_ep_pipe_reconfigure(hport->ep0, 0, ep_mps, 0);
 
 #ifdef CONFIG_USBHOST_XHCI
     extern int usbh_get_xhci_devaddr(usbh_pipe_t * pipe);
@@ -476,7 +488,7 @@ int usbh_enumerate(struct usbh_hubport *hport)
     hport->dev_addr = dev_addr;
 
     /* And reconfigure EP0 with the correct address */
-    usbh_ep0_pipe_reconfigure(hport->ep0, dev_addr, ep_mps, hport->speed);
+    usbh_ep_pipe_reconfigure(hport->ep0, dev_addr, ep_mps, 0);
 
     /* Read the full device descriptor */
     setup->bmRequestType = USB_REQUEST_DIR_IN | USB_REQUEST_STANDARD | USB_REQUEST_RECIPIENT_DEVICE;
@@ -617,17 +629,9 @@ int usbh_enumerate(struct usbh_hubport *hport)
         hport->config.intf[i].class_driver = class_driver;
         USB_LOG_INFO("Loading %s class driver\r\n", class_driver->driver_name);
         ret = CLASS_CONNECT(hport, i);
-        if (ret < 0) {
-            ret = CLASS_DISCONNECT(hport, i);
-            goto errout;
-        }
     }
 
-    usbh_device_mount_done_callback(hport);
 errout:
-    if (ret < 0) {
-        usbh_hport_deactivate_ep0(hport);
-    }
     if (hport->raw_config_desc) {
         usb_free(hport->raw_config_desc);
         hport->raw_config_desc = NULL;
@@ -689,6 +693,9 @@ int usbh_initialize(void)
     extern uint32_t __usbh_class_info_end__;
     usbh_class_info_table_begin = (struct usbh_class_info *)&__usbh_class_info_start__;
     usbh_class_info_table_end = (struct usbh_class_info *)&__usbh_class_info_end__;
+#elif defined(__ICCARM__) || defined(__ICCRX__)
+    usbh_class_info_table_begin = (struct usbh_class_info *)__section_begin("usbh_class_info");
+    usbh_class_info_table_end = (struct usbh_class_info *)__section_end("usbh_class_info");
 #endif
 
     /* devaddr 1 is for roothub */
@@ -794,12 +801,4 @@ int lsusb(int argc, char **argv)
     }
 
     return 0;
-}
-
-__WEAK void usbh_device_mount_done_callback(struct usbh_hubport *hport)
-{
-}
-
-__WEAK void usbh_device_unmount_done_callback(struct usbh_hubport *hport)
-{
 }

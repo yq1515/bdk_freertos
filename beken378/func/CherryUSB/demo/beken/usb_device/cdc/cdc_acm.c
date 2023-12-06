@@ -1,5 +1,6 @@
 #include "usbd_core.h"
 #include "usbd_cdc.h"
+#include "uart_pub.h"
 
 
 /*!< endpoint address */
@@ -15,11 +16,17 @@
 /*!< config descriptor size */
 #define USB_CONFIG_SIZE (9 + CDC_ACM_DESCRIPTOR_LEN)
 
+#ifdef CONFIG_USB_HS
+#define CDC_MAX_MPS 512
+#else
+#define CDC_MAX_MPS 64
+#endif
+
 /*!< global descriptor */
 static const uint8_t cdc_descriptor[] = {
     USB_DEVICE_DESCRIPTOR_INIT(USB_2_0, 0xEF, 0x02, 0x01, USBD_VID, USBD_PID, 0x0100, 0x01),
     USB_CONFIG_DESCRIPTOR_INIT(USB_CONFIG_SIZE, 0x02, 0x01, USB_CONFIG_BUS_POWERED, USBD_MAX_POWER),
-    CDC_ACM_DESCRIPTOR_INIT(0x00, CDC_INT_EP, CDC_OUT_EP, CDC_IN_EP, 0x02),
+    CDC_ACM_DESCRIPTOR_INIT(0x00, CDC_INT_EP, CDC_OUT_EP, CDC_IN_EP, CDC_MAX_MPS, 0x02),
     ///////////////////////////////////////
     /// string0 descriptor
     ///////////////////////////////////////
@@ -95,7 +102,7 @@ static const uint8_t cdc_descriptor[] = {
 };
 
 USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t read_buffer[2048];
-USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t write_buffer[2048] = { 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30 };
+USB_NOCACHE_RAM_SECTION USB_MEM_ALIGNX uint8_t write_buffer[2048];
 
 volatile bool ep_tx_busy_flag = false;
 
@@ -105,17 +112,36 @@ volatile bool ep_tx_busy_flag = false;
 #define CDC_MAX_MPS 64
 #endif
 
-void usbd_configure_done_callback(void)
+void usbd_event_handler(uint8_t event)
 {
-    /* setup first out ep read transfer */
-    usbd_ep_start_read(CDC_OUT_EP, read_buffer, 2048);
-}
+    switch (event) {
+        case USBD_EVENT_RESET:
+            break;
+        case USBD_EVENT_CONNECTED:
+            break;
+        case USBD_EVENT_DISCONNECTED:
+            break;
+        case USBD_EVENT_RESUME:
+            break;
+        case USBD_EVENT_SUSPEND:
+            break;
+        case USBD_EVENT_CONFIGURED:
+            /* setup first out ep read transfer */
+            usbd_ep_start_read(CDC_OUT_EP, read_buffer, 2048);
+            break;
+        case USBD_EVENT_SET_REMOTE_WAKEUP:
+            break;
+        case USBD_EVENT_CLR_REMOTE_WAKEUP:
+            break;
 
-// void print_hex_dump(const char *prefix, const void *buf, int len);
+        default:
+            break;
+    }
+}
 
 void usbd_cdc_acm_bulk_out(uint8_t ep, uint32_t nbytes)
 {
-    USB_LOG_RAW("actual out len:%d\r\n", nbytes);
+    //USB_LOG_RAW("actual out len:%d\r\n", nbytes);
     // for (int i = 0; i < 100; i++) {
     //     printf("%02x ", read_buffer[i]);
     // }
@@ -123,13 +149,13 @@ void usbd_cdc_acm_bulk_out(uint8_t ep, uint32_t nbytes)
     /* setup next out ep read transfer */
     usbd_ep_start_read(CDC_OUT_EP, read_buffer, 2048);
 
-    print_hex_dump("OUT: ", read_buffer, nbytes);
-    os_printf("\n");
+    //print_hex_dump("OUT: ", read_buffer, nbytes);
+    //os_printf("\n");
 }
 
 void usbd_cdc_acm_bulk_in(uint8_t ep, uint32_t nbytes)
 {
-    USB_LOG_RAW("actual in len:%d\r\n", nbytes);
+    //USB_LOG_RAW("actual in len:%d\r\n", nbytes);
 
 #if 0
     if ((nbytes % CDC_MAX_MPS) == 0 && nbytes) {
@@ -138,6 +164,9 @@ void usbd_cdc_acm_bulk_in(uint8_t ep, uint32_t nbytes)
     } else {
         ep_tx_busy_flag = false;
     }
+#else
+	usbd_ep_start_write(CDC_IN_EP, NULL, 0);
+	ep_tx_busy_flag = false;
 #endif
 }
 
@@ -152,11 +181,16 @@ struct usbd_endpoint cdc_in_ep = {
     .ep_cb = usbd_cdc_acm_bulk_in
 };
 
-struct usbd_interface intf0;
-struct usbd_interface intf1;
+static struct usbd_interface intf0;
+static struct usbd_interface intf1;
 
 void cdc_acm_init(void)
 {
+    const uint8_t data[10] = { 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30 };
+
+    memcpy(&write_buffer[0], data, 10);
+    memset(&write_buffer[10], 'a', 2038);
+
     usbd_desc_register(cdc_descriptor);
     usbd_add_interface(usbd_cdc_acm_init_intf(&intf0));
     usbd_add_interface(usbd_cdc_acm_init_intf(&intf1));
@@ -176,19 +210,12 @@ void usbd_cdc_acm_set_dtr(uint8_t intf, bool dtr)
     }
 }
 
-// void print_hex_dump(const char *prefix, const void *buf, int len);
 void cdc_acm_data_send_with_dtr_test(void)
 {
     if (dtr_enable) {
-    	os_printf("%s %d\n", __func__, __LINE__);
-    	print_hex_dump("IN: ", write_buffer, 10);
-        memset(&write_buffer[10], 'a', 2038);
         ep_tx_busy_flag = true;
         usbd_ep_start_write(CDC_IN_EP, write_buffer, 2048);
         //while (ep_tx_busy_flag) {
         //}
-    } else {
-    	os_printf("%s %d\n", __func__, __LINE__);
-	    usbd_ep_start_write(CDC_IN_EP, write_buffer, 2048);
     }
 }
