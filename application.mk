@@ -74,7 +74,9 @@ INCLUDES += -I./FreeRTOSv9.0.0/FreeRTOS/Source/include
 # INCLUDES += -I./demos/common/base64
 # INCLUDES += -I./demos/common/json
 # INCLUDES += -I./demos/helloworld
-# INCLUDES += -I./demos/net/iperf
+ifeq ($(CFG_IPERF_TEST),1)
+INCLUDES += -I./demos/net/iperf
+endif
 # INCLUDES += -I./demos/net/mqtt
 # INCLUDES += -I./demos/net/tcp_client
 # INCLUDES += -I./demos/net/tcp_server
@@ -119,7 +121,9 @@ SRC_S =
 #SRC_C += ./demos/common/json/cJSON.c
 #SRC_C += ./demos/common/json/cJsontest.c
 #SRC_C += ./demos/helloworld/helloworld.c
-#SRC_C += ./demos/net/iperf/iperf.c
+ifeq ($(CFG_IPERF_TEST),1)
+SRC_C += ./demos/net/iperf/iperf.c
+endif
 #SRC_C += ./demos/net/mqtt/mqtt_echo.c
 #SRC_C += ./demos/net/mqtt/mqtt_test.c
 #SRC_C += ./demos/net/tcp_client/tcp_client_demo.c
