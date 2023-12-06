@@ -1,6 +1,6 @@
 .platform
 .config
-config/
+config/sys_config.h
 out/
 beken378/lib/libble.a
 beken378/lib/libcal.a
