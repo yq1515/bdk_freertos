@@ -106,12 +106,12 @@
 /*
  *ISOC pack head
  */
-#define ISOCH_PACK_HEAD_LEN         12
+#define ISO_PACK_HEAD_LEN           12
 
 /* Traffic types in bmAttributes */
 #define MUSB_ENDPOINT_XFERTYPE_MASK 0x03
 #define MUSB_ENDPOINT_XFER_CONTROL  0
-#define MUSB_ENDPOINT_XFER_ISOCH    1
+#define MUSB_ENDPOINT_XFER_ISOC     1
 #define MUSB_ENDPOINT_XFER_BULK     2
 #define MUSB_ENDPOINT_XFER_INT      3
 

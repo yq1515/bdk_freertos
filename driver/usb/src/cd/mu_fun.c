@@ -24,6 +24,9 @@
 #include "mu_funpr.h"
 
 #if CFG_USB
+extern uint8_t gHidMouseReportDescriptor[];
+extern int ulgHidMouseReportDescriptorLen;
+
 /**
  * Fill a pipe struct as per the given
  */
@@ -1000,6 +1003,9 @@ uint8_t MGC_FunctionParseSetup(MGC_Port *pPort, uint8_t *pbStatus)
                     default:
                         break;
                     }
+#else
+					MUSB_MemCopy(pPort->pSetupData, gHidMouseReportDescriptor, ulgHidMouseReportDescriptorLen);
+					pPort->wSetupDataSize = ulgHidMouseReportDescriptorLen;
 #endif // CFG_ENABLE_DEV_HID
                     break;
 

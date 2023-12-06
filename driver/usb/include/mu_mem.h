@@ -26,7 +26,7 @@
 /* Be sure we have something for each one */
 
 #ifndef MUSB_MemAlloc
-#define MUSB_MemAlloc       os_malloc
+#define MUSB_MemAlloc       os_zalloc
 #endif
 
 #ifndef MUSB_MemRealloc

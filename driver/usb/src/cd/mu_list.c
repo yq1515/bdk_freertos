@@ -305,7 +305,7 @@ void MUSB_ListRemoveItem(MUSB_LinkedList *pList, void *pItem)
     MUSB_LinkedList *pPos;
 
     /* sanity */
-    if(!pList)
+    if (!pList || !pList->pItem)
     {
         return;
     }
@@ -333,12 +333,19 @@ void MUSB_ListRemoveItem(MUSB_LinkedList *pList, void *pItem)
         return;
     }
 
+    if (!pNext->pNext)
+        return;
+
     /* general case */
     while(pNext->pNext && (pNext->pNext->pItem != pItem))
     {
         pNext = pNext->pNext;
     }
-    if(pNext->pNext->pItem == pItem)
+
+    if (!pNext->pNext)
+        return;
+
+    if (pNext->pNext->pItem == pItem)
     {
         /* found it; unlink and free storage */
         pPos = pNext->pNext;

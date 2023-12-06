@@ -16,7 +16,7 @@
 #include "include.h"
 #include "mem_pub.h"
 
-#define MUSB_MemAlloc(a)          os_malloc(a)
+#define MUSB_MemAlloc(a)          os_zalloc(a)
 #define MUSB_MemRealloc           os_realloc
 #define MUSB_MemFree              os_free
 

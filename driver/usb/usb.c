@@ -205,9 +205,9 @@ UINT32 usb_open (UINT32 op_flag)
 #endif
 
 #ifdef GUWENFU_SETTING
-    VREG_USB_INTRRX1E = 0x0;
-    VREG_USB_INTRTX1E = 0x0;
-    VREG_USB_INTRUSBE = 0x0;
+    //VREG_USB_INTRRX1E = 0x0;
+    //VREG_USB_INTRTX1E = 0x0;
+    //VREG_USB_INTRUSBE = 0x0;
     REG_AHB2_USB_VTH &= ~(1 << 7);
 #endif
 
@@ -235,9 +235,9 @@ UINT32 usb_open (UINT32 op_flag)
     {
         os_printf("usb device\r\n");
         REG_WRITE(SCTRL_ANALOG_CTRL2, REG_READ(SCTRL_ANALOG_CTRL2) | (1 << 25));
-        VREG_USB_INTRRX1E = 0x07;
-        VREG_USB_INTRTX1E = 0x07;
-        VREG_USB_INTRUSBE = 0x3F;
+        //VREG_USB_INTRRX1E = 0x07;
+        //VREG_USB_INTRTX1E = 0x07;
+        //VREG_USB_INTRUSBE = 0x3F;
 
         REG_AHB2_USB_OTG_CFG = 0x08;        // dp pull up
         REG_AHB2_USB_DEV_CFG = 0xF4;
@@ -282,6 +282,7 @@ UINT32 usb_open (UINT32 op_flag)
 
 UINT32 usb_close (void)
 {
+    UINT32 param;
     USB_PRT("usb_close\r\n");
 
     param = IRQ_USB_BIT;

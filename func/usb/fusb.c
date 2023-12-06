@@ -7,9 +7,9 @@
 #include "sys_rtos.h"
 #include "rtos_pub.h"
 #include "task.h"
-#include "diskio.h"
+//#include "diskio.h"
 #include "usb_pub.h"
-#include "sdcard_pub.h"
+//#include "sdcard_pub.h"
 
 #if CFG_USB
 
