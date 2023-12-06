@@ -58,8 +58,6 @@ rm -rf out
 rm -rf bugzilla
 rm -f README.md
 rm -f .platform
-rm -rf ./beken378/bugzilla
-rm -f ./beken378/README.md
 
 # remove git files
 if [ $CLEAN_GIT -eq 1 ]; then

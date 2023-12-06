@@ -27,7 +27,7 @@ do
 done
 
 OSK_DIR=$(pwd)
-SDK_DIR=$OSK_DIR/beken378
+SDK_DIR=$OSK_DIR
 OSK_FLAG=F
 
 echo "OSK_DIR: $OSK_DIR"

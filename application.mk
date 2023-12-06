@@ -61,11 +61,11 @@ INCLUDES =
 INCLUDES += -I./config
 INCLUDES += -I./release
 
-INCLUDES += -I./FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es
-INCLUDES += -I./FreeRTOSv9.0.0/FreeRTOS/Source/include
+INCLUDES += -I./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es
+INCLUDES += -I./os/FreeRTOSv9.0.0/FreeRTOS/Source/include
 
 #demo module
-# INCLUDES += -I./demos
+INCLUDES += -I./demos
 # INCLUDES += -I./demos/application/ap_sta
 # INCLUDES += -I./demos/application/light/common
 # INCLUDES += -I./demos/application/light/light_client
@@ -161,17 +161,17 @@ endif
 #SRC_C += ./demos/components/mqtt_demo/src/mqtt_demo.c
 
 #operation system module
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/croutine.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/event_groups.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/list.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es/port.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/portable/MemMang/heap_4.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/queue.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/tasks.c
-SRC_OS += ./FreeRTOSv9.0.0/FreeRTOS/Source/timers.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/croutine.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/event_groups.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/list.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es/port.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/MemMang/heap_4.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/queue.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/tasks.c
+SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/timers.c
 
 # Beken SDK include folder and source file list
--include ./beken378/beken_src.mk
+-include ./beken_src.mk
 
 
 # Generate obj list
@@ -247,7 +247,7 @@ SOC_NAME_BSP_MAP = beken7231_bsp.map
 # Compile options
 # -------------------------------------------------------------------
 CFLAGS = -DCFG_OS_FREERTOS=1
-CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Werror -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -nostdlib -fno-strict-aliasing
+CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -nostdlib -fno-strict-aliasing
 #CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-unused-function -fsigned-char -fdata-sections -Wunknown-pragmas -nostdlib -Wl,--gc-sections
 CFLAGS += -DWIFI_BLE_COEXIST
 
@@ -274,28 +274,28 @@ WOLFSSL_CFLAGS += -DWOLFSSL_BEKEN
 CFLAGS += $(WOLFSSL_CFLAGS)
 endif
 
-RWNX_LIB = ./beken378/lib/librwnx.a
-WPA_LIB  = ./beken378/lib/libwpa.a
-USB_LIB  = ./beken378/lib/libusb.a
-SENSOR_LIB  = ./beken378/lib/libsensor.a
-BLE_LIB  = ./beken378/lib/libble.a
-CAL_LIB  = ./beken378/lib/libcal.a
-SUPPLICANT_LIB  = ./beken378/lib/libsupplicant.a
-UART_DEBUG_LIB  = ./beken378/lib/libuart_debug.a
-RF_TEST_LIB  = ./beken378/lib/librf_test.a
-RF_USE_LIB  = ./beken378/lib/librf_use.a
+RWNX_LIB = ./lib/librwnx.a
+WPA_LIB  = ./lib/libwpa.a
+USB_LIB  = ./lib/libusb.a
+SENSOR_LIB  = ./lib/libsensor.a
+BLE_LIB  = ./lib/libble.a
+CAL_LIB  = ./lib/libcal.a
+SUPPLICANT_LIB  = ./lib/libsupplicant.a
+UART_DEBUG_LIB  = ./lib/libuart_debug.a
+RF_TEST_LIB  = ./lib/librf_test.a
+RF_USE_LIB  = ./lib/librf_use.a
 
-LIBFLAGS =
-LIBFLAGS += -L./beken378/lib -lrwnx -lwpa
-LIBFLAGS += -L./beken378/func/airkiss -lairkiss
-LIBFLAGS += -L./beken378/lib -lusb
-LIBFLAGS += -L./beken378/lib -lsensor
-LIBFLAGS += -L./beken378/lib -lble
-LIBFLAGS += -L./beken378/lib -lcal
-LIBFLAGS += -L./beken378/lib -lsupplicant
-LIBFLAGS += -L./beken378/lib -luart_debug
-LIBFLAGS += -L./beken378/lib -lrf_test
-LIBFLAGS += -L./beken378/lib -lrf_use
+LIBFLAGS =  -L./lib -L./func/airkiss 
+LIBFLAGS += -lrwnx -lwpa
+LIBFLAGS += -lairkiss
+LIBFLAGS += -lusb
+LIBFLAGS += -lsensor
+LIBFLAGS += -lble
+LIBFLAGS += -lcal
+LIBFLAGS += -lsupplicant
+LIBFLAGS += -luart_debug
+LIBFLAGS += -lrf_test
+LIBFLAGS += -lrf_use
 
 CUR_PATH = $(shell pwd)
 .PHONY: application

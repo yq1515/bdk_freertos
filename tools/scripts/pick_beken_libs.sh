@@ -4,7 +4,7 @@
 # pick_beken_libs.sh bk7231u [SDK path]
 
 if [ "$2" == "" ]; then
-	BEKEN_SDK_DIR=./beken378
+	BEKEN_SDK_DIR=.
 else
 	BEKEN_SDK_DIR=$2
 fi

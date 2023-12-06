@@ -12,7 +12,7 @@
 #include "intc_pub.h"
 #include "arm_arch.h"
 #include "icu_pub.h"
-//#include "beken378/driver/usb/usb.h"
+//#include "driver/usb/usb.h"
 
 #define HWREG(x) \
     (*((volatile uint32_t *)(x)))

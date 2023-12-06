@@ -4,7 +4,7 @@
 # clean_src_files.sh [SDK_path]
 
 if [ "$1" == "" ]; then
-	BEKEN_SDK_DIR=./beken378
+	BEKEN_SDK_DIR=.
 else
 	BEKEN_SDK_DIR=$1
 fi

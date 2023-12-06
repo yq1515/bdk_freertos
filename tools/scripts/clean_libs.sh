@@ -3,7 +3,7 @@
 
 echo "cleaning libs ..."
 
-rm -rf ./beken378/lib/*
+rm -rf ./lib/*
 
 make cleanlib
 if [ $? != 0 ]; then

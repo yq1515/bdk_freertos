@@ -26,19 +26,19 @@ fi
 
 case $1 in
 	bk7231u)
-		new_sys_config=beken378/app/config/sys_config_bk7231u.h
+		new_sys_config=app/config/sys_config_bk7231u.h
 		;;
 	bk7231n)
-		new_sys_config=beken378/app/config/sys_config_bk7231n.h
+		new_sys_config=app/config/sys_config_bk7231n.h
 		;;
 	bk7251)
-		new_sys_config=beken378/app/config/sys_config_bk7251.h
+		new_sys_config=app/config/sys_config_bk7251.h
 		;;
 	bk7231)
-		new_sys_config=beken378/app/config/sys_config_bk7231.h
+		new_sys_config=app/config/sys_config_bk7231.h
 		;;
 	*)
-		new_sys_config=beken378/app/config/$1.h
+		new_sys_config=app/config/$1.h
 esac
 
 if [ -f $new_sys_config ]; then

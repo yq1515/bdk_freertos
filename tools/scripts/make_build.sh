@@ -15,7 +15,7 @@ if [ $? != 0 ]; then
 fi
 
 OSK_DIR=$(pwd)
-SDK_DIR=$OSK_DIR/beken378
+SDK_DIR=$OSK_DIR
 
 PREV_PLATFORM_FILE=.platform
 if [ -f $PREV_PLATFORM_FILE ]; then
