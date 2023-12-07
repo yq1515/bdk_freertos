@@ -75,11 +75,12 @@
 #define CFG_MSDU_RESV_HEAD_LEN                    96
 #define CFG_MSDU_RESV_TAIL_LEN                    16
 
-#define CFG_USB                                    0
-#define CFG_SUPPORT_CHERRYUSB                      1
+#define CFG_MENTOR_USB                             0
+#define CFG_CHERRY_USB                             1
+#define CFG_UF2                                    0
 #define CFG_USE_USB_HOST                           0
 #define CFG_USE_USB_DEVICE                         1
-#if CFG_USB
+#if CFG_MENTOR_USB
 #if (!(CFG_USE_USB_HOST || CFG_USE_USB_DEVICE))
 #error "Must select one USB mode for enabling USB!"
 #endif
@@ -88,7 +89,7 @@
 #define CFG_USE_USB_DEVICE_CARD_READER              0
 #endif
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #define CFG_SUPPORT_MSD                            0
 #define CFG_SUPPORT_HID                            1
 #define CFG_SUPPORT_CCD                            0
@@ -177,7 +178,7 @@
 #define CFG_USE_AP_PS                              0
 
 /*section 19-----for SDCARD HOST*/
-#if CFG_USB && CFG_USE_USB_DEVICE
+#if CFG_MENTOR_USB && CFG_USE_USB_DEVICE
 #define CFG_USE_SDCARD_HOST                        0
 #else
 #define CFG_USE_SDCARD_HOST                        0

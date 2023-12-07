@@ -18,7 +18,7 @@
 #include "mu_impl.h"
 #include "mu_mem.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #if defined(MUSB_HDRC) || defined(MUSB_MHDRC)
 /**
  * Undefine this to avoid embedded HSET overheads
@@ -2186,6 +2186,6 @@ int MGC_HdrcDumpEndpoint(MGC_Controller *pController, MUSB_EndpointResource *pEn
 #endif	/* diagnostics enabled */
 
 #endif	/* HDRC enabled */
-#endif	/* CFG_USB */
+#endif	/* CFG_MENTOR_USB */
 // eof
 

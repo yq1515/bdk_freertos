@@ -15,7 +15,7 @@
 #include "mu_mem.h"
 #include "include.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 
 #ifdef MUSB_FDRC
 #include "mu_mdrpr.h"
@@ -1130,5 +1130,5 @@ MGC_EndpointResource *MGC_AllocateDynamicFifo(MGC_Port *pPort,
     }
     return NULL;
 }
-#endif /*CFG_USB*/
+#endif /*CFG_MENTOR_USB*/
 // eof

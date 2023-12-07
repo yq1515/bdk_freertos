@@ -19,7 +19,7 @@
 #include "mu_mem.h"
 #include "usb_pub.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #ifdef MUSB_OTG
 #include "mu_drcpr.h"
 #include "mu_drcdf.h"
@@ -2081,6 +2081,6 @@ int MGC_DrcDumpPipe(MGC_Controller *pController, MGC_Pipe *pPipe)
 uint8_t MGC_bNoDrc;
 
 #endif	/* OTG */
-#endif	/* CFG_USB */
+#endif	/* CFG_MENTOR_USB */
 //eof
 

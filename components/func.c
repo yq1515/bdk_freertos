@@ -28,7 +28,7 @@
 #include "sdio_intf_pub.h"
 #endif
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #include "fusb_pub.h"
 #endif
 
@@ -119,7 +119,7 @@ UINT32 func_init_extended(void)
 #endif
 
 
-#if CFG_USB
+#if CFG_MENTOR_USB
     FUNC_PRT("[FUNC]fusb_init\r\n");
     fusb_init();
 #endif

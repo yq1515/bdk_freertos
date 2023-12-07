@@ -84,7 +84,7 @@
 
 #define CFG_PCM_RESAMPLER                          1
 
-#define CFG_USB                                    1
+#define CFG_MENTOR_USB                             1
 #define CFG_USE_USB_HOST                           1
 #define CFG_USE_USB_DEVICE                         0
 
@@ -92,7 +92,7 @@
 #define USE_USB2_PORT		2
 #define CFG_USE_USB_PORT	USE_USB1_PORT
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #if (!(CFG_USE_USB_HOST || CFG_USE_USB_DEVICE))
 #error "Must select one USB mode for enabling USB!"
 #endif
@@ -102,7 +102,7 @@
 #define CFG_USE_USB_DEVICE_CARD_READER              1
 #endif
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #define CFG_SUPPORT_MSD                            1
 #define CFG_SUPPORT_HID                            0
 #define CFG_SUPPORT_CCD                            0

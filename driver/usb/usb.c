@@ -13,7 +13,7 @@
 #include "intc_pub.h"
 #include "rtos_pub.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #include "usb_msd.h"
 #include "target_util_pub.h"
 
@@ -254,7 +254,7 @@ UINT32 usb_open (UINT32 op_flag)
 #endif
 
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 	int ret = 0;
     if (usb_sw_init() == 0)
     {
@@ -291,7 +291,7 @@ UINT32 usb_close (void)
     param = PWD_USB_CLK_BIT;
     sddev_control(ICU_DEV_NAME, CMD_CLK_PWR_DOWN, &param);
 
-#if CFG_USB
+#if CFG_MENTOR_USB
     usb_sw_uninit();
 #endif
 

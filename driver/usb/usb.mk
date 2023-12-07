@@ -21,7 +21,7 @@ $(NAME)_INCLUDES +=./ \
 					./src/uvc \
 
 #usb lib
-ifeq ($(CFG_USB),1)
+ifeq ($(CFG_MENTOR_USB),1)
 $(NAME)_SOURCES += 	src/cd/mu_cntlr.c \
 					src/cd/mu_descs.c \
 					src/cd/mu_drc.c \

@@ -19,7 +19,7 @@
 #include "mu_dsi.h"
 #include "mu_stdio.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 /*
 * implementation
 */
@@ -43,6 +43,6 @@ uint8_t MUSB_PrintLine(const char *pBuffer)
 {
     return TRUE;
 }
-#endif /*CFG_USB*/
+#endif /*CFG_MENTOR_USB*/
 // eof
 

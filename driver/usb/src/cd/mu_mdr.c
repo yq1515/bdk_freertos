@@ -12,7 +12,7 @@
 #include "include.h"
 #include "mu_impl.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #ifdef MUSB_MHDRC
 #include "hdrc_cnf.h"
 #include "mu_diag.h"
@@ -858,7 +858,7 @@ int MGC_MhdrcDumpEndpoint(MGC_Controller *pController, MUSB_EndpointResource *pE
 #endif	/* diagnostics enabled */
 
 #endif	/* MHDRC enabled */
-#endif	/* CFG_USB */
+#endif	/* CFG_MENTOR_USB */
 
 // eof
 

@@ -7,7 +7,7 @@
 #include "include.h"
 #include "rtos_pub.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 /**
  * @field iVector uHAL's vector for reverse-lookup
  * @field iIndex uHAL's timer index

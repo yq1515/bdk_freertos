@@ -19,7 +19,7 @@
 #include "mu_descs.h"
 #include "mu_arch.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 /*
  * Find an arbitrary descriptor
  */
@@ -252,5 +252,5 @@ const uint8_t *MUSB_FindDescriptorInBlock(
     }
     return NULL;
 }
-#endif // CFG_USB
+#endif // CFG_MENTOR_USB
 // eof

@@ -24,7 +24,7 @@
 #include "board.h"
 #include "usb.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 #define SYSTEM_QUEUE_DATA_LEN                640
 
 /***************************** TYPES ******************************/

@@ -11,7 +11,7 @@
 #include "usb_pub.h"
 //#include "sdcard_pub.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 
 #ifdef FUSB_ENABLE_USER_MAIN
 
@@ -251,7 +251,7 @@ PROCESS_THREAD(fuvc_test, ev, data)
 }
 
 #endif // FUVC_TEST
-#endif // CFG_USB
+#endif // CFG_MENTOR_USB
 
 // eof
 

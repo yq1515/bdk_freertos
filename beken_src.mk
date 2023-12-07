@@ -226,7 +226,7 @@ endif
 endif
 
 #usb module
-#ifeq ($(CFG_USB),1)
+#ifeq ($(CFG_MENTOR_USB),1)
 INCLUDES += -I$(BEKEN_DIR)/driver/usb/include
 INCLUDES += -I$(BEKEN_DIR)/driver/usb/include/class
 INCLUDES += -I$(BEKEN_DIR)/driver/usb/src/cd
@@ -264,7 +264,7 @@ INCLUDES += -I$(BEKEN_DIR)/components/at_server/atsvr_cmd
 endif
 
 # CherryUSB
-#ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
+#ifeq ($(CFG_CHERRY_USB),1)
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/common
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/core
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/osal
@@ -727,7 +727,7 @@ SRC_C += $(BEKEN_DIR)/components/at_server/at_server_func/_atsvr_func.c
 SRC_C += $(BEKEN_DIR)/components/at_server/at_server.c
 endif
 
-ifeq ($(CFG_USB),1)
+ifeq ($(CFG_MENTOR_USB),1)
 SRC_C += $(BEKEN_DIR)/driver/usb/usb.c
 SRC_C += $(BEKEN_DIR)/components/usb/fusb.c
 endif
@@ -736,7 +736,7 @@ SRC_C += $(BEKEN_DIR)/components/ble_wifi_exchange/ble_wifi_port.c
 
 # CherryUSB
 #
-ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
+ifeq ($(CFG_CHERRY_USB),1)
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/core/usbd_core.c
 #SRC_C += $(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
 #SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/cdc/usbd_cdc.c
@@ -776,7 +776,7 @@ endif
 endif
 
 SRC_USB_C =
-ifeq ($(CFG_USB),1)
+ifeq ($(CFG_MENTOR_USB),1)
 -include $(BEKEN_DIR)/driver/usb/usb_lib_src.mk
 endif
 

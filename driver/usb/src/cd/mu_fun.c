@@ -23,7 +23,7 @@
 #include "mu_descs.h"
 #include "mu_funpr.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 extern uint8_t gHidMouseReportDescriptor[];
 extern int ulgHidMouseReportDescriptorLen;
 

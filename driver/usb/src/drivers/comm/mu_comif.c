@@ -1381,6 +1381,6 @@ static uint32_t MGC_CcdSetConfigCallback(void *pContext,
 
     return TRUE;
 }
-#endif // CFG_USB
+#endif // CFG_MENTOR_USB
 // eof
 

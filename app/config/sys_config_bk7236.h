@@ -80,8 +80,8 @@
 
 #define CFG_USE_USB_HOST                           0
 
-#define CFG_USB                                    0
-#if CFG_USB
+#define CFG_MENTOR_USB                             0
+#if CFG_MENTOR_USB
 #define CFG_SUPPORT_MSD                            1
 #define CFG_SUPPORT_HID                            0
 #define CFG_SUPPORT_CCD                            0

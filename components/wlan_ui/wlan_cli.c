@@ -2578,7 +2578,7 @@ static void bk_wifi_aware_command(char *pcWriteBuffer, int xWriteBufferLen,
 }
 #endif
 
-#if CFG_SUPPORT_CHERRYUSB
+#if CFG_CHERRY_USB
 extern void hid_custom_init();
 void cdc_acm_init(void);
 void cdc_acm_data_send_with_dtr_test(void);
@@ -2706,7 +2706,7 @@ static const struct cli_command built_ins[] =
 #if CFG_BK_AWARE
 	{"bk_aware", "bk_aware", bk_wifi_aware_command},
 #endif
-#if CFG_SUPPORT_CHERRYUSB
+#if CFG_CHERRY_USB
 #if 0
 	{"usb_cdc", "usb_cdc", cli_usb_device_cdc},
 #endif

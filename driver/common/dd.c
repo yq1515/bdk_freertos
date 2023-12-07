@@ -108,12 +108,12 @@ static DD_INIT_S dd_init_tbl[] =
     {SDIO_DEV_NAME,         sdio_init,                  sdio_exit},
 #endif
 
-#if CFG_USB
+#if CFG_MENTOR_USB
     {USB_DEV_NAME,          usb_init,                   usb_exit},
 #endif
 
 #if (CFG_SOC_NAME == SOC_BK7221U)
-    #if CFG_USB
+    #if CFG_MENTOR_USB
     {USB_PLUG_DEV_NAME,     usb_plug_inout_init,        usb_plug_inout_exit},
     #endif
 #endif

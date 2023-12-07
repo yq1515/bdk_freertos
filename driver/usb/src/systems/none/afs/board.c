@@ -24,7 +24,7 @@
 #include "str_pub.h"
 #include "fake_clock_pub.h"
 
-#if CFG_USB
+#if CFG_MENTOR_USB
 /**************************** GLOBALS *****************************/
 MUSB_NoneController MUSB_aNoneController[] =
 {
