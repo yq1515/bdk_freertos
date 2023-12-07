@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # generate_sys_config alias_project_name targe_sys_config
 # example: 
 # generate_sys_config bk7231u config/sys_config.h

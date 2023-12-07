@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Pick the lib files according to the HW platform
 # example:
 # pick_beken_libs.sh bk7231u [SDK path]
@@ -12,7 +12,7 @@ if [ ! -d ${BEKEN_SDK_DIR} ]; then
 	${ECHO} "  ${BEKEN_SDK_DIR}: No such directory"
 	exit 1
 fi
-${ECHO} "  SDK DIR: ${BEKEN_SDK_DIR}"
+${ECHO} "  ${GREEN}SDK DIR: ${BEKEN_SDK_DIR}${NC}"
 
 IP_LIB_FILE=${BEKEN_SDK_DIR}/lib/librwnx.a
 BLE_LIB_FILE=${BEKEN_SDK_DIR}/lib/libble.a

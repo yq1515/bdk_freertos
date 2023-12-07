@@ -121,6 +121,6 @@ ramdebug: toolchain
 	@$(MAKE) -f application.mk ramdebug	
 
 %:
-	@$(ECHO) "Build for $(GREEN)$@$(NC)..."
+	@$(ECHO) "$(GREEN)Build for $(GREEN)$@...$(NC)"
 	@$(call update_sys_config_if_needed, $@)
 	@$(MAKE) -f application.mk application
