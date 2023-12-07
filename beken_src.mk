@@ -14,7 +14,7 @@ BEKEN_DIR ?= .
 # Include folder list
 # -------------------------------------------------------------------
 
-INCLUDES += -I$(BEKEN_DIR)/common
+INCLUDES += -I$(BEKEN_DIR)/include
 INCLUDES += -I$(BEKEN_DIR)/release
 INCLUDES += -I$(BEKEN_DIR)/demo
 INCLUDES += -I$(BEKEN_DIR)/app
