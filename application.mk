@@ -285,7 +285,7 @@ UART_DEBUG_LIB  = ./lib/libuart_debug.a
 RF_TEST_LIB  = ./lib/librf_test.a
 RF_USE_LIB  = ./lib/librf_use.a
 
-LIBFLAGS =  -L./lib -L./func/airkiss 
+LIBFLAGS =  -L./lib -L./components/airkiss 
 LIBFLAGS += -lrwnx -lwpa
 LIBFLAGS += -lairkiss
 LIBFLAGS += -lusb
