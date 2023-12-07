@@ -1065,7 +1065,7 @@ struct video_autoexposure_mode {
     VIDEO_SC_VIDEOCONTROL,                                                                           /* bInterfaceSubClass : SC_VIDEOCONTROL */                                    \
     VIDEO_PC_PROTOCOL_UNDEFINED,                                                                     /* bInterfaceProtocol : PC_PROTOCOL_UNDEFINED */                              \
     stridx,                                                                                          /* iInterface:Index to string descriptor that contains the string <Your Product Name> */ \
-    /* Class-specific VideoControl Interface Descriptor */                        \
+    /*Class-specific VideoControl Interface Descriptor */                         \
     0x0d,                                                                                            /* bLength */                                                                 \
     0x24,                                                                                            /* bDescriptorType : CS_INTERFACE */                                          \
     VIDEO_VC_HEADER_DESCRIPTOR_SUBTYPE,                                                              /* bDescriptorSubType : VC_HEADER subtype */                                  \
@@ -1074,7 +1074,7 @@ struct video_autoexposure_mode {
     DBVAL(dwClockFrequency),                                                                         /* dwClockFrequency : 0x005b8d80 -> 6,000,000 == 6MHz*/                       \
     0x01,                                                                                            /* bInCollection : Number of streaming interfaces. */                         \
     (uint8_t)(bFirstInterface + 1),                                                                  /* baInterfaceNr(0) : VideoStreaming interface 1 belongs to this VideoControl interface.*/ \
-    /* Input Terminal 1 */                                                        \
+    /* Input Terminal 1 -> Processing Unit 2 -> Output Terminal 3 */              \
     0x12,                                                                                                                                                                          \
     0x24,                                                                                                                                                                          \
     VIDEO_VC_INPUT_TERMINAL_DESCRIPTOR_SUBTYPE,                                                                                                                                    \
@@ -1087,7 +1087,6 @@ struct video_autoexposure_mode {
     WBVAL(0x0000),           /* wOcularFocalLength */                                                                                                                              \
     0x03,                    /* bControlSize */                                                                                                                                    \
     0x00, 0x00, 0x00,        /* bmControls */                                                                                                                                      \
-    /* Processing Unit 2 */                                                       \
     0x0c,                                                                                                                                                                          \
     0x24,                                                                                                                                                                          \
     VIDEO_VC_PROCESSING_UNIT_DESCRIPTOR_SUBTYPE,                                                                                                                                   \
@@ -1098,7 +1097,6 @@ struct video_autoexposure_mode {
     0x00, 0x00, /* bmControls */                                                                                                                                                   \
     0x00,       /* iProcessing */                                                                                                                                                  \
     0x00,       /* bmVideoStandards */                                                                                                                                             \
-    /* Output Terminal 3 */                                                       \
     0x09,                                                                                                                                                                          \
     0x24,                                                                                                                                                                          \
     VIDEO_VC_OUTPUT_TERMINAL_DESCRIPTOR_SUBTYPE,                                                                                                                                   \
@@ -1106,11 +1104,7 @@ struct video_autoexposure_mode {
     WBVAL(VIDEO_TT_STREAMING),                                                                                                                                                     \
     0x00, /* bAssocTerminal   */                                                                                                                                                   \
     0x02, /* bSourceID   */                                                                                                                                                        \
-    0x00, /* iTerminal   */ \
-    /* Endpoint Descriptor */ \
-    0x07, 0x05, 0x83, 0x03, 0x10, 0x00, 0x06,\
-    /* Class-specific VC Interrupt Endpoint Descriptor */ \
-    0x05, 0x25, 0x03, 0x40, 0x00
+    0x00  /* iTerminal   */
 
 #define VIDEO_VS_DESCRIPTOR_INIT(bInterfaceNumber, bAlternateSetting, bNumEndpoints)        \
     /* Video Streaming (VS) Interface Descriptor */                                         \
@@ -1127,7 +1121,7 @@ struct video_autoexposure_mode {
 #define VIDEO_VS_HEADER_DESCRIPTOR_INIT(bNumFormats, wTotalLength, bEndpointAddress, ...)               \
     /*Class-specific VideoStream Header Descriptor (Input) */                                           \
     0x0d + PP_NARG(__VA_ARGS__),                                                                        \
-    USB_CS_DESCRIPTOR_TYPE_INTERFACE,                                                                   \
+    0x24,                                                                                               \
     VIDEO_VS_INPUT_HEADER_DESCRIPTOR_SUBTYPE,                                                           \
     bNumFormats, /* bNumFormats : One format descriptor follows. */                                     \
     WBVAL(wTotalLength),                                                                                \
@@ -1137,7 +1131,7 @@ struct video_autoexposure_mode {
     0x00, /* bStillCaptureMethod : Device supports still image capture method 0. */                     \
     0x00, /* bTriggerSupport : Hardware trigger supported for still image capture */                    \
     0x00, /* bTriggerUsage : Hardware trigger should initiate a still image capture. */                 \
-    0x01, /* bControlSize : Size of the bmaControls field */                                            \
+    PP_NARG(__VA_ARGS__), /* bControlSize : Size of the bmaControls field */                            \
     __VA_ARGS__  /* bmaControls : No VideoStreaming specific controls are supported.*/
 
 #define VIDEO_VS_FORMAT_UNCOMPRESSED_DESCRIPTOR_INIT(bFormatIndex, bNumFrameDescriptors, GUIDFormat)                                                              \
@@ -1200,85 +1194,5 @@ struct video_autoexposure_mode {
     dwDefaultFrameInterval,                  /* dwDefaultFrameInterval : 1,000,000 * 100ns -> 10 FPS */                                                                                         \
     bFrameIntervalType,                      /* bFrameIntervalType : Indicates how the frame interval can be programmed. 0: Continuous frame interval 1..255: The number of discrete frame   */ \
     __VA_ARGS__
-
-#define VIDEO_VS_FORMAT_H264_DESCRIPTOR_INIT(bFormatIndex, bNumFrameDescriptors)                     \
-    /*Payload Format(H264) Descriptor */                                                             \
-    0x1c,                 /* bLength */                                                              \
-    0x24,                 /* bDescriptorType : CS_INTERFACE */                                       \
-    0x10,                 /* bDescriptorSubType : VS_FORMAT_FRAME_BASED subtype */                   \
-    bFormatIndex,         /* bFormatIndex : First (and only) format descriptor */                    \
-    bNumFrameDescriptors, /* bNumFrameDescriptors : One frame descriptor for this format follows. */ \
-    /* guidFormat {34363248-0000-0010-8000-00AA00389B71}(H264) */                                    \
-    0x48, 0x32, 0x36, 0x34,                                                                          \
-    0x00, 0x00,                                                                                      \
-    0x10, 0x00,                                                                                      \
-    0x80, 0x00,                                                                                      \
-    0x00, 0xAA, 0x00, 0x38, 0x9B, 0x71,                                                              \
-    0x10,                 /* bBitsPerPixel */                                                        \
-    0x01,                 /* bDefaultFrameIndex : Default frame index is 1. */                       \
-    0x00,                 /* bAspectRatioX : Non-interlaced stream – not required. */                \
-    0x00,                 /* bAspectRatioY : Non-interlaced stream – not required. */                \
-    0x00,                 /* bmInterlaceFlags : Non-interlaced stream */                             \
-    0x00,                 /* bCopyProtect : No restrictions imposed on the duplication of this video stream. */ \
-    0x01                  /* bVariableSize */
-
-#define VIDEO_VS_FRAME_H264_DESCRIPTOR_INIT(bFrameIndex, wWidth, wHeight, dwMinBitRate, dwMaxBitRate,                                                                                           \
-                                            dwDefaultFrameInterval, bFrameIntervalType, ...)                                                                                                    \
-    0x1a + PP_NARG(__VA_ARGS__),                   /* bLength */                                                                                                                                \
-    0x24,                                          /* bDescriptorType : CS_INTERFACE */                                                                                                         \
-    VIDEO_VS_FRAME_FRAME_BASED_DESCRIPTOR_SUBTYPE, /* bDescriptorSubType : VS_FRAME_BASED */                                                                                                    \
-    bFrameIndex,                             /* bFrameIndex : First (and only) frame descriptor */                                                                                              \
-    0x00,                                    /* bmCapabilities : Still images using capture method 0 are supported at this frame setting.D1: Fixed frame-rate. */                               \
-    WBVAL(wWidth),                           /* wWidth (2bytes): Width of frame is 128 pixels. */                                                                                               \
-    WBVAL(wHeight),                          /* wHeight (2bytes): Height of frame is 64 pixels. */                                                                                              \
-    DBVAL(dwMinBitRate),                     /* dwMinBitRate (4bytes): Min bit rate in bits/s  */                                                                                               \
-    DBVAL(dwMaxBitRate),                     /* dwMaxBitRate (4bytes): Max bit rate in bits/s  */                                                                                               \
-    dwDefaultFrameInterval,                  /* dwDefaultFrameInterval : 1,000,000 * 100ns -> 10 FPS */                                                                                         \
-    bFrameIntervalType,                      /* bFrameIntervalType : Indicates how the frame interval can be programmed. 0: Continuous frame interval 1..255: The number of discrete frame   */ \
-    DBVAL(0x00),                             /* dwBytesPerLine (4bytes) */                                                                                                                      \
-    __VA_ARGS__
-
-#define VIDEO_VS_COLOR_MATCHING_DESCRIPTOR_INIT()                                                                     \
-    0x06,                                    /* bLength */                                                            \
-    0x24,                                    /* bDescriptorType : CS_INTERFACE */                                     \
-    VIDEO_VS_COLORFORMAT_DESCRIPTOR_SUBTYPE, /* bDescriptorSubType : VS_COLORFORMAT */                                \
-    0x01,                                    /* bColorPrimaries */                                                    \
-    0x01,                                    /* bTransferCharacteristics */                                           \
-    0x04                                     /* bMatrixCoefficients */
-
-#define VIDEO_VS_FORMAT_YUY2_DESCRIPTOR_INIT(bFormatIndex, bNumFrameDescriptors)                     \
-    0x1b,                 /* bLength */                                                              \
-    0x24,                 /* bDescriptorType : CS_INTERFACE */                                       \
-    0x04,                 /* bDescriptorSubType : VS_FORMAT_MJPEG subtype */                         \
-    bFormatIndex,         /* bFormatIndex : First (and only) format descriptor */                    \
-    bNumFrameDescriptors, /* bNumFrameDescriptors : One frame descriptor for this format follows. */ \
-    0x59, 0x55, 0x59, 0x32, \
-    0x00, 0x00, \
-    0x10, 0x00, \
-    0x80, 0x00, \
-    0x00, 0xaa, 0x00, 0x38, 0x9B, 0x71, \
-    0x10,                 /* bBitsPerPixel.. */                                                      \
-    0x01,                 /* bDefaultFrameIndex : Default frame index is 1. */                       \
-    0x00,                 /* bAspectRatioX : Non-interlaced stream – not required. */                \
-    0x00,                 /* bAspectRatioY : Non-interlaced stream – not required. */                \
-    0x00,                 /* bmInterlaceFlags : Non-interlaced stream */                             \
-    0x00                  /* bCopyProtect : No restrictions imposed on the duplication of this video stream. */
-
-#define VIDEO_VS_FRAME_YUY2_DESCRIPTOR_INIT(bFrameIndex, wWidth, wHeight, dwMinBitRate, dwMaxBitRate, \
-                                            dwMaxVideoFrameBufferSize)                                \
-    0x1E,                                                      \
-    0x24,                                                      \
-    0x05,                                                      \
-    bFrameIndex,                                               \
-    0x00,                                                      \
-    WBVAL(wWidth),                                             \
-    WBVAL(wHeight),                                            \
-    DBVAL(dwMinBitRate),                                       \
-    DBVAL(dwMaxBitRate),                                       \
-    DBVAL(dwMaxVideoFrameBufferSize),                          \
-    0x40, 0x42, 0x0F, 0x00,   /* 100.0000 ms -> 10.0000 fps */ \
-    0x01,                     /* bFrameIntervalType */         \
-    0x40, 0x42, 0x0F, 0x00    /* 100.0000 ms -> 10.0000 fps */
-
 // clang-format on
 #endif /*USB_VIDEO_H */

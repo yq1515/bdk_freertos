@@ -141,21 +141,21 @@ void usbd_event_handler(uint8_t event)
 
 void usbd_cdc_acm_bulk_out(uint8_t ep, uint32_t nbytes)
 {
-    //USB_LOG_RAW("actual out len:%d\r\n", nbytes);
+    USB_LOG_RAW("actual out len:%d\r\n", nbytes);
     // for (int i = 0; i < 100; i++) {
     //     printf("%02x ", read_buffer[i]);
     // }
     // printf("\r\n");
     /* setup next out ep read transfer */
+    print_hex_dump("OUT: ", read_buffer, nbytes);
     usbd_ep_start_read(CDC_OUT_EP, read_buffer, 2048);
 
-    //print_hex_dump("OUT: ", read_buffer, nbytes);
     //os_printf("\n");
 }
 
 void usbd_cdc_acm_bulk_in(uint8_t ep, uint32_t nbytes)
 {
-    //USB_LOG_RAW("actual in len:%d\r\n", nbytes);
+    USB_LOG_RAW("actual in len:%d\r\n", nbytes);
 
 #if 0
     if ((nbytes % CDC_MAX_MPS) == 0 && nbytes) {
@@ -165,6 +165,7 @@ void usbd_cdc_acm_bulk_in(uint8_t ep, uint32_t nbytes)
         ep_tx_busy_flag = false;
     }
 #else
+	// print_hex_dump("IN: ", read_buffer, nbytes);
 	usbd_ep_start_write(CDC_IN_EP, NULL, 0);
 	ep_tx_busy_flag = false;
 #endif

@@ -28,6 +28,7 @@
  * CYAN     36
  * WHITE    37
  */
+
 #ifdef  CONFIG_USB_PRINTF_COLOR_ENABLE
 #define _USB_DBG_COLOR(n) CONFIG_USB_PRINTF("\033[" #n "m")
 #define _USB_DBG_LOG_HDR(lvl_name, color_n) \
@@ -49,7 +50,7 @@
     } while (0)
 
 #if (CONFIG_USB_DBG_LEVEL >= USB_DBG_LOG)
-#define USB_LOG_DBG(fmt, ...) usb_dbg_log_line("D", 34, fmt, ##__VA_ARGS__)
+#define USB_LOG_DBG(fmt, ...) usb_dbg_log_line("D", 0, fmt, ##__VA_ARGS__)
 #else
 #define USB_LOG_DBG(...)  {}
 #endif
