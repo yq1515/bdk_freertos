@@ -116,8 +116,7 @@ INCLUDES += -I$(BEKEN_DIR)/os/include
 INCLUDES += -I$(BEKEN_DIR)/os/FreeRTOSv9.0.0
 INCLUDES += -I$(BEKEN_DIR)/components/utf8
 INCLUDES += -I$(BEKEN_DIR)/app/http
-INCLUDES += -I$(BEKEN_DIR)/components/uf2
-INCLUDES += -I$(BEKEN_DIR)/components/uf2/ports
+
 
 ifeq ($(CFG_BK_AWARE),1)
 INCLUDES += -I$(BEKEN_DIR)/components/bk_aware
@@ -264,7 +263,7 @@ INCLUDES += -I$(BEKEN_DIR)/components/at_server/atsvr_cmd
 endif
 
 # CherryUSB
-#ifeq ($(CFG_CHERRY_USB),1)
+ifeq ($(CFG_CHERRY_USB),1)
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/common
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/core
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/osal
@@ -276,7 +275,11 @@ INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/video
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/hub
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/demo
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device
-#endif
+ifeq ($(CFG_UF2),1)
+INCLUDES += -I$(BEKEN_DIR)/components/uf2
+INCLUDES += -I$(BEKEN_DIR)/components/uf2/ports
+endif
+endif
 
 # -------------------------------------------------------------------
 # Source file list
@@ -743,18 +746,20 @@ SRC_C += $(BEKEN_DIR)/components/CherryUSB/core/usbd_core.c
 #SRC_C += $(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device/hid/hid_common.c
 #SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/hid/usbd_hid.c
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/msc/usbd_msc.c
-endif
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
+
+# UF2
+ifeq ($(CFG_UF2),1)
+SRC_C += $(BEKEN_DIR)/components/uf2/ghostfat.c
+SRC_C += $(BEKEN_DIR)/components/uf2/msc_desc.c
+SRC_C += $(BEKEN_DIR)/components/uf2/ports/board_flash.c
+endif # CFG_UF2
+endif
 
 #assembling files
 SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_handlers.S
 SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_vectors.S
 
-# UF2
-SRC_C += $(BEKEN_DIR)/components/uf2/ghostfat.c
-SRC_C += $(BEKEN_DIR)/components/uf2/msc_desc.c
-#SRC_C += $(BEKEN_DIR)/components/uf2/ports/board.c
-SRC_C += $(BEKEN_DIR)/components/uf2/ports/board_flash.c
 
 
 # -------------------------------------------------------------------
