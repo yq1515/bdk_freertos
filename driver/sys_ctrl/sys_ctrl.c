@@ -80,6 +80,18 @@ extern void WFI( void );
 void sctrl_fix_dpll_div(void);
 #endif
 
+#if !CFG_SUPPORT_BLE
+uint8_t if_ble_sleep(void)
+{
+	return 0;
+}
+uint8_t ble_switch_mac_sleeped;
+uint8_t ble_active = 0;
+void ble_switch_rf_to_wifi(void)
+{
+}
+#endif
+
 /**********************************************************************/
 void sctrl_dpll_delay10us(void)
 {
@@ -3484,5 +3496,6 @@ out:
 	GLOBAL_INT_RESTORE();
 }
 #endif
+
 
 // EOF
