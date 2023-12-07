@@ -48,6 +48,7 @@
 
 extern void rwnx_cal_initial_calibration(void);
 extern void msc_init(void);
+extern void uf2_init(void);
 
 UINT32 func_init_extended(void)
 {
@@ -154,6 +155,7 @@ UINT32 func_init_extended(void)
 #endif
 #endif //CFG_OS_FREERTOS
 
+	uf2_init();
 	msc_init();
 
     FUNC_PRT("[FUNC]func_init_extended OVER!!!\r\n\r\n");
