@@ -2,12 +2,13 @@
 .config
 config/sys_config.h
 out/
-beken378/lib/libble.a
-beken378/lib/libcal.a
-beken378/lib/librf_test.a
-beken378/lib/librf_use.a
-beken378/lib/librwnx.a
-beken378/lib/libsupplicant.a
-beken378/lib/libuart_debug.a
-beken378/lib/libwpa.a
+lib/libble.a
+lib/libcal.a
+lib/librf_test.a
+lib/librf_use.a
+lib/librwnx.a
+lib/libsupplicant.a
+lib/libuart_debug.a
+lib/libwpa.a
+lib/libusb.a
 
