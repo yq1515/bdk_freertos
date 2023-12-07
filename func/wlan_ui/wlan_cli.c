@@ -1018,6 +1018,7 @@ void arp_Command(char *pcWriteBuffer, int xWriteBufferLen, int argc, char **argv
 {
     os_printf("arp_Command\r\n");
 }
+void usbd_dump_reg();
 
 void ping_Command(char *pcWriteBuffer, int xWriteBufferLen, int argc, char **argv)
 {
@@ -1026,6 +1027,7 @@ void ping_Command(char *pcWriteBuffer, int xWriteBufferLen, int argc, char **arg
     if (argc == 1)
     {
         os_printf("Please input: ping <host address>\n");
+        usbd_dump_reg();
     }
     else
     {

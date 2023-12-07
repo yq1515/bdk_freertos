@@ -368,8 +368,8 @@ int usb_dc_init(void)
 
     /* Enable USB interrupts */
     HWREGB(USB_BASE + MUSB_IE_OFFSET) = USB_IE_RESET;
-    HWREGB(USB_BASE + MUSB_TXIEL_OFFSET) = USB_TXIE_EP0;
-    HWREGB(USB_BASE + MUSB_RXIEL_OFFSET) = 0;
+    HWREGB(USB_BASE + MUSB_TXIEL_OFFSET) = 0xff;
+    HWREGB(USB_BASE + MUSB_RXIEL_OFFSET) = 0xfe;
 
     HWREGB(USB_BASE + MUSB_POWER_OFFSET) |= USB_POWER_SOFTCONN;
     return 0;
@@ -394,7 +394,7 @@ int usbd_set_address(const uint8_t addr)
 int usbd_ep_open(const struct usbd_endpoint_cfg *ep_cfg)
 {
     uint16_t used = 0;
-    uint16_t fifo_size = 0;
+    //uint16_t fifo_size = 0;
     uint8_t ep_idx = USB_EP_GET_IDX(ep_cfg->ep_addr);
     uint8_t old_ep_idx;
     uint32_t ui32Flags = 0;
@@ -462,11 +462,13 @@ int usbd_ep_open(const struct usbd_endpoint_cfg *ep_cfg)
             HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) = (USB_RXCSRL1_CLRDT | USB_RXCSRL1_FLUSH);
         else
             HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) = USB_RXCSRL1_CLRDT;
-
+#if 0
         fifo_size = musb_get_fifo_size(ep_cfg->ep_mps, &used);
         HWREGH(USB_BASE + MUSB_RX_DYNA_CONG_OFFSET) = (fifo_size << 13)
                                                       + (g_musb_udc.fifo_size_offset >> 3);
-
+        os_printf("RXDYNA: %x, fifo_size %d, used %d, orig %x\n", HWREGH(USB_BASE + MUSB_RX_DYNA_CONG_OFFSET), fifo_size, used,
+        	(fifo_size << 13) + (g_musb_udc.fifo_size_offset >> 3));
+#endif
         g_musb_udc.fifo_size_offset += used;
     } else {
         g_musb_udc.in_ep[ep_idx].ep_mps = ep_cfg->ep_mps;
@@ -499,6 +501,8 @@ int usbd_ep_open(const struct usbd_endpoint_cfg *ep_cfg)
             ui32Register |= USB_TXCSRH1_ISO;
         }
 
+        ui32Register |= USB_TXCSRH1_MODE;
+
         HWREGB(USB_BASE + MUSB_IND_TXCSRH_OFFSET) = ui32Register;
 
         // Reset the Data toggle to zero.
@@ -507,11 +511,15 @@ int usbd_ep_open(const struct usbd_endpoint_cfg *ep_cfg)
         else
             HWREGB(USB_BASE + MUSB_IND_TXCSRL_OFFSET) = USB_TXCSRL1_CLRDT;
 
+#if 0
         fifo_size = musb_get_fifo_size(ep_cfg->ep_mps, &used);
 
         // Dynamic FIFO Sizing: FIFO Address, FIFO size for ep.
         HWREGH(USB_BASE + MUSB_TX_DYNA_CONG_OFFSET) = (fifo_size << 13)
                                                       + (g_musb_udc.fifo_size_offset >> 3);
+        os_printf("TXDYNA: %x, fifo_size %d, used %d, orig %x\n", HWREGH(USB_BASE + MUSB_TX_DYNA_CONG_OFFSET), fifo_size, used,
+        	(fifo_size << 13) + (g_musb_udc.fifo_size_offset >> 3));
+#endif
 
         g_musb_udc.fifo_size_offset += used;
     }
@@ -793,8 +801,8 @@ void USBD_IRQHandler(void)
         memset(&g_musb_udc, 0, sizeof(struct musb_udc));
         g_musb_udc.fifo_size_offset = USB_CTRL_EP_MPS;
         usbd_event_reset_handler();
-        HWREGB(USB_BASE + MUSB_TXIEL_OFFSET) = USB_TXIE_EP0;
-        HWREGB(USB_BASE + MUSB_RXIEL_OFFSET) = 0;
+        //HWREGB(USB_BASE + MUSB_TXIEL_OFFSET) = USB_TXIE_EP0;
+        //HWREGB(USB_BASE + MUSB_RXIEL_OFFSET) = 0;
 
         for (uint8_t i = 1; i < USB_NUM_BIDIR_ENDPOINTS; i++) {
             musb_set_active_ep(i);
@@ -842,7 +850,7 @@ void USBD_IRQHandler(void)
             }
 
             if (g_musb_udc.in_ep[ep_idx].xfer_len == 0) {
-                HWREGB(USB_BASE + MUSB_TXIEL_OFFSET) &= ~(1 << ep_idx);
+                //HWREGB(USB_BASE + MUSB_TXIEL_OFFSET) &= ~(1 << ep_idx);
                 usbd_event_ep_in_complete_handler(ep_idx | 0x80, g_musb_udc.in_ep[ep_idx].actual_xfer_len);
             } else {
                 write_count = MIN(g_musb_udc.in_ep[ep_idx].xfer_len, g_musb_udc.in_ep[ep_idx].ep_mps);
@@ -885,4 +893,62 @@ void USBD_IRQHandler(void)
     }
 
     musb_set_active_ep(old_ep_idx);
+}
+
+void usbd_dump_reg()
+{
+	GLOBAL_INT_DECLARATION();
+	GLOBAL_INT_DISABLE();
+
+    uint8_t old_ep_idx;
+    old_ep_idx = musb_get_active_ep();
+
+
+	os_printf("FADDR: %x\n", HWREGB(USB_BASE + MUSB_FADDR_OFFSET));
+	os_printf("POWER: %x\n", HWREGB(USB_BASE + MUSB_POWER_OFFSET));
+	os_printf("TXIEL: %x\n", HWREGB(USB_BASE + MUSB_TXIEL_OFFSET));
+	os_printf("TXIEH: %x\n", HWREGB(USB_BASE + MUSB_TXIEH_OFFSET));
+	os_printf("RXIEL: %x\n", HWREGB(USB_BASE + MUSB_RXIEL_OFFSET));
+	os_printf("RXIEH: %x\n", HWREGB(USB_BASE + MUSB_RXIEH_OFFSET));
+	os_printf("IE: %x\n", HWREGB(USB_BASE + MUSB_IE_OFFSET));
+	os_printf("DEVCTL: %x\n", HWREGB(USB_BASE + MUSB_DEVCTL_OFFSET));
+
+	musb_set_active_ep(0);
+	os_printf("--0--\n");
+	//os_printf("FADDR: %x\n", HWREGB(USB_BASE + MUSB_IND_TXMAP_OFFSET));
+	os_printf("TXCSL: %x\n", HWREGB(USB_BASE + MUSB_IND_TXCSRL_OFFSET));
+	os_printf("TXCSH: %x\n", HWREGB(USB_BASE + MUSB_IND_TXCSRH_OFFSET));
+	//os_printf("TXIEH: %x\n", HWREGB(USB_BASE + MUSB_IND_RXMAP_OFFSET));
+	//os_printf("RXIEL: %x\n", HWREGH(USB_BASE + MUSB_TX_DYNA_CONG_OFFSET));
+	//os_printf("RXIEH: %x\n", HWREGB(USB_BASE + MUSB_RX_DYNA_CONG_OFFSET));
+
+
+	musb_set_active_ep(1);
+	os_printf("--1--\n");
+	os_printf("TXMAP: %x\n", HWREGB(USB_BASE + MUSB_IND_TXMAP_OFFSET));
+	os_printf("TXCSL: %x\n", HWREGB(USB_BASE + MUSB_IND_TXCSRL_OFFSET));
+	os_printf("TXCSH: %x\n", HWREGB(USB_BASE + MUSB_IND_TXCSRH_OFFSET));
+	os_printf("RXMAP: %x\n", HWREGB(USB_BASE + MUSB_IND_RXMAP_OFFSET));
+	os_printf("RXCSL: %x\n", HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET));
+	os_printf("RXCSH: %x\n", HWREGB(USB_BASE + MUSB_IND_RXCSRH_OFFSET));
+	os_printf("TXFIFO: %x\n", HWREGH(USB_BASE + MUSB_TX_DYNA_CONG_OFFSET));
+	os_printf("RXFIFO: %x\n", HWREGB(USB_BASE + MUSB_RX_DYNA_CONG_OFFSET));
+
+
+	musb_set_active_ep(2);
+	os_printf("--2--\n");
+	os_printf("TXMAP: %x\n", HWREGB(USB_BASE + MUSB_IND_TXMAP_OFFSET));
+	os_printf("TXCSL: %x\n", HWREGB(USB_BASE + MUSB_IND_TXCSRL_OFFSET));
+	os_printf("TXCSH: %x\n", HWREGB(USB_BASE + MUSB_IND_TXCSRH_OFFSET));
+	os_printf("RXMAP: %x\n", HWREGB(USB_BASE + MUSB_IND_RXMAP_OFFSET));
+	os_printf("RXCSL: %x\n", HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET));
+	os_printf("RXCSH: %x\n", HWREGB(USB_BASE + MUSB_IND_RXCSRH_OFFSET));
+	os_printf("TXFIFO: %x\n", HWREGH(USB_BASE + MUSB_TX_DYNA_CONG_OFFSET));
+	os_printf("RXFIFO: %x\n", HWREGB(USB_BASE + MUSB_RX_DYNA_CONG_OFFSET));
+
+
+
+    musb_set_active_ep(old_ep_idx);
+
+	GLOBAL_INT_RESTORE();
 }

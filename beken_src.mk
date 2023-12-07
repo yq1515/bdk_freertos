@@ -262,7 +262,7 @@ INCLUDES += -I$(BEKEN_DIR)/func/at_server/atsvr_cmd
 endif
 
 # CherryUSB
-ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
+#ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
 INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/common
 INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/core
 INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/osal
@@ -274,7 +274,7 @@ INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/class/video
 INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/class/hub
 INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/demo
 INCLUDES += -I$(BEKEN_DIR)/func/CherryUSB/demo/beken/usb_device
-endif
+#endif
 
 # -------------------------------------------------------------------
 # Source file list
@@ -736,12 +736,12 @@ SRC_C += $(BEKEN_DIR)/func/ble_wifi_exchange/ble_wifi_port.c
 #
 ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
 SRC_C += $(BEKEN_DIR)/func/CherryUSB/core/usbd_core.c
-SRC_C += $(BEKEN_DIR)/func/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
 #SRC_C += $(BEKEN_DIR)/func/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
 #SRC_C += $(BEKEN_DIR)/func/CherryUSB/class/cdc/usbd_cdc.c
 SRC_C += $(BEKEN_DIR)/func/CherryUSB/demo/beken/usb_device/hid/hid_common.c
 SRC_C += $(BEKEN_DIR)/func/CherryUSB/class/hid/usbd_hid.c
 endif
+SRC_C += $(BEKEN_DIR)/func/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
 
 #assembling files
 SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_handlers.S
