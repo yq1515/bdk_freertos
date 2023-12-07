@@ -1,34 +1,63 @@
 # Beken Development Kit on FreeRTOS
 
-Welcome to BDK FreeRTOS!
+The BDK FreeRTOS supports multiple Beken chips, including BK7231N, BK7231U, BK7251. This repo mainly use BK7231U USB devices.
 
-The BDK FreeRTOS integrates Beken Software Development Kit and the FreeRTOS, which is aimed for the resource-constrained
-and low-cost applications, such as the IoT applications.
 
-The BDK FreeRTOS supports multiple Beken chips, including [BK7231N](http://docs.bekencorp.com:8191/v3.0/get-started/demo_board.html#bk7231n), [BK7251](http://docs.bekencorp.com:8191/v3.0/get-started/demo_board.html#bk7251) and [BK7231U](http://docs.bekencorp.com:8191/v3.0/get-started/demo_board.html#bk7231u).
 
-# Getting Started
+## Hardware
 
-Here is the getting started guides:
+We use BK7231U 48pin chip that support USB Host/Device, and SCH and PCB are located in Hardware directory.
 
- - step1 - get the developing board from [Beken Products](http://www.bekencorp.com/index/goods/product.html).
- - step2 - download the BDK FreeRTOS code on github [BDK FreeRTOS](https://github.com/bekencorp/bdk_freertos). For the non-github users,
-download the BDK FreeRTOS directly on [Download Center](http://bbs.bekencorp.com:8191/forum.php?mod=forumdisplay&fid=57).
- - step3 - read the [Get Started](http://docs.bekencorp.com:8191/v3.0/get-started/index.html#get-started) to learn how to build, download BIN and startup the board.
- - step4 - download the toolchain and BIN downloading tool from [Download Center](http://bbs.bekencorp.com:8191/forum.php?mod=forumdisplay&fid=57)
- - step5 - seek support on [BBS](http://bbs.bekencorp.com:8191/forum.php), or report bugs on [Github Issue Forum](https://github.com/bekencorp/bdk_freertos/issues)
+![](./documents/BK7231U.png)
 
-# Community
- - Report bug or request new feature on [Github Issue Forum](https://github.com/bekencorp/bdk_freertos/issues)  
- - Ask for support or technical discussion on [Beken-Forum](http://bbs.bekencorp.com:8191/forum.php)
+Pin assignment:
 
-# Resource
 
-Here's a quick summary of resources to help you find your way around:
 
- - [Get Started](http://docs.bekencorp.com:8191/v3.0/get-started/index.html#get-started) - Getting Started Guides for BDK
- - [API reference](http://docs.bekencorp.com:8191/v3.0/api-reference/index.html) - Get API reference for BDK FreeRTOS
- - [Hardware Docs](http://bbs.bekencorp.com:8191/forum.php?mod=forumdisplay&fid=57) - Download all kinds of hardware documents
- - [Download Center](http://bbs.bekencorp.com:8191/forum.php?mod=forumdisplay&fid=57) - Download BDK ARM toolchains, BIN download tools and other resources
- - [Beken Products](http://www.bekencorp.com/index/goods/product.html) - Overview about different Beken products
- - [Beken Home Page](http://www.bekencorp.com) - Find more resources on Beken Home Page
+## Get Started
+
+Download arm gcc toolchain from https://developer.arm.com/downloads/-/gnu-rm, and set env `FREERTOS_EXEC_PATH`, for example
+
+```
+export FREERTOS_EXEC_PATH=/opt/toolchain/gcc-arm-none-eabi-5_4-2016q3/bin/
+```
+
+Download source code and compile
+
+```
+git clone https://github.com/tiancj/bdk_freertos
+make bk7231u -j$(nproc)
+```
+
+The generated binary is `out/beken7231_bsp_crc.bin` and `out/all_2M.1220.bin`. The former bin doesn't contain bootloader, while the latter contains bootloader.
+
+## Flash
+
+Download Flash tool from https://github.com/tiancj/hid_download_py, and follow the instruction there to install it.
+
+If BK7231U is a blank chip, you need to flash it a bootloader or a bin that contains bootloader.
+
+Connect SPI flasher to BK7231U, and run the following command:
+
+```
+hidprogram out/all_2M.1220.bin
+```
+
+After flash the bootloader, you doesn't need the SPI flasher to flash bootloader later. Instead, you can use UART to flash.
+
+```
+uartprogram out/beken7231_bsp_crc.bin
+```
+
+Then enjoy!
+
+
+
+## Contribution
+
+Thanks the following repos:
+
+* cherryuf2: https://github.com/zhaqian12/Cherryuf2
+* platform_bk7231t: https://github.com/warewolf/platform_bk7231t
+* OpenBK7231T: https://github.com/openshwprojects/OpenBK7231T
+* CherryUSB: https://github.com/cherry-embedded/CherryUSB
