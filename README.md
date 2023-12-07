@@ -6,7 +6,7 @@ The BDK FreeRTOS supports multiple Beken chips, including BK7231N, BK7231U, BK72
 
 ## Hardware
 
-We use BK7231U 48pin chip that support USB Host/Device, and SCH and PCB are located in Hardware directory.
+We use BK7231U 48pin chip that supports USB Host/Device, and SCH and PCB are located in Hardware directory.
 
 ![](./documents/BK7231U.png)
 
@@ -51,7 +51,17 @@ uartprogram out/beken7231_bsp_crc.bin
 
 Then enjoy!
 
+## Supported functions
 
+* WiFi (use `sta` command to connect to AP, or `softap` command to setup a hotspot)
+* USB Device (CherryUSB and Mentor USB), such as HID, MSC, CDC, etc.
+* UF2 bootloader (enable `CFG_UF2` in `app/sys_config_bk7231u.h`)
+
+## Todo
+
+- [ ] opensource bootloader
+- [ ] USB SPI, I2C, PWM, SD, ADC, IrDA, MJPEG, etc devices
+- [ ] Linux device drivers for these USB device
 
 ## Contribution
 
