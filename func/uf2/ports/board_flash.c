@@ -32,6 +32,7 @@
 #define SECTOR_SIZE BOARD_SECTOR_SIZE
 #define SECTOR_COUNT BOARD_SECTOR_COUNT
 
+#if 0
 static uint8_t erased_sectors[SECTOR_COUNT] = {0};
 
 static bool is_blank(uint32_t addr, uint32_t size) {
@@ -69,7 +70,10 @@ static bool flash_erase(uint32_t addr) {
     return true;
 }
 
+#endif
+
 static void flash_write(uint32_t dst, const uint8_t *src, int len) {
+#if 0
     flash_erase(dst);
 
     for (int i = 0; i < len; i += 4) {
@@ -80,6 +84,7 @@ static void flash_write(uint32_t dst, const uint8_t *src, int len) {
     // verify contents
     if (memcmp((void *)dst, src, len) != 0) {
     }
+#endif
 }
 
 //--------------------------------------------------------------------+
@@ -98,9 +103,11 @@ __attribute__((weak)) void board_flash_read(uint32_t addr, void *buffer, uint32_
 __attribute__((weak)) void board_flash_flush(void) {}
 
 __attribute__((weak)) void board_flash_write(uint32_t addr, void const *data, uint32_t len) {
+#if 0
     flash_unlock();
     flash_write(addr, data, len);
     flash_lock();
+#endif
 }
 
 __attribute__((weak)) void board_flash_erase_app(void) {}

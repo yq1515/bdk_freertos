@@ -20,7 +20,7 @@
 #include "bk7011_cal_pub.h"
 #endif
 
-#if CFG_UART_DEBUG 
+#if CFG_UART_DEBUG
 #include "uart_debug_pub.h"
 #endif
 
@@ -47,6 +47,7 @@
 #endif
 
 extern void rwnx_cal_initial_calibration(void);
+extern void msc_init(void);
 
 UINT32 func_init_extended(void)
 {
@@ -55,7 +56,7 @@ UINT32 func_init_extended(void)
 	cfg_param_init();
     // load mac, init mac first
     wifi_get_mac_address(temp_mac, CONFIG_ROLE_NULL);
-	
+
 #if (CFG_SOC_NAME == SOC_BK7231N)
     manual_cal_load_bandgap_calm();
 #endif
@@ -64,7 +65,7 @@ UINT32 func_init_extended(void)
 
 #if CFG_UART_DEBUG
 	#ifndef KEIL_SIMULATOR
-    FUNC_PRT("[FUNC]uart_debug_init\r\n");   
+    FUNC_PRT("[FUNC]uart_debug_init\r\n");
     uart_debug_init();
 	#endif
 #endif
@@ -88,7 +89,7 @@ UINT32 func_init_extended(void)
     #if CFG_USE_TEMPERATURE_DETECT
     manual_cal_load_temp_tag_flash();
     #endif
-	
+
     #if (CFG_SOC_NAME != SOC_BK7231)
     manual_cal_load_lpf_iq_tag_flash();
     manual_cal_load_xtal_tag_flash();
@@ -104,7 +105,7 @@ UINT32 func_init_extended(void)
 		manual_cal_save_txpwr_tab_to_flash();
 	}
 	#endif // CFG_SUPPORT_MANUAL_CALI
-#endif    
+#endif
 
 #if CFG_SDIO
     FUNC_PRT("[FUNC]sdio_intf_init\r\n");
@@ -152,6 +153,8 @@ UINT32 func_init_extended(void)
 	FUNC_PRT("task watchdog enabled, period=%u\r\n", CFG_TASK_WDG_PERIOD_MS);
 #endif
 #endif //CFG_OS_FREERTOS
+
+	msc_init();
 
     FUNC_PRT("[FUNC]func_init_extended OVER!!!\r\n\r\n");
     os_printf("start_type:%d\r\n",bk_misc_get_start_type());

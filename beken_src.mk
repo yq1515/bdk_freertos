@@ -116,6 +116,8 @@ INCLUDES += -I$(BEKEN_DIR)/os/include
 INCLUDES += -I$(BEKEN_DIR)/os/FreeRTOSv9.0.0
 INCLUDES += -I$(BEKEN_DIR)/func/utf8
 INCLUDES += -I$(BEKEN_DIR)/app/http
+INCLUDES += -I$(BEKEN_DIR)/func/uf2
+INCLUDES += -I$(BEKEN_DIR)/func/uf2/ports
 
 ifeq ($(CFG_BK_AWARE),1)
 INCLUDES += -I$(BEKEN_DIR)/func/bk_aware
@@ -738,14 +740,21 @@ ifeq ($(CFG_SUPPORT_CHERRYUSB),1)
 SRC_C += $(BEKEN_DIR)/func/CherryUSB/core/usbd_core.c
 #SRC_C += $(BEKEN_DIR)/func/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
 #SRC_C += $(BEKEN_DIR)/func/CherryUSB/class/cdc/usbd_cdc.c
-SRC_C += $(BEKEN_DIR)/func/CherryUSB/demo/beken/usb_device/hid/hid_common.c
-SRC_C += $(BEKEN_DIR)/func/CherryUSB/class/hid/usbd_hid.c
+#SRC_C += $(BEKEN_DIR)/func/CherryUSB/demo/beken/usb_device/hid/hid_common.c
+#SRC_C += $(BEKEN_DIR)/func/CherryUSB/class/hid/usbd_hid.c
+SRC_C += $(BEKEN_DIR)/func/CherryUSB/class/msc/usbd_msc.c
 endif
 SRC_C += $(BEKEN_DIR)/func/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
 
 #assembling files
 SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_handlers.S
 SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_vectors.S
+
+# UF2
+SRC_C += $(BEKEN_DIR)/func/uf2/ghostfat.c
+SRC_C += $(BEKEN_DIR)/func/uf2/msc_desc.c
+#SRC_C += $(BEKEN_DIR)/func/uf2/ports/board.c
+SRC_C += $(BEKEN_DIR)/func/uf2/ports/board_flash.c
 
 
 # -------------------------------------------------------------------

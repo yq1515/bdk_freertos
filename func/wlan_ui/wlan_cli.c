@@ -2599,7 +2599,7 @@ static void cli_usb_device_cdc(char *pcWriteBuffer, int xWriteBufferLen, int arg
 
 static void cli_usb_device_hid(char *pcWriteBuffer, int xWriteBufferLen, int argc, char **argv)
 {
-	hid_custom_init();
+	//hid_custom_init();
 }
 #endif
 
