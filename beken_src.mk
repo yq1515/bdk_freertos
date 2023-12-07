@@ -15,7 +15,6 @@ BEKEN_DIR ?= .
 # -------------------------------------------------------------------
 
 INCLUDES += -I$(BEKEN_DIR)/include
-INCLUDES += -I$(BEKEN_DIR)/release
 INCLUDES += -I$(BEKEN_DIR)/demo
 INCLUDES += -I$(BEKEN_DIR)/app
 INCLUDES += -I$(BEKEN_DIR)/app/config
