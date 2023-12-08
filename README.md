@@ -60,8 +60,9 @@ Then enjoy!
 ## Todo
 
 - [ ] opensource bootloader
-- [ ] USB SPI, I2C, PWM, SD, ADC, IrDA, MJPEG, etc devices
+- [ ] USB SPI, I2C, PWM, SD/SDIO, ADC, IrDA, MJPEG, etc devices
 - [ ] Linux device drivers for these USB device
+- [ ] opensource wifi 4 protocol stack (softmac)
 
 ## Contribution
 
