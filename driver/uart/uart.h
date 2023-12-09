@@ -66,7 +66,7 @@
 #define UART_BAUDRATE_3000           3250
 #define UART_BAUDRATE_19200          19200
 
-#define UART_BAUD_RATE               UART_BAUDRATE_921600
+#define UART_BAUD_RATE               UART_BAUDRATE_115200
 #ifndef UART1_BAUD_RATE
 #define UART1_BAUD_RATE              UART_BAUD_RATE
 #endif
