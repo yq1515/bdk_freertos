@@ -51,7 +51,7 @@ After flash the bootloader, you doesn't need the SPI flasher to flash bootloader
 uartprogram out/beken7231_bsp_crc.bin
 ```
 
-Default baudrate is 115200 8N1.
+Default baudrate is 115200 8N1, and console log is at UART1.
 
 Then enjoy!
 
@@ -67,6 +67,10 @@ Then enjoy!
 - [ ] USB SPI, I2C, PWM, SD/SDIO, ADC, IrDA, MJPEG, etc devices
 - [ ] Linux device drivers for these USB device
 - [ ] opensource wifi 4 protocol stack (softmac)
+
+## Documents
+
+v There are original Beken documents at `documents` directory, which includes SDK API and User Guide. SDK API is recommended to read to familiar with API that used to develope user applications. If you want to develop USB devices or Host devices, please refer CherryUSB APIs at https://cherryusb.readthedocs.io/.
 
 ## Contribution
 
