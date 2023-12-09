@@ -51,6 +51,8 @@ After flash the bootloader, you doesn't need the SPI flasher to flash bootloader
 uartprogram out/beken7231_bsp_crc.bin
 ```
 
+Default baudrate is 115200 8N1.
+
 Then enjoy!
 
 ## Supported functions
