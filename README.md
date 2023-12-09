@@ -22,6 +22,8 @@ Download arm gcc toolchain from https://developer.arm.com/downloads/-/gnu-rm, an
 export FREERTOS_EXEC_PATH=/opt/toolchain/gcc-arm-none-eabi-5_4-2016q3/bin/
 ```
 
+Current bash and zsh shell is supported, you may change you /bin/sh to bash or zsh.
+
 Download source code and compile
 
 ```
