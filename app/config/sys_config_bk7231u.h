@@ -10,7 +10,7 @@
    what is more, uart1 maybe is not bound out*/
 #define CFG_USE_UART1                              0
 #define CFG_JTAG_ENABLE                            0
-#define OSMALLOC_STATISTICAL                       0
+#define OSMALLOC_STATISTICAL                       1
 
 /*section 0-----app macro config-----*/
 #define CFG_IEEE80211N                             1
@@ -171,7 +171,7 @@
 #if CFG_RF_OTA_TEST
 #define CFG_USE_STA_PS                             0
 #else
-#define CFG_USE_STA_PS                             1
+#define CFG_USE_STA_PS                             0
 #endif
 
 /*section 18-----AP support stas in power save*/

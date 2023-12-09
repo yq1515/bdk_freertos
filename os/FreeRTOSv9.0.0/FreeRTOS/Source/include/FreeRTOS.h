@@ -312,7 +312,7 @@ __inline static uint32_t port_interrupt_mask_from_isr(void)
 #endif
 
 #ifndef portCLEAR_INTERRUPT_MASK_FROM_ISR
-	#define portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedStatusValue )   (*((volatile uint32_t *)((0x00802000 + 17 * 4))) = (uxSavedStatusValue))    
+	#define portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedStatusValue )   (*((volatile uint32_t *)((0x00802000 + 17 * 4))) = (uxSavedStatusValue))
 #endif
 
 
@@ -717,7 +717,7 @@ __inline static uint32_t port_interrupt_mask_from_isr(void)
 #endif
 
 #ifndef configUSE_TICKLESS_IDLE
-	#define configUSE_TICKLESS_IDLE 1
+	#define configUSE_TICKLESS_IDLE 0
 #endif
 
 #ifndef configPRE_SLEEP_PROCESSING

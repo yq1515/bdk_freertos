@@ -328,6 +328,8 @@ UINT32 uart_sw_init(UINT8 uport)
         return UART_FAILURE;
     }
 
+    bk_printf("%s %d\n", __func__, __LINE__);
+
     return UART_SUCCESS;
 }
 

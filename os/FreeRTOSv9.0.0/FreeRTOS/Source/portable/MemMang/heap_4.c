@@ -667,6 +667,7 @@ void *pvPortMalloc( size_t xWantedSize )
 	if(pvReturn && need_zero)
 		os_memset(pvReturn, 0, xWantedSize);
 	#endif
+	bk_printf("%s %d\n", __func__, __LINE__);
 	return pvReturn;
 }
 
@@ -788,6 +789,8 @@ static uint32_t prvHeapGetTotalSize(void)
 }
 #endif
 
+volatile bool jlink = false;
+
 static void prvHeapInit( void )
 {
 	BlockLink_t *pxFirstFreeBlock;
@@ -800,6 +803,7 @@ static void prvHeapInit( void )
 	ucHeap = prvHeapGetHeaderPointer();
 
 	bk_printf("prvHeapInit-start addr:0x%x, size:%d\r\n", ucHeap, xTotalHeapSize);
+	//while (jlink);
 	#else
 	xTotalHeapSize = configTOTAL_HEAP_SIZE;
 	#endif
