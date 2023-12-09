@@ -76,87 +76,87 @@ static DD_INIT_S dd_init_tbl[] =
 #if (SOC_BK7231N == CFG_SOC_NAME)
 	{CAL_DEV_NAME,			cal_init,					cal_exit},
 #endif
-    
+
     {UART2_DEV_NAME,        uart2_init,                 uart2_exit},
     {UART1_DEV_NAME,        uart1_init,                 uart1_exit},
 
     {FLASH_DEV_NAME,        flash_init,                 flash_exit},
-    
+
 #if CFG_GENERAL_DMA
-    {GDMA_DEV_NAME,         gdma_init,                  gdma_exit},
+//    {GDMA_DEV_NAME,         gdma_init,                  gdma_exit},
 #endif
 
 #if CFG_USE_HSLAVE_SPI
-    {SPIDMA_DEV_NAME,       spidma_init,                spidma_uninit},
+//    {SPIDMA_DEV_NAME,       spidma_init,                spidma_uninit},
 #endif
 
 #if CFG_USE_QSPI
-    {QSPI_DEV_NAME,       qspi_init,                	qspi_exit},
+//    {QSPI_DEV_NAME,       qspi_init,                	qspi_exit},
 #endif
 
 #if CFG_USE_CAMERA_INTF
-    {EJPEG_DEV_NAME,        ejpeg_init,                 ejpeg_exit},
-    {I2C1_DEV_NAME,         i2c1_init,                  i2c1_exit},        
-    {I2C2_DEV_NAME,         i2c2_init,                  i2c2_exit},            
+//    {EJPEG_DEV_NAME,        ejpeg_init,                 ejpeg_exit},
+//    {I2C1_DEV_NAME,         i2c1_init,                  i2c1_exit},
+//    {I2C2_DEV_NAME,         i2c2_init,                  i2c2_exit},
 #endif
 
 #if CFG_USE_AUDIO
-    {AUD_DAC_DEV_NAME,      audio_init,                 audio_exit},        
+//    {AUD_DAC_DEV_NAME,      audio_init,                 audio_exit},
 #endif
 
 #if CFG_SDIO || CFG_SDIO_TRANS
-    {SDIO_DEV_NAME,         sdio_init,                  sdio_exit},
+//    {SDIO_DEV_NAME,         sdio_init,                  sdio_exit},
 #endif
 
 #if CFG_MENTOR_USB
-    {USB_DEV_NAME,          usb_init,                   usb_exit},
+//    {USB_DEV_NAME,          usb_init,                   usb_exit},
 #endif
 
 #if (CFG_SOC_NAME == SOC_BK7221U)
-    #if CFG_MENTOR_USB
-    {USB_PLUG_DEV_NAME,     usb_plug_inout_init,        usb_plug_inout_exit},
-    #endif
+//    #if CFG_MENTOR_USB
+//    {USB_PLUG_DEV_NAME,     usb_plug_inout_init,        usb_plug_inout_exit},
+//    #endif
 #endif
-    {PWM_DEV_NAME,          pwm_init,                   pwm_exit},
+//    {PWM_DEV_NAME,          pwm_init,                   pwm_exit},
 #if (CFG_SOC_NAME != SOC_BK7231)
     {TIMER_DEV_NAME,        bk_timer_init,              bk_timer_exit},
 #endif
-    {SPI_DEV_NAME,          spi_init,                   spi_exit},
+//    {SPI_DEV_NAME,          spi_init,                   spi_exit},
 
 #if (CFG_SOC_NAME == SOC_BK7271)
-    {SPI2_DEV_NAME,         spi2_init,                  spi2_exit},
-    {SPI3_DEV_NAME,         spi3_init,                  spi3_exit},
+//    {SPI2_DEV_NAME,         spi2_init,                  spi2_exit},
+//    {SPI3_DEV_NAME,         spi3_init,                  spi3_exit},
 #endif
 
 #if CFG_USE_FFT
-    {FFT_DEV_NAME,          fft_init,                   fft_exit},
+//    {FFT_DEV_NAME,          fft_init,                   fft_exit},
 #endif
 #if CFG_USE_I2S
     //{I2S_DEV_NAME,          i2s_init,                   i2s_exit},
 #endif
-    {SARADC_DEV_NAME,       saradc_init,                saradc_exit},
+//    {SARADC_DEV_NAME,       saradc_init,                saradc_exit},
 #if (CFG_SOC_NAME != SOC_BK7231)
-    {IRDA_DEV_NAME,         irda_init,                  irda_exit},
+//    {IRDA_DEV_NAME,         irda_init,                  irda_exit},
 #endif
 
 #if CFG_MAC_PHY_BAPASS
-    {MPB_DEV_NAME,          mpb_init,                   mpb_exit},
+//    {MPB_DEV_NAME,          mpb_init,                   mpb_exit},
 #endif
 
 #if CFG_USE_SDCARD_HOST
-    {SDCARD_DEV_NAME,       sdcard_init,                sdcard_exit},
+//    {SDCARD_DEV_NAME,       sdcard_init,                sdcard_exit},
 #endif
 
 #if CFG_USE_STA_PS
-    {"power_save",       sctrl_sta_ps_init,             NULLPTR},
+//    {"power_save",       sctrl_sta_ps_init,             NULLPTR},
 #endif
 
 #if ((CFG_SOC_NAME != SOC_BK7231) && (CFG_SUPPORT_BLE == 1))
-	{BLE_DEV_NAME,			ble_init,					ble_exit}, //sean
+//	{BLE_DEV_NAME,			ble_init,					ble_exit}, //sean
 #endif
 
 #if ((CFG_SOC_NAME != SOC_BK7231) && (CFG_USE_SECURITY == 1))
-	{SEC_DEV_NAME,			bk_secrity_init,			bk_secrity_exit},
+//	{SEC_DEV_NAME,			bk_secrity_init,			bk_secrity_exit},
 #endif
     {NULL,                  NULLPTR,                    NULLPTR}
 };
