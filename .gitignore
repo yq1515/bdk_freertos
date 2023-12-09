@@ -12,3 +12,4 @@ lib/libuart_debug.a
 lib/libwpa.a
 lib/libusb.a
 
+.DS_Store
