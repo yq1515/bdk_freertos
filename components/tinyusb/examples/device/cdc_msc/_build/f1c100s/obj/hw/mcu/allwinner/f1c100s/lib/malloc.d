@@ -1,0 +1,23 @@
+_build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o: \
+ /Users/tiancj/opensrc/tinyusb/hw/mcu/allwinner/f1c100s/lib/malloc.c \
+ /Users/tiancj/opensrc/tinyusb/hw/mcu/allwinner/f1c100s/include/malloc.h \
+ /Users/tiancj/opensrc/tinyusb/hw/mcu/allwinner/f1c100s/include/types.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/lib/gcc/arm-none-eabi/9.3.1/include/stddef.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/string.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/_ansi.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/newlib.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/_newlib_version.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/config.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/ieeefp.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/features.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/reent.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/_ansi.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_types.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_types.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/machine/_default_types.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/lock.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/cdefs.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/_locale.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/strings.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/sys/string.h \
+ /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include/assert.h

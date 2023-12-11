@@ -1,0 +1,2200 @@
+Archive member included to satisfy reference by file (symbol)
+
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o (__aeabi_dmul)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+                              _build/f1c100s/obj/src/class/msc/msc_device.o (__aeabi_uidiv)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+                              /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o (__aeabi_dsub)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o (__aeabi_dcmpeq)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o (__aeabi_d2iz)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o (__aeabi_d2uiz)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o (__aeabi_uldivmod)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+                              _build/f1c100s/obj/src/class/msc/msc_device.o (__bswapsi2)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+                              /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o) (__udivmoddi4)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+                              /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o) (__clzdi2)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzsi2.o)
+                              /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o) (__clzsi2)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+                              _build/f1c100s/obj/src/class/msc/msc_device.o (memmove)
+/Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-strlen.o)
+                              _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o (strlen)
+
+Allocating common symbols
+Common symbol       size              file
+
+_usbd_qdef_buf      0xc0              _build/f1c100s/obj/src/device/usbd.o
+
+Discarded input sections
+
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.USBC_SelectBus
+                0x0000000000000000       0x48 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.dcd_sof_enable
+                0x0000000000000000        0x4 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.dcd_remote_wakeup
+                0x0000000000000000       0x30 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.dcd_edpt_close
+                0x0000000000000000       0x88 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.dcd_edpt_xfer_fifo
+                0x0000000000000000       0x64 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .text.arm32_do_undefined_instruction
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .rodata.arm32_do_software_interrupt.str1.1
+                0x0000000000000000       0x4a _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .text.arm32_do_software_interrupt
+                0x0000000000000000       0x84 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .text.arm32_do_prefetch_abort
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .text.arm32_do_data_abort
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .text.f1c100s_intc_force_irq
+                0x0000000000000000       0x24 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.align_ptr.part.0
+                0x0000000000000000       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_split.str1.1
+                0x0000000000000000      0x107 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_split
+                0x0000000000000000       0xe8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_mark_as_used
+                0x0000000000000000       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.remove_free_block.str1.1
+                0x0000000000000000       0x54 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.remove_free_block
+                0x0000000000000000       0xa8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.adjust_request_size
+                0x0000000000000000       0x60 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_absorb.part.0.str1.1
+                0x0000000000000000       0x38 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_absorb.part.0
+                0x0000000000000000       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_trim_free.str1.1
+                0x0000000000000000       0x2d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_trim_free
+                0x0000000000000000       0x80 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_remove
+                0x0000000000000000       0x38 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_locate_free.str1.1
+                0x0000000000000000       0x57 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_locate_free
+                0x0000000000000000      0x12c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.tlsf_malloc
+                0x0000000000000000       0x50 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.tlsf_memalign.str1.1
+                0x0000000000000000       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.tlsf_memalign
+                0x0000000000000000      0x134 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_merge_next.str1.1
+                0x0000000000000000       0x65 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_merge_next
+                0x0000000000000000       0xa8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.tlsf_free.str1.1
+                0x0000000000000000       0xaa _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.tlsf_free
+                0x0000000000000000      0x108 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.tlsf_realloc.str1.1
+                0x0000000000000000       0x2e _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.tlsf_realloc
+                0x0000000000000000      0x188 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_create
+                0x0000000000000000       0x68 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_destroy
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_get_pool
+                0x0000000000000000        0xc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_add_pool
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.mm_remove_pool.str1.1
+                0x0000000000000000       0xbf _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_remove_pool
+                0x0000000000000000       0xb8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_malloc
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_memalign
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_realloc
+                0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mm_free  0x0000000000000000        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.malloc   0x0000000000000000       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.memalign
+                0x0000000000000000       0x18 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.realloc  0x0000000000000000       0x18 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.calloc   0x0000000000000000       0x2c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.free     0x0000000000000000       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4246
+                0x0000000000000000        0x9 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4257
+                0x0000000000000000        0xa _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4286
+                0x0000000000000000       0x16 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4295
+                0x0000000000000000       0x12 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4326
+                0x0000000000000000        0xc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4331
+                0x0000000000000000        0xd _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4337
+                0x0000000000000000       0x11 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4343
+                0x0000000000000000       0x11 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4349
+                0x0000000000000000       0x10 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4356
+                0x0000000000000000       0x10 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4371
+                0x0000000000000000       0x12 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4406
+                0x0000000000000000       0x11 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4439
+                0x0000000000000000        0xe _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4452
+                0x0000000000000000        0xa _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4465
+                0x0000000000000000        0xd _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._out_buffer
+                0x0000000000000000        0xc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._out_fct
+                0x0000000000000000        0xc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text.sprintf  0x0000000000000000       0x3c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text.snprintf
+                0x0000000000000000       0x3c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text.vsnprintf
+                0x0000000000000000       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text.fctprintf
+                0x0000000000000000       0x40 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/tusb.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/tusb.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/tusb.o
+ .text.tusb_init
+                0x0000000000000000        0x8 _build/f1c100s/obj/src/tusb.o
+ .text.tusb_inited
+                0x0000000000000000        0x4 _build/f1c100s/obj/src/tusb.o
+ .text.tu_desc_find
+                0x0000000000000000       0x2c _build/f1c100s/obj/src/tusb.o
+ .text.tu_desc_find2
+                0x0000000000000000       0x38 _build/f1c100s/obj/src/tusb.o
+ .text.tu_desc_find3
+                0x0000000000000000       0x4c _build/f1c100s/obj/src/tusb.o
+ .text.tu_desc_get_interface_total_len
+                0x0000000000000000       0x7c _build/f1c100s/obj/src/tusb.o
+ .text.tu_edpt_stream_init
+                0x0000000000000000       0x3c _build/f1c100s/obj/src/tusb.o
+ .text.tu_edpt_stream_write_zlp_if_needed
+                0x0000000000000000       0x84 _build/f1c100s/obj/src/tusb.o
+ .text.tu_edpt_stream_write_xfer
+                0x0000000000000000       0xa4 _build/f1c100s/obj/src/tusb.o
+ .text.tu_edpt_stream_write
+                0x0000000000000000       0x58 _build/f1c100s/obj/src/tusb.o
+ .text.tu_edpt_stream_read_xfer
+                0x0000000000000000       0xc8 _build/f1c100s/obj/src/tusb.o
+ .text.tu_edpt_stream_read
+                0x0000000000000000       0x2c _build/f1c100s/obj/src/tusb.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_overflowed
+                0x0000000000000000       0x34 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_correct_read_pointer
+                0x0000000000000000       0x24 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_read_n_const_addr_full_words
+                0x0000000000000000       0x40 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_peek
+                0x0000000000000000        0xc _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_peek_n
+                0x0000000000000000       0x20 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_write_n_const_addr_full_words
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/device/usbd.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/device/usbd.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_speed_get
+                0x0000000000000000       0x10 _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_connected
+                0x0000000000000000       0x14 _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_remote_wakeup
+                0x0000000000000000       0x48 _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_disconnect
+                0x0000000000000000       0x2c _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_connect
+                0x0000000000000000       0x2c _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_inited
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/device/usbd.o
+ .text.tud_task_event_ready
+                0x0000000000000000       0x40 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_defer_func
+                0x0000000000000000       0x88 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_edpt_xfer_fifo
+                0x0000000000000000       0x70 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_edpt_close
+                0x0000000000000000       0x64 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_sof_enable
+                0x0000000000000000       0x10 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_edpt_iso_alloc
+                0x0000000000000000       0x38 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_edpt_iso_activate
+                0x0000000000000000       0x9c _build/f1c100s/obj/src/device/usbd.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/device/usbd_control.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/device/usbd_control.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/device/usbd_control.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/typec/usbc.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/typec/usbc.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/typec/usbc.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/typec/usbc.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/typec/usbc.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/typec/usbc.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/typec/usbc.o
+ .debug_str     0x0000000000000000      0x14c _build/f1c100s/obj/src/typec/usbc.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/typec/usbc.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/typec/usbc.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/audio/audio_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/audio/audio_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/audio/audio_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/audio/audio_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/audio/audio_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/audio/audio_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/audio/audio_device.o
+ .debug_str     0x0000000000000000      0x15a _build/f1c100s/obj/src/class/audio/audio_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/audio/audio_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/audio/audio_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_connected
+                0x0000000000000000       0x44 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_get_line_state
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_get_line_coding
+                0x0000000000000000       0x2c _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_set_wanted_char
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_peek
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_read_flush
+                0x0000000000000000       0x2c _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_write_available
+                0x0000000000000000       0x20 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_write_clear
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .debug_str     0x0000000000000000      0x156 _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/dfu/dfu_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .debug_str     0x0000000000000000      0x159 _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/hid/hid_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/hid/hid_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/hid/hid_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/hid/hid_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/hid/hid_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/hid/hid_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/hid/hid_device.o
+ .debug_str     0x0000000000000000      0x156 _build/f1c100s/obj/src/class/hid/hid_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/hid/hid_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/hid/hid_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/midi/midi_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/midi/midi_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/midi/midi_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/midi/midi_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/midi/midi_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/midi/midi_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/midi/midi_device.o
+ .debug_str     0x0000000000000000      0x158 _build/f1c100s/obj/src/class/midi/midi_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/midi/midi_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/midi/midi_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .debug_str     0x0000000000000000      0x15c _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/net/ncm_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/net/ncm_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/net/ncm_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/net/ncm_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/net/ncm_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/net/ncm_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/net/ncm_device.o
+ .debug_str     0x0000000000000000      0x156 _build/f1c100s/obj/src/class/net/ncm_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/net/ncm_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/net/ncm_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .debug_str     0x0000000000000000      0x15c _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/video/video_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/video/video_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/video/video_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/video/video_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/video/video_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/video/video_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/video/video_device.o
+ .debug_str     0x0000000000000000      0x15a _build/f1c100s/obj/src/class/video/video_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/video/video_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/video/video_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .debug_str     0x0000000000000000      0x15c _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/vendor/vendor_device.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/host/usbh.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/host/usbh.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/host/usbh.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/host/usbh.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/host/usbh.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/host/usbh.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/host/usbh.o
+ .debug_str     0x0000000000000000      0x14b _build/f1c100s/obj/src/host/usbh.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/host/usbh.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/host/usbh.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/host/hub.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/host/hub.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/host/hub.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/host/hub.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/host/hub.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/host/hub.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/host/hub.o
+ .debug_str     0x0000000000000000      0x14a _build/f1c100s/obj/src/host/hub.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/host/hub.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/host/hub.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .debug_str     0x0000000000000000      0x154 _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/cdc/cdc_host.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/hid/hid_host.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/hid/hid_host.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/hid/hid_host.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/hid/hid_host.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/hid/hid_host.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/hid/hid_host.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/hid/hid_host.o
+ .debug_str     0x0000000000000000      0x154 _build/f1c100s/obj/src/class/hid/hid_host.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/hid/hid_host.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/hid/hid_host.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/msc/msc_host.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/msc/msc_host.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/msc/msc_host.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/msc/msc_host.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/msc/msc_host.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/msc/msc_host.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/msc/msc_host.o
+ .debug_str     0x0000000000000000      0x154 _build/f1c100s/obj/src/class/msc/msc_host.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/msc/msc_host.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/msc/msc_host.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .debug_info    0x0000000000000000       0x25 _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .debug_abbrev  0x0000000000000000       0x1b _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .debug_aranges
+                0x0000000000000000       0x18 _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .debug_line    0x0000000000000000       0x1d _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .debug_str     0x0000000000000000      0x15a _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/src/class/vendor/vendor_host.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/bsp/board.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/bsp/board.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/bsp/board.o
+ .text._write   0x0000000000000000        0xc _build/f1c100s/obj/hw/bsp/board.o
+ .text._read    0x0000000000000000       0x1c _build/f1c100s/obj/hw/bsp/board.o
+ .text.board_getchar
+                0x0000000000000000       0x28 _build/f1c100s/obj/hw/bsp/board.o
+ .debug_info    0x0000000000000000      0xa78 _build/f1c100s/obj/hw/bsp/board.o
+ .debug_abbrev  0x0000000000000000      0x245 _build/f1c100s/obj/hw/bsp/board.o
+ .debug_loc     0x0000000000000000      0x10d _build/f1c100s/obj/hw/bsp/board.o
+ .debug_aranges
+                0x0000000000000000       0x30 _build/f1c100s/obj/hw/bsp/board.o
+ .debug_ranges  0x0000000000000000       0x20 _build/f1c100s/obj/hw/bsp/board.o
+ .debug_line    0x0000000000000000      0x1c8 _build/f1c100s/obj/hw/bsp/board.o
+ .debug_str     0x0000000000000000      0x5fe _build/f1c100s/obj/hw/bsp/board.o
+ .comment       0x0000000000000000       0x4d _build/f1c100s/obj/hw/bsp/board.o
+ .debug_frame   0x0000000000000000       0x50 _build/f1c100s/obj/hw/bsp/board.o
+ .ARM.attributes
+                0x0000000000000000       0x2b _build/f1c100s/obj/hw/bsp/board.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .text.board_button_read
+                0x0000000000000000        0x8 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .text.board_uart_read
+                0x0000000000000000        0x8 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .text.board_uart_write
+                0x0000000000000000       0x2c _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .text          0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .data          0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .bss           0x0000000000000000        0x0 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+ .ARM.extab     0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzsi2.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzsi2.o)
+ .text          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+ .data          0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-strlen.o)
+ .bss           0x0000000000000000        0x0 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-strlen.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x0000000080000000 0x0000000000800000
+heap             0x0000000081000000 0x0000000001000000
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a
+                0x0000000000010000                STACK_UND_SIZE = 0x10000
+                0x0000000000010000                STACK_ABT_SIZE = 0x10000
+                0x0000000000010000                STACK_IRQ_SIZE = 0x10000
+                0x0000000000010000                STACK_FIQ_SIZE = 0x10000
+                0x0000000000040000                STACK_SRV_SIZE = 0x40000
+
+.bootloader     0x0000000080000000     0x1660
+                [!provide]                        PROVIDE (__bootloader_start = .)
+                0x0000000080000000                PROVIDE (__image_start = .)
+                [!provide]                        PROVIDE (__text_start = .)
+ _build/*/obj/hw/mcu/allwinner/*/machine/start_asm.o(.text)
+ .text          0x0000000080000000      0x3ec _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+                0x0000000080000000                _start
+                0x0000000080000200                return_to_fel
+ _build/*/obj/hw/mcu/allwinner/*/lib/memcpy_asm.o(.text)
+ *fill*         0x00000000800003ec        0x4 
+ .text          0x00000000800003f0      0x48c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+                0x00000000800003f0                memcpy
+ _build/*/obj/hw/mcu/allwinner/*/lib/memset_asm.o(.text)
+ *fill*         0x000000008000087c        0x4 
+ .text          0x0000000080000880       0xa8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+                0x0000000080000880                memset
+ _build/*/obj/hw/mcu/allwinner/*/machine/sys-uart.o(.text*)
+ .text.sys_uart_init
+                0x0000000080000928       0x90 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+                0x0000000080000928                sys_uart_init
+ .text.sys_uart_putc
+                0x00000000800009b8       0x1c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+                0x00000000800009b8                sys_uart_putc
+ _build/*/obj/hw/mcu/allwinner/*/machine/sys-clock.o(.text*)
+ .text.sys_clock_init
+                0x00000000800009d4       0xec _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+                0x00000000800009d4                sys_clock_init
+ _build/*/obj/hw/mcu/allwinner/*/machine/sys-dram.o(.text*)
+ .text.dram_delay_scan
+                0x0000000080000ac0       0x38 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .text.dram_set_autofresh_cycle
+                0x0000000080000af8       0xec _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .text.dram_para_setup
+                0x0000000080000be4       0xbc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .text.dram_scan_readpipe
+                0x0000000080000ca0      0x194 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .text.sys_dram_init
+                0x0000000080000e34      0x400 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+                0x0000000080000e34                sys_dram_init
+ _build/*/obj/hw/mcu/allwinner/*/machine/sys-mmu.o(.text*)
+ .text.sys_mmu_init
+                0x0000000080001234       0xbc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+                0x0000000080001234                sys_mmu_init
+ _build/*/obj/hw/mcu/allwinner/*/machine/sys-spi-flash.o(.text*)
+ .text.sys_spi_transfer
+                0x00000000800012f0       0xbc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .text.sys_spi_flash_init
+                0x00000000800013ac       0xb0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                0x00000000800013ac                sys_spi_flash_init
+ .text.sys_spi_flash_exit
+                0x000000008000145c       0x18 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                0x000000008000145c                sys_spi_flash_exit
+ .text.sys_spi_flash_read
+                0x0000000080001474       0x80 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                0x0000000080001474                sys_spi_flash_read
+ _build/*/obj/hw/mcu/allwinner/*/machine/sys-copyself.o(.text*)
+ .text.sys_copyself
+                0x00000000800014f4      0x16c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+                0x00000000800014f4                sys_copyself
+                [!provide]                        PROVIDE (__bootloader_end = .)
+                0x0000000000001660                __bootloader_size = SIZEOF (.bootloader)
+
+.text           0x0000000080001660     0x6c00
+ *(.text*)
+ .text.usb_phy_write
+                0x0000000080001660       0x80 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.update_free_block_list
+                0x00000000800016e0       0x9c _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.pipe_write_packet
+                0x000000008000177c       0x38 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.pipe_read_packet
+                0x00000000800017b4       0x38 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.pipe_read_write_packet_ff
+                0x00000000800017ec       0xac _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.handle_xfer_in
+                0x0000000080001898      0x118 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.delay_ms
+                0x00000000800019b0       0x28 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.musb_int_mask
+                0x00000000800019d8        0x8 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.musb_int_unmask
+                0x00000000800019e0        0x8 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.process_edpt_n
+                0x00000000800019e8      0x220 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.edpt_n_xfer.isra.0
+                0x0000000080001c08       0x8c _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.dcd_connect
+                0x0000000080001c94       0x18 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001c94                dcd_connect
+ .text.dcd_disconnect
+                0x0000000080001cac       0x18 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001cac                dcd_disconnect
+ .text.dcd_int_enable
+                0x0000000080001cc4        0x8 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001cc4                dcd_int_enable
+ .text.dcd_int_disable
+                0x0000000080001ccc        0x8 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001ccc                dcd_int_disable
+ .text.dcd_set_address
+                0x0000000080001cd4       0x44 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001cd4                dcd_set_address
+ .text.dcd_edpt_open
+                0x0000000080001d18      0x264 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001d18                dcd_edpt_open
+ .text.dcd_edpt_close_all
+                0x0000000080001f7c       0x68 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001f7c                dcd_edpt_close_all
+ .text.dcd_init
+                0x0000000080001fe4      0x128 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080001fe4                dcd_init
+ .text.dcd_edpt_xfer
+                0x000000008000210c      0x238 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x000000008000210c                dcd_edpt_xfer
+ .text.dcd_edpt_stall
+                0x0000000080002344       0x8c _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080002344                dcd_edpt_stall
+ .text.dcd_edpt_clear_stall
+                0x00000000800023d0       0x50 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x00000000800023d0                dcd_edpt_clear_stall
+ .text.dcd_int_handler
+                0x0000000080002420      0x520 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                0x0000000080002420                dcd_int_handler
+ .text.usb_isr_handler
+                0x0000000080002940        0x8 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .text.__fatal_error
+                0x0000000080002948       0x18 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+                0x0000000080002948                __fatal_error
+ .text.__assert_func
+                0x0000000080002960       0x10 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+                0x0000000080002960                __assert_func
+ .text.f1c100s_intc_get_nirq
+                0x0000000080002970       0x18 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002970                f1c100s_intc_get_nirq
+ .text.f1c100s_intc_dispatch
+                0x0000000080002988       0x18 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002988                f1c100s_intc_dispatch
+ .text.arm32_do_fiq
+                0x00000000800029a0       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x00000000800029a0                arm32_do_fiq
+ .text.f1c100s_intc_set_isr
+                0x00000000800029c0       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x00000000800029c0                f1c100s_intc_set_isr
+ .text.f1c100s_intc_enable_irq
+                0x00000000800029d4       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x00000000800029d4                f1c100s_intc_enable_irq
+ .text.f1c100s_intc_disable_irq
+                0x00000000800029fc       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x00000000800029fc                f1c100s_intc_disable_irq
+ .text.f1c100s_intc_mask_irq
+                0x0000000080002a24       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002a24                f1c100s_intc_mask_irq
+ .text.f1c100s_intc_unmask_irq
+                0x0000000080002a4c       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002a4c                f1c100s_intc_unmask_irq
+ .text.f1c100s_intc_clear_pend
+                0x0000000080002a74       0x24 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002a74                f1c100s_intc_clear_pend
+ .text.arm32_do_irq
+                0x0000000080002a98       0x3c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002a98                arm32_do_irq
+ .text.f1c100s_intc_init
+                0x0000000080002ad4       0x60 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                0x0000000080002ad4                f1c100s_intc_init
+ .text.block_next
+                0x0000000080002b34       0x40 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_link_next
+                0x0000000080002b74       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.mapping_insert
+                0x0000000080002b88       0x2c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.block_insert
+                0x0000000080002bb4       0xbc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.tlsf_add_pool
+                0x0000000080002c70       0x5c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .text.do_init_mem_pool
+                0x0000000080002ccc       0xfc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+                0x0000000080002ccc                do_init_mem_pool
+ .text._out_null
+                0x0000000080002dc8        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._ntoa_format
+                0x0000000080002dcc      0x2ac _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._ntoa_long
+                0x0000000080003078       0xf8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._ntoa_long_long
+                0x0000000080003170      0x104 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._vsnprintf
+                0x0000000080003274      0xc08 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text._putchar
+                0x0000000080003e7c       0x24 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+                0x0000000080003e7c                _putchar
+ .text._out_char
+                0x0000000080003ea0        0xc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .text.printf   0x0000000080003eac       0x3c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+                0x0000000080003eac                printf
+ .text.tu_edpt_claim
+                0x0000000080003ee8       0x50 _build/f1c100s/obj/src/tusb.o
+                0x0000000080003ee8                tu_edpt_claim
+ .text.tu_edpt_release
+                0x0000000080003f38       0x30 _build/f1c100s/obj/src/tusb.o
+                0x0000000080003f38                tu_edpt_release
+ .text.tu_edpt_validate
+                0x0000000080003f68       0x94 _build/f1c100s/obj/src/tusb.o
+                0x0000000080003f68                tu_edpt_validate
+ .text.tu_edpt_bind_driver
+                0x0000000080003ffc       0x5c _build/f1c100s/obj/src/tusb.o
+                0x0000000080003ffc                tu_edpt_bind_driver
+ .text.advance_index
+                0x0000000080004058       0x34 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text._tu_fifo_peek
+                0x000000008000408c       0x94 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text._ff_pull_const_addr
+                0x0000000080004120       0x84 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text._tu_fifo_peek_n
+                0x00000000800041a4      0x1d8 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text._ff_push_const_addr
+                0x000000008000437c       0x78 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text._tu_fifo_write_n.part.0
+                0x00000000800043f4      0x274 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .text.tu_fifo_config
+                0x0000000080004668       0x40 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x0000000080004668                tu_fifo_config
+ .text.tu_fifo_count
+                0x00000000800046a8       0x34 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800046a8                tu_fifo_count
+ .text.tu_fifo_empty
+                0x00000000800046dc       0x18 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800046dc                tu_fifo_empty
+ .text.tu_fifo_full
+                0x00000000800046f4       0x34 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800046f4                tu_fifo_full
+ .text.tu_fifo_remaining
+                0x0000000080004728       0x3c _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x0000000080004728                tu_fifo_remaining
+ .text.tu_fifo_read
+                0x0000000080004764       0x38 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x0000000080004764                tu_fifo_read
+ .text.tu_fifo_read_n
+                0x000000008000479c       0x40 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x000000008000479c                tu_fifo_read_n
+ .text.tu_fifo_write
+                0x00000000800047dc       0x80 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800047dc                tu_fifo_write
+ .text.tu_fifo_write_n
+                0x000000008000485c       0x18 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x000000008000485c                tu_fifo_write_n
+ .text.tu_fifo_clear
+                0x0000000080004874       0x14 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x0000000080004874                tu_fifo_clear
+ .text.tu_fifo_set_overwritable
+                0x0000000080004888       0x1c _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x0000000080004888                tu_fifo_set_overwritable
+ .text.tu_fifo_advance_write_pointer
+                0x00000000800048a4       0x20 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800048a4                tu_fifo_advance_write_pointer
+ .text.tu_fifo_advance_read_pointer
+                0x00000000800048c4       0x20 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800048c4                tu_fifo_advance_read_pointer
+ .text.tu_fifo_get_read_info
+                0x00000000800048e4       0xd4 _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800048e4                tu_fifo_get_read_info
+ .text.tu_fifo_get_write_info
+                0x00000000800049b8       0xcc _build/f1c100s/obj/src/common/tusb_fifo.o
+                0x00000000800049b8                tu_fifo_get_write_info
+ .text.configuration_reset
+                0x0000000080004a84       0xb4 _build/f1c100s/obj/src/device/usbd.o
+ .text.invoke_class_control.isra.0
+                0x0000000080004b38       0x30 _build/f1c100s/obj/src/device/usbd.o
+ .text.usbd_int_set
+                0x0000000080004b68       0x20 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004b68                usbd_int_set
+ .text.tud_mounted
+                0x0000000080004b88       0x18 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004b88                tud_mounted
+ .text.tud_suspended
+                0x0000000080004ba0       0x18 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004ba0                tud_suspended
+ .text.tud_init
+                0x0000000080004bb8       0xf0 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004bb8                tud_init
+ .text.dcd_event_handler
+                0x0000000080004ca8      0x208 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004ca8                dcd_event_handler
+ .text.usbd_edpt_open
+                0x0000000080004eb0       0x5c _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004eb0                usbd_edpt_open
+ .text.usbd_open_edpt_pair
+                0x0000000080004f0c       0x88 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004f0c                usbd_open_edpt_pair
+ .text.usbd_edpt_claim
+                0x0000000080004f94       0x24 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004f94                usbd_edpt_claim
+ .text.usbd_edpt_release
+                0x0000000080004fb8       0x24 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004fb8                usbd_edpt_release
+ .text.usbd_edpt_xfer
+                0x0000000080004fdc       0x70 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080004fdc                usbd_edpt_xfer
+ .text.usbd_edpt_busy
+                0x000000008000504c       0x20 _build/f1c100s/obj/src/device/usbd.o
+                0x000000008000504c                usbd_edpt_busy
+ .text.usbd_edpt_stall
+                0x000000008000506c       0x54 _build/f1c100s/obj/src/device/usbd.o
+                0x000000008000506c                usbd_edpt_stall
+ .text.usbd_edpt_clear_stall
+                0x00000000800050c0       0x54 _build/f1c100s/obj/src/device/usbd.o
+                0x00000000800050c0                usbd_edpt_clear_stall
+ .text.tud_task_ext
+                0x0000000080005114      0x91c _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080005114                tud_task_ext
+ .text.usbd_edpt_stalled
+                0x0000000080005a30       0x24 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080005a30                usbd_edpt_stalled
+ .text._data_stage_xact
+                0x0000000080005a54       0x88 _build/f1c100s/obj/src/device/usbd_control.o
+ .text.tud_control_status
+                0x0000000080005adc       0x4c _build/f1c100s/obj/src/device/usbd_control.o
+                0x0000000080005adc                tud_control_status
+ .text.tud_control_xfer
+                0x0000000080005b28       0xa4 _build/f1c100s/obj/src/device/usbd_control.o
+                0x0000000080005b28                tud_control_xfer
+ .text.usbd_control_reset
+                0x0000000080005bcc       0x14 _build/f1c100s/obj/src/device/usbd_control.o
+                0x0000000080005bcc                usbd_control_reset
+ .text.usbd_control_set_complete_callback
+                0x0000000080005be0       0x10 _build/f1c100s/obj/src/device/usbd_control.o
+                0x0000000080005be0                usbd_control_set_complete_callback
+ .text.usbd_control_set_request
+                0x0000000080005bf0       0x2c _build/f1c100s/obj/src/device/usbd_control.o
+                0x0000000080005bf0                usbd_control_set_request
+ .text.usbd_control_xfer_cb
+                0x0000000080005c1c      0x144 _build/f1c100s/obj/src/device/usbd_control.o
+                0x0000000080005c1c                usbd_control_xfer_cb
+ .text._prep_out_transaction
+                0x0000000080005d60       0x68 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .text.tud_cdc_n_available
+                0x0000000080005dc8       0x20 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080005dc8                tud_cdc_n_available
+ .text.tud_cdc_n_read
+                0x0000000080005de8       0x58 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080005de8                tud_cdc_n_read
+ .text.tud_cdc_n_write_flush
+                0x0000000080005e40       0xb4 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080005e40                tud_cdc_n_write_flush
+ .text.tud_cdc_n_write
+                0x0000000080005ef4       0x68 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080005ef4                tud_cdc_n_write
+ .text.cdcd_init
+                0x0000000080005f5c       0x78 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080005f5c                cdcd_init
+ .text.cdcd_reset
+                0x0000000080005fd4       0x40 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080005fd4                cdcd_reset
+ .text.cdcd_open
+                0x0000000080006014      0x128 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x0000000080006014                cdcd_open
+ .text.cdcd_control_xfer_cb
+                0x000000008000613c      0x184 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x000000008000613c                cdcd_control_xfer_cb
+ .text.cdcd_xfer_cb
+                0x00000000800062c0      0x17c _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                0x00000000800062c0                cdcd_xfer_cb
+ .text.set_sense_medium_not_present.isra.0
+                0x000000008000643c       0x20 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .text.fail_scsi_op.constprop.0
+                0x000000008000645c       0x88 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .text.proc_write10_cmd.constprop.0
+                0x00000000800064e4       0x84 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .text.proc_read10_cmd.constprop.0
+                0x0000000080006568      0x108 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .text.rdwr10_validate_cmd
+                0x0000000080006670       0xa0 _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x0000000080006670                rdwr10_validate_cmd
+ .text.tud_msc_set_sense
+                0x0000000080006710       0x1c _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x0000000080006710                tud_msc_set_sense
+ .text.mscd_init
+                0x000000008000672c       0x14 _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x000000008000672c                mscd_init
+ .text.mscd_reset
+                0x0000000080006740       0x14 _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x0000000080006740                mscd_reset
+ .text.mscd_open
+                0x0000000080006754       0xa8 _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x0000000080006754                mscd_open
+ .text.mscd_control_xfer_cb
+                0x00000000800067fc      0x1d0 _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x00000000800067fc                mscd_control_xfer_cb
+ .text.mscd_xfer_cb
+                0x00000000800069cc      0x744 _build/f1c100s/obj/src/class/msc/msc_device.o
+                0x00000000800069cc                mscd_xfer_cb
+ .text.timer_handler
+                0x0000000080007110       0x2c _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .text.board_init
+                0x000000008000713c       0x98 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                0x000000008000713c                board_init
+ .text.board_led_write
+                0x00000000800071d4        0x4 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                0x00000000800071d4                board_led_write
+ .text.board_millis
+                0x00000000800071d8       0x10 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                0x00000000800071d8                board_millis
+ .text.tud_mount_cb
+                0x00000000800071e8       0x14 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x00000000800071e8                tud_mount_cb
+ .text.tud_umount_cb
+                0x00000000800071fc       0x14 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x00000000800071fc                tud_umount_cb
+ .text.tud_suspend_cb
+                0x0000000080007210       0x18 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x0000000080007210                tud_suspend_cb
+ .text.tud_resume_cb
+                0x0000000080007228       0x24 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x0000000080007228                tud_resume_cb
+ .text.cdc_task
+                0x000000008000724c       0x48 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x000000008000724c                cdc_task
+ .text.tud_cdc_line_state_cb
+                0x0000000080007294        0x4 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x0000000080007294                tud_cdc_line_state_cb
+ .text.tud_cdc_rx_cb
+                0x0000000080007298        0x4 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x0000000080007298                tud_cdc_rx_cb
+ .text.led_blinking_task
+                0x000000008000729c       0x54 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x000000008000729c                led_blinking_task
+ .text.startup.main
+                0x00000000800072f0       0x3c _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                0x00000000800072f0                main
+ .text.tud_msc_inquiry_cb
+                0x000000008000732c       0x98 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x000000008000732c                tud_msc_inquiry_cb
+ .text.tud_msc_test_unit_ready_cb
+                0x00000000800073c4       0x38 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x00000000800073c4                tud_msc_test_unit_ready_cb
+ .text.tud_msc_capacity_cb
+                0x00000000800073fc       0x14 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x00000000800073fc                tud_msc_capacity_cb
+ .text.tud_msc_start_stop_cb
+                0x0000000080007410       0x20 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x0000000080007410                tud_msc_start_stop_cb
+ .text.tud_msc_read10_cb
+                0x0000000080007430       0x38 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x0000000080007430                tud_msc_read10_cb
+ .text.tud_msc_is_writable_cb
+                0x0000000080007468        0x8 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x0000000080007468                tud_msc_is_writable_cb
+ .text.tud_msc_write10_cb
+                0x0000000080007470       0x3c _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x0000000080007470                tud_msc_write10_cb
+ .text.tud_msc_scsi_cb
+                0x00000000800074ac       0x1c _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x00000000800074ac                tud_msc_scsi_cb
+ .text.tud_descriptor_device_cb
+                0x00000000800074c8        0xc _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                0x00000000800074c8                tud_descriptor_device_cb
+ .text.tud_descriptor_configuration_cb
+                0x00000000800074d4        0xc _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                0x00000000800074d4                tud_descriptor_configuration_cb
+ .text.tud_descriptor_string_cb
+                0x00000000800074e0      0x160 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                0x00000000800074e0                tud_descriptor_string_cb
+ .text          0x0000000080007640      0x290 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+                0x0000000080007640                __aeabi_dmul
+                0x0000000080007640                __muldf3
+ .text          0x00000000800078d0      0x114 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+                0x00000000800078d0                __udivsi3
+                0x00000000800078d0                __aeabi_uidiv
+                0x00000000800079c4                __aeabi_uidivmod
+ .text          0x00000000800079e4        0x4 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+                0x00000000800079e4                __aeabi_ldiv0
+                0x00000000800079e4                __aeabi_idiv0
+ .text          0x00000000800079e8      0x424 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+                0x00000000800079e8                __aeabi_drsub
+                0x00000000800079f0                __subdf3
+                0x00000000800079f0                __aeabi_dsub
+                0x00000000800079f4                __aeabi_dadd
+                0x00000000800079f4                __adddf3
+                0x0000000080007d04                __aeabi_ui2d
+                0x0000000080007d04                __floatunsidf
+                0x0000000080007d28                __floatsidf
+                0x0000000080007d28                __aeabi_i2d
+                0x0000000080007d50                __extendsfdf2
+                0x0000000080007d50                __aeabi_f2d
+                0x0000000080007d98                __aeabi_ul2d
+                0x0000000080007d98                __floatundidf
+                0x0000000080007dac                __aeabi_l2d
+                0x0000000080007dac                __floatdidf
+ .text          0x0000000080007e0c      0x144 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+                0x0000000080007e0c                __gedf2
+                0x0000000080007e0c                __gtdf2
+                0x0000000080007e14                __ledf2
+                0x0000000080007e14                __ltdf2
+                0x0000000080007e1c                __cmpdf2
+                0x0000000080007e1c                __eqdf2
+                0x0000000080007e1c                __nedf2
+                0x0000000080007ea4                __aeabi_cdrcmple
+                0x0000000080007ec0                __aeabi_cdcmple
+                0x0000000080007ec0                __aeabi_cdcmpeq
+                0x0000000080007ed8                __aeabi_dcmpeq
+                0x0000000080007ef0                __aeabi_dcmplt
+                0x0000000080007f08                __aeabi_dcmple
+                0x0000000080007f20                __aeabi_dcmpge
+                0x0000000080007f38                __aeabi_dcmpgt
+ .text          0x0000000080007f50       0x5c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+                0x0000000080007f50                __fixdfsi
+                0x0000000080007f50                __aeabi_d2iz
+ .text          0x0000000080007fac       0x54 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+                0x0000000080007fac                __fixunsdfsi
+                0x0000000080007fac                __aeabi_d2uiz
+ .text          0x0000000080008000       0x3c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+                0x0000000080008000                __aeabi_uldivmod
+ .text          0x000000008000803c       0x14 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+                0x000000008000803c                __bswapsi2
+ .text          0x0000000080008050      0x130 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+                0x0000000080008050                __udivmoddi4
+ .text          0x0000000080008180       0x28 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+                0x0000000080008180                __clzdi2
+ .text          0x00000000800081a8       0x48 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzsi2.o)
+                0x00000000800081a8                __clzsi2
+ .text.memmove  0x00000000800081f0       0x4c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+                0x00000000800081f0                memmove
+ .text          0x000000008000823c        0xe /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-strlen.o)
+                0x000000008000823c                strlen
+ *fill*         0x000000008000824a        0x6 
+ .text.__stub   0x0000000080008250        0xc linker stubs
+ *(.glue*)
+ .glue_7        0x0000000080008260        0x0 linker stubs
+ .glue_7t       0x0000000080008260        0x0 linker stubs
+ *(.note.gnu.build-id)
+                [!provide]                        PROVIDE (__text_end = .)
+
+.vfp11_veneer   0x0000000080008260        0x0
+ .vfp11_veneer  0x0000000080008260        0x0 linker stubs
+
+.v4_bx          0x0000000080008260        0x0
+ .v4_bx         0x0000000080008260        0x0 linker stubs
+
+.iplt           0x0000000080008260        0x0
+ .iplt          0x0000000080008260        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+
+.rodata         0x0000000080008260      0x2c7
+                [!provide]                        PROVIDE (__rodata_start = .)
+ *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata*)))
+ .rodata.pow10.3834
+                0x0000000080008260       0x50 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .rodata._usbd_driver
+                0x00000000800082b0       0x30 _build/f1c100s/obj/src/device/usbd.o
+ .rodata.ops.7195
+                0x00000000800082e0       0x18 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .rodata.__assert_func.str1.1
+                0x00000000800082f8       0x11 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .rodata.__compound_literal.0
+                0x0000000080008309        0x2 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .rodata.__fatal_error.str1.1
+                0x000000008000830b        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .rodata.__func__.4229
+                0x000000008000830f        0xb _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.__func__.4303
+                0x000000008000831a       0x12 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.align_ptr.part.0.str1.1
+                0x000000008000832c       0x81 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_insert.str1.1
+                0x00000000800083ad       0x92 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.block_next.str1.1
+                0x000000008000843f       0x16 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .rodata.board_init.str1.1
+                0x0000000080008455       0x11 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .rodata.desc_device
+                0x0000000080008466       0x12 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                0x0000000080008466                desc_device
+ .rodata.desc_fs_configuration
+                0x0000000080008478       0x62 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                0x0000000080008478                desc_fs_configuration
+ .rodata.str1.1
+                0x00000000800084da       0x27 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                         0x2f (size before relaxing)
+ .rodata.tud_descriptor_string_cb.str1.1
+                0x0000000080008501       0x11 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .rodata.tud_msc_inquiry_cb.str1.1
+                0x0000000080008512       0x15 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                [!provide]                        PROVIDE (__rodata_end = .)
+
+.data_shadow    0x0000000080008528        0x0
+                0x0000000080008528                PROVIDE (__data_shadow_start = .)
+                0x000000008000a558                PROVIDE (__data_shadow_end = (. + SIZEOF (.data)))
+                0x000000008000a558                PROVIDE (__image_end = __data_shadow_end)
+
+.data           0x0000000080008528     0x2030
+                0x0000000080008528                PROVIDE (__data_start = .)
+ *(.data*)
+ .data._usbd_qdef
+                0x0000000080008528       0x10 _build/f1c100s/obj/src/device/usbd.o
+                0x0000000080008528                _usbd_qdef
+ .data._usbd_rhport
+                0x0000000080008538        0x1 _build/f1c100s/obj/src/device/usbd.o
+ *fill*         0x0000000080008539        0x3 
+ .data.blink_interval_ms
+                0x000000008000853c        0x4 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .data.msc_disk
+                0x0000000080008540     0x2000 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                0x0000000080008540                msc_disk
+ .data.string_desc_arr
+                0x000000008000a540       0x18 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                0x000000008000a540                string_desc_arr
+                0x000000008000a558                . = ALIGN (0x8)
+                0x000000008000a558                PROVIDE (__data_end = .)
+
+.igot.plt       0x000000008000a558        0x0
+ .igot.plt      0x000000008000a558        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+
+.ARM.exidx      0x000000008000a558        0x8
+                [!provide]                        PROVIDE (__exidx_start = .)
+ *(.ARM.exidx*)
+ .ARM.exidx     0x000000008000a558        0x8 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+                [!provide]                        PROVIDE (__exidx_end = .)
+
+.rel.dyn        0x000000008000a560        0x0
+ .rel.iplt      0x000000008000a560        0x0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+
+.ARM.extab      0x000000008000a560        0x0
+                [!provide]                        PROVIDE (__extab_start = .)
+ *(.ARM.extab*)
+                [!provide]                        PROVIDE (__extab_end = .)
+
+.bss            0x000000008000a560      0x6a0
+                0x000000008000a560                PROVIDE (__bss_start = .)
+ *(.bss*)
+ .bss._dcd      0x000000008000a560       0x88 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ *fill*         0x000000008000a5e8       0x18 
+ .bss.irq_table
+                0x000000008000a600      0x100 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .bss.__heap_pool
+                0x000000008000a700        0x4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .bss._app_driver
+                0x000000008000a704        0x4 _build/f1c100s/obj/src/device/usbd.o
+ .bss._app_driver_count
+                0x000000008000a708        0x1 _build/f1c100s/obj/src/device/usbd.o
+ .bss._usbd_dev
+                0x000000008000a709       0x23 _build/f1c100s/obj/src/device/usbd.o
+ .bss._usbd_q   0x000000008000a72c        0x4 _build/f1c100s/obj/src/device/usbd.o
+ .bss._ctrl_xfer
+                0x000000008000a730       0x14 _build/f1c100s/obj/src/device/usbd_control.o
+ .bss._usbd_ctrl_buf
+                0x000000008000a744       0x40 _build/f1c100s/obj/src/device/usbd_control.o
+ .bss._cdcd_itf
+                0x000000008000a784      0x128 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .bss._mscd_buf
+                0x000000008000a8ac      0x200 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .bss._mscd_itf
+                0x000000008000aaac       0x40 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .bss.system_ticks
+                0x000000008000aaec        0x4 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                0x000000008000aaec                system_ticks
+ .bss.led_state.7234
+                0x000000008000aaf0        0x1 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ *fill*         0x000000008000aaf1        0x3 
+ .bss.start_ms.7233
+                0x000000008000aaf4        0x4 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .bss.ejected   0x000000008000aaf8        0x1 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ *fill*         0x000000008000aaf9        0x1 
+ .bss._desc_str
+                0x000000008000aafa       0x42 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ *(.sbss*)
+ *(COMMON)
+ COMMON         0x000000008000ab3c       0xc0 _build/f1c100s/obj/src/device/usbd.o
+                0x000000008000ab3c                _usbd_qdef_buf
+                0x000000008000ac00                . = ALIGN (0x8)
+ *fill*         0x000000008000abfc        0x4 
+                0x000000008000ac00                PROVIDE (__bss_end = .)
+
+.stack          0x000000008000ac00    0x80000
+                [!provide]                        PROVIDE (__stack_start = .)
+                [!provide]                        PROVIDE (__stack_und_start = .)
+                0x000000008001ac00                . = (. + STACK_UND_SIZE)
+ *fill*         0x000000008000ac00    0x10000 
+                0x000000008001ac00                PROVIDE (__stack_und_end = .)
+                0x000000008001ac00                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__stack_abt_start = .)
+                0x000000008002ac00                . = (. + STACK_ABT_SIZE)
+ *fill*         0x000000008001ac00    0x10000 
+                0x000000008002ac00                PROVIDE (__stack_abt_end = .)
+                0x000000008002ac00                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__stack_irq_start = .)
+                0x000000008003ac00                . = (. + STACK_IRQ_SIZE)
+ *fill*         0x000000008002ac00    0x10000 
+                0x000000008003ac00                PROVIDE (__stack_irq_end = .)
+                0x000000008003ac00                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__stack_fiq_start = .)
+                0x000000008004ac00                . = (. + STACK_FIQ_SIZE)
+ *fill*         0x000000008003ac00    0x10000 
+                0x000000008004ac00                PROVIDE (__stack_fiq_end = .)
+                0x000000008004ac00                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__stack_srv_start = .)
+                0x000000008008ac00                . = (. + STACK_SRV_SIZE)
+ *fill*         0x000000008004ac00    0x40000 
+                0x000000008008ac00                PROVIDE (__stack_srv_end = .)
+                0x000000008008ac00                . = ALIGN (0x8)
+                [!provide]                        PROVIDE (__stack_end = .)
+
+.heap           0x000000008008ac00        0x0
+                0x0000000081000000                PROVIDE (__heap_start = ORIGIN (heap))
+                0x0000000082000000                PROVIDE (__heap_end = (ORIGIN (heap) + LENGTH (heap)))
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x4c
+ *(.comment)
+ .comment       0x0000000000000000       0x4c _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                         0x4d (size before relaxing)
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/src/tusb.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/src/common/tusb_fifo.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/src/device/usbd.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/src/device/usbd_control.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/src/class/msc/msc_device.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .comment       0x000000000000004c       0x4d _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+
+.ARM.attributes
+                0x0000000000000000       0x27
+ .ARM.attributes
+                0x0000000000000000       0x1b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .ARM.attributes
+                0x000000000000001b       0x1b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .ARM.attributes
+                0x0000000000000036       0x1b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .ARM.attributes
+                0x0000000000000051       0x2b _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .ARM.attributes
+                0x000000000000007c       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .ARM.attributes
+                0x00000000000000a7       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .ARM.attributes
+                0x00000000000000d2       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .ARM.attributes
+                0x00000000000000fd       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .ARM.attributes
+                0x0000000000000128       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .ARM.attributes
+                0x0000000000000153       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .ARM.attributes
+                0x000000000000017e       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .ARM.attributes
+                0x00000000000001a9       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .ARM.attributes
+                0x00000000000001d4       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .ARM.attributes
+                0x00000000000001ff       0x2b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .ARM.attributes
+                0x000000000000022a       0x2b _build/f1c100s/obj/src/tusb.o
+ .ARM.attributes
+                0x0000000000000255       0x2b _build/f1c100s/obj/src/common/tusb_fifo.o
+ .ARM.attributes
+                0x0000000000000280       0x2b _build/f1c100s/obj/src/device/usbd.o
+ .ARM.attributes
+                0x00000000000002ab       0x2b _build/f1c100s/obj/src/device/usbd_control.o
+ .ARM.attributes
+                0x00000000000002d6       0x2b _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .ARM.attributes
+                0x0000000000000301       0x2b _build/f1c100s/obj/src/class/msc/msc_device.o
+ .ARM.attributes
+                0x000000000000032c       0x2b _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .ARM.attributes
+                0x0000000000000357       0x2b _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .ARM.attributes
+                0x0000000000000382       0x2b _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .ARM.attributes
+                0x00000000000003ad       0x2b _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .ARM.attributes
+                0x00000000000003d8       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+ .ARM.attributes
+                0x00000000000003f4       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x0000000000000410       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000000000000042c       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x0000000000000448       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+ .ARM.attributes
+                0x0000000000000464       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+ .ARM.attributes
+                0x0000000000000480       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+ .ARM.attributes
+                0x000000000000049c       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+ .ARM.attributes
+                0x00000000000004b8       0x2a /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+ .ARM.attributes
+                0x00000000000004e2       0x2a /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x000000000000050c       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+ .ARM.attributes
+                0x0000000000000528       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzsi2.o)
+ .ARM.attributes
+                0x0000000000000544       0x2a /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x000000000000056e       0x1c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-strlen.o)
+
+.debug_abbrev   0x0000000000000000     0x4fcd
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .debug_abbrev  0x0000000000000014       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .debug_abbrev  0x0000000000000028       0x14 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .debug_abbrev  0x000000000000003c      0x6c5 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_abbrev  0x0000000000000701      0x124 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_abbrev  0x0000000000000825      0x2c4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_abbrev  0x0000000000000ae9      0x144 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_abbrev  0x0000000000000c2d      0x14b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_abbrev  0x0000000000000d78      0x345 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_abbrev  0x00000000000010bd      0x1a1 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_abbrev  0x000000000000125e      0x38c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_abbrev  0x00000000000015ea      0x2f9 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_abbrev  0x00000000000018e3      0x55e _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_abbrev  0x0000000000001e41      0x419 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_abbrev  0x000000000000225a      0x4dc _build/f1c100s/obj/src/tusb.o
+ .debug_abbrev  0x0000000000002736      0x56d _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_abbrev  0x0000000000002ca3      0x66b _build/f1c100s/obj/src/device/usbd.o
+ .debug_abbrev  0x000000000000330e      0x3e4 _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_abbrev  0x00000000000036f2      0x55a _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_abbrev  0x0000000000003c4c      0x624 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_abbrev  0x0000000000004270      0x338 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_abbrev  0x00000000000045a8      0x3aa _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_abbrev  0x0000000000004952      0x2fb _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_abbrev  0x0000000000004c4d      0x380 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+
+.debug_info     0x0000000000000000    0x1fc8d
+ *(.debug_info)
+ .debug_info    0x0000000000000000       0x26 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .debug_info    0x0000000000000026       0x26 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .debug_info    0x000000000000004c       0x26 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .debug_info    0x0000000000000072     0x3b9f _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_info    0x0000000000003c11      0x511 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_info    0x0000000000004122      0xb95 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_info    0x0000000000004cb7      0x5b5 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_info    0x000000000000526c      0x48d _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_info    0x00000000000056f9     0x132c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_info    0x0000000000006a25      0x4a6 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_info    0x0000000000006ecb     0x13d6 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_info    0x00000000000082a1      0xd6c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_info    0x000000000000900d     0x3eac _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_info    0x000000000000ceb9     0x12fb _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_info    0x000000000000e1b4     0x1a5f _build/f1c100s/obj/src/tusb.o
+ .debug_info    0x000000000000fc13     0x265d _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_info    0x0000000000012270     0x3b05 _build/f1c100s/obj/src/device/usbd.o
+ .debug_info    0x0000000000015d75     0x1171 _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_info    0x0000000000016ee6     0x204a _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_info    0x0000000000018f30     0x3378 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_info    0x000000000001c2a8      0xbf5 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_info    0x000000000001ce9d      0xd85 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_info    0x000000000001dc22      0xf38 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_info    0x000000000001eb5a     0x1133 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+
+.debug_line     0x0000000000000000     0xce5f
+ *(.debug_line)
+ .debug_line    0x0000000000000000      0x128 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .debug_line    0x0000000000000128      0x195 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .debug_line    0x00000000000002bd       0x9c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .debug_line    0x0000000000000359     0x1cea _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_line    0x0000000000002043      0x3ca _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_line    0x000000000000240d      0x359 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_line    0x0000000000002766      0x392 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_line    0x0000000000002af8      0x18a _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_line    0x0000000000002c82      0xd96 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_line    0x0000000000003a18      0x2ab _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_line    0x0000000000003cc3      0x76e _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_line    0x0000000000004431      0x413 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_line    0x0000000000004844     0x1319 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_line    0x0000000000005b5d      0xd63 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_line    0x00000000000068c0      0x984 _build/f1c100s/obj/src/tusb.o
+ .debug_line    0x0000000000007244      0xeff _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_line    0x0000000000008143     0x1a00 _build/f1c100s/obj/src/device/usbd.o
+ .debug_line    0x0000000000009b43      0x5a4 _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_line    0x000000000000a0e7      0xac1 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_line    0x000000000000aba8     0x121d _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_line    0x000000000000bdc5      0x38d _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_line    0x000000000000c152      0x4df _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_line    0x000000000000c631      0x3d6 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_line    0x000000000000ca07      0x458 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_aranges  0x0000000000000000      0x9f0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .debug_aranges
+                0x0000000000000020       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+ .debug_aranges
+                0x0000000000000040       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+ .debug_aranges
+                0x0000000000000060      0x100 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_aranges
+                0x0000000000000160       0x28 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_aranges
+                0x0000000000000188       0x38 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_aranges
+                0x00000000000001c0       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_aranges
+                0x00000000000001e0       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_aranges
+                0x0000000000000200       0x40 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_aranges
+                0x0000000000000240       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_aranges
+                0x0000000000000260       0x38 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_aranges
+                0x0000000000000298       0x78 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_aranges
+                0x0000000000000310      0x128 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_aranges
+                0x0000000000000438       0x88 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_aranges
+                0x00000000000004c0       0x98 _build/f1c100s/obj/src/tusb.o
+ .debug_aranges
+                0x0000000000000558       0xf0 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_aranges
+                0x0000000000000648      0x108 _build/f1c100s/obj/src/device/usbd.o
+ .debug_aranges
+                0x0000000000000750       0x50 _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_aranges
+                0x00000000000007a0       0xa8 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_aranges
+                0x0000000000000848       0x70 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_aranges
+                0x00000000000008b8       0x50 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_aranges
+                0x0000000000000908       0x60 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_aranges
+                0x0000000000000968       0x58 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_aranges
+                0x00000000000009c0       0x30 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+LOAD _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+LOAD _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+LOAD _build/f1c100s/obj/src/tusb.o
+LOAD _build/f1c100s/obj/src/common/tusb_fifo.o
+LOAD _build/f1c100s/obj/src/device/usbd.o
+LOAD _build/f1c100s/obj/src/device/usbd_control.o
+LOAD _build/f1c100s/obj/src/typec/usbc.o
+LOAD _build/f1c100s/obj/src/class/audio/audio_device.o
+LOAD _build/f1c100s/obj/src/class/cdc/cdc_device.o
+LOAD _build/f1c100s/obj/src/class/dfu/dfu_device.o
+LOAD _build/f1c100s/obj/src/class/dfu/dfu_rt_device.o
+LOAD _build/f1c100s/obj/src/class/hid/hid_device.o
+LOAD _build/f1c100s/obj/src/class/midi/midi_device.o
+LOAD _build/f1c100s/obj/src/class/msc/msc_device.o
+LOAD _build/f1c100s/obj/src/class/net/ecm_rndis_device.o
+LOAD _build/f1c100s/obj/src/class/net/ncm_device.o
+LOAD _build/f1c100s/obj/src/class/usbtmc/usbtmc_device.o
+LOAD _build/f1c100s/obj/src/class/video/video_device.o
+LOAD _build/f1c100s/obj/src/class/vendor/vendor_device.o
+LOAD _build/f1c100s/obj/src/host/usbh.o
+LOAD _build/f1c100s/obj/src/host/hub.o
+LOAD _build/f1c100s/obj/src/class/cdc/cdc_host.o
+LOAD _build/f1c100s/obj/src/class/hid/hid_host.o
+LOAD _build/f1c100s/obj/src/class/msc/msc_host.o
+LOAD _build/f1c100s/obj/src/class/vendor/vendor_host.o
+LOAD _build/f1c100s/obj/hw/bsp/board.o
+LOAD _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+LOAD _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+LOAD _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+LOAD _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+START GROUP
+LOAD /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a
+LOAD /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libm.a
+LOAD /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libnosys.a
+LOAD /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a
+END GROUP
+OUTPUT(_build/f1c100s/cdc_msc.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_str      0x0000000000000000     0x57dc
+ .debug_str     0x0000000000000000       0x8b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+ .debug_str     0x000000000000008b       0x44 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+                                         0x88 (size before relaxing)
+ .debug_str     0x00000000000000cf       0x44 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+                                         0x88 (size before relaxing)
+ .debug_str     0x0000000000000113     0x10a9 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                       0x1264 (size before relaxing)
+ .debug_str     0x00000000000011bc       0x7b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+                                        0x244 (size before relaxing)
+ .debug_str     0x0000000000001237       0xfd _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+                                        0x69e (size before relaxing)
+ .debug_str     0x0000000000001334       0x8e _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+                                        0x271 (size before relaxing)
+ .debug_str     0x00000000000013c2      0x109 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+                                        0x2c6 (size before relaxing)
+ .debug_str     0x00000000000014cb      0x1e5 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+                                        0x3fe (size before relaxing)
+ .debug_str     0x00000000000016b0      0x11b _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+                                        0x2f6 (size before relaxing)
+ .debug_str     0x00000000000017cb      0x138 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                                        0x73f (size before relaxing)
+ .debug_str     0x0000000000001903      0x192 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                        0x7cd (size before relaxing)
+ .debug_str     0x0000000000001a95      0x62f _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+                                        0xc49 (size before relaxing)
+ .debug_str     0x00000000000020c4      0x190 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+                                        0x3a8 (size before relaxing)
+ .debug_str     0x0000000000002254      0x600 _build/f1c100s/obj/src/tusb.o
+                                        0xde2 (size before relaxing)
+ .debug_str     0x0000000000002854      0x3a7 _build/f1c100s/obj/src/common/tusb_fifo.o
+                                        0xa72 (size before relaxing)
+ .debug_str     0x0000000000002bfb      0xadd _build/f1c100s/obj/src/device/usbd.o
+                                       0x1962 (size before relaxing)
+ .debug_str     0x00000000000036d8      0x120 _build/f1c100s/obj/src/device/usbd_control.o
+                                        0x942 (size before relaxing)
+ .debug_str     0x00000000000037f8      0xb4d _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                       0x182c (size before relaxing)
+ .debug_str     0x0000000000004345      0xb05 _build/f1c100s/obj/src/class/msc/msc_device.o
+                                       0x1a93 (size before relaxing)
+ .debug_str     0x0000000000004e4a       0xf5 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                        0x70b (size before relaxing)
+ .debug_str     0x0000000000004f3f      0x125 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                        0x7e3 (size before relaxing)
+ .debug_str     0x0000000000005064       0x86 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                        0x8c7 (size before relaxing)
+ .debug_str     0x00000000000050ea      0x6f2 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                       0x1413 (size before relaxing)
+
+.debug_loc      0x0000000000000000    0x11855
+ .debug_loc     0x0000000000000000     0x26df _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_loc     0x00000000000026df      0x3d8 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_loc     0x0000000000002ab7      0x13c _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_loc     0x0000000000002bf3      0x45f _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_loc     0x0000000000003052       0x39 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_loc     0x000000000000308b     0x10fe _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_loc     0x0000000000004189      0x1a9 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_loc     0x0000000000004332      0x896 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_loc     0x0000000000004bc8      0x1cc _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_loc     0x0000000000004d94     0x2f96 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_loc     0x0000000000007d2a     0x1a16 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_loc     0x0000000000009740      0x943 _build/f1c100s/obj/src/tusb.o
+ .debug_loc     0x000000000000a083     0x211e _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_loc     0x000000000000c1a1     0x20da _build/f1c100s/obj/src/device/usbd.o
+ .debug_loc     0x000000000000e27b      0x4c9 _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_loc     0x000000000000e744      0xbef _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_loc     0x000000000000f333     0x1bcd _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_loc     0x0000000000010f00      0x130 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_loc     0x0000000000011030       0x85 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_loc     0x00000000000110b5      0x4dd _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_loc     0x0000000000011592      0x2c3 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+
+.debug_ranges   0x0000000000000000     0x2a78
+ .debug_ranges  0x0000000000000000      0x868 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_ranges  0x0000000000000868       0x60 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_ranges  0x00000000000008c8       0x48 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_ranges  0x0000000000000910       0x70 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_ranges  0x0000000000000980       0x30 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_ranges  0x00000000000009b0      0x238 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_ranges  0x0000000000000be8       0x90 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_ranges  0x0000000000000c78      0x138 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_ranges  0x0000000000000db0       0x68 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_ranges  0x0000000000000e18      0x628 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_ranges  0x0000000000001440      0x200 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_ranges  0x0000000000001640      0x158 _build/f1c100s/obj/src/tusb.o
+ .debug_ranges  0x0000000000001798      0x2b0 _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_ranges  0x0000000000001a48      0x770 _build/f1c100s/obj/src/device/usbd.o
+ .debug_ranges  0x00000000000021b8       0xd8 _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_ranges  0x0000000000002290      0x198 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_ranges  0x0000000000002428      0x478 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_ranges  0x00000000000028a0       0x58 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_ranges  0x00000000000028f8       0xa0 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_ranges  0x0000000000002998       0x48 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_ranges  0x00000000000029e0       0x98 _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+
+.debug_frame    0x0000000000000000     0x1c4c
+ .debug_frame   0x0000000000000000      0x32c _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+ .debug_frame   0x000000000000032c       0x30 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+ .debug_frame   0x000000000000035c       0x90 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+ .debug_frame   0x00000000000003ec       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+ .debug_frame   0x000000000000040c       0x40 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+ .debug_frame   0x000000000000044c       0xa0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+ .debug_frame   0x00000000000004ec       0x20 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+ .debug_frame   0x000000000000050c       0x70 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+ .debug_frame   0x000000000000057c       0xe4 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+ .debug_frame   0x0000000000000660      0x364 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+ .debug_frame   0x00000000000009c4      0x1f0 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+ .debug_frame   0x0000000000000bb4      0x184 _build/f1c100s/obj/src/tusb.o
+ .debug_frame   0x0000000000000d38      0x27c _build/f1c100s/obj/src/common/tusb_fifo.o
+ .debug_frame   0x0000000000000fb4      0x32c _build/f1c100s/obj/src/device/usbd.o
+ .debug_frame   0x00000000000012e0       0xfc _build/f1c100s/obj/src/device/usbd_control.o
+ .debug_frame   0x00000000000013dc      0x1f0 _build/f1c100s/obj/src/class/cdc/cdc_device.o
+ .debug_frame   0x00000000000015cc      0x148 _build/f1c100s/obj/src/class/msc/msc_device.o
+ .debug_frame   0x0000000000001714       0x94 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+ .debug_frame   0x00000000000017a8       0xc4 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+ .debug_frame   0x000000000000186c       0xd0 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+ .debug_frame   0x000000000000193c       0x5c _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+ .debug_frame   0x0000000000001998       0x30 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+ .debug_frame   0x00000000000019c8       0x20 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000000000019e8       0xac /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+ .debug_frame   0x0000000000001a94       0xc4 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+ .debug_frame   0x0000000000001b58       0x24 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+ .debug_frame   0x0000000000001b7c       0x24 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+ .debug_frame   0x0000000000001ba0       0x2c /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000000000001bcc       0x20 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+ .debug_frame   0x0000000000001bec       0x40 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000000000001c2c       0x20 /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+
+Cross Reference Table
+
+Symbol                                            File
+USBC_SelectBus                                    _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+__adddf3                                          /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__aeabi_cdcmpeq                                   /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__aeabi_cdcmple                                   /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__aeabi_cdrcmple                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__aeabi_d2iz                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_d2uiz                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_dadd                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__aeabi_dcmpeq                                    /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_dcmpge                                    /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__aeabi_dcmpgt                                    /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_dcmple                                    /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_dcmplt                                    /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_dmul                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_drsub                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__aeabi_dsub                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_f2d                                       /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__aeabi_i2d                                       /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_idiv0                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+                                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+__aeabi_l2d                                       /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__aeabi_ldiv0                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_dvmd_tls.o)
+                                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+__aeabi_ui2d                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_uidiv                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+__aeabi_uidivmod                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__aeabi_ul2d                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__aeabi_uldivmod                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+__assert_func                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+__bootloader_size                                 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__bss_end                                         _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__bss_start                                       _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__bswapsi2                                        /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_bswapsi2.o)
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+__clzdi2                                          /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+                                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+__clzsi2                                          /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzsi2.o)
+                                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_clzdi2.o)
+__cmpdf2                                          /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__data_end                                        _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__data_shadow_end                                 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__data_shadow_start                               _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__data_start                                      _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__eqdf2                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__extendsfdf2                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__fatal_error                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+__fixdfsi                                         /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixdfsi.o)
+__fixunsdfsi                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_fixunsdfsi.o)
+__floatdidf                                       /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__floatsidf                                       /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__floatundidf                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__floatunsidf                                     /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__gedf2                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__gtdf2                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__heap_end                                        _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+__heap_start                                      _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+__image_end                                       _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__image_start                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__ledf2                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__ltdf2                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__muldf3                                          /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_muldf3.o)
+__nedf2                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_cmpdf2.o)
+__stack_abt_end                                   _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__stack_fiq_end                                   _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__stack_irq_end                                   _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__stack_srv_end                                   _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__stack_und_end                                   _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+__subdf3                                          /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_arm_addsubdf3.o)
+__udivmoddi4                                      /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivmoddi4.o)
+                                                  /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_aeabi_uldivmod.o)
+__udivsi3                                         /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/libgcc.a(_udivsi3.o)
+_putchar                                          _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+_read                                             _build/f1c100s/obj/hw/bsp/board.o
+_start                                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+_usbd_qdef                                        _build/f1c100s/obj/src/device/usbd.o
+_usbd_qdef_buf                                    _build/f1c100s/obj/src/device/usbd.o
+_write                                            _build/f1c100s/obj/hw/bsp/board.o
+arm32_do_data_abort                               _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+arm32_do_fiq                                      _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+arm32_do_irq                                      _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+arm32_do_prefetch_abort                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+arm32_do_software_interrupt                       _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+arm32_do_undefined_instruction                    _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+board_button_read                                 _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+board_get_unique_id                               _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+board_getchar                                     _build/f1c100s/obj/hw/bsp/board.o
+board_init                                        _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+board_init_after_tusb                             _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+board_led_write                                   _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+board_millis                                      _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+board_uart_read                                   _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/hw/bsp/board.o
+board_uart_write                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/hw/bsp/board.o
+calloc                                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+cdc_task                                          _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+cdcd_control_xfer_cb                              _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+cdcd_init                                         _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+cdcd_open                                         _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+cdcd_reset                                        _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+cdcd_xfer_cb                                      _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_connect                                       _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_disconnect                                    _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt0_status_complete                         _build/f1c100s/obj/src/device/usbd_control.o
+dcd_edpt_clear_stall                              _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_close                                    _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_close_all                                _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_iso_activate                             _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_iso_alloc                                _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_open                                     _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_stall                                    _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_xfer                                     _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_edpt_xfer_fifo                                _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_event_handler                                 _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+dcd_init                                          _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_int_disable                                   _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_int_enable                                    _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_int_handler                                   _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+dcd_remote_wakeup                                 _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_set_address                                   _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+dcd_sof_enable                                    _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+desc_device                                       _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+desc_fs_configuration                             _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+do_init_mem_pool                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+                                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+f1c100s_intc_clear_pend                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+f1c100s_intc_disable_irq                          _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+f1c100s_intc_dispatch                             _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+f1c100s_intc_enable_irq                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+f1c100s_intc_force_irq                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+f1c100s_intc_get_nirq                             _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+f1c100s_intc_init                                 _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+f1c100s_intc_mask_irq                             _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+f1c100s_intc_set_isr                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+f1c100s_intc_unmask_irq                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/f1c100s-intc.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+fctprintf                                         _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+free                                              _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+led_blinking_task                                 _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+main                                              _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+malloc                                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+memalign                                          _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+memcpy                                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memcpy_asm.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+memmove                                           /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-memmove.o)
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+memset                                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/memset_asm.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+mm_add_pool                                       _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_create                                         _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_destroy                                        _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_free                                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_get_pool                                       _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_malloc                                         _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_memalign                                       _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_realloc                                        _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+mm_remove_pool                                    _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+msc_disk                                          _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+mscd_control_xfer_cb                              _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+mscd_init                                         _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+mscd_open                                         _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+mscd_reset                                        _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+mscd_xfer_cb                                      _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+printf                                            _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+                                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/exception.o
+rdwr10_validate_cmd                               _build/f1c100s/obj/src/class/msc/msc_device.o
+realloc                                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/malloc.o
+return_to_fel                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+snprintf                                          _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+sprintf                                           _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+string_desc_arr                                   _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+strlen                                            /Users/tiancj/Library/toolchain/gcc-arm-none-eabi-9-2020-q2-update/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/libc_nano.a(lib_a-strlen.o)
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+sys_clock_init                                    _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-clock.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+sys_copyself                                      _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+sys_dram_init                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-dram.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+sys_mmu_init                                      _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-mmu.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+sys_spi_flash_exit                                _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+sys_spi_flash_init                                _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+sys_spi_flash_read                                _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-spi-flash.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+sys_uart_init                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/start_asm.o
+sys_uart_putc                                     _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-uart.o
+                                                  _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
+                                                  _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/machine/sys-copyself.o
+system_ticks                                      _build/f1c100s/obj/hw/bsp/f1c100s/f1c100s.o
+tu_desc_find                                      _build/f1c100s/obj/src/tusb.o
+tu_desc_find2                                     _build/f1c100s/obj/src/tusb.o
+tu_desc_find3                                     _build/f1c100s/obj/src/tusb.o
+tu_desc_get_interface_total_len                   _build/f1c100s/obj/src/tusb.o
+tu_edpt_bind_driver                               _build/f1c100s/obj/src/tusb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_edpt_claim                                     _build/f1c100s/obj/src/tusb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_edpt_release                                   _build/f1c100s/obj/src/tusb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_edpt_stream_init                               _build/f1c100s/obj/src/tusb.o
+tu_edpt_stream_read                               _build/f1c100s/obj/src/tusb.o
+tu_edpt_stream_read_xfer                          _build/f1c100s/obj/src/tusb.o
+tu_edpt_stream_write                              _build/f1c100s/obj/src/tusb.o
+tu_edpt_stream_write_xfer                         _build/f1c100s/obj/src/tusb.o
+tu_edpt_stream_write_zlp_if_needed                _build/f1c100s/obj/src/tusb.o
+tu_edpt_validate                                  _build/f1c100s/obj/src/tusb.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_fifo_advance_read_pointer                      _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+tu_fifo_advance_write_pointer                     _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+tu_fifo_clear                                     _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_fifo_config                                    _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+tu_fifo_correct_read_pointer                      _build/f1c100s/obj/src/common/tusb_fifo.o
+tu_fifo_count                                     _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+tu_fifo_empty                                     _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_fifo_full                                      _build/f1c100s/obj/src/common/tusb_fifo.o
+tu_fifo_get_read_info                             _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+tu_fifo_get_write_info                            _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/portable/sunxi/dcd_sunxi_musb.o
+tu_fifo_overflowed                                _build/f1c100s/obj/src/common/tusb_fifo.o
+tu_fifo_peek                                      _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tu_fifo_peek_n                                    _build/f1c100s/obj/src/common/tusb_fifo.o
+tu_fifo_read                                      _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_fifo_read_n                                    _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+tu_fifo_read_n_const_addr_full_words              _build/f1c100s/obj/src/common/tusb_fifo.o
+tu_fifo_remaining                                 _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+tu_fifo_set_overwritable                          _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tu_fifo_write                                     _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tu_fifo_write_n                                   _build/f1c100s/obj/src/common/tusb_fifo.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+tu_fifo_write_n_const_addr_full_words             _build/f1c100s/obj/src/common/tusb_fifo.o
+tud_cdc_line_coding_cb                            _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_line_state_cb                             _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_available                               _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+tud_cdc_n_connected                               _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_get_line_coding                         _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_get_line_state                          _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_peek                                    _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_read                                    _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+tud_cdc_n_read_flush                              _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_set_wanted_char                         _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_write                                   _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+tud_cdc_n_write_available                         _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_write_clear                             _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_n_write_flush                             _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+tud_cdc_rx_cb                                     _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_rx_wanted_cb                              _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_send_break_cb                             _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_cdc_tx_complete_cb                            _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_connect                                       _build/f1c100s/obj/src/device/usbd.o
+tud_connected                                     _build/f1c100s/obj/src/device/usbd.o
+tud_control_status                                _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_control_xfer                                  _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_descriptor_bos_cb                             _build/f1c100s/obj/src/device/usbd.o
+tud_descriptor_configuration_cb                   _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_descriptor_device_cb                          _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_descriptor_device_qualifier_cb                _build/f1c100s/obj/src/device/usbd.o
+tud_descriptor_other_speed_configuration_cb       _build/f1c100s/obj/src/device/usbd.o
+tud_descriptor_string_cb                          _build/f1c100s/obj/examples/device/cdc_msc/src/usb_descriptors.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_disconnect                                    _build/f1c100s/obj/src/device/usbd.o
+tud_event_hook_cb                                 _build/f1c100s/obj/src/device/usbd.o
+tud_init                                          _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+tud_inited                                        _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/tusb.o
+tud_mount_cb                                      _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_mounted                                       _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_msc_capacity_cb                               _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_get_maxlun_cb                             _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_inquiry_cb                                _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_is_writable_cb                            _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_read10_cb                                 _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_read10_complete_cb                        _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_request_sense_cb                          _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_scsi_cb                                   _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_scsi_complete_cb                          _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_set_sense                                 _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+tud_msc_start_stop_cb                             _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_test_unit_ready_cb                        _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_write10_cb                                _build/f1c100s/obj/examples/device/cdc_msc/src/msc_disk.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_msc_write10_complete_cb                       _build/f1c100s/obj/src/class/msc/msc_device.o
+tud_remote_wakeup                                 _build/f1c100s/obj/src/device/usbd.o
+tud_resume_cb                                     _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_speed_get                                     _build/f1c100s/obj/src/device/usbd.o
+tud_suspend_cb                                    _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_suspended                                     _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+tud_task_event_ready                              _build/f1c100s/obj/src/device/usbd.o
+tud_task_ext                                      _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+tud_umount_cb                                     _build/f1c100s/obj/examples/device/cdc_msc/src/main.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+tud_vendor_control_xfer_cb                        _build/f1c100s/obj/src/device/usbd.o
+tusb_init                                         _build/f1c100s/obj/src/tusb.o
+tusb_inited                                       _build/f1c100s/obj/src/tusb.o
+usbd_app_driver_get_cb                            _build/f1c100s/obj/src/device/usbd.o
+usbd_control_reset                                _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+usbd_control_set_complete_callback                _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+usbd_control_set_request                          _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+usbd_control_xfer_cb                              _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/device/usbd.o
+usbd_defer_func                                   _build/f1c100s/obj/src/device/usbd.o
+usbd_edpt_busy                                    _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+usbd_edpt_claim                                   _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+usbd_edpt_clear_stall                             _build/f1c100s/obj/src/device/usbd.o
+usbd_edpt_close                                   _build/f1c100s/obj/src/device/usbd.o
+usbd_edpt_iso_activate                            _build/f1c100s/obj/src/device/usbd.o
+usbd_edpt_iso_alloc                               _build/f1c100s/obj/src/device/usbd.o
+usbd_edpt_open                                    _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+usbd_edpt_release                                 _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/tusb.o
+usbd_edpt_stall                                   _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+usbd_edpt_stalled                                 _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+usbd_edpt_xfer                                    _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+                                                  _build/f1c100s/obj/src/device/usbd_control.o
+                                                  _build/f1c100s/obj/src/tusb.o
+usbd_edpt_xfer_fifo                               _build/f1c100s/obj/src/device/usbd.o
+usbd_int_set                                      _build/f1c100s/obj/src/device/usbd.o
+usbd_open_edpt_pair                               _build/f1c100s/obj/src/device/usbd.o
+                                                  _build/f1c100s/obj/src/class/msc/msc_device.o
+                                                  _build/f1c100s/obj/src/class/cdc/cdc_device.o
+usbd_sof_enable                                   _build/f1c100s/obj/src/device/usbd.o
+vsnprintf                                         _build/f1c100s/obj/hw/mcu/allwinner/f1c100s/lib/printf.o
