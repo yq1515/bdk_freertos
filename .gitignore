@@ -13,3 +13,5 @@ lib/libwpa.a
 lib/libusb.a
 
 .DS_Store
+*.si4project
+*.jdebug*

@@ -285,58 +285,58 @@ endif
 # -------------------------------------------------------------------
 
 #application layer
-SRC_C += $(BEKEN_DIR)/app/app.c
+# SRC_C += $(BEKEN_DIR)/app/app.c
 SRC_C += $(BEKEN_DIR)/app/ate_app.c
-SRC_C += $(BEKEN_DIR)/app/config/param_config.c
-SRC_C += $(BEKEN_DIR)/app/standalone-ap/sa_ap.c
-SRC_C += $(BEKEN_DIR)/app/standalone-station/sa_station.c
-SRC_C += $(BEKEN_DIR)/app/video_work/video_transfer_tcp.c
-SRC_C += $(BEKEN_DIR)/app/video_work/video_transfer_udp.c
-SRC_C += $(BEKEN_DIR)/app/video_work/video_buffer.c
-SRC_C += $(BEKEN_DIR)/app/net_work/video_demo_main.c
-SRC_C += $(BEKEN_DIR)/app/net_work/video_demo_station.c
-SRC_C += $(BEKEN_DIR)/app/net_work/video_demo_softap.c
+# SRC_C += $(BEKEN_DIR)/app/config/param_config.c
+# SRC_C += $(BEKEN_DIR)/app/standalone-ap/sa_ap.c
+# SRC_C += $(BEKEN_DIR)/app/standalone-station/sa_station.c
+# SRC_C += $(BEKEN_DIR)/app/video_work/video_transfer_tcp.c
+# SRC_C += $(BEKEN_DIR)/app/video_work/video_transfer_udp.c
+# SRC_C += $(BEKEN_DIR)/app/video_work/video_buffer.c
+# SRC_C += $(BEKEN_DIR)/app/net_work/video_demo_main.c
+# SRC_C += $(BEKEN_DIR)/app/net_work/video_demo_station.c
+# SRC_C += $(BEKEN_DIR)/app/net_work/video_demo_softap.c
 
 #demo module
-SRC_C += $(BEKEN_DIR)/demos/ieee802_11_demo.c
+# SRC_C += $(BEKEN_DIR)/demos/ieee802_11_demo.c
 
 #driver layer
 SRC_C += $(BEKEN_DIR)/driver/common/dd.c
 SRC_C += $(BEKEN_DIR)/driver/common/drv_model.c
-SRC_C += $(BEKEN_DIR)/driver/dma/dma.c
+# SRC_C += $(BEKEN_DIR)/driver/dma/dma.c
 SRC_C += $(BEKEN_DIR)/driver/driver.c
 SRC_C += $(BEKEN_DIR)/driver/entry/arch_main.c
-SRC_C += $(BEKEN_DIR)/driver/fft/fft.c
+# SRC_C += $(BEKEN_DIR)/driver/fft/fft.c
 SRC_C += $(BEKEN_DIR)/driver/flash/flash.c
 SRC_C += $(BEKEN_DIR)/driver/general_dma/general_dma.c
 SRC_C += $(BEKEN_DIR)/driver/gpio/gpio.c
-SRC_C += $(BEKEN_DIR)/driver/i2s/i2s.c
+# SRC_C += $(BEKEN_DIR)/driver/i2s/i2s.c
 SRC_C += $(BEKEN_DIR)/driver/icu/icu.c
 SRC_C += $(BEKEN_DIR)/driver/intc/intc.c
-SRC_C += $(BEKEN_DIR)/driver/irda/irda.c
-SRC_C += $(BEKEN_DIR)/driver/macphy_bypass/mac_phy_bypass.c
-SRC_C += $(BEKEN_DIR)/driver/phy/phy_trident.c
-SRC_C += $(BEKEN_DIR)/driver/pwm/pwm.c
-SRC_C += $(BEKEN_DIR)/driver/pwm/pwm_bk7231n.c
-SRC_C += $(BEKEN_DIR)/driver/pwm/mcu_ps_timer.c
+# SRC_C += $(BEKEN_DIR)/driver/irda/irda.c
+# SRC_C += $(BEKEN_DIR)/driver/macphy_bypass/mac_phy_bypass.c
+# SRC_C += $(BEKEN_DIR)/driver/phy/phy_trident.c
+# SRC_C += $(BEKEN_DIR)/driver/pwm/pwm.c
+# SRC_C += $(BEKEN_DIR)/driver/pwm/pwm_bk7231n.c
+# SRC_C += $(BEKEN_DIR)/driver/pwm/mcu_ps_timer.c
 SRC_C += $(BEKEN_DIR)/driver/pwm/bk_timer.c
-SRC_C += $(BEKEN_DIR)/driver/pwm/pwm_mutex.c
+# SRC_C += $(BEKEN_DIR)/driver/pwm/pwm_mutex.c
 SRC_C += $(BEKEN_DIR)/driver/qspi/qspi.c
-SRC_C += $(BEKEN_DIR)/driver/rw_pub/rw_platf_pub.c
-SRC_C += $(BEKEN_DIR)/driver/saradc/saradc.c
-SRC_C += $(BEKEN_DIR)/driver/spidma/spidma.c
+# SRC_C += $(BEKEN_DIR)/driver/rw_pub/rw_platf_pub.c
+# SRC_C += $(BEKEN_DIR)/driver/saradc/saradc.c
+# SRC_C += $(BEKEN_DIR)/driver/spidma/spidma.c
 SRC_C += $(BEKEN_DIR)/driver/sys_ctrl/sys_ctrl.c
 SRC_C += $(BEKEN_DIR)/driver/uart/Retarget.c
 SRC_C += $(BEKEN_DIR)/driver/uart/uart.c
 SRC_C += $(BEKEN_DIR)/driver/uart/printf.c
 SRC_C += $(BEKEN_DIR)/driver/wdt/wdt.c
-SRC_C += $(BEKEN_DIR)/driver/calendar/calendar.c
-SRC_C += $(BEKEN_DIR)/driver/security/security.c
-SRC_C += $(BEKEN_DIR)/driver/security/hal_aes.c
-SRC_C += $(BEKEN_DIR)/driver/security/hal_sha.c
-SRC_C += $(BEKEN_DIR)/driver/jpeg/jpeg_encoder.c
-SRC_C += $(BEKEN_DIR)/driver/i2c/i2c1.c
-SRC_C += $(BEKEN_DIR)/driver/i2c/i2c2.c
+# SRC_C += $(BEKEN_DIR)/driver/calendar/calendar.c
+# SRC_C += $(BEKEN_DIR)/driver/security/security.c
+# SRC_C += $(BEKEN_DIR)/driver/security/hal_aes.c
+# SRC_C += $(BEKEN_DIR)/driver/security/hal_sha.c
+# SRC_C += $(BEKEN_DIR)/driver/jpeg/jpeg_encoder.c
+# SRC_C += $(BEKEN_DIR)/driver/i2c/i2c1.c
+# SRC_C += $(BEKEN_DIR)/driver/i2c/i2c2.c
 
 ifeq ($(CFG_SDIO),1)
 SRC_C += $(BEKEN_DIR)/driver/sdio/sdio.c
@@ -346,19 +346,19 @@ endif
 
 #componentstion layer
 SRC_C += $(BEKEN_DIR)/components/func.c
-SRC_C += $(BEKEN_DIR)/components/usb_plug/usb_plug.c
-SRC_C += $(BEKEN_DIR)/components/security/security_func.c
-SRC_C += $(BEKEN_DIR)/components/joint_up/role_launch.c
-SRC_C += $(BEKEN_DIR)/app/http/utils_httpc.c
-SRC_C += $(BEKEN_DIR)/app/http/utils_net.c
-SRC_C += $(BEKEN_DIR)/app/http/utils_timer.c
-SRC_C += $(BEKEN_DIR)/app/http/lite-log.c
+# SRC_C += $(BEKEN_DIR)/components/usb_plug/usb_plug.c
+# SRC_C += $(BEKEN_DIR)/components/security/security_func.c
+# SRC_C += $(BEKEN_DIR)/components/joint_up/role_launch.c
+# SRC_C += $(BEKEN_DIR)/app/http/utils_httpc.c
+# SRC_C += $(BEKEN_DIR)/app/http/utils_net.c
+# SRC_C += $(BEKEN_DIR)/app/http/utils_timer.c
+# SRC_C += $(BEKEN_DIR)/app/http/lite-log.c
 
 ifeq ($(CFG_BK_AWARE),1)
 SRC_C += $(BEKEN_DIR)/components/bk_aware/bk_aware.c
 endif
 
-SRC_WPA_C += $(BEKEN_DIR)/components/hostapd_intf/hostapd_intf.c
+# SRC_WPA_C += $(BEKEN_DIR)/components/hostapd_intf/hostapd_intf.c
 ifeq ($(CFG_USE_SDCARD_HOST),1)
 SRC_C += $(BEKEN_DIR)/components/fatfs/cc936.c
 SRC_C += $(BEKEN_DIR)/components/fatfs/ccsbcs.c
@@ -372,97 +372,97 @@ ifeq ($(CFG_SDIO),1)
 SRC_C += $(BEKEN_DIR)/components/sdio_intf/sdio_intf.c
 endif
 
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/port/ethernetif.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/port/net.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/port/sys_arch.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/api_lib.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/api_msg.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/err.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/netbuf.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/netdb.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/netifapi.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/sockets.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/tcpip.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/apps/ping/ping.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/def.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/dns.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/inet_chksum.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/init.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ip.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/dhcp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/etharp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/icmp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/igmp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/ip4_addr.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/ip4.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/ip4_frag.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/dhcp6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ethip6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/icmp6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/inet6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ip6_addr.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ip6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ip6_frag.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/mld6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/nd6.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/mem.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/memp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/netif.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/pbuf.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/raw.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/stats.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/sys.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/tcp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/tcp_in.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/tcp_out.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/timeouts.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/udp.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/netif/ethernet.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/dhcpd/dhcp-server.c
-SRC_C += $(BEKEN_DIR)/components/lwip_intf/dhcpd/dhcp-server-main.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/port/ethernetif.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/port/net.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/port/sys_arch.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/api_lib.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/api_msg.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/err.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/netbuf.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/netdb.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/netifapi.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/sockets.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/api/tcpip.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/apps/ping/ping.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/def.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/dns.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/inet_chksum.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/init.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ip.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/dhcp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/etharp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/icmp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/igmp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/ip4_addr.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/ip4.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv4/ip4_frag.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/dhcp6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ethip6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/icmp6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/inet6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ip6_addr.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ip6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/ip6_frag.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/mld6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/ipv6/nd6.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/mem.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/memp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/netif.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/pbuf.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/raw.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/stats.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/sys.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/tcp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/tcp_in.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/tcp_out.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/timeouts.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/core/udp.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/lwip-2.0.2/src/netif/ethernet.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/dhcpd/dhcp-server.c
+# SRC_C += $(BEKEN_DIR)/components/lwip_intf/dhcpd/dhcp-server-main.c
 SRC_C += $(BEKEN_DIR)/components/misc/fake_clock.c
-SRC_C += $(BEKEN_DIR)/components/misc/pseudo_random.c
+# SRC_C += $(BEKEN_DIR)/components/misc/pseudo_random.c
 SRC_C += $(BEKEN_DIR)/components/misc/target_util.c
 SRC_C += $(BEKEN_DIR)/components/misc/start_type.c
 SRC_C += $(BEKEN_DIR)/components/power_save/power_save.c
 SRC_C += $(BEKEN_DIR)/components/power_save/manual_ps.c
 SRC_C += $(BEKEN_DIR)/components/power_save/mcu_ps.c
-SRC_C += $(BEKEN_DIR)/components/power_save/ap_idle.c
-SRC_C += $(BEKEN_DIR)/components/saradc_intf/saradc_intf.c
-SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_ieee80211.c
-SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_msdu.c
-SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_msg_rx.c
-SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_msg_tx.c
-SRC_C += $(BEKEN_DIR)/components/sim_uart/gpio_uart.c
-SRC_C += $(BEKEN_DIR)/components/sim_uart/pwm_uart.c
-SRC_C += $(BEKEN_DIR)/components/spidma_intf/spidma_intf.c
+# SRC_C += $(BEKEN_DIR)/components/power_save/ap_idle.c
+# SRC_C += $(BEKEN_DIR)/components/saradc_intf/saradc_intf.c
+# SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_ieee80211.c
+# SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_msdu.c
+# SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_msg_rx.c
+# SRC_C += $(BEKEN_DIR)/components/rwnx_intf/rw_msg_tx.c
+# SRC_C += $(BEKEN_DIR)/components/sim_uart/gpio_uart.c
+# SRC_C += $(BEKEN_DIR)/components/sim_uart/pwm_uart.c
+# SRC_C += $(BEKEN_DIR)/components/spidma_intf/spidma_intf.c
 SRC_C += $(BEKEN_DIR)/components/temp_detect/temp_detect.c
 SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverFlash.c
-SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverGpio.c
-SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverPwm.c
-SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverUart.c
+# SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverGpio.c
+# SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverPwm.c
+# SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverUart.c
 SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverWdg.c
-SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverRng.c
-SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverTimer.c
-SRC_C += $(BEKEN_DIR)/components/wlan_ui/wlan_cli.c
-SRC_C += $(BEKEN_DIR)/components/wlan_ui/bk_peripheral_test.c
+# SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverRng.c
+# SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverTimer.c
+# SRC_C += $(BEKEN_DIR)/components/wlan_ui/wlan_cli.c
+# SRC_C += $(BEKEN_DIR)/components/wlan_ui/bk_peripheral_test.c
 # utf8
-SRC_C += $(BEKEN_DIR)/components/utf8/conv_utf8.c
+# SRC_C += $(BEKEN_DIR)/components/utf8/conv_utf8.c
 
 # video / jpeg
-SRC_C += $(BEKEN_DIR)/components/camera_intf/camera_intf.c
-SRC_C += $(BEKEN_DIR)/components/video_transfer/video_transfer.c
+# SRC_C += $(BEKEN_DIR)/components/camera_intf/camera_intf.c
+# SRC_C += $(BEKEN_DIR)/components/video_transfer/video_transfer.c
 
 # For WPA3: wolfssl
 ifeq ($(CFG_WPA3),1)
-SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/wolfmath.c
-SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/memory.c
-SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/tfm.c
-SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/ecc.c
-
-# wpa_supplicant 2.9 needs random generator
-SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/random.c
-SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/sha256.c
+# SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/wolfmath.c
+# SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/memory.c
+# SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/tfm.c
+# SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/ecc.c
+# 
+# # wpa_supplicant 2.9 needs random generator
+# SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/random.c
+# SRC_C += $(BEKEN_DIR)/components/wolfssl/wolfcrypt/src/sha256.c
 endif
 
 # For BK7251
@@ -486,34 +486,34 @@ endif
 
 # For BK7231u
 ifeq ($(CFG_SOC_NAME), 2)
-SRC_C += $(BEKEN_DIR)/driver/spi/spi.c
-SRC_C += $(BEKEN_DIR)/driver/spi/spi_master.c
-SRC_C += $(BEKEN_DIR)/driver/spi/spi_slave.c
+# SRC_C += $(BEKEN_DIR)/driver/spi/spi.c
+# SRC_C += $(BEKEN_DIR)/driver/spi/spi_master.c
+# SRC_C += $(BEKEN_DIR)/driver/spi/spi_slave.c
 endif
 
 # For BK7231N
 ifeq ($(CFG_SOC_NAME), 5)
-SRC_C += $(BEKEN_DIR)/driver/spi/spi_bk7231n.c
-SRC_C += $(BEKEN_DIR)/driver/spi/spi_master_bk7231n.c
-SRC_C += $(BEKEN_DIR)/driver/spi/spi_slave_bk7231n.c
+# SRC_C += $(BEKEN_DIR)/driver/spi/spi_bk7231n.c
+# SRC_C += $(BEKEN_DIR)/driver/spi/spi_master_bk7231n.c
+# SRC_C += $(BEKEN_DIR)/driver/spi/spi_slave_bk7231n.c
 endif
 
-SRC_C += $(BEKEN_DIR)/components/wlan_ui/wlan_ui.c
-SRC_C += $(BEKEN_DIR)/components/net_param_intf/net_param.c
-SRC_C += $(BEKEN_DIR)/components/base64/base_64.c
-SRC_C += $(BEKEN_DIR)/components/airkiss/bk_airkiss.c
-SRC_C += $(BEKEN_DIR)/components/airkiss/airkiss_main.c
-SRC_C += $(BEKEN_DIR)/components/airkiss/airkiss_pingpong.c
+# SRC_C += $(BEKEN_DIR)/components/wlan_ui/wlan_ui.c
+# SRC_C += $(BEKEN_DIR)/components/net_param_intf/net_param.c
+# SRC_C += $(BEKEN_DIR)/components/base64/base_64.c
+# SRC_C += $(BEKEN_DIR)/components/airkiss/bk_airkiss.c
+# SRC_C += $(BEKEN_DIR)/components/airkiss/airkiss_main.c
+# SRC_C += $(BEKEN_DIR)/components/airkiss/airkiss_pingpong.c
 
 #easy flash
-SRC_C += $(BEKEN_DIR)/components/easy_flash/bk_ef.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/src/easyflash.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_env.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_env_wl.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_iap.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_log.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_utils.c
-SRC_C += $(BEKEN_DIR)/components/easy_flash/port/ef_port.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/bk_ef.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/src/easyflash.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_env.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_env_wl.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_iap.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_log.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/src/ef_utils.c
+# SRC_C += $(BEKEN_DIR)/components/easy_flash/port/ef_port.c
 
 #paho-mqtt
 # SRC_C += $(BEKEN_DIR)/components/paho-mqtt/client/src/MQTTClient.c
@@ -542,84 +542,84 @@ ifeq ("${CFG_MBEDTLS}", "1")
 ##MBEDTLS_SRC_DIRS += ./components/mbedtls/mbedtls-port/src/
 #SRC_C += $(foreach dir, $(MBEDTLS_SRC_DIRS), $(wildcard $(dir)/*.c))
 
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/timing_alt.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_certificate.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_client.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_hardware.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_mem.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_net.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/aes.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/aesni.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/arc4.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/asn1parse.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/asn1write.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/base64.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/bignum.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/blowfish.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/camellia.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ccm.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/certs.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/cipher.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/cipher_wrap.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/cmac.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ctr_drbg.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/debug.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/des.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/dhm.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecdh.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecdsa.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecjpake.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecp.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecp_curves.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/entropy.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/entropy_poll.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/error.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/gcm.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/havege.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/hmac_drbg.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md_wrap.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md2.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md4.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md5.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/memory_buffer_alloc.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/net_sockets.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/oid.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/padlock.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pem.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pk.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pk_wrap.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkcs5.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkcs11.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkcs12.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkparse.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkwrite.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/platform.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ripemd160.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/rsa.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/sha1.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/sha256.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/sha512.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_cache.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_ciphersuites.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_cli.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_cookie.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_srv.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_ticket.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_tls.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/threading.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/timing.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/version.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/version_features.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_create.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_crl.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_crt.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_csr.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509write_crt.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509write_csr.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/xtea.c
-SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls_ui/sl_tls.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/timing_alt.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_certificate.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_client.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_hardware.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_mem.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls-port/src/tls_net.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/aes.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/aesni.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/arc4.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/asn1parse.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/asn1write.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/base64.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/bignum.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/blowfish.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/camellia.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ccm.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/certs.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/cipher.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/cipher_wrap.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/cmac.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ctr_drbg.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/debug.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/des.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/dhm.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecdh.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecdsa.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecjpake.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecp.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ecp_curves.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/entropy.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/entropy_poll.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/error.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/gcm.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/havege.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/hmac_drbg.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md_wrap.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md2.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md4.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/md5.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/memory_buffer_alloc.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/net_sockets.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/oid.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/padlock.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pem.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pk.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pk_wrap.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkcs5.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkcs11.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkcs12.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkparse.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/pkwrite.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/platform.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ripemd160.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/rsa.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/sha1.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/sha256.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/sha512.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_cache.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_ciphersuites.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_cli.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_cookie.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_srv.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_ticket.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/ssl_tls.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/threading.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/timing.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/version.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/version_features.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_create.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_crl.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_crt.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509_csr.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509write_crt.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/x509write_csr.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls/library/xtea.c
+# SRC_C += $(BEKEN_DIR)/components/mbedtls/mbedtls_ui/sl_tls.c
 endif
 
 ifeq ($(CFG_SUPPORT_BLE),1)
@@ -734,7 +734,7 @@ SRC_C += $(BEKEN_DIR)/driver/usb/usb.c
 SRC_C += $(BEKEN_DIR)/components/usb/fusb.c
 endif
 
-SRC_C += $(BEKEN_DIR)/components/ble_wifi_exchange/ble_wifi_port.c
+# SRC_C += $(BEKEN_DIR)/components/ble_wifi_exchange/ble_wifi_port.c
 
 # CherryUSB
 #

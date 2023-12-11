@@ -90,7 +90,7 @@ void extended_app_launch(void)
 
 void entry_main(void)
 {
-    ate_app_init();
+    // ate_app_init();
 
     // bk_misc_init_start_type();
     /* step 1: driver layer initialization*/
