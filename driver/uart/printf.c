@@ -460,6 +460,7 @@ int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
 				fmtint(str, &len, size, (UINTMAX_T)value, base, width,
 				    precision, flags);
 				break;
+#if 0
 			case 'A':
 				/* Not yet supported, we'll use "%F". */
 				/* FALLTHROUGH */
@@ -512,6 +513,7 @@ int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
 				if (overflow)
 					goto out;
 				break;
+#endif
 			case 'c':
 				cvalue = va_arg(args, int);
 				OUTCHAR(str, len, size, cvalue);
@@ -536,7 +538,7 @@ int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
 					if ((macstr = va_arg(args, unsigned char *)) == NULL)
 						macstr = (unsigned char *)"\x00\x00\x00\x00\x00\x00";
 					fmtmac(str, &len, size, macstr, flags & PRINT_F_UP);
-				
+
 					break;
 				} else if (*format == 'i' || *format == 'I') {
 					format++;

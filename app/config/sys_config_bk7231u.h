@@ -9,8 +9,8 @@
 /* uart2 for debug, and generally, uart1 is used for communication.
    what is more, uart1 maybe is not bound out*/
 #define CFG_USE_UART1                              0
-#define CFG_JTAG_ENABLE                            0
-#define OSMALLOC_STATISTICAL                       1
+#define CFG_JTAG_ENABLE                            1
+#define OSMALLOC_STATISTICAL                       0
 
 /*section 0-----app macro config-----*/
 #define CFG_IEEE80211N                             1
@@ -77,7 +77,7 @@
 
 #define CFG_MENTOR_USB                             0
 #define CFG_CHERRY_USB                             1
-#define CFG_UF2                                    0
+#define CFG_UF2                                    1
 #define CFG_USE_USB_HOST                           0
 #define CFG_USE_USB_DEVICE                         1
 #if CFG_MENTOR_USB
@@ -162,8 +162,8 @@
 /*section 16-----support mcu & deep sleep*/
 #define CFG_USE_MCU_PS                             1
 
-#define CFG_USE_DEEP_PS                            1
-#define CFG_USE_BLE_PS                             1
+#define CFG_USE_DEEP_PS                            0
+#define CFG_USE_BLE_PS                             0
 #define CFG_USE_AP_IDLE                            0
 #define CFG_USE_FAKERTC_PS                         0
 
@@ -210,9 +210,9 @@
 #define CFG_USE_AUD_ADC                            0
 
 /*section 25 ----- use tick time calibrate*/
-#define CFG_USE_TICK_CAL                           1
+#define CFG_USE_TICK_CAL                           0
 
-#define CFG_SUPPORT_BLE                            1
+#define CFG_SUPPORT_BLE                            0
 #define CFG_SUPPORT_BLE_MESH                       0
 #define CFG_USE_PTA                                0
 

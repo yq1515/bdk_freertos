@@ -667,7 +667,7 @@ void *pvPortMalloc( size_t xWantedSize )
 	if(pvReturn && need_zero)
 		os_memset(pvReturn, 0, xWantedSize);
 	#endif
-	bk_printf("%s %d\n", __func__, __LINE__);
+	//bk_printf("%s %d\n", __func__, __LINE__);
 	return pvReturn;
 }
 
@@ -803,7 +803,7 @@ static void prvHeapInit( void )
 	ucHeap = prvHeapGetHeaderPointer();
 
 	bk_printf("prvHeapInit-start addr:0x%x, size:%d\r\n", ucHeap, xTotalHeapSize);
-	//while (jlink);
+	//while (!jlink);
 	#else
 	xTotalHeapSize = configTOTAL_HEAP_SIZE;
 	#endif

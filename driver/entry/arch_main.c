@@ -111,10 +111,6 @@ void entry_main(void)
     /* step 3: init of the most of devices*/
 	//extended_app_launch();
 
-	while (1) {
-		os_printf("wait for xxx\n");
-		delay(10000);
-	}
 #if (CFG_OS_FREERTOS)
     vTaskStartScheduler();
 #endif

@@ -169,6 +169,11 @@ UINT32 func_init_extended(void)
     return 0;
 }
 
+#if CFG_UF2
+extern void msc_init(void);
+extern void uf2_init(void);
+#endif
+
 UINT32 func_init_basic(void)
 {
 #if (!CFG_SUPPORT_RTT)
@@ -176,6 +181,10 @@ UINT32 func_init_basic(void)
     hal_flash_init();
 #endif
     os_printf("SDK Rev: %s\r\n", BEKEN_SDK_REV);
+#if CFG_UF2
+	uf2_init();
+	msc_init();
+#endif
 
     return 0;
 }

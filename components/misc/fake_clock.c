@@ -99,12 +99,12 @@ void fclk_hdl(UINT8 param)
 #if (CFG_TASK_WDG_ENABLED)
         task_watchdog_timeout_check();
 #endif
-    
-    if((xTaskIncrementTick() != pdFALSE) 
+
+    if((xTaskIncrementTick() != pdFALSE)
 			|| preempt_delayed_schedule_get_flag())
     {
     	preempt_delayed_schedule_clear_flag();
-		
+
         /* Select a new task to run. */
         vTaskSwitchContext();
     }
@@ -156,9 +156,11 @@ UINT32 fclk_update_tick(UINT32 tick)
     GLOBAL_INT_DISABLE();
     mcu_ps_increase_clr();
     fclk_freertos_update_tick(tick);
+#if ( configUSE_TICKLESS_IDLE != 0 )
     vTaskStepTick( tick );
+#endif
     GLOBAL_INT_RESTORE();
-    
+
 #endif
     return 0;
 }
@@ -229,7 +231,7 @@ UINT32 timer_cal_tick(void)
     GLOBAL_INT_DECLARATION();
 
     GLOBAL_INT_DISABLE();
-    
+
     fclk = BK_TICKS_TO_MS(fclk_get_tick());
     cal_tick_save.tmp1 += ONE_CAL_TIME;
 
@@ -254,7 +256,7 @@ UINT32 timer_cal_tick(void)
             increase_tick = lost + FCLK_DURATION_MS;
         }
     }
-    
+
     mcu_ps_machw_init();
     GLOBAL_INT_RESTORE();
     return 0 ;
@@ -301,7 +303,7 @@ UINT32 bk_cal_init(UINT32 setting)
 {
     GLOBAL_INT_DECLARATION();
     GLOBAL_INT_DISABLE();
-    
+
     if(1 == setting)
     {
         cal_timer_deset();
@@ -386,7 +388,7 @@ void fclk_timer_hw_init(BK_HW_TIMER_INDEX timer_id)
         param.end_value       = fclk_cal_endvalue((UINT32)param.cfg.bits.clk);
 
         sddev_control(PWM_DEV_NAME, CMD_PWM_INIT_PARAM, &param);
-        
+
     }
     else
     {   //timer
@@ -401,7 +403,7 @@ void fclk_timer_hw_init(BK_HW_TIMER_INDEX timer_id)
         UINT32 timer_channel;
         timer_channel = param.channel;
         sddev_control(TIMER_DEV_NAME, CMD_TIMER_UNIT_ENABLE, &timer_channel);
-        
+
     }
 }
 

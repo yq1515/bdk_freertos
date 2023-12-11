@@ -207,13 +207,13 @@ void rf_ps_wakeup_isr_idle_int_cb(void)
     i2s_isr();
     sddev_control(ICU_DEV_NAME, CMD_CLR_INTR_STATUS, &irq_status);
     }
-#endif    
+#endif
 }
 
 void intc_irq(void)
 {
     UINT32 irq_status;
-	
+
     irq_status = icu_ctrl(CMD_GET_INTR_STATUS, 0);
     irq_status = irq_status & 0xFFFF;
 	if(0 == irq_status)
@@ -222,7 +222,7 @@ void intc_irq(void)
 		os_printf("irq:dead\r\n");
         #endif
 	}
-	
+
     icu_ctrl(CMD_CLR_INTR_STATUS, &irq_status);
 
     intc_hdl_entry(irq_status);
@@ -266,8 +266,8 @@ void intc_init(void)
 
     intc_enable(FIQ_MAC_TX_RX_MISC);
     intc_enable(FIQ_MAC_TX_RX_TIMER);
-	
-    intc_enable(FIQ_MODEM);	
+
+    intc_enable(FIQ_MODEM);
 
     param = GINTR_FIQ_BIT | GINTR_IRQ_BIT;
     sddev_control(ICU_DEV_NAME, CMD_ICU_GLOBAL_INT_ENABLE, &param);
@@ -278,12 +278,12 @@ void intc_init(void)
 void intc_deinit(void)
 {
     UINT32 param;
-	
+
     for( int i = 0; i<=FIQ_DPLL_UNLOCK; i++)
 	{
         intc_disable(i);
 	}
-	
+
     param = GINTR_FIQ_BIT | GINTR_IRQ_BIT;
     sddev_control(ICU_DEV_NAME, CMD_ICU_GLOBAL_INT_DISABLE, &param);
 
@@ -293,10 +293,10 @@ void intc_deinit(void)
 void bk_cpu_shutdown(void)
 {
     GLOBAL_INT_DECLARATION();
-	
+
     os_printf("shutdown...\n");
-	
-    GLOBAL_INT_DISABLE();	
+
+    GLOBAL_INT_DISABLE();
     while(1);
 	GLOBAL_INT_RESTORE();
 }
@@ -363,7 +363,7 @@ void bk_show_register (struct arm_registers *regs)
     {
         os_printf("0x%08x\n",*(reg1 + i));
     }
-    
+
     os_printf("\r\n");
 
 }
