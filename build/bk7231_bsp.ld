@@ -79,6 +79,7 @@ SECTIONS
 	} > flash
 	
 /* globals.for example: int ram_data[3]={4,5,6}; */		/* VMA in RAM, but keep LMA in flash */
+	. = ALIGN (4);
 	_begin_data = .;
 	.data : AT ( _begin_data )
 	{
