@@ -247,6 +247,9 @@ SOC_NAME_BSP_MAP = beken7231_bsp.map
 # Compile options
 # -------------------------------------------------------------------
 CFLAGS = -DCFG_OS_FREERTOS=1
+ifeq ($(CFG_TINYUSB),1)
+CFLAGS += -DCFG_TUSB_MCU=OPT_MCU_BK7231U
+endif
 CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -fno-common -Wall -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -nostdlib -fno-strict-aliasing
 #CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-unused-function -fsigned-char -fdata-sections -Wunknown-pragmas -nostdlib -Wl,--gc-sections
 CFLAGS += -DWIFI_BLE_COEXIST

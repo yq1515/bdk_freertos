@@ -280,6 +280,36 @@ INCLUDES += -I$(BEKEN_DIR)/components/uf2/ports
 endif
 endif
 
+# TinyUSB
+ifeq ($(CFG_TINYUSB),1)
+
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/hw
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/audio
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/cdc
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/cdc
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/dfu
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/hid
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/hid
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/midi
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/msc
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/msc
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/net
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/usbtmc
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/vendor
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/vendor
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/class/video
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/common
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/device
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/host
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/typec
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/src/typec
+
+
+# examples
+INCLUDES += -I$(BEKEN_DIR)/components/tinyusb/examples/device/hid_generic_inout/src
+endif
+
 # -------------------------------------------------------------------
 # Source file list
 # -------------------------------------------------------------------
@@ -753,6 +783,37 @@ SRC_C += $(BEKEN_DIR)/components/uf2/ghostfat.c
 SRC_C += $(BEKEN_DIR)/components/uf2/msc_desc.c
 SRC_C += $(BEKEN_DIR)/components/uf2/ports/board_flash.c
 endif # CFG_UF2
+endif
+
+ifeq ($(CFG_TINYUSB),1)
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/tusb.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/common/tusb_fifo.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/device/usbd.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/device/usbd_control.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/typec/usbc.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/audio/audio_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/cdc/cdc_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/dfu/dfu_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/dfu/dfu_rt_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/hid/hid_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/midi/midi_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/msc/msc_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/net/ecm_rndis_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/net/ncm_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/usbtmc/usbtmc_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/video/video_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/vendor/vendor_device.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/host/usbh.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/host/hub.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/cdc/cdc_host.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/hid/hid_host.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/msc/msc_host.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/class/vendor/vendor_host.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/src/typec/usbc.c
+
+# tinyusb examples
+SRC_C += $(BEKEN_DIR)/components/tinyusb/examples/device/hid_generic_inout/src/main.c
+SRC_C += $(BEKEN_DIR)/components/tinyusb/examples/device/hid_generic_inout/src/usb_descriptors.c
 endif
 
 #assembling files

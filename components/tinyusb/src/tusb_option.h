@@ -175,6 +175,8 @@
 // NXP LPC MCX
 #define OPT_MCU_MCXN9            2300  ///< NXP MCX N9 Series
 
+#define OPT_MCU_BK7231U          2400
+
 // Check if configured MCU is one of listed
 // Apply _TU_CHECK_MCU with || as separator to list of input
 #define _TU_CHECK_MCU(_m)    (CFG_TUSB_MCU == _m)
