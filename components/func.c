@@ -51,6 +51,9 @@ extern void rwnx_cal_initial_calibration(void);
 extern void msc_init(void);
 extern void uf2_init(void);
 #endif
+#if CFG_USB_I2C_DEVICE
+void usb_i2c_init(void);
+#endif
 
 UINT32 func_init_extended(void)
 {
@@ -149,7 +152,7 @@ UINT32 func_init_extended(void)
 #if CFG_INT_WDG_ENABLED
 	FUNC_PRT("int watchdog enabled, period=%u\r\n", CFG_INT_WDG_PERIOD_MS);
 	bk_wdg_initialize(CFG_INT_WDG_PERIOD_MS);
-        bk_wdg_reload();
+	bk_wdg_reload();
 #endif //CFG_INT_WDG_ENABLED
 
 #if CFG_TASK_WDG_ENABLED
@@ -160,6 +163,10 @@ UINT32 func_init_extended(void)
 #if CFG_UF2
 	uf2_init();
 	msc_init();
+#endif
+
+#if CFG_USB_I2C_DEVICE
+	usb_i2c_init();
 #endif
 
     FUNC_PRT("[FUNC]func_init_extended OVER!!!\r\n\r\n");

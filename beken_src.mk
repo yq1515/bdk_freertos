@@ -783,6 +783,10 @@ SRC_C += $(BEKEN_DIR)/components/uf2/ghostfat.c
 SRC_C += $(BEKEN_DIR)/components/uf2/msc_desc.c
 SRC_C += $(BEKEN_DIR)/components/uf2/ports/board_flash.c
 endif # CFG_UF2
+
+ifeq ($(CFG_USB_I2C_DEVICE),1)
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device/i2c/usb_i2c.c
+endif # CFG_USB_I2C_DEVICE
 endif
 
 ifeq ($(CFG_TINYUSB),1)

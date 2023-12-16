@@ -97,6 +97,11 @@
 #endif
 #define CFG_USE_USB_CHARGE                         0
 
+/* USB Demos */
+#if CFG_CHERRY_USB
+#define CFG_USB_I2C_DEVICE                         0
+#endif
+
 
 /*section 4-----DEBUG macro config-----*/
 #define CFG_UART_DEBUG                             0
