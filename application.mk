@@ -311,9 +311,12 @@ application: $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST) $(WPA_LIB) $(RWNX_LIB) $(U
 #	@$(ECHO) "                                                        "
 	@$(ECHO) "  $(GREEN)CRC  $(BIN_DIR)/$(SOC_NAME_BIN)$(NC)"
 	$(Q)$(ENCRYPT) $(BIN_DIR)/$(SOC_NAME_BIN) 0 $(ENCRYPT_ARGS) > /dev/null
+
+	@$(ECHO) "  $(GREEN)LD   $(BIN_DIR)/$(SOC_NAME_BSP_ELF)$(NC)"
 	$(Q)$(LD) $(LFLAGS) -o $(BIN_DIR)/$(SOC_NAME_BSP_ELF) $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST) $(LIBFLAGS) -T./build/$(SOC_NAME_BSP_LDS) -Xlinker -Map=$(BIN_DIR)/$(SOC_NAME_BSP_MAP)
 	$(Q)$(OBJCOPY) -O binary $(BIN_DIR)/$(SOC_NAME_BSP_ELF) $(BIN_DIR)/$(SOC_NAME_BSP_BIN)
-	$(Q)(cd ./tools/beken_packager; ./beken_packager_wrapper -i $(CFG_SOC_NAME))
+#	$(Q)(cd ./tools/beken_packager; ./beken_packager_wrapper -i $(CFG_SOC_NAME))
+	@$(ECHO) "  $(GREEN)CRC  $(BIN_DIR)/$(SOC_NAME_BSP_BIN)$(NC)"
 	$(Q)$(ENCRYPT) $(BIN_DIR)/$(SOC_NAME_BSP_BIN) 0 $(ENCRYPT_ARGS) > /dev/null
 
 	
