@@ -20,7 +20,9 @@
 	.globl boot_reserved
 	.globl irq_handler
 	.globl fiq_handler
+#if CFG_SUPPORT_OS
 	.globl vPortStartFirstTask
+#endif
 	.globl do_irq
 	.globl do_fiq
 	.globl do_swi
@@ -563,8 +565,13 @@ boot_reserved:
 
 		.align	5 
 do_swi:
+#if CFG_SUPPORT_OS
     LDMFD   SP!, {R0-R1}
     B vPortYieldProcessor
+#else
+    # don't support SWI when OS is disabled
+    B .
+#endif
 
 		.align	5
 boot_swi:
@@ -591,21 +598,84 @@ fiq_handler:
 		.align	5 
 do_irq:
     LDMFD   SP!, {R0-R1}
+#if CFG_SUPPORT_OS
 	portSAVE_CONTEXT
 	LDR R0, =intc_irq
 	MOV LR, PC
 	BX R0
 	portRESTORE_CONTEXT
+#else
+#if 1
+	sub 	lr, lr, #4
+	stmfd 	sp!,{lr}			@; store IRQ mode's link register 
+	//mrs 	r14, spsr		
+	//stmfd 	sp!, {r14}			@; store IRQ_spsr 
+	
+	//stmfd 	sp!, {r0-r3}
+	//bl		identify_and_clear_source
+	//ldmfd	sp!, {r0-r3}
+	
+	//msr 	cpsr_c, #0x1f		@; switch to system-mode, re-enable interrupts
+	stmfd 	sp!, {r0-r3, ip}	@; save lr and changeable registers on system/user? mode stack
+
+	bl		intc_irq
+
+	ldmfd	sp!, {r0-r3, ip}	@; restore system/user mode registers
+	//msr 	cpsr_c, #0x92		@; switch to IRQ mode, disable interrupts
+
+	//ldmfd 	sp!, {r14}			@; get r14 for spsr settings
+	//msr 	spsr_cf, r14		@; restore spsr settings
+
+	ldmfd 	sp!, {pc}^			@; returns from IRQ, ^ copies spsr to cpsr, so restores mode which was interrupted
+#else
+	push	{r0-r3,ip,lr}
+	bl		intc_irq
+	pop		{r0-r3,ip,lr}
+	subs	pc,lr,#4
+#endif
+#endif
 	
 		.align	5    
 do_fiq:
     LDMFD   SP!, {R0-R1}
+#if CFG_SUPPORT_OS
 	portSAVE_CONTEXT
 	LDR R0, =intc_fiq
 	MOV LR, PC
 	BX R0
 	portRESTORE_CONTEXT 
+#else
+#if 1
+	sub 	lr, lr, #4
+	stmfd 	sp!,{lr}			@; store IRQ mode's link register 
+	//mrs 	r14, spsr		
+	//stmfd 	sp!, {r14}			@; store IRQ_spsr 
 	
+	//stmfd 	sp!, {r0-r3}
+	//bl		identify_and_clear_source
+	//ldmfd	sp!, {r0-r3}
+	
+	//msr 	cpsr_c, #0x1f		@; switch to system-mode, re-enable interrupts
+	stmfd 	sp!, {r0-r3, ip}	@; save lr and changeable registers on system/user? mode stack
+
+	bl		intc_fiq
+		
+	ldmfd	sp!, {r0-r3, ip}	@; restore system/user mode registers
+	//msr 	cpsr_c, #0x92		@; switch to IRQ mode, disable interrupts
+	
+	//ldmfd 	sp!, {r14}			@; get r14 for spsr settings
+	//msr 	spsr_cf, r14		@; restore spsr settings
+
+	ldmfd 	sp!, {pc}^			@; returns from IRQ, ^ copies spsr to cpsr, so restores mode which was interrupted
+#else
+	push	{r0-r3,ip,lr}
+	bl		intc_fiq
+	pop		{r0-r3,ip,lr}
+	subs	pc,lr,#4
+#endif
+#endif
+	
+#if CFG_SUPPORT_OS
 /*Starting the first task is just a matter of restoring the context that*/
 /*was created by pxPortInitialiseStack().*/
     .code 32
@@ -664,6 +734,8 @@ WFI:
 	.code 32
 	.globl arm9_enable_alignfault
 	.type arm9_enable_alignfault, %function
+#endif
+
 arm9_enable_alignfault:
 	MRC p15, 0, R0, c1, c0, 0
 	ORR R0, R0, #0x02

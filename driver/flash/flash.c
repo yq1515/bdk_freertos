@@ -8,9 +8,6 @@
 #include <string.h>
 #include "uart_pub.h"
 #include "sys_ctrl_pub.h"
-#include "mcu_ps_pub.h"
-#include "mem_pub.h"
-#include "ate_app.h"
 
 static const flash_config_t flash_config[] =
 {
@@ -561,7 +558,7 @@ static void flash_write_data(UINT8 *buffer, UINT32 address, UINT32 len)
     }
     else
     {
-        os_memset(pb, 0xFF, 32);
+        memset(pb, 0xFF, 32);
     }
 
     while(REG_READ(REG_FLASH_OPERATE_SW) & BUSY_SW);
@@ -600,7 +597,7 @@ static void flash_write_data(UINT8 *buffer, UINT32 address, UINT32 len)
         GLOBAL_INT_RESTORE();
 #endif
         addr += 32;
-        os_memset(pb, 0xFF, 32);
+        memset(pb, 0xFF, 32);
     }
 }
 
@@ -641,18 +638,18 @@ void flash_exit(void)
 
 UINT32 flash_read(char *user_buf, UINT32 count, UINT32 address)
 {
-    peri_busy_count_add();
+    //peri_busy_count_add();
 
     flash_read_data((UINT8 *)user_buf, address, count);
 
-    peri_busy_count_dec();
+    //peri_busy_count_dec();
 
     return FLASH_SUCCESS;
 }
 
 UINT32 flash_write(char *user_buf, UINT32 count, UINT32 address)
 {
-    peri_busy_count_add();
+    //peri_busy_count_add();
 
     if(4 == flash_current_config->line_mode)
     {
@@ -665,7 +662,7 @@ UINT32 flash_write(char *user_buf, UINT32 count, UINT32 address)
     {
         flash_set_line_mode(LINE_MODE_FOUR);
     }
-    peri_busy_count_dec();
+    //peri_busy_count_dec();
 
     return FLASH_SUCCESS;
 }
@@ -678,7 +675,7 @@ UINT32 flash_ctrl(UINT32 cmd, void *parm)
     UINT32 address;
     UINT32 reg;
     UINT32 ret = FLASH_SUCCESS;
-    peri_busy_count_add();
+    //peri_busy_count_add();
 
     if(4 == flash_current_config->line_mode)
     {
@@ -707,11 +704,7 @@ UINT32 flash_ctrl(UINT32 cmd, void *parm)
 
         reg = REG_READ(REG_FLASH_CONF);
         reg &= ~(FLASH_CLK_CONF_MASK << FLASH_CLK_CONF_POSI);
-        if (get_ate_mode_state()) {
-            reg = reg | (0xB << FLASH_CLK_CONF_POSI);
-        } else {
-            reg = reg | (9 << FLASH_CLK_CONF_POSI);
-        }
+        reg = reg | (9 << FLASH_CLK_CONF_POSI);
         REG_WRITE(REG_FLASH_CONF, reg);
         break;
 
@@ -791,7 +784,7 @@ UINT32 flash_ctrl(UINT32 cmd, void *parm)
         flash_set_line_mode(LINE_MODE_FOUR);
     }
 
-    peri_busy_count_dec();
+    //peri_busy_count_dec();
     return ret;
 }
 // eof

@@ -256,10 +256,10 @@ OSStatus test_flash_write(volatile uint32_t start_addr, uint32_t len)
 	uint32_t addr = start_addr;
 	uint32_t length = len;
 	uint32_t tmp = addr + length;
-	
+
 	for(i=0;i<256;i++)
 		buf[i]=i;
-	
+
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     ASSERT(DD_HANDLE_UNVALID != flash_hdl);
 	for(;addr<tmp;addr+=256)
@@ -267,18 +267,18 @@ OSStatus test_flash_write(volatile uint32_t start_addr, uint32_t len)
 		os_printf("write addr(size:256):%d\r\n",addr);
 		ddev_write(flash_hdl, (char*)buf, 256, addr);
 	}
-	
+
 	return kNoErr;
 }
 OSStatus test_flash_erase(volatile uint32_t start_addr, uint32_t len)
 {
  	UINT32 status;
     DD_HANDLE flash_hdl;
-   
+
 	uint32_t addr = start_addr;
 	uint32_t length = len;
 	 uint32_t tmp = addr+length;
-	 
+
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
     {
@@ -289,7 +289,7 @@ OSStatus test_flash_erase(volatile uint32_t start_addr, uint32_t len)
 	{
 		os_printf("erase addr:%d\r\n",addr);
     	ddev_control(flash_hdl, CMD_FLASH_ERASE_SECTOR, (void *)&addr);
-		
+
 	}
 	return kNoErr;
 }
@@ -303,7 +303,7 @@ OSStatus test_flash_read(volatile uint32_t start_addr, uint32_t len)
 	uint32_t addr = start_addr;
 	uint32_t length = len;
 	tmp = addr+length;
-	
+
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
     {
@@ -324,7 +324,7 @@ OSStatus test_flash_read(volatile uint32_t start_addr, uint32_t len)
 			os_printf("\r\n");
 		}
 	}
-	
+
 	return kNoErr;
 }
 
@@ -336,9 +336,9 @@ OSStatus test_flash_read_time(volatile uint32_t start_addr, uint32_t len)
 	u8 buf[256];
 	uint32_t addr = start_addr;
 	uint32_t length = len;
-	
+
 	tmp = addr+length;
-	
+
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
     {
@@ -347,7 +347,7 @@ OSStatus test_flash_read_time(volatile uint32_t start_addr, uint32_t len)
     }
     beken_time_get_time((beken_time_t *)&time_start);
     os_printf("read time start:%d\r\n", time_start);
-	
+
 	for(;addr<tmp;addr+=256)
 	{
 		os_memset(buf,0,256);
@@ -356,7 +356,7 @@ OSStatus test_flash_read_time(volatile uint32_t start_addr, uint32_t len)
     beken_time_get_time((beken_time_t *)&time_end);
     os_printf("read time end:%d\r\n", time_end);
     os_printf("cost time:%d\r\n", time_end - time_start);
-	
+
 	return kNoErr;
 }
 
@@ -371,17 +371,6 @@ int hal_flash_lock(void)
 int hal_flash_unlock(void)
 {
 	rtos_unlock_mutex(&hal_flash_mutex);
-	return kNoErr;
-}
-
-
-int hal_flash_init(void)
-{
-	int ret = 0;
-
-	ret = rtos_init_mutex(&hal_flash_mutex);
-	if (ret != 0)
-		return kGeneralErr;
 	return kNoErr;
 }
 

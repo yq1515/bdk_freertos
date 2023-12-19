@@ -53,125 +53,99 @@ TARGET=out
 OBJ_DIR=$(TARGET)
 BIN_DIR=$(TARGET)
 
+BEKEN_DIR ?= .
+
 # -------------------------------------------------------------------
 # Include folder list
 # -------------------------------------------------------------------
 INCLUDES =
-
 INCLUDES += -I./config
 INCLUDES += -I./release
-
 INCLUDES += -I./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es
 INCLUDES += -I./os/FreeRTOSv9.0.0/FreeRTOS/Source/include
+INCLUDES += -I$(BEKEN_DIR)/include
+INCLUDES += -I$(BEKEN_DIR)/app/config
+INCLUDES += -I$(BEKEN_DIR)/driver/entry
+INCLUDES += -I$(BEKEN_DIR)/driver/intc
+INCLUDES += -I$(BEKEN_DIR)/driver/pwm
+INCLUDES += -I$(BEKEN_DIR)/driver/flash
+INCLUDES += -I$(BEKEN_DIR)/driver/common
+INCLUDES += -I$(BEKEN_DIR)/driver/uart
+INCLUDES += -I$(BEKEN_DIR)/driver/sys_ctrl
+INCLUDES += -I$(BEKEN_DIR)/driver/gpio
+INCLUDES += -I$(BEKEN_DIR)/driver/icu
+INCLUDES += -I$(BEKEN_DIR)/components/user_driver
+INCLUDES += -I$(BEKEN_DIR)/components/uart_debug
+INCLUDES += -I$(BEKEN_DIR)/os/include
+INCLUDES += -I$(BEKEN_DIR)/os/FreeRTOSv9.0.0
+INCLUDES += -I$(BEKEN_DIR)/components/utf8
+INCLUDES += -I$(BEKEN_DIR)/app/http
 
-#demo module
-INCLUDES += -I./demos
-# INCLUDES += -I./demos/application/ap_sta
-# INCLUDES += -I./demos/application/light/common
-# INCLUDES += -I./demos/application/light/light_client
-# INCLUDES += -I./demos/application/light/light_server
-# INCLUDES += -I./demos/application/param_manage
-# INCLUDES += -I./demos/common/base64
-# INCLUDES += -I./demos/common/json
-# INCLUDES += -I./demos/helloworld
-ifeq ($(CFG_IPERF_TEST),1)
-INCLUDES += -I./demos/net/iperf
+# CherryUSB
+ifeq ($(CFG_CHERRY_USB),1)
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/common
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/core
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/osal
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/cdc
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/hid
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/msc
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/audio
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/video
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/hub
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/demo
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device
+ifeq ($(CFG_UF2),1)
+INCLUDES += -I$(BEKEN_DIR)/components/uf2
+INCLUDES += -I$(BEKEN_DIR)/components/uf2/ports
 endif
-# INCLUDES += -I./demos/net/mqtt
-# INCLUDES += -I./demos/net/tcp_client
-# INCLUDES += -I./demos/net/tcp_server
-# INCLUDES += -I./demos/net/uart1_tcp_server
-# INCLUDES += -I./demos/net/udp
-# INCLUDES += -I./demos/os/os_mutex
-# INCLUDES += -I./demos/os/os_queue
-# INCLUDES += -I./demos/os/os_sem
-# INCLUDES += -I./demos/os/os_thread
-# INCLUDES += -I./demos/os/os_timer
-# INCLUDES += -I./demos/peripheral
-# INCLUDES += -I./demos/peripheral/flash
-# INCLUDES += -I./demos/peripheral/gpio
-# INCLUDES += -I./demos/peripheral/pwm
-# INCLUDES += -I./demos/peripheral/uart
-# INCLUDES += -I./demos/peripheral/psram
-# INCLUDES += -I./demos/wifi/airkiss_station
-# INCLUDES += -I./demos/wifi/scan
-# INCLUDES += -I./demos/wifi/softap
-# INCLUDES += -I./demos/wifi/station
-# INCLUDES += -I./demos/wifi/station_power_save
+endif
+
+
 
 # -------------------------------------------------------------------
 # Source file list
 # -------------------------------------------------------------------
 SRC_C =
-DRAM_C =
 SRC_OS =
 SRC_S =
 
-#demo module
-#SRC_C += ./demos/application/ap_sta/ap_sta_demo.c
-#SRC_C += ./demos/application/light/common/light_commond.c
-#SRC_C += ./demos/application/light/common/light_commun_protocol.c
-#SRC_C += ./demos/application/light/light_client/light_client_app_demo.c
-#SRC_C += ./demos/application/light/light_client/light_client_sockt.c
-#SRC_C += ./demos/application/light/light_server/light_server_app.c
-#SRC_C += ./demos/application/light/light_server/light_socket.c
-#SRC_C += ./demos/application/param_manage/param_manage.c
-#SRC_C += ./demos/common/base64/base64_enc.c
-#SRC_C += ./demos/common/base64/base64_enc.c
-#SRC_C += ./demos/common/json/cJSON.c
-#SRC_C += ./demos/common/json/cJsontest.c
-#SRC_C += ./demos/helloworld/helloworld.c
-ifeq ($(CFG_IPERF_TEST),1)
-SRC_C += ./demos/net/iperf/iperf.c
-endif
-#SRC_C += ./demos/net/mqtt/mqtt_echo.c
-#SRC_C += ./demos/net/mqtt/mqtt_test.c
-#SRC_C += ./demos/net/tcp_client/tcp_client_demo.c
-#SRC_C += ./demos/net/tcp_server/tcp_server_demo.c
-#SRC_C += ./demos/net/uart1_tcp_server/uart1_tcp_server_demo.c
-#SRC_C += ./demos/net/udp/udp_client_demo.c
-#SRC_C += ./demos/net/udp/udp_server_demo.c
-#SRC_C += ./demos/os/os_mutex/os_mutex.c
-#SRC_C += ./demos/os/os_queue/os_queue.c
-#SRC_C += ./demos/os/os_sem/os_sem.c
-#SRC_C += ./demos/os/os_thread/os_thread.c
-#SRC_C += ./demos/os/os_timer/os_timer.c
-#SRC_C += ./demos/peripheral/adc/test_adc.c
-#SRC_C += ./demos/peripheral/flash/test_flash.c
-#SRC_C += ./demos/peripheral/psram/test_psram.c
-#SRC_C += ./demos/peripheral/gpio/test_gpio.c
-#SRC_C += ./demos/peripheral/pwm/test_pwm.c
-#SRC_C += ./demos/peripheral/uart/test_uart.c
-#SRC_C += ./demos/wifi/airkiss_station/wifi_Airkiss_station.c
-#SRC_C += ./demos/wifi/scan/wifi_scan.c
-#SRC_C += ./demos/wifi/softap/wifi_delete_softap.c
-#SRC_C += ./demos/wifi/softap/wifi_softap.c
-#SRC_C += ./demos/wifi/station/wifi_station.c
-#SRC_C += ./demos/wifi/station_power_save/wifi_station_ps_demo.c
-#SRC_C += ./demos/demos_start.c
+#SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es/port.c
+SRC_C += $(BEKEN_DIR)/driver/common/dd.c
+SRC_C += $(BEKEN_DIR)/driver/common/drv_model.c
+SRC_C += $(BEKEN_DIR)/driver/driver.c
+SRC_C += $(BEKEN_DIR)/driver/entry/arch_main.c
+SRC_C += $(BEKEN_DIR)/driver/flash/flash.c
+SRC_C += $(BEKEN_DIR)/driver/gpio/gpio.c
+SRC_C += $(BEKEN_DIR)/driver/icu/icu.c
+SRC_C += $(BEKEN_DIR)/driver/intc/intc.c
+SRC_C += $(BEKEN_DIR)/driver/pwm/bk_timer.c
+SRC_C += $(BEKEN_DIR)/driver/sys_ctrl/sys_ctrl.c
+SRC_C += $(BEKEN_DIR)/driver/uart/uart.c
+SRC_C += $(BEKEN_DIR)/driver/uart/printf.c
+SRC_C += $(BEKEN_DIR)/driver/wdt/wdt.c
+SRC_C += $(BEKEN_DIR)/components/func.c
+SRC_C += $(BEKEN_DIR)/components/misc/fake_clock.c
+SRC_C += $(BEKEN_DIR)/components/misc/target_util.c
+SRC_C += $(BEKEN_DIR)/components/misc/start_type.c
+SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverWdg.c
 
-ifeq ($(CFG_BK_AWARE),1)
-#SRC_C += ./demos/wifi/bk_aware/bk_aware_demo.c
-#SRC_C += ./demos/wifi/bk_aware/bk_aware_crc.c
+# CherryUSB
+ifeq ($(CFG_CHERRY_USB),1)
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/core/usbd_core.c
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/msc/usbd_msc.c
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
+
+# UF2
+ifeq ($(CFG_UF2),1)
+SRC_C += $(BEKEN_DIR)/components/uf2/ghostfat.c
+SRC_C += $(BEKEN_DIR)/components/uf2/msc_desc.c
+SRC_C += $(BEKEN_DIR)/components/uf2/ports/board_flash.c
+endif # CFG_UF2
 endif
 
-ifeq ("${CFG_MBEDTLS}", "1")
-#SRC_C += ./demos/components/tls_demo/src/tls_demo.c
-endif
-#SRC_C += ./demos/components/mqtt_demo/src/mqtt_demo.c
-
-#operation system module
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/croutine.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/event_groups.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/list.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es/port.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/MemMang/heap_4.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/queue.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/tasks.c
-SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/timers.c
-
-# Beken SDK include folder and source file list
--include ./beken_src.mk
+#assembling files
+SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_handlers.S
+SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_vectors.S
 
 
 # Generate obj list
@@ -184,36 +158,6 @@ DEPENDENCY_S_LIST = $(SRC_S:%.S=$(OBJ_DIR)/%.d)
 
 OBJ_OS_LIST = $(SRC_OS:%.c=$(OBJ_DIR)/%.marm.o)
 DEPENDENCY_OS_LIST = $(SRC_OS:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_BLE_LIST = $(SRC_BLE_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_BLE_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_RWNX_LIST = $(SRC_IP_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_IP_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_WPA_LIST = $(SRC_WPA_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_WPA_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_USB_LIST = $(SRC_USB_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_USB_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_SENSOR_LIST = $(SRC_SENSOR_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_SENSOR_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_CAL_LIST = $(SRC_CAL_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_CAL_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_SUPPLICANT_LIST = $(SRC_SUPPLICANT_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_SUPPLICANT_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_UART_DEBUG_LIST = $(SRC_UART_DEBUG_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_UART_DEBUG_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_RF_TEST_LIST = $(SRC_RF_TEST_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_RF_TEST_C:%.c=$(OBJ_DIR)/%.d)
-
-OBJ_RF_USE_LIST = $(SRC_RF_USE_C:%.c=$(OBJ_DIR)/%.o)
-DEPENDENCY_LIST += $(SRC_RF_USE_C:%.c=$(OBJ_DIR)/%.d)
 
 ifeq ($(CFG_SOC_NAME), 1)
 SOC_NAME_ELF = beken7231.elf
@@ -246,16 +190,9 @@ SOC_NAME_BSP_MAP = beken7231_bsp.map
 
 # Compile options
 # -------------------------------------------------------------------
-CFLAGS = -DCFG_OS_FREERTOS=1
 CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -nostdlib -fno-strict-aliasing
 #CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-unused-function -fsigned-char -fdata-sections -Wunknown-pragmas -nostdlib -Wl,--gc-sections
-CFLAGS += -DWIFI_BLE_COEXIST
 
-ifeq ("${CFG_MBEDTLS}", "1")
-CFLAGS += -DMBEDTLS_CONFIG_FILE=\"tls_config.h\"
-endif
-
-OSFLAGS = -DCFG_OS_FREERTOS=1
 OSFLAGS += -g -marm -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -fsigned-char -fdata-sections -Wunknown-pragmas
 #OSFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -fsigned-char -fdata-sections -Wunknown-pragmas -Wl,--gc-sections
 
@@ -264,42 +201,12 @@ ASMFLAGS += -g -marm -mthumb-interwork -mcpu=arm968e-s -march=armv5te -x assembl
 
 LFLAGS = 
 LFLAGS += -g -Wl,--gc-sections -marm -mcpu=arm968e-s -mthumb-interwork -nostdlib  -Xlinker -Map=beken.map
-LFLAGS += -Wl,-wrap,malloc -Wl,-wrap,_malloc_r -Wl,-wrap,free -Wl,-wrap,_free_r -Wl,-wrap,zalloc -Wl,-wrap,calloc -Wl,-wrap,realloc  -Wl,-wrap,_realloc_r
 LFLAGS += -Wl,-wrap,printf -Wl,-wrap,vsnprintf -Wl,-wrap,snprintf -Wl,-wrap,sprintf -Wl,-wrap,puts
 #LFLAGS += -g -Wl,--gc-sections -mthumb -mcpu=arm968e-s -mthumb-interwork -nostdlib
 
-# For WPA3
-ifeq ($(CFG_WPA3),1)
-WOLFSSL_CFLAGS += -DWOLFSSL_BEKEN
-CFLAGS += $(WOLFSSL_CFLAGS)
-endif
 
-RWNX_LIB = ./lib/librwnx.a
-WPA_LIB  = ./lib/libwpa.a
-USB_LIB  = ./lib/libusb.a
-SENSOR_LIB  = ./lib/libsensor.a
-BLE_LIB  = ./lib/libble.a
-CAL_LIB  = ./lib/libcal.a
-SUPPLICANT_LIB  = ./lib/libsupplicant.a
-UART_DEBUG_LIB  = ./lib/libuart_debug.a
-RF_TEST_LIB  = ./lib/librf_test.a
-RF_USE_LIB  = ./lib/librf_use.a
-
-LIBFLAGS =  -L./lib -L./components/airkiss 
-LIBFLAGS += -lrwnx -lwpa
-LIBFLAGS += -lairkiss
-LIBFLAGS += -lusb
-LIBFLAGS += -lsensor
-LIBFLAGS += -lble
-LIBFLAGS += -lcal
-LIBFLAGS += -lsupplicant
-LIBFLAGS += -luart_debug
-LIBFLAGS += -lrf_test
-LIBFLAGS += -lrf_use
-
-CUR_PATH = $(shell pwd)
 .PHONY: application
-application: $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST) $(WPA_LIB) $(RWNX_LIB) $(USB_LIB) $(SENSOR_LIB)  $(BLE_LIB) $(CAL_LIB) $(SUPPLICANT_LIB) $(UART_DEBUG_LIB) $(RF_TEST_LIB) $(RF_USE_LIB)
+application: $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST)
 
 	@$(ECHO) "  $(GREEN)LD   $(BIN_DIR)/$(SOC_NAME_ELF)$(NC)"
 	$(Q)$(LD) $(LFLAGS) -o $(BIN_DIR)/$(SOC_NAME_ELF) $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST) $(LIBFLAGS) -T./build/$(SOC_NAME_LDS) -Xlinker -Map=$(BIN_DIR)/$(SOC_NAME_MAP)
@@ -312,67 +219,6 @@ application: $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST) $(WPA_LIB) $(RWNX_LIB) $(U
 	$(Q)$(OBJCOPY) -O binary $(BIN_DIR)/$(SOC_NAME_BSP_ELF) $(BIN_DIR)/$(SOC_NAME_BSP_BIN)
 #	$(Q)(cd ./tools/beken_packager; ./beken_packager_wrapper -i $(CFG_SOC_NAME))
 	$(Q)$(ENCRYPT) $(BIN_DIR)/$(SOC_NAME_BSP_BIN) 0 $(ENCRYPT_ARGS) > /dev/null
-
-	
-# Generate build info
-# -------------------------------------------------------------------	
-ble: $(BLE_LIB)
-
-$(BLE_LIB): $(OBJ_BLE_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^
-
-ip: $(RWNX_LIB)
-
-$(RWNX_LIB): $(OBJ_RWNX_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^
-
-$(WPA_LIB): $(OBJ_WPA_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^
-
-usb: $(USB_LIB)
-
-$(USB_LIB): $(OBJ_USB_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^	
-
-sensor: $(SENSOR_LIB)
-
-$(SENSOR_LIB): $(OBJ_SENSOR_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^
-
-cal: $(CAL_LIB)
-
-$(CAL_LIB): $(OBJ_CAL_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^	
-
-supplicant: $(SUPPLICANT_LIB)
-
-$(SUPPLICANT_LIB): $(OBJ_SUPPLICANT_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^	
-
-uart_debug: $(UART_DEBUG_LIB)
-
-$(UART_DEBUG_LIB): $(OBJ_UART_DEBUG_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^	
-
-rf_test: $(RF_TEST_LIB)
-
-$(RF_TEST_LIB): $(OBJ_RF_TEST_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^	
-
-rf_use: $(RF_USE_LIB)
-
-$(RF_USE_LIB): $(OBJ_RF_USE_LIST)
-	$(Q)$(ECHO) "  $(GREEN)AR   $@$(NC)"
-	$(Q)$(AR) -rcs $@ $^	
 
 $(OBJ_DIR)/%.o: %.c
 	$(Q)if [ ! -d $(dir $@) ]; then mkdir -p $(dir $@); fi

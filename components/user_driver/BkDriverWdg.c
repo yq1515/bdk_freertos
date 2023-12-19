@@ -29,7 +29,6 @@
  ******************************************************************************
  */
 #include "include.h"
-#include "rtos_pub.h"
 #include "BkDriverWdg.h"
 #include "drv_model_pub.h"
 #include "error.h"

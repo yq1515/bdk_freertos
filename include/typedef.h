@@ -62,6 +62,7 @@ typedef int __s32;
 typedef unsigned short __u16;
 typedef signed short __s16;
 typedef unsigned char __u8;
+typedef int OSStatus;
 
 #endif // _TYPEDEF_H_
 // eof

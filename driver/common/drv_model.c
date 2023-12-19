@@ -1,10 +1,9 @@
 #include "include.h"
+#include <string.h>
 #include "arm_arch.h"
 
 #include "drv_model_pub.h"
 #include "drv_model.h"
-#include "mem_pub.h"
-#include "str_pub.h"
 
 static DRV_SDEV_S drv_sdev_tbl[DD_MAX_SDEV] =
 {
@@ -18,16 +17,16 @@ static DRV_DEV_S drv_dev_tbl[DD_MAX_DEV] =
 
 UINT32 drv_model_init(void)
 {
-    os_memset(drv_dev_tbl, 0, sizeof(drv_dev_tbl));
-    os_memset(drv_sdev_tbl, 0, sizeof(drv_sdev_tbl));
+    memset(drv_dev_tbl, 0, sizeof(drv_dev_tbl));
+    memset(drv_sdev_tbl, 0, sizeof(drv_sdev_tbl));
 
     return DRV_SUCCESS;
 }
 
 UINT32 drv_model_uninit(void)
 {
-    os_memset(drv_dev_tbl, 0, sizeof(drv_dev_tbl));
-    os_memset(drv_sdev_tbl, 0, sizeof(drv_sdev_tbl));
+    memset(drv_dev_tbl, 0, sizeof(drv_dev_tbl));
+    memset(drv_sdev_tbl, 0, sizeof(drv_sdev_tbl));
 
     return DRV_SUCCESS;
 }
@@ -91,7 +90,7 @@ DD_HANDLE ddev_open(char *dev_name, UINT32 *status, UINT32 op_flag)
     GLOBAL_INT_DECLARATION();
 
     handle = DD_HANDLE_UNVALID;
-    name_len = os_strlen(dev_name);
+    name_len = strlen(dev_name);
     if((!(dev_name && status)) || (name_len > DD_MAX_NAME_LEN))
     {
         goto open_exit;
@@ -103,7 +102,7 @@ DD_HANDLE ddev_open(char *dev_name, UINT32 *status, UINT32 op_flag)
     {
         dev_ptr = &drv_dev_tbl[i];
         if((dev_ptr)
-                && (0 == os_strncmp(dev_ptr->name, dev_name, name_len)))
+                && (0 == strncmp(dev_ptr->name, dev_name, name_len)))
         {
             if(DD_STATE_OPENED == dev_ptr->state)
             {
@@ -263,12 +262,12 @@ UINT32 sddev_control(char *dev_name, UINT32 cmd, VOID *param)
 
     ASSERT(dev_name);
     status = DRV_FAILURE;
-    name_len = os_strlen(dev_name);
+    name_len = strlen(dev_name);
     for(i = 0; i < DD_MAX_SDEV; i ++)
     {
         dev_ptr = &drv_sdev_tbl[i];
         if((dev_ptr)
-                && (0 == os_strncmp(dev_ptr->name, dev_name, name_len)))
+                && (0 == strncmp(dev_ptr->name, dev_name, name_len)))
         {
             operation = dev_ptr->op;
             if(operation && (operation->control))
@@ -359,7 +358,7 @@ UINT32 ddev_unregister_dev(char *dev_name)
     }
 
     dev_ptr = NULLPTR;
-    name_len = os_strlen(dev_name);
+    name_len = strlen(dev_name);
     if((!dev_name) || (name_len > DD_MAX_NAME_LEN))
     {
         return DRV_FAILURE;
@@ -368,7 +367,7 @@ UINT32 ddev_unregister_dev(char *dev_name)
     for(i = 0; i < DD_MAX_DEV; i ++)
     {
         dev_ptr = &drv_dev_tbl[i];
-        if(0 == os_strncmp(dev_ptr->name, dev_name, name_len))
+        if(0 == strncmp(dev_ptr->name, dev_name, name_len))
         {
             dev_ptr->name  = 0;
             dev_ptr->op    = 0;
@@ -397,7 +396,7 @@ UINT32 sddev_unregister_dev(char *dev_name)
     }
 
     dev_ptr = NULLPTR;
-    name_len = os_strlen(dev_name);
+    name_len = strlen(dev_name);
     if((!dev_name) || (name_len > DD_MAX_NAME_LEN))
     {
         return DRV_FAILURE;
@@ -406,7 +405,7 @@ UINT32 sddev_unregister_dev(char *dev_name)
     for(i = 0; i < DD_MAX_DEV; i ++)
     {
         dev_ptr = &drv_sdev_tbl[i];
-        if(0 == os_strncmp(dev_ptr->name, dev_name, name_len))
+        if(0 == strncmp(dev_ptr->name, dev_name, name_len))
         {
             dev_ptr->name  = 0;
             dev_ptr->op    = 0;

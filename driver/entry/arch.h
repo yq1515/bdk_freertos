@@ -37,14 +37,8 @@
  ****************************************************************************************
  */
 #include "generic.h"
-#include "co_int.h"
 #include "compiler.h"
 #include "portmacro.h"
-
-#if (CFG_SUPPORT_RTT)
-#include <rthw.h>
-#include <rtthread.h>
-#endif
 
 #ifndef GLOBAL_INT_START
 #define GLOBAL_INT_START               portENABLE_INTERRUPTS
@@ -54,18 +48,6 @@
 #define GLOBAL_INT_STOP                portDISABLE_INTERRUPTS
 #endif
 
-#if (CFG_SUPPORT_RTT)
-#define GLOBAL_INT_DECLARATION()   rt_base_t irq_level
-#define GLOBAL_INT_DISABLE()       do{\
-										irq_level = rt_hw_interrupt_disable();\
-									}while(0)
-
-
-#define GLOBAL_INT_RESTORE()       do{                         \
-                                        rt_hw_interrupt_enable(irq_level);\
-                                   }while(0)
-
-#else
 #define GLOBAL_INT_DECLARATION()   uint32_t fiq_tmp, irq_tmp
 #define GLOBAL_INT_DISABLE()       do{\
 										fiq_tmp = portDISABLE_FIQ();\
@@ -83,7 +65,6 @@
                                             portENABLE_IRQ();  \
                                         }                      \
                                    }while(0)
-#endif
 
 /*
  * CPU WORD SIZE

@@ -25,7 +25,6 @@
 #include <stdint.h>	/* For intmax_t. */
 #include <math.h>	/* For pow(3), NAN, and INFINITY. */
 #include <string.h>	/* For strcmp(3). */
-#include "mem_pub.h"
 #include "uart_pub.h"
 
 #define VA_START(ap, last) va_start(ap, last)
@@ -1200,22 +1199,6 @@ static LDOUBLE mypow10(int exponent)
 }
 #endif
 
-int __wrap_vasprintf(char **ret, const char *format, va_list ap)
-{
-	size_t size;
-	int len;
-	va_list aq;
-
-	va_copy(aq, ap);
-	len = __wrap_vsnprintf(NULL, 0, format, aq);
-	va_end(aq);
-
-	if (len < 0 || (*ret = os_malloc(size = len + 1)) == NULL)
-		return -1;
-
-	return __wrap_vsnprintf(*ret, size, format, ap);
-}
-
 int __wrap_snprintf(char *str, size_t size, const char *format, ...)
 {
 	va_list ap;
@@ -1228,16 +1211,6 @@ int __wrap_snprintf(char *str, size_t size, const char *format, ...)
 	return len;
 }
 
-int __wrap_asprintf(char **ret, const char *format, ...)
-{
-	va_list ap;
-	int len;
-
-	va_start(ap, format);
-	len = __wrap_vasprintf(ret, format, ap);
-	va_end(ap);
-	return len;
-}
 
 int __wrap_sprintf(char *str, const char *format, ...)
 {

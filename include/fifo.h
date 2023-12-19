@@ -1,10 +1,9 @@
 #ifndef _FIFO_H_
 #define _FIFO_H_
 
+#include <string.h>
 #include "include.h"
 #include "generic.h"
-#include "mem_pub.h"
-#include "mem_pub.h"
 
 typedef struct kfifo
 {
@@ -29,6 +28,7 @@ typedef struct kfifo
  */
 __INLINE struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size)
 {
+#if 0
 	struct kfifo *fifo;
 
 	/* size must be a power of 2 */
@@ -45,6 +45,9 @@ __INLINE struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size)
 	fifo->mask = fifo->size - 1;
 
 	return fifo;
+#else
+	return NULLPTR;
+#endif
 }
 
 /**
@@ -57,6 +60,7 @@ __INLINE struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size)
  */
 __INLINE struct kfifo *kfifo_alloc(unsigned int size)
 {
+#if 0
 	unsigned char *buffer;
 	struct kfifo *ret;
 
@@ -70,6 +74,9 @@ __INLINE struct kfifo *kfifo_alloc(unsigned int size)
 		os_free(buffer);
 
 	return ret;
+#else
+	return 0;
+#endif
 }
 
 /**
@@ -78,10 +85,12 @@ __INLINE struct kfifo *kfifo_alloc(unsigned int size)
  */
 __INLINE void kfifo_free(struct kfifo *fifo)
 {
+#if 0
 	os_free(fifo->buffer);
 	fifo->buffer = 0;
 	
 	os_free(fifo);
+#endif
 }
 
 /**
@@ -108,10 +117,10 @@ __INLINE unsigned int kfifo_put(struct kfifo *fifo,
 
 	/* first put the data starting from fifo->in to buffer end */
 	l = min(len, fifo->size - (fifo->in & (fifo->size - 1)));
-	os_memcpy(fifo->buffer + (fifo->in & (fifo->size - 1)), buffer, l);
+	memcpy(fifo->buffer + (fifo->in & (fifo->size - 1)), buffer, l);
 
 	/* then put the rest (if any) at the beginning of the buffer */
-	os_memcpy(fifo->buffer, buffer + l, len - l);
+	memcpy(fifo->buffer, buffer + l, len - l);
 
 	fifo->in += len;
     GLOBAL_INT_RESTORE();
@@ -142,10 +151,10 @@ __INLINE unsigned int kfifo_get(struct kfifo *fifo,
 
 	/* first get the data from fifo->out until the end of the buffer */
 	l = min(len, fifo->size - (fifo->out & (fifo->size - 1)));
-	os_memcpy(buffer, fifo->buffer + (fifo->out & (fifo->size - 1)), l);
+	memcpy(buffer, fifo->buffer + (fifo->out & (fifo->size - 1)), l);
 
 	/* then get the rest (if any) from the beginning of the buffer */
-	os_memcpy(buffer + l, fifo->buffer, len - l);
+	memcpy(buffer + l, fifo->buffer, len - l);
 
 	fifo->out += len;
     GLOBAL_INT_RESTORE();
@@ -173,8 +182,8 @@ __INLINE void kfifo_copy_out(struct kfifo *fifo, void *dst,
 
 	l = min(len, size - off);
 
-	os_memcpy(dst, (void *)(fifo->buffer + off), l);
-	os_memcpy((void *)((unsigned int)dst + l), (void *)fifo->buffer, len - l);
+	memcpy(dst, (void *)(fifo->buffer + off), l);
+	memcpy((void *)((unsigned int)dst + l), (void *)fifo->buffer, len - l);
 	/*
 	 * make sure that the data is copied before
 	 * incrementing the fifo->out index counter

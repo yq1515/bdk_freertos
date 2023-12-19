@@ -23,7 +23,7 @@
  */
 #include "usbd_core.h"
 #include "usbd_msc.h"
-#include "board.h"
+#include "boards.h"
 #include "uf2.h"
 #include "uart_pub.h"
 

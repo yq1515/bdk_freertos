@@ -6,7 +6,6 @@
 #include "wdt_pub.h"
 #include "target_util_pub.h"
 
-#include "sys_rtos.h"
 #include "arm_arch.h"
 #include "sys_ctrl.h"
 #include "sys_ctrl_pub.h"

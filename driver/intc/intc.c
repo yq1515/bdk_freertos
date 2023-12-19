@@ -22,9 +22,7 @@
 #include "arm_arch.h"
 #include "drv_model_pub.h"
 #include "icu_pub.h"
-#include "mem_pub.h"
 #include "uart_pub.h"
-#include "power_save_pub.h"
 #include "start_type_pub.h"
 
 ISR_T _isrs[INTC_MAX_COUNT] = {{{0, 0}},};
@@ -415,5 +413,129 @@ void bk_trap_resv(struct arm_registers *regs)
     bk_show_register(regs);
     bk_cpu_shutdown();
 }
+
+__attribute__((target("arm")))
+uint32_t platform_is_in_irq_context( void )
+{
+    uint32_t mode;
+
+    __asm volatile(
+		"MRS %0,CPSR\n"
+		"AND %0,%0,#0x1f\n"
+		:"=r" (mode)
+		:
+		:"memory"
+	);
+
+    return (ARM968_IRQ_MODE == mode);
+}
+
+/*-----------------------------------------------------------*/
+__attribute__((target("arm")))
+uint32_t platform_is_in_fiq_context( void )
+{
+    uint32_t mode;
+
+    __asm volatile(
+		"MRS %0,CPSR\n"
+		"AND %0,%0,#0x1f\n"
+		:"=r" (mode)
+		:
+		:"memory"
+	);
+
+    return (ARM968_FIQ_MODE == mode);
+}
+
+__attribute__((target("arm")))
+uint32_t platform_is_in_interrupt_context( void )
+{
+    return ((platform_is_in_fiq_context())
+                || (platform_is_in_irq_context()));
+}
+
+#ifdef CONTROL_IRQ_WITH_NORMAL_FUNCTION
+__attribute__((target("arm")))
+void portENABLE_IRQ(void)
+{
+	unsigned long temp;
+	__asm volatile(
+	"mrs	%0, cpsr		@ local_irq_enable\n"
+       "bic	%0, %0, #0x80\n"
+       "msr	cpsr_c, %0"
+	: "=r" (temp)
+	:
+	: "memory");
+}
+
+__attribute__((target("arm")))
+void portENABLE_FIQ(void)
+{
+	unsigned long temp;
+	__asm volatile(
+	"mrs	%0, cpsr		@ local_irq_enable\n"
+       "bic	%0, %0, #0x40\n"
+       "msr	cpsr_c, %0"
+	: "=r" (temp)
+	:
+	: "memory");
+}
+
+/*
+ * Disable Interrupts
+ */
+__attribute__((target("arm")))
+int portDISABLE_FIQ(void)
+{
+	unsigned long temp;
+	unsigned long mask;
+
+	__asm volatile(
+	"mrs	%1, cpsr		@ local_irq_disable\n"
+	"orr	%0, %1, #0x40\n"
+	"msr	cpsr_c, %0"
+	: "=r" (temp),"=r" (mask)
+	:
+	: "memory");
+
+	return (!!(mask & 0x40));
+}
+
+__attribute__((target("arm")))
+int port_disable_interrupts_flag(void)
+{
+	unsigned long temp;
+	unsigned long mask;
+
+	__asm volatile(
+	"mrs	%1, cpsr		@ local_irq_disable\n"
+	"orr	%0, %1, #0xC0\n"
+	"msr	cpsr_c, %0"
+	: "=r" (temp),"=r" (mask)
+	:
+	: "memory");
+
+	return (mask & 0xC0);
+}
+
+__attribute__((target("arm")))
+int portDISABLE_IRQ(void)
+{
+	unsigned long temp;
+	unsigned long mask;
+
+	__asm volatile(
+	"mrs	%1, cpsr		@ local_irq_disable\n"
+	"orr	%0, %1, #0x80\n"
+	"msr	cpsr_c, %0"
+	: "=r" (temp),"=r" (mask)
+	:
+	: "memory");
+
+	return (!!(mask & 0x80));
+}
+#endif
+//eof
+
 
 /// @}

@@ -5,7 +5,6 @@
 #include "typedef.h"
 #include "generic.h"
 #include "compiler.h"
-#include "release.h"
 #include "arch.h"
 
 #if CFG_ENABLE_DEMO_TEST

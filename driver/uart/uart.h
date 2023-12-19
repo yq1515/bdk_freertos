@@ -2,8 +2,8 @@
 #define _UART_H_
 
 #include "include.h"
-#include "fifo.h"
 #include "uart_pub.h"
+#include "fifo.h"
 
 //#define UART_DEBUG
 
@@ -75,10 +75,10 @@
 #endif
 
 #ifndef UART1_USE_FIFO_REC
-#define UART1_USE_FIFO_REC           1
+#define UART1_USE_FIFO_REC           0
 #endif
 #ifndef UART2_USE_FIFO_REC
-#define UART2_USE_FIFO_REC           1
+#define UART2_USE_FIFO_REC           0
 #endif
 
 #define UART_CLOCK_FREQ_10M          10000000
@@ -278,7 +278,6 @@ typedef struct _uart_
 /*******************************************************************************
 * Function Declarations
 *******************************************************************************/
-#if CFG_UART_DEBUG_COMMAND_LINE
 extern UINT32 uart_sw_init(UINT8 ch);
 extern UINT32 uart_sw_uninit(UINT8 ch);
 extern void uart_fifo_flush(UINT8 ch);
@@ -299,7 +298,6 @@ extern UINT32 uart2_close(void);
 extern UINT32 uart2_read(char *user_buf, UINT32 count, UINT32 op_flag);
 extern UINT32 uart2_write(char *user_buf, UINT32 count, UINT32 op_flag);
 extern UINT32 uart2_ctrl(UINT32 cmd, void *parm);
-#endif
 
 int uart_read_byte(int uport);
 int uart_write_byte(int uport, char c);

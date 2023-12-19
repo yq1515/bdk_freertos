@@ -4,22 +4,12 @@
 #include "uart.h"
 #include "drv_model_pub.h"
 #include "sys_ctrl_pub.h"
-#include "mem_pub.h"
 #include "icu_pub.h"
 #include "gpio_pub.h"
 #include <stdio.h>
-#include "mem_pub.h"
+#include <stdarg.h>
+#include <string.h>
 #include "intc_pub.h"
-
-#if CFG_USE_STA_PS
-#include "power_save_pub.h"
-#endif
-#include "mcu_ps_pub.h"
-
-#if (CFG_SUPPORT_RTT)
-#include <rtthread.h>
-#include <rthw.h>
-#endif
 
 #if CFG_ENABLE_DEMO_TEST
 #include "uart1_tcp_server_demo.h"
@@ -30,8 +20,6 @@ static struct uart_callback_des uart_receive_callback[2] = {{NULL}, {NULL}};
 static struct uart_callback_des uart_txfifo_needwr_callback[2] = {{NULL}, {NULL}};
 static struct uart_callback_des uart_tx_end_callback[2] = {{NULL}, {NULL}};
 
-#ifndef KEIL_SIMULATOR
-#if CFG_UART_DEBUG_COMMAND_LINE
 UART_S uart[2] =
 {
     {0, 0, 0},
@@ -55,7 +43,6 @@ static DD_OPERATIONS uart2_op =
     uart2_write,
     uart2_ctrl
 };
-#endif
 
 UINT8 uart_is_tx_fifo_empty(UINT8 uport)
 {
@@ -107,23 +94,6 @@ void bk_send_string(UINT8 uport, const char *string)
 /*uart2 as deubg port*/
 void bk_printf(const char *fmt, ...)
 {
-#if (CFG_SUPPORT_RTT)
-    va_list args;
-    rt_size_t length;
-    static char rt_log_buf[RT_CONSOLEBUF_SIZE];
-
-    va_start(args, fmt);
-    /* the return value of vsnprintf is the number of bytes that would be
-     * written to buffer had if the size of the buffer been sufficiently
-     * large excluding the terminating null byte. If the output string
-     * would be larger than the rt_log_buf, we have to adjust the output
-     * length. */
-    length = rt_vsnprintf(rt_log_buf, sizeof(rt_log_buf) - 1, fmt, args);
-    if (length > RT_CONSOLEBUF_SIZE - 1)
-        length = RT_CONSOLEBUF_SIZE - 1;
-    rt_kprintf("%s", rt_log_buf);
-    va_end(args);
-#else
     va_list ap;
     char string[128];
 
@@ -132,8 +102,6 @@ void bk_printf(const char *fmt, ...)
     string[127] = 0;
     bk_send_string(uart_print_port, string);
     va_end(ap);
-#endif
-
 }
 
 void print_hex_dump(const char *prefix, void *buf, int len)
@@ -146,40 +114,6 @@ void print_hex_dump(const char *prefix, void *buf, int len)
 	for (i = 0; i < len; i++)
 		os_printf("%02X ", b[i]);
 	os_printf("\n");
-}
-
-#if CFG_BACKGROUND_PRINT
-INT32 uart_printf(const char *fmt, ...)
-{
-    INT32 rc;
-    char buf[TX_RB_LENGTH];
-
-    va_list args;
-    va_start(args, fmt);
-    rc = vsnprintf(buf, sizeof(buf), fmt, args);
-    va_end(args);
-
-    buf[sizeof(buf) - 1] = '\0';
-    if((rc < sizeof(buf) - 2)
-            && (buf[rc - 1] == '\n')
-            && (buf[rc - 2] != '\r'))
-    {
-        buf[rc - 1] = '\r';
-        buf[rc] = '\n';
-        buf[rc + 1] = 0;
-
-        rc += 1;
-    }
-
-    return kfifo_put(uart[1].tx, (UINT8 *)&buf[0], rc);
-}
-#endif // CFG_BACKGROUND_PRINT
-
-void fatal_print(const char *fmt, ...)
-{
-    os_printf(fmt);
-
-    DEAD_WHILE();
 }
 
 void uart_hw_init(UINT8 uport)
@@ -308,7 +242,6 @@ void uart_hw_set_change(UINT8 uport, bk_uart_config_t *uart_config)
 }
 
 
-#if CFG_UART_DEBUG_COMMAND_LINE
 UINT32 uart_sw_init(UINT8 uport)
 {
     uart[uport].rx = kfifo_alloc(RX_RB_LENGTH);
@@ -345,7 +278,7 @@ UINT32 uart_sw_uninit(UINT8 uport)
         kfifo_free(uart[uport].rx);
     }
 
-    os_memset(&uart[uport], 0, sizeof(uart[uport]));
+    memset(&uart[uport], 0, sizeof(uart[uport]));
 
     return UART_SUCCESS;
 }
@@ -606,7 +539,9 @@ void uart1_isr(void)
 }
 void uart1_init(void)
 {
+#if UART1_USE_FIFO_REC
     UINT32 ret;
+#endif
     UINT32 param;
     UINT32 intr_status;
 
@@ -646,7 +581,9 @@ void uart1_exit(void)
 
     ddev_unregister_dev(UART1_DEV_NAME);
 
+#if UART1_USE_FIFO_REC
     uart_sw_uninit(UART1_PORT);
+#endif
 }
 
 UINT32 uart1_open(UINT32 op_flag)
@@ -684,7 +621,7 @@ UINT32 uart1_ctrl(UINT32 cmd, void *parm)
 	UINT32 conf_reg_addr;
 	UINT32 baud_div,reg;
 
-    peri_busy_count_add();
+    //peri_busy_count_add();
 
     ret = UART_SUCCESS;
     switch(cmd)
@@ -787,7 +724,7 @@ UINT32 uart1_ctrl(UINT32 cmd, void *parm)
         break;
     }
 
-    peri_busy_count_dec();
+    //peri_busy_count_dec();
 
     return ret;
 }
@@ -864,7 +801,9 @@ void uart2_isr(void)
 }
 void uart2_init(void)
 {
+#if UART1_USE_FIFO_REC
     UINT32 ret;
+#endif
     UINT32 param;
     UINT32 intr_status;
 
@@ -904,7 +843,9 @@ void uart2_exit(void)
 
     ddev_unregister_dev(UART2_DEV_NAME);
 
+#if UART2_USE_FIFO_REC
     uart_sw_uninit(UART2_PORT);
+#endif
 }
 
 UINT32 uart2_open(UINT32 op_flag)
@@ -941,7 +882,7 @@ UINT32 uart2_ctrl(UINT32 cmd, void *parm)
 	int baud;
 	UINT32 conf_reg_addr;
 	UINT32 baud_div,reg;
-    peri_busy_count_add();
+    //peri_busy_count_add();
 
     ret = UART_SUCCESS;
     switch(cmd)
@@ -1043,7 +984,7 @@ UINT32 uart2_ctrl(UINT32 cmd, void *parm)
         break;
     }
 
-    peri_busy_count_dec();
+    //peri_busy_count_dec();
 
     return ret;
 }
@@ -1069,9 +1010,6 @@ UINT32 uart_wait_tx_over()
 
     return uart_wait_us;
 }
-#endif // (!CFG_UART_DEBUG_COMMAND_LINE)
-
-#endif // KEIL_SIMULATOR
 
 INT32 os_null_printf(const char *fmt, ...)
 {
