@@ -11,10 +11,14 @@ typedef struct kfifo
 	unsigned int out;
 
 	unsigned int mask;
-	
-	unsigned int size;	
+
+	unsigned int size;
 	unsigned char *buffer;
 }KFIFO_T, *KFIFO_PTR;
+
+#define MAX_FIFOS   10
+
+static struct kfifo kfifos[MAX_FIFOS];
 
 /**
  * kfifo_init - allocates a new FIFO using a preallocated buffer
@@ -26,17 +30,14 @@ typedef struct kfifo
  * Do NOT pass the kfifo to kfifo_free() after use ! Simply free the
  * struct kfifo with ke_free().
  */
-__INLINE struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size)
+__INLINE struct kfifo *kfifo_init(int index, unsigned char *buffer, unsigned int size)
 {
-#if 0
 	struct kfifo *fifo;
 
 	/* size must be a power of 2 */
 	BUG_ON(size & (size - 1));
 
-	fifo = os_malloc(sizeof(struct kfifo));
-	if (!fifo)
-		return NULLPTR;
+	fifo = &kfifos[index];
 
 	fifo->buffer = buffer;
 	fifo->size = size;
@@ -45,9 +46,6 @@ __INLINE struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size)
 	fifo->mask = fifo->size - 1;
 
 	return fifo;
-#else
-	return NULLPTR;
-#endif
 }
 
 /**
@@ -58,25 +56,9 @@ __INLINE struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size)
  *
  * The size will be rounded-up to a power of 2.
  */
-__INLINE struct kfifo *kfifo_alloc(unsigned int size)
+__INLINE struct kfifo *kfifo_alloc(int index, unsigned char *buffer, unsigned int len)
 {
-#if 0
-	unsigned char *buffer;
-	struct kfifo *ret;
-
-	buffer = os_malloc(size);
-	if (!buffer)
-		return 0;
-
-	ret = kfifo_init(buffer, size);
-
-	if (!(ret))
-		os_free(buffer);
-
-	return ret;
-#else
-	return 0;
-#endif
+ 	return kfifo_init(index, buffer, len);
 }
 
 /**
@@ -85,12 +67,6 @@ __INLINE struct kfifo *kfifo_alloc(unsigned int size)
  */
 __INLINE void kfifo_free(struct kfifo *fifo)
 {
-#if 0
-	os_free(fifo->buffer);
-	fifo->buffer = 0;
-	
-	os_free(fifo);
-#endif
 }
 
 /**
@@ -200,9 +176,9 @@ __INLINE unsigned int kfifo_out_peek(struct kfifo *fifo,
 		len = l;
 
 	kfifo_copy_out(fifo, buffer, len, fifo->out);
-	
+
 	return len;
 }
 #endif // _FIFO_H_
-// eof 
+// eof
 

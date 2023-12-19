@@ -44,6 +44,8 @@ static DD_OPERATIONS uart2_op =
     uart2_ctrl
 };
 
+static unsigned char kfifo_bufs[2][RX_RB_LENGTH + TX_RB_LENGTH];
+
 UINT8 uart_is_tx_fifo_empty(UINT8 uport)
 {
 	UINT32 param;
@@ -244,8 +246,8 @@ void uart_hw_set_change(UINT8 uport, bk_uart_config_t *uart_config)
 
 UINT32 uart_sw_init(UINT8 uport)
 {
-    uart[uport].rx = kfifo_alloc(RX_RB_LENGTH);
-    uart[uport].tx = kfifo_alloc(TX_RB_LENGTH);
+    uart[uport].rx = kfifo_alloc(uport, kfifo_bufs[uport], RX_RB_LENGTH);
+    uart[uport].tx = kfifo_alloc(uport, kfifo_bufs[uport] + RX_RB_LENGTH, TX_RB_LENGTH);
 
     if((!uart[uport].tx) || (!uart[uport].rx))
     {
@@ -484,7 +486,7 @@ void uart1_isr(void)
 
     if(status & (RX_FIFO_NEED_READ_STA | UART_RX_STOP_END_STA))
     {
-#if ((!CFG_SUPPORT_RTT) && (UART1_USE_FIFO_REC))
+#if UART1_USE_FIFO_REC
         uart_read_fifo_frame(UART1_PORT, uart[UART1_PORT].rx);
 #endif
 
@@ -732,7 +734,6 @@ UINT32 uart1_ctrl(UINT32 cmd, void *parm)
 
 void uart2_isr(void)
 {
-#if CFG_UART_DEBUG_COMMAND_LINE
     UINT32 status;
     UINT32 intr_en;
     UINT32 intr_status;
@@ -744,7 +745,7 @@ void uart2_isr(void)
 
     if(status & (RX_FIFO_NEED_READ_STA | UART_RX_STOP_END_STA))
     {
-#if ((!CFG_SUPPORT_RTT) && (UART2_USE_FIFO_REC))
+#if UART2_USE_FIFO_REC
         uart_read_fifo_frame(UART2_PORT, uart[UART2_PORT].rx);
 #endif
 
@@ -796,8 +797,6 @@ void uart2_isr(void)
 	if(status & UART_RXD_WAKEUP_STA)
     {
     }
-
-#endif
 }
 void uart2_init(void)
 {

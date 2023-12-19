@@ -40,13 +40,8 @@
 
 #define DEBUG_PRT_MAX_CNT          (16)
 
-#if CFG_UART_DEBUG_COMMAND_LINE
-#define RX_RB_LENGTH               (128)  // 64
+#define RX_RB_LENGTH               (128)
 #define TX_RB_LENGTH               (64)
-#else
-#define RX_RB_LENGTH               (64)
-#define TX_RB_LENGTH               (64)
-#endif
 
 #define CARRIAGE_RETURN(buf, count) \
     do { \
@@ -75,10 +70,10 @@
 #endif
 
 #ifndef UART1_USE_FIFO_REC
-#define UART1_USE_FIFO_REC           0
+#define UART1_USE_FIFO_REC           1
 #endif
 #ifndef UART2_USE_FIFO_REC
-#define UART2_USE_FIFO_REC           0
+#define UART2_USE_FIFO_REC           1
 #endif
 
 #define UART_CLOCK_FREQ_10M          10000000
