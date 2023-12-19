@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    IAP_Main/Src/ymodem.c 
+  * @file    IAP_Main/Src/ymodem.c
   * @author  MCD Application Team
-  * @brief   This file provides all the software functions related to the ymodem 
+  * @brief   This file provides all the software functions related to the ymodem
   *          protocol.
   ******************************************************************************
   * @attention
@@ -19,8 +19,8 @@
 
 /** @addtogroup STM32H7xx_IAP
   * @{
-  */ 
-  
+  */
+
 /* Includes ------------------------------------------------------------------*/
 #include "flash_if.h"
 #include "common.h"
@@ -46,6 +46,35 @@ uint16_t Cal_CRC16(const uint8_t* p_data, uint32_t size);
 uint8_t CalcChecksum(const uint8_t *p_data, uint32_t size);
 
 /* Private functions ---------------------------------------------------------*/
+
+DD_HANDLE UartHandle;
+
+
+// bk_uart_recv
+HAL_StatusTypeDef HAL_UART_Receive(DD_HANDLE *uart_hdl, uint8_t *data, size_t size, int timeout)
+{
+    UINT32 ret;
+    UINT32 status;
+
+    ret = ddev_control(*uart_hdl, CMD_RX_COUNT, 0);
+    if(ret < size)
+    {
+        return kGeneralErr;
+    }
+
+    ret = ddev_read(uart_hdl, data, size, 0);
+    ASSERT(size == ret);
+
+    return kNoErr;
+}
+
+void Serial_PutByte(uint8_t byte)
+{
+}
+
+void HAL_UART_Transmit(DD_HANDLE *uart_hdl, uint8_t *data, size_t size, int timeout)
+{
+}
 
 /**
   * @brief  Receive a packet from sender
@@ -218,7 +247,7 @@ static void PreparePacket(uint8_t *p_source, uint8_t *p_packet, uint8_t pkt_nr, 
 
 /**
   * @brief  Update CRC16 for input byte
-  * @param  crc_in input value 
+  * @param  crc_in input value
   * @param  input byte
   * @retval None
   */
@@ -236,7 +265,7 @@ uint16_t UpdateCRC16(uint16_t crc_in, uint8_t byte)
     if(crc & 0x10000)
       crc ^= 0x1021;
   }
-  
+
   while(!(in & 0x10000));
 
   return crc & 0xffffu;
@@ -255,7 +284,7 @@ uint16_t Cal_CRC16(const uint8_t* p_data, uint32_t size)
 
   while(p_data < dataEnd)
     crc = UpdateCRC16(crc, *p_data++);
- 
+
   crc = UpdateCRC16(crc, 0);
   crc = UpdateCRC16(crc, 0);
 
@@ -365,7 +394,7 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
                     /* erase user application area */
                     FLASH_If_Erase(APPLICATION_ADDRESS);
                     *p_size = filesize;
-                    
+
                     Serial_PutByte(ACK);
                     Serial_PutByte(CRC16);
                   }
@@ -383,7 +412,7 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
                   ramsource = (uint32_t) & aPacketData[PACKET_DATA_INDEX];
 
                   /* Write received data in Flash */
-                  if (FLASH_If_Write(flashdestination, (uint32_t*) ramsource, packet_length/4) == FLASHIF_OK)                   
+                  if (FLASH_If_Write(flashdestination, (uint32_t*) ramsource, packet_length/4) == FLASHIF_OK)
                   {
                     flashdestination += packet_length;
                     Serial_PutByte(ACK);
@@ -444,11 +473,11 @@ COM_StatusTypeDef Ymodem_Transmit (uint8_t *p_buf, const uint8_t *p_file_name, u
   uint32_t blk_number = 1;
   uint8_t a_rx_ctrl[2];
   uint8_t i;
-#ifdef CRC16_F    
+#ifdef CRC16_F
   uint32_t temp_crc;
-#else /* CRC16_F */   
+#else /* CRC16_F */
   uint8_t temp_chksum;
-#endif /* CRC16_F */  
+#endif /* CRC16_F */
 
   /* Prepare first block - header */
   PrepareIntialPacket(aPacketData, p_file_name, file_size);
@@ -459,11 +488,11 @@ COM_StatusTypeDef Ymodem_Transmit (uint8_t *p_buf, const uint8_t *p_file_name, u
     HAL_UART_Transmit(&UartHandle, &aPacketData[PACKET_START_INDEX], PACKET_SIZE + PACKET_HEADER_SIZE, NAK_TIMEOUT);
 
     /* Send CRC or Check Sum based on CRC16_F */
-#ifdef CRC16_F    
+#ifdef CRC16_F
     temp_crc = Cal_CRC16(&aPacketData[PACKET_DATA_INDEX], PACKET_SIZE);
     Serial_PutByte(temp_crc >> 8);
     Serial_PutByte(temp_crc & 0xFF);
-#else /* CRC16_F */   
+#else /* CRC16_F */
     temp_chksum = CalcChecksum (&aPacketData[PACKET_DATA_INDEX], PACKET_SIZE);
     Serial_PutByte(temp_chksum);
 #endif /* CRC16_F */
@@ -521,17 +550,17 @@ COM_StatusTypeDef Ymodem_Transmit (uint8_t *p_buf, const uint8_t *p_file_name, u
       }
 
       HAL_UART_Transmit(&UartHandle, &aPacketData[PACKET_START_INDEX], pkt_size + PACKET_HEADER_SIZE, NAK_TIMEOUT);
-      
+
       /* Send CRC or Check Sum based on CRC16_F */
-#ifdef CRC16_F    
+#ifdef CRC16_F
       temp_crc = Cal_CRC16(&aPacketData[PACKET_DATA_INDEX], pkt_size);
       Serial_PutByte(temp_crc >> 8);
       Serial_PutByte(temp_crc & 0xFF);
-#else /* CRC16_F */   
+#else /* CRC16_F */
       temp_chksum = CalcChecksum (&aPacketData[PACKET_DATA_INDEX], pkt_size);
       Serial_PutByte(temp_chksum);
 #endif /* CRC16_F */
-      
+
       /* Wait for Ack */
       if ((HAL_UART_Receive(&UartHandle, &a_rx_ctrl[0], 1, NAK_TIMEOUT) == HAL_OK) && (a_rx_ctrl[0] == ACK))
       {
@@ -620,11 +649,11 @@ COM_StatusTypeDef Ymodem_Transmit (uint8_t *p_buf, const uint8_t *p_file_name, u
     HAL_UART_Transmit(&UartHandle, &aPacketData[PACKET_START_INDEX], PACKET_SIZE + PACKET_HEADER_SIZE, NAK_TIMEOUT);
 
     /* Send CRC or Check Sum based on CRC16_F */
-#ifdef CRC16_F    
+#ifdef CRC16_F
     temp_crc = Cal_CRC16(&aPacketData[PACKET_DATA_INDEX], PACKET_SIZE);
     Serial_PutByte(temp_crc >> 8);
     Serial_PutByte(temp_crc & 0xFF);
-#else /* CRC16_F */   
+#else /* CRC16_F */
     temp_chksum = CalcChecksum (&aPacketData[PACKET_DATA_INDEX], PACKET_SIZE);
     Serial_PutByte(temp_chksum);
 #endif /* CRC16_F */

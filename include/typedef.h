@@ -33,17 +33,17 @@ typedef volatile signed long  VS32;
 typedef volatile signed short VS16;
 typedef volatile signed char  VS8;
 
-typedef volatile signed long  const VSC32;  
-typedef volatile signed short const VSC16;  
-typedef volatile signed char  const VSC8;  
+typedef volatile signed long  const VSC32;
+typedef volatile signed short const VSC16;
+typedef volatile signed char  const VSC8;
 
 typedef volatile unsigned long  VU32;
 typedef volatile unsigned short VU16;
 typedef volatile unsigned char  VU8;
 
-typedef volatile unsigned long  const VUC32;  
-typedef volatile unsigned short const VUC16;  
-typedef volatile unsigned char  const VUC8; 
+typedef volatile unsigned long  const VUC32;
+typedef volatile unsigned short const VUC16;
+typedef volatile unsigned char  const VUC8;
 
 #ifndef HAVE_UTYPES
 typedef unsigned char              u8;
@@ -63,6 +63,7 @@ typedef unsigned short __u16;
 typedef signed short __s16;
 typedef unsigned char __u8;
 typedef int OSStatus;
+typedef int HAL_StatusTypeDef;
 
 #endif // _TYPEDEF_H_
 // eof

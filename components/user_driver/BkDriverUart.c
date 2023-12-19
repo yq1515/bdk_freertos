@@ -54,7 +54,7 @@ const bk_uart_config_t test_uart_config[] =
         .flow_control = FLOW_CTRL_DISABLED,
         .flags   = 0,
     },
-    
+
     [1] =
     {
         .baud_rate     = 19200,
@@ -64,7 +64,7 @@ const bk_uart_config_t test_uart_config[] =
         .flow_control = FLOW_CTRL_DISABLED,
         .flags   = 0,
     },
-    
+
     [2] =
     {
         .baud_rate     = 115200,
@@ -131,7 +131,7 @@ OSStatus bk_uart_recv( bk_uart_t uart, void *data, uint32_t size, uint32_t timeo
         uart_hdl = ddev_open(UART1_DEV_NAME, &status, 0);
     else
         uart_hdl = ddev_open(UART2_DEV_NAME, &status, 0);
-	
+
     ASSERT(DRV_FAILURE != uart_hdl);
     ret = ddev_control(uart_hdl, CMD_RX_COUNT, 0);
     if(ret < size)
@@ -156,7 +156,7 @@ OSStatus bk_uart_recv_prefetch( bk_uart_t uart, void *data, uint32_t size, uint3
         uart_hdl = ddev_open(UART1_DEV_NAME, &status, 0);
     else
         uart_hdl = ddev_open(UART2_DEV_NAME, &status, 0);
-	
+
     ASSERT(DRV_FAILURE != uart_hdl);
 
     peek.sig = URX_PEEK_SIG;
@@ -206,6 +206,9 @@ OSStatus bk_uart_set_rx_callback(bk_uart_t uart, uart_callback callback, void *p
 
     return kNoErr;
 }
+
+
+
 
 // eof
 

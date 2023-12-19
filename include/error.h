@@ -84,6 +84,11 @@
 #define kPermissionErr              -6773   //! Permission denied.
 
 #define kGenericErrorEnd            -6779   //! Last generic error code (inclusive)
+
+#define HAL_OK                       0
+#define HAL_ERROR                   -1
+#define HAL_BUSY                    -2
+
 #endif
 // eof
 

@@ -9,7 +9,7 @@
 //#include "mcu_ps_pub.h"
 #include "BkDriverWdg.h"
 
-static volatile UINT64 current_clock = 0;
+static volatile UINT64 jiffies = 0;
 static volatile UINT32 current_seconds = 0;
 static BK_HW_TIMER_INDEX fclk_id = BK_PWM_TIMER_ID0;
 UINT32 use_cal_net = 0;
@@ -38,7 +38,7 @@ void int_watchdog_feed(void)
 
 void fclk_hdl(UINT8 param)
 {
-	current_clock++;
+	jiffies++;
 #if (CFG_INT_WDG_ENABLED)
 	int_watchdog_feed();
 #endif
@@ -46,12 +46,12 @@ void fclk_hdl(UINT8 param)
 
 static inline UINT32 fclk_freertos_get_tick32(void)
 {
-	return (UINT32)current_clock;
+	return (UINT32)jiffies;
 }
 
 static inline UINT64 fclk_freertos_get_tick64(void)
 {
-	return current_clock;
+	return jiffies;
 }
 
 UINT64 fclk_get_tick(void)
@@ -73,7 +73,7 @@ UINT32 fclk_from_sec_to_tick(UINT32 sec)
 
 void fclk_reset_count(void)
 {
-	current_clock = 0;
+	jiffies = 0;
 	current_seconds = 0;
 }
 
