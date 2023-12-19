@@ -23,18 +23,30 @@
  */
 
 #include "board_api.h"
+#include "uart_pub.h"
+#include "drv_model_pub.h"
+#include "flash_pub.h"
 
 //--------------------------------------------------------------------+
 // FLASH
 //--------------------------------------------------------------------+
-#define FLASH_BASE_ADDR 0x08000000UL
+#define FLASH_BASE_ADDR 0x0
 
 #define SECTOR_SIZE BOARD_SECTOR_SIZE
 #define SECTOR_COUNT BOARD_SECTOR_COUNT
 
-#if 0
 static uint8_t erased_sectors[SECTOR_COUNT] = {0};
+static DD_HANDLE flash_handle;
+static int protect_type;
+static int flash_unlocked = false;
 
+static void flash_sector_erase(uint32_t addr)
+{
+    // os_printf("e:%x\n", addr);
+    ddev_control(flash_handle, CMD_FLASH_ERASE_SECTOR, (void *)&addr);
+}
+
+#if 0
 static bool is_blank(uint32_t addr, uint32_t size) {
     for (uint32_t i = 0; i < size; i += sizeof(uint32_t)) {
         if (*(uint32_t *)(addr + i) != 0xffffffff) {
@@ -43,9 +55,10 @@ static bool is_blank(uint32_t addr, uint32_t size) {
     }
     return true;
 }
+#endif
 
 static bool flash_erase(uint32_t addr) {
-    // starting address from 0x08000000
+#if 0
     uint32_t sector_addr = FLASH_BASE_ADDR;
     bool     erased      = false;
 
@@ -66,31 +79,50 @@ static bool flash_erase(uint32_t addr) {
     if (!erased && !is_blank(sector_addr, size)) {
         flash_sector_erase(sector_addr);
     }
+#else
+    uint32_t idx = addr >> 12 ;
+    if (!erased_sectors[idx])  {
+        erased_sectors[idx] = 1;
+        flash_sector_erase(addr & ~(SECTOR_SIZE - 1));
+    }
+#endif
 
     return true;
 }
 
-#endif
+static void flash_unlock()
+{
+    int param;
 
-static void flash_write(uint32_t dst, const uint8_t *src, int len) {
-#if 0
-    flash_erase(dst);
+    if (flash_unlocked)
+        return;
 
-    for (int i = 0; i < len; i += 4) {
-        uint32_t data = *((uint32_t *)((void *)(src + i)));
-        flash_word_program(dst + i, data);
+    if (protect_type != FLASH_PROTECT_NONE)
+    {
+        param = FLASH_PROTECT_NONE;
+        ddev_control(flash_handle, CMD_FLASH_SET_PROTECT, (void *)&param);
     }
 
-    // verify contents
-    if (memcmp((void *)dst, src, len) != 0) {
-    }
-#endif
+    flash_unlocked = true;
+}
+
+static void flash_lock()
+{
+    if (protect_type != FLASH_PROTECT_NONE)
+        ddev_control(flash_handle, CMD_FLASH_SET_PROTECT, (void *)&protect_type);
+
+    flash_unlocked = false;
 }
 
 //--------------------------------------------------------------------+
 //
 //--------------------------------------------------------------------+
-__attribute__((weak)) void board_flash_init(void) {}
+__attribute__((weak)) void board_flash_init(void)
+{
+    UINT32 status;
+    flash_handle = ddev_open(FLASH_DEV_NAME, &status, 0);
+    ddev_control(flash_handle, CMD_FLASH_GET_PROTECT, (void *)&protect_type);
+}
 
 __attribute__((weak)) uint32_t board_flash_size(void) {
     return BOARD_FLASH_SIZE;
@@ -100,14 +132,17 @@ __attribute__((weak)) void board_flash_read(uint32_t addr, void *buffer, uint32_
     memcpy(buffer, (void *)addr, len);
 }
 
-__attribute__((weak)) void board_flash_flush(void) {}
+__attribute__((weak)) void board_flash_flush(void)
+{
+    flash_lock();
+}
 
 __attribute__((weak)) void board_flash_write(uint32_t addr, void const *data, uint32_t len) {
-#if 0
+    // os_printf("w:%x\n", addr);
     flash_unlock();
-    flash_write(addr, data, len);
-    flash_lock();
-#endif
+    flash_erase(addr);
+    flash_write((char *)data, len, addr);
+    // flash_lock();  // When full firmware write complete, lock flash
 }
 
 __attribute__((weak)) void board_flash_erase_app(void) {}

@@ -172,6 +172,8 @@ UINT32 func_init_extended(void)
 #if CFG_UF2
 extern void msc_init(void);
 extern void uf2_init(void);
+void sctrl_overclock(int enable);
+void board_flash_init(void);
 #endif
 
 UINT32 func_init_basic(void)
@@ -182,6 +184,8 @@ UINT32 func_init_basic(void)
 #endif
     os_printf("SDK Rev: %s\r\n", BEKEN_SDK_REV);
 #if CFG_UF2
+	sctrl_overclock(1);
+	board_flash_init();
 	uf2_init();
 	msc_init();
 #endif

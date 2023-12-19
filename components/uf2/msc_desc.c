@@ -25,6 +25,7 @@
 #include "usbd_msc.h"
 #include "board.h"
 #include "uf2.h"
+#include "uart_pub.h"
 
 #define MSC_IN_EP 0x81
 #define MSC_OUT_EP 0x02
@@ -41,7 +42,7 @@
 #endif
 
 const uint8_t msc_descriptor[] = {
-      USB_DEVICE_DESCRIPTOR_INIT(USB_2_0, 0x00, 0x00, 0x00, USBD_VID, USBD_PID, 0x0200, 0x01),
+      USB_DEVICE_DESCRIPTOR_INIT(USB_1_1, 0x00, 0x00, 0x00, USBD_VID, USBD_PID, 0x0200, 0x01),
       USB_CONFIG_DESCRIPTOR_INIT(USB_CONFIG_SIZE, 0x01, 0x01, USB_CONFIG_BUS_POWERED, USBD_MAX_POWER),
       MSC_DESCRIPTOR_INIT(0x00, MSC_OUT_EP, MSC_IN_EP, MSC_MAX_MPS, 0x02),
 
@@ -147,18 +148,20 @@ int usbd_msc_sector_write(uint32_t sector, uint8_t *buffer, uint32_t length) {
     if (sector < BLOCK_COUNT) {
         uf2_write_block(0, buffer, &_wr_state);
     }
-#if XXX
+
     // All block of uf2 file is complete --> complete DFU process
     if (_wr_state.numBlocks > 0) {
         if (_wr_state.numWritten >= _wr_state.numBlocks) {
+#if XXX
             if (!flashing_flag) {
                 _timer_count = 0;
                 board_timer_start(1);
                 flashing_flag = true;
             }
+#endif
         }
     }
-#endif
+
     return 0;
 }
 

@@ -36,10 +36,10 @@
 #define LED_STATE_ON          0
 
 //--------------------------------------------------------------------+
-// FLASH
+// 2M FLASH
 //--------------------------------------------------------------------+
-#define BOARD_SECTOR_SIZE     1024U
-#define BOARD_SECTOR_COUNT    128
+#define BOARD_SECTOR_SIZE     4096U
+#define BOARD_SECTOR_COUNT    512
 #define BOARD_FLASH_SIZE      (BOARD_SECTOR_SIZE * BOARD_SECTOR_COUNT)
 
 //--------------------------------------------------------------------+
@@ -58,6 +58,8 @@
 #define BOARD_UF2_FAMILY_ID  0xe9f35d3b
 #define UF2_VERSION_BASE     "v1.1.0-2-ge56ec45"
 #define UF2_VERSION          "v1.1.0-2-ge56ec45"
+
+#define CFG_UF2_FLASH_SIZE   (2 * 1024 * 1024)
 
 #if 0
 // clang-format on

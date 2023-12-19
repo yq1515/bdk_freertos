@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <string.h>
-#include "uf2format.h"
+#include "uf2.h"
+
+#define APP_START_ADDRESS 0x11000
+#define BOARD_UF2_FAMILY_ID  0xe9f35d3b
+
 
 int main(int argc, char **argv) {
     if (argc < 2) {
@@ -30,6 +34,9 @@ int main(int argc, char **argv) {
     bl.targetAddr = APP_START_ADDRESS;
     bl.numBlocks = (sz + 255) / 256;
     bl.payloadSize = 256;
+    // familiy ID
+    bl.flags = UF2_FLAG_FAMILYID;
+    bl.familyID = BOARD_UF2_FAMILY_ID;
     int numbl = 0;
     while (fread(bl.data, 1, bl.payloadSize, f)) {
         bl.blockNo = numbl++;

@@ -1748,6 +1748,7 @@ typedef struct {                                    /*!< USB0 Structure         
 #define USB_RXCSRH1_ISO         0x00000040  // Isochronous Transfers
 #define USB_RXCSRH1_DMAEN       0x00000020  // DMA Request Enable
 #define USB_RXCSRH1_DISNYET     0x00000010  // Disable NYET
+#define USB_RXCSRH1_DMAMODE     0x00000010  // DMAMode
 #define USB_RXCSRH1_PIDERR      0x00000010  // PID Error
 #define USB_RXCSRH1_DMAMOD      0x00000008  // DMA Request Mode
 #define USB_RXCSRH1_DTWE        0x00000004  // Data Toggle Write Enable

@@ -203,20 +203,24 @@ do {                                                                         \
 
 static void fmtstr(char *, size_t *, size_t, const char *, int, int, int);
 static void fmtint(char *, size_t *, size_t, INTMAX_T, int, int, int, int);
-static void fmtflt(char *, size_t *, size_t, LDOUBLE, int, int, int, int *);
 static void printsep(char *, size_t *, size_t);
 static int getnumsep(int);
-static int getexponent(LDOUBLE);
 static int convert(UINTMAX_T, char *, size_t, int, int);
+#if CFG_PRINT_FLOAT
+static void fmtflt(char *, size_t *, size_t, LDOUBLE, int, int, int, int *);
+static int getexponent(LDOUBLE);
 static UINTMAX_T cast(LDOUBLE);
 static UINTMAX_T myround(LDOUBLE);
 static LDOUBLE mypow10(int);
+#endif
 static void fmtmac(char *buf, size_t *len, size_t size, const unsigned char *mac, int caps);
 static void fmtip(char *buf, size_t *len, size_t size, unsigned int value);
 
 int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
 {
+#ifdef CFG_PRINT_FLOAT
 	LDOUBLE fvalue;
+#endif
 	INTMAX_T value;
 	unsigned char cvalue;
 	const char *strvalue;
@@ -460,7 +464,7 @@ int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
 				fmtint(str, &len, size, (UINTMAX_T)value, base, width,
 				    precision, flags);
 				break;
-#if 0
+#if CFG_PRINT_FLOAT
 			case 'A':
 				/* Not yet supported, we'll use "%F". */
 				/* FALLTHROUGH */
@@ -769,6 +773,7 @@ static void fmtint(char *str, size_t *len, size_t size, INTMAX_T value, int base
 	}
 }
 
+#if CFG_PRINT_FLOAT
 static void fmtflt(char *str, size_t *len, size_t size, LDOUBLE fvalue, int width,
        int precision, int flags, int *overflow)
 {
@@ -1048,6 +1053,7 @@ again:
 		padlen++;
 	}
 }
+#endif
 
 static void printsep(char *str, size_t *len, size_t size)
 {
@@ -1061,6 +1067,7 @@ static int getnumsep(int digits)
 	return separators;
 }
 
+#if CFG_PRINT_FLOAT
 static int getexponent(LDOUBLE value)
 {
 	LDOUBLE tmp = (value >= 0.0) ? value : -value;
@@ -1080,6 +1087,7 @@ static int getexponent(LDOUBLE value)
 
 	return exponent;
 }
+#endif
 
 static int convert(UINTMAX_T value, char *buf, size_t size, int base, int caps)
 {
@@ -1145,6 +1153,7 @@ static void fmtmac(char *buf, size_t *len, size_t size, const unsigned char *mac
 	}
 }
 
+#if CFG_PRINT_FLOAT
 static UINTMAX_T cast(LDOUBLE value)
 {
 	UINTMAX_T result;
@@ -1189,6 +1198,7 @@ static LDOUBLE mypow10(int exponent)
 	}
 	return result;
 }
+#endif
 
 int __wrap_vasprintf(char **ret, const char *format, va_list ap)
 {
