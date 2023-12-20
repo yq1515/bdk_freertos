@@ -23,6 +23,14 @@
 
 bool dfu_mode;
 int dfu_gpio_port = GPIO36;
+volatile bool dfu_complete = false;
+uint64_t dfu_complete_tick;
+
+void board_dfu_complete(void)
+{
+	dfu_complete = true;
+	dfu_complete_tick = fclk_get_tick();
+}
 
 void dfu_gpio_init(void)
 {
@@ -110,7 +118,13 @@ void entry_main(void)
 
 	if (dfu_enabled()) {
 		while (1) {
-			__asm ("nop");
+			// If DFU complete, wait for 10 ticks
+			if (dfu_complete) {
+				if (fclk_get_tick() - dfu_complete_tick > 10) {
+					os_printf("DFU complete\n");
+					application_start();
+				}
+			}
 		}
 	} else {
 		application_start();

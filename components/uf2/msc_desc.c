@@ -142,8 +142,10 @@ int usbd_msc_sector_read(uint32_t sector, uint8_t *buffer, uint32_t length) {
 
 int usbd_msc_sector_write(uint32_t sector, uint8_t *buffer, uint32_t length) {
     (void)length;
+#if XXX
     extern volatile bool     flashing_flag;
     extern volatile uint32_t _timer_count;
+#endif
 
     if (sector < BLOCK_COUNT) {
         uf2_write_block(0, buffer, &_wr_state);
@@ -158,6 +160,8 @@ int usbd_msc_sector_write(uint32_t sector, uint8_t *buffer, uint32_t length) {
                 board_timer_start(1);
                 flashing_flag = true;
             }
+#else
+			board_dfu_complete();
 #endif
         }
     }
