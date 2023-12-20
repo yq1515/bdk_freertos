@@ -346,19 +346,13 @@ __WEAK void usb_dc_low_level_init(void)
 // usb_close
 __WEAK void usb_dc_low_level_deinit(void)
 {
-#if 0
-    bk_int_isr_unregister(INT_SRC_USB);
-    sys_drv_int_disable(USB_INTERRUPT_CTRL_BIT);
+    uint32_t param;
 
-    REG_AHB2_USB_OTG_CFG = 0x0;
-    REG_AHB2_USB_STAT = 0x00;
-    REG_AHB2_USB_RESET = 0x01;
+    param = IRQ_USB_BIT;
+    sddev_control(ICU_DEV_NAME, CMD_ICU_INT_DISABLE, &param);
 
-    sys_drv_usb_clock_ctrl(false, NULL);
-    sys_drv_usb_analog_phy_en(false, NULL);
-    sys_drv_usb_analog_speed_en(false, NULL);
-    sys_drv_usb_analog_ckmcu_en(false, NULL);
-#endif
+    param = PWD_USB_CLK_BIT;
+    sddev_control(ICU_DEV_NAME, CMD_CLK_PWR_DOWN, &param);
 }
 
 int usb_dc_init(void)
