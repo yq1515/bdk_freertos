@@ -242,7 +242,9 @@ SOC_NAME_BSP_LDS = bk7231n_bsp.lds
 endif
 SOC_NAME_BSP_ELF = beken7231_bsp.elf
 SOC_NAME_BSP_BIN = beken7231_bsp.bin
+SOC_NAME_BSP_CRC_BIN = beken7231_bsp_crc.bin
 SOC_NAME_BSP_MAP = beken7231_bsp.map
+SOC_NAME_BSP_UF2 = beken7231_bsp.uf2
 
 # Compile options
 # -------------------------------------------------------------------
@@ -318,6 +320,7 @@ application: $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST) $(WPA_LIB) $(RWNX_LIB) $(U
 #	$(Q)(cd ./tools/beken_packager; ./beken_packager_wrapper -i $(CFG_SOC_NAME))
 	@$(ECHO) "  $(GREEN)CRC  $(BIN_DIR)/$(SOC_NAME_BSP_BIN)$(NC)"
 	$(Q)$(ENCRYPT) $(BIN_DIR)/$(SOC_NAME_BSP_BIN) 0 $(ENCRYPT_ARGS) > /dev/null
+	$(Q)./tools/uf2/uf2conv.py -c $(BIN_DIR)/$(SOC_NAME_BSP_CRC_BIN) -f BK7231U -o $(BIN_DIR)/$(SOC_NAME_BSP_UF2) -b 0x11000
 
 	
 # Generate build info
