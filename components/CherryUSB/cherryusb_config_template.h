@@ -6,7 +6,8 @@
 #ifndef CHERRYUSB_CONFIG_H
 #define CHERRYUSB_CONFIG_H
 
-#define CHERRYUSB_VERSION 0x001002
+#define CHERRYUSB_VERSION     0x010000
+#define CHERRYUSB_VERSION_STR "v1.0.0"
 
 /* ================ USB common Configuration ================ */
 
@@ -93,8 +94,8 @@
 #define CONFIG_USBHOST_MAX_RHPORTS          1
 #define CONFIG_USBHOST_MAX_EXTHUBS          1
 #define CONFIG_USBHOST_MAX_EHPORTS          4
-#define CONFIG_USBHOST_MAX_INTERFACES       6
-#define CONFIG_USBHOST_MAX_INTF_ALTSETTINGS 1
+#define CONFIG_USBHOST_MAX_INTERFACES       8
+#define CONFIG_USBHOST_MAX_INTF_ALTSETTINGS 8
 #define CONFIG_USBHOST_MAX_ENDPOINTS        4
 
 #define CONFIG_USBHOST_MAX_CDC_ACM_CLASS 4
@@ -106,7 +107,7 @@
 #define CONFIG_USBHOST_DEV_NAMELEN 16
 
 #ifndef CONFIG_USBHOST_PSC_PRIO
-#define CONFIG_USBHOST_PSC_PRIO 4
+#define CONFIG_USBHOST_PSC_PRIO 0
 #endif
 #ifndef CONFIG_USBHOST_PSC_STACKSIZE
 #define CONFIG_USBHOST_PSC_STACKSIZE 2048
@@ -130,13 +131,15 @@
 
 /* ================ USB Device Port Configuration ================*/
 
-//#define USBD_IRQHandler USBD_IRQHandler
-//#define USB_BASE (0x40080000UL)
-//#define USB_NUM_BIDIR_ENDPOINTS 4
+#define USBD_IRQHandler      USBD_IRQHandler
+#define USBD_BASE            (0)
+#define CONFIG_USBDEV_EP_NUM 4
 
 /* ================ USB Host Port Configuration ==================*/
 
-#define CONFIG_USBHOST_PIPE_NUM 10
+// #define USBH_IRQHandler         USBH_IRQHandler
+// #define USBH_BASE               (0)
+// #define CONFIG_USBHOST_PIPE_NUM 10
 
 /* ================ EHCI Configuration ================ */
 
