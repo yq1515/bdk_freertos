@@ -33,15 +33,6 @@
 
 #define USB_DPLL_DIVISION                 (2)
 
-#define REG_AHB2_USB_OTG_CFG              (*((volatile unsigned char *) (USB_BASE + 0x80)))
-#define REG_AHB2_USB_DMA_ENDP             (*((volatile unsigned char *) (USB_BASE + 0x84)))
-#define REG_AHB2_USB_VTH                  (*((volatile unsigned char *) (USB_BASE + 0x88)))
-#define REG_AHB2_USB_GEN                  (*((volatile unsigned char *) (USB_BASE + 0x8C)))
-#define REG_AHB2_USB_STAT                 (*((volatile unsigned char *) (USB_BASE + 0x90)))
-#define REG_AHB2_USB_INT                  (*((volatile unsigned char *) (USB_BASE + 0x94)))
-#define REG_AHB2_USB_RESET                (*((volatile unsigned char *) (USB_BASE + 0x98)))
-#define REG_AHB2_USB_DEV_CFG              (*((volatile unsigned char *) (USB_BASE + 0x9C)))
-
 /* Common USB Registers */
 #define MUSB_FADDR_OFFSET        0x00  /* Function Address */
 #define MUSB_POWER_OFFSET        0x01  /* POWER */
@@ -80,6 +71,15 @@
 #define MUSB_FIFO_OFFSET         0x20
 
 #define USB_FIFO_BASE(ep_idx) (USB_BASE + MUSB_FIFO_OFFSET + 0x4 * ep_idx)
+
+#define MUSB_OTG_CFG             0x80
+#define MUSB_DMA_ENDP            0x84
+#define MUSB_VTH                 0x88
+#define MUSB_GEN                 0x8C
+#define MUSB_STAT                0x90
+#define MUSB_INT                 0x94
+#define MUSB_RESET               0x98
+#define MUSB_DEV_CFG             0x9C
 
 #ifndef CONFIG_USBDEV_EP_NUM
 #define CONFIG_USBDEV_EP_NUM 8
@@ -215,57 +215,33 @@ static uint32_t musb_get_fifo_size(uint16_t mps, uint16_t *used)
 }
 #endif
 
-
-#define GUWENFU_SETTING
-
 extern void delay(int num);
 
 
 // usb_open
 __WEAK void usb_dc_low_level_init(void)
 {
-#if 0//def ARMINO
-    uint8_t reg = 0;
+    uint32_t op_flag = USB_DEVICE_MODE;
+    uint8_t reg;
+    uint32_t param;
+    uint32_t usb_mode = op_flag;
 
-    sys_drv_usb_clock_ctrl(true, NULL);
-    sys_drv_usb_analog_phy_en(true, NULL);
-    sys_drv_usb_analog_speed_en(true, NULL);
-    sys_drv_usb_analog_ckmcu_en(true, NULL);
-    sys_drv_usb_analog_deepsleep_en(false);
-    sys_drv_int_enable(USB_INTERRUPT_CTRL_BIT);
-
-    bk_int_isr_register(INT_SRC_USB, USBD_IRQHandler, NULL);
-    bk_int_set_priority(INT_SRC_USB, 2);
-
-    REG_AHB2_USB_OTG_CFG = 0x9;
-    REG_AHB2_USB_STAT = 0x07;
-    reg = REG_AHB2_USB_INT;
-    REG_AHB2_USB_INT = reg;
-    /*dp and dn driver current selection */
-    REG_AHB2_USB_GEN = (0x7 << 4) | (0x7 << 0);
-    REG_AHB2_USB_RESET = 0x01;
-#else
-    UINT32 op_flag = USB_DEVICE_MODE;
-    UINT8 reg;
-    UINT32 param;
-    UINT32 usb_mode = op_flag;
-
-    USB_LOG_INFO("usb_open\r\n");
+    USB_LOG_INFO("usb_open\n");
 
 #if ((SOC_BK7231U == CFG_SOC_NAME) || (SOC_BK7221U == CFG_SOC_NAME))
-    USB_LOG_INFO("gpio_usb_second_function\r\n");
+    USB_LOG_INFO("gpio_usb_second_function\n");
     gpio_usb_second_function();
 #endif
 
-    /*step0.0: power up usb subsystem*/
+    // step0.0: power up usb subsystem
     param = 0;
     sddev_control(SCTRL_DEV_NAME, CMD_SCTRL_USB_POWERUP, &param);
 
-    /*step 1.0: reset usb module*/
+    // step 1.0: reset usb module
     param = 0;
     sddev_control(SCTRL_DEV_NAME, CMD_SCTRL_USB_SUBSYS_RESET, &param);
 
-    /*step1.1: open clock*/
+    // step1.1: open clock
     param = BLK_BIT_DPLL_480M | BLK_BIT_USB;
     sddev_control(SCTRL_DEV_NAME, CMD_SCTRL_BLK_ENABLE, &param);
 
@@ -275,91 +251,57 @@ __WEAK void usb_dc_low_level_init(void)
     param = USB_DPLL_DIVISION;
     sddev_control(SCTRL_DEV_NAME, CMD_SCTRL_MCLK_DIVISION, &param);
 
-    /*step2: config clock power down for peripheral unit*/
+    // step2: config clock power down for peripheral unit
     param = PWD_USB_CLK_BIT;
     sddev_control(ICU_DEV_NAME, CMD_CLK_PWR_UP, &param);
 
-//#ifndef GUWENFU_SETTING
-//    VREG_USB_TEST_MODE = 0x01;
-//#endif
+    HWREGB(USB_BASE + MUSB_VTH) &= ~(1 << 7); // disable INT_DEV_VBUS_EN
 
-//#ifdef GUWENFU_SETTING
-//    VREG_USB_INTRRX1E = 0x0;
-//    VREG_USB_INTRTX1E = 0x0;
-//    VREG_USB_INTRUSBE = 0x0;
-    REG_AHB2_USB_VTH &= ~(1 << 7); /* disable INT_DEV_VBUS_EN */
-//#endif
-
-//#ifndef GUWENFU_SETTING
-//#ifdef MUSB_FORCE_FULLSPEED
-//    VREG_USB_POWER = 0x01;
-//#else
-//    VREG_USB_POWER |= 0x21;
-//#endif
-//
-//    VREG_USB_FADDR = 0;
-//    VREG_USB_DEVCTL = 0x01;
-//#endif
-
-
-//#ifdef GUWENFU_SETTING
     if (usb_mode == USB_HOST_MODE)
     {
-        USB_LOG_INFO("usb host\r\n");
+        USB_LOG_INFO("usb host\n");
         REG_WRITE(SCTRL_ANALOG_CTRL2, REG_READ(SCTRL_ANALOG_CTRL2) & (~(1 << 25)));  // ???
-        REG_AHB2_USB_OTG_CFG = 0x50;        // host
-        REG_AHB2_USB_DEV_CFG = 0x00;
+        HWREGB(USB_BASE + MUSB_OTG_CFG) = 0x50;        // host
+        HWREGB(USB_BASE + MUSB_DEV_CFG) = 0x00;
     }
     else
     {
-        USB_LOG_INFO("usb device\r\n");
+        USB_LOG_INFO("usb device\n");
         REG_WRITE(SCTRL_ANALOG_CTRL2, REG_READ(SCTRL_ANALOG_CTRL2) | (1 << 25));  // ???
-        //VREG_USB_INTRRX1E = 0x07;
-        //VREG_USB_INTRTX1E = 0x07;
-        //VREG_USB_INTRUSBE = 0x3F;
 
-        REG_AHB2_USB_OTG_CFG = 0x08;        // dp pull up
-        REG_AHB2_USB_DEV_CFG = 0xF4;        // ????
-        REG_AHB2_USB_OTG_CFG |= 0x01;        // device
+        HWREGB(USB_BASE + MUSB_OTG_CFG) = 0x08;        // dp pull up
+        HWREGB(USB_BASE + MUSB_DEV_CFG) = 0xF4;        // ????
+        HWREGB(USB_BASE + MUSB_OTG_CFG) |= 0x01;       // device
     }
 
-    reg = REG_AHB2_USB_INT;
+    // Clear interrupt
+    reg = HWREGB(USB_BASE + MUSB_INT);
     delay(100);
-    REG_AHB2_USB_INT = reg;
+    HWREGB(USB_BASE + MUSB_INT) = reg;
     delay(100);
 
-    /* dp and dn driver current selection */
-    REG_AHB2_USB_GEN = (0x7 << 4) | (0x7 << 0);
-//#endif
+    // dp and dn driver current selection
+    HWREGB(USB_BASE + MUSB_GEN) = (0x7 << 4) | (0x7 << 0);
 
-    /*step2: interrupt setting about usb*/
+    // step3: interrupt setting about usb
     intc_service_register(IRQ_USB, PRI_IRQ_USB, USBD_IRQHandler);
 
     intc_enable(IRQ_USB);
 
     param = GINTR_IRQ_BIT;
     sddev_control(ICU_DEV_NAME, CMD_ICU_GLOBAL_INT_ENABLE, &param);
-
-//    return USB_SUCCESS;
-#endif
 }
 
 // usb_close
 __WEAK void usb_dc_low_level_deinit(void)
 {
-#if 0
-    bk_int_isr_unregister(INT_SRC_USB);
-    sys_drv_int_disable(USB_INTERRUPT_CTRL_BIT);
+    uint32_t param;
 
-    REG_AHB2_USB_OTG_CFG = 0x0;
-    REG_AHB2_USB_STAT = 0x00;
-    REG_AHB2_USB_RESET = 0x01;
+    param = IRQ_USB_BIT;
+    sddev_control(ICU_DEV_NAME, CMD_ICU_INT_DISABLE, &param);
 
-    sys_drv_usb_clock_ctrl(false, NULL);
-    sys_drv_usb_analog_phy_en(false, NULL);
-    sys_drv_usb_analog_speed_en(false, NULL);
-    sys_drv_usb_analog_ckmcu_en(false, NULL);
-#endif
+    param = PWD_USB_CLK_BIT;
+    sddev_control(ICU_DEV_NAME, CMD_CLK_PWR_DOWN, &param);
 }
 
 int usb_dc_init(void)
