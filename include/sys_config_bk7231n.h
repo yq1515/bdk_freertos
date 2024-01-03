@@ -207,13 +207,13 @@
 #define BLE_WIFI_CO_REQUEST                        3
 #define RF_USE_POLICY                              WIFI_DEFAULT_BLE_REQUEST
 
-#define CFG_BLE_ADV_NUM				1
-#define CFG_BLE_SCAN_NUM			1
+#define CFG_BLE_ADV_NUM                1
+#define CFG_BLE_SCAN_NUM            1
 
 // 0 mean do not support ble master
-#define CFG_BLE_INIT_NUM			0
+#define CFG_BLE_INIT_NUM            0
 
-#define CFG_BLE_CONN_NUM			1
+#define CFG_BLE_CONN_NUM            1
 
 #if (CFG_BLE_ADV_NUM == 0)
 #error "ADV NUM should not be 0"
@@ -268,7 +268,7 @@
 #define CFG_USE_SPI_DMA                            1
 
 /*section 30 ----- peripheral interface test case */
-#define CFG_PERIPHERAL_TEST							0
+#define CFG_PERIPHERAL_TEST                            0
 #define CFG_SUPPORT_SPI_TEST                        0
 
 

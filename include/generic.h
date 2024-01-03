@@ -79,7 +79,7 @@ extern void bk_printf(const char *fmt, ...);
 {                                                   \
     if ( !(exp) )                                   \
     {                                               \
-    	as_printf;							     	\
+        as_printf;                                     \
         while(1);                                   \
     }                                               \
 } 
@@ -108,24 +108,24 @@ extern void bk_printf(const char *fmt, ...);
 static inline __uint16_t __bswap16(__uint16_t _x)
 {
 
-	return ((__uint16_t)((_x >> 8) | ((_x << 8) & 0xff00)));
+    return ((__uint16_t)((_x >> 8) | ((_x << 8) & 0xff00)));
 }
 
 static inline __uint32_t __bswap32(__uint32_t _x)
 {
 
-	return ((__uint32_t)((_x >> 24) | ((_x >> 8) & 0xff00) |
-	    ((_x << 8) & 0xff0000) | ((_x << 24) & 0xff000000)));
+    return ((__uint32_t)((_x >> 24) | ((_x >> 8) & 0xff00) |
+        ((_x << 8) & 0xff0000) | ((_x << 24) & 0xff000000)));
 }
 
 static inline __uint64_t __bswap64(__uint64_t _x)
 {
 
-	return ((__uint64_t)((_x >> 56) | ((_x >> 40) & 0xff00) |
-	    ((_x >> 24) & 0xff0000) | ((_x >> 8) & 0xff000000) |
-	    ((_x << 8) & ((__uint64_t)0xff << 32)) |
-	    ((_x << 24) & ((__uint64_t)0xff << 40)) |
-	    ((_x << 40) & ((__uint64_t)0xff << 48)) | ((_x << 56))));
+    return ((__uint64_t)((_x >> 56) | ((_x >> 40) & 0xff00) |
+        ((_x >> 24) & 0xff0000) | ((_x >> 8) & 0xff000000) |
+        ((_x << 8) & ((__uint64_t)0xff << 32)) |
+        ((_x << 24) & ((__uint64_t)0xff << 40)) |
+        ((_x << 40) & ((__uint64_t)0xff << 48)) | ((_x << 56))));
 }
 
 #define __swab16(x) __bswap16((__u8 *)&(x))
@@ -140,10 +140,10 @@ static inline __uint64_t __bswap64(__uint64_t _x)
 #define __be16_to_cpu(x) __swab16((x))
 
 
-#define	__htonl(_x)	__bswap32(_x)
-#define	__htons(_x)	__bswap16(_x)
-#define	__ntohl(_x)	__bswap32(_x)
-#define	__ntohs(_x)	__bswap16(_x)
+#define    __htonl(_x)    __bswap32(_x)
+#define    __htons(_x)    __bswap16(_x)
+#define    __ntohl(_x)    __bswap32(_x)
+#define    __ntohs(_x)    __bswap16(_x)
 
 #define ___htonl(x) __cpu_to_be32(x)
 #define ___htons(x) __cpu_to_be16(x)

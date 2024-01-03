@@ -113,8 +113,8 @@ bk_logic_partition_t *bk_flash_get_info( bk_partition_t inPartition )
     {
         pt = (bk_logic_partition_t *)&bk7231_partitions[inPartition];
     }
-	else
-		pt =	NULL;
+    else
+        pt =    NULL;
     return pt;
 }
 
@@ -231,11 +231,11 @@ OSStatus bk_flash_read( bk_partition_t inPartition, volatile uint32_t off_set, u
 
 OSStatus bk_flash_enable_security(PROTECT_TYPE type )
 {
-	DD_HANDLE flash_hdl;
+    DD_HANDLE flash_hdl;
     UINT32 status;
-	uint32_t param = type;
+    uint32_t param = type;
 
-	flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
+    flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
     {
         os_printf("%s open failed\r\n", __FUNCTION__);
@@ -249,35 +249,35 @@ OSStatus bk_flash_enable_security(PROTECT_TYPE type )
 
 OSStatus test_flash_write(volatile uint32_t start_addr, uint32_t len)
 {
- 	UINT32 status;
+     UINT32 status;
     DD_HANDLE flash_hdl;
     uint32_t i;
-	u8 buf[256];
-	uint32_t addr = start_addr;
-	uint32_t length = len;
-	uint32_t tmp = addr + length;
+    u8 buf[256];
+    uint32_t addr = start_addr;
+    uint32_t length = len;
+    uint32_t tmp = addr + length;
 
-	for(i=0;i<256;i++)
-		buf[i]=i;
+    for(i=0;i<256;i++)
+        buf[i]=i;
 
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     ASSERT(DD_HANDLE_UNVALID != flash_hdl);
-	for(;addr<tmp;addr+=256)
-	{
-		os_printf("write addr(size:256):%d\r\n",addr);
-		ddev_write(flash_hdl, (char*)buf, 256, addr);
-	}
+    for(;addr<tmp;addr+=256)
+    {
+        os_printf("write addr(size:256):%d\r\n",addr);
+        ddev_write(flash_hdl, (char*)buf, 256, addr);
+    }
 
-	return kNoErr;
+    return kNoErr;
 }
 OSStatus test_flash_erase(volatile uint32_t start_addr, uint32_t len)
 {
- 	UINT32 status;
+     UINT32 status;
     DD_HANDLE flash_hdl;
 
-	uint32_t addr = start_addr;
-	uint32_t length = len;
-	 uint32_t tmp = addr+length;
+    uint32_t addr = start_addr;
+    uint32_t length = len;
+     uint32_t tmp = addr+length;
 
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
@@ -285,24 +285,24 @@ OSStatus test_flash_erase(volatile uint32_t start_addr, uint32_t len)
         os_printf("%s open failed\r\n", __FUNCTION__);
         return kOpenErr;
     }
-	for(;addr<tmp;addr+=0x1000)
-	{
-		os_printf("erase addr:%d\r\n",addr);
-    	ddev_control(flash_hdl, CMD_FLASH_ERASE_SECTOR, (void *)&addr);
+    for(;addr<tmp;addr+=0x1000)
+    {
+        os_printf("erase addr:%d\r\n",addr);
+        ddev_control(flash_hdl, CMD_FLASH_ERASE_SECTOR, (void *)&addr);
 
-	}
-	return kNoErr;
+    }
+    return kNoErr;
 }
 
 OSStatus test_flash_read(volatile uint32_t start_addr, uint32_t len)
 {
- 	UINT32 status;
+     UINT32 status;
     DD_HANDLE flash_hdl;
     uint32_t i,j,tmp;
-	u8 buf[256];
-	uint32_t addr = start_addr;
-	uint32_t length = len;
-	tmp = addr+length;
+    u8 buf[256];
+    uint32_t addr = start_addr;
+    uint32_t length = len;
+    tmp = addr+length;
 
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
@@ -310,34 +310,34 @@ OSStatus test_flash_read(volatile uint32_t start_addr, uint32_t len)
         os_printf("%s open failed\r\n", __FUNCTION__);
         return kOpenErr;
     }
-	for(;addr<tmp;addr+=256)
-	{
-		os_memset(buf,0,256);
-		ddev_read(flash_hdl, (char*)buf, 256, addr);
-		os_printf("read addr:%x\r\n",addr);
-		for(i=0;i<16;i++)
-		{
-			for(j=0;j<16;j++)
-			{
-				os_printf("%02x ",buf[i*16+j]);
-			}
-			os_printf("\r\n");
-		}
-	}
+    for(;addr<tmp;addr+=256)
+    {
+        os_memset(buf,0,256);
+        ddev_read(flash_hdl, (char*)buf, 256, addr);
+        os_printf("read addr:%x\r\n",addr);
+        for(i=0;i<16;i++)
+        {
+            for(j=0;j<16;j++)
+            {
+                os_printf("%02x ",buf[i*16+j]);
+            }
+            os_printf("\r\n");
+        }
+    }
 
-	return kNoErr;
+    return kNoErr;
 }
 
 OSStatus test_flash_read_time(volatile uint32_t start_addr, uint32_t len)
 {
- 	UINT32 status, time_start, time_end;
+     UINT32 status, time_start, time_end;
     DD_HANDLE flash_hdl;
     uint32_t tmp;
-	u8 buf[256];
-	uint32_t addr = start_addr;
-	uint32_t length = len;
+    u8 buf[256];
+    uint32_t addr = start_addr;
+    uint32_t length = len;
 
-	tmp = addr+length;
+    tmp = addr+length;
 
     flash_hdl = ddev_open(FLASH_DEV_NAME, &status, 0);
     if (DD_HANDLE_UNVALID == flash_hdl)
@@ -348,30 +348,30 @@ OSStatus test_flash_read_time(volatile uint32_t start_addr, uint32_t len)
     beken_time_get_time((beken_time_t *)&time_start);
     os_printf("read time start:%d\r\n", time_start);
 
-	for(;addr<tmp;addr+=256)
-	{
-		os_memset(buf,0,256);
-		ddev_read(flash_hdl, (char*)buf, 256, addr);
-	}
+    for(;addr<tmp;addr+=256)
+    {
+        os_memset(buf,0,256);
+        ddev_read(flash_hdl, (char*)buf, 256, addr);
+    }
     beken_time_get_time((beken_time_t *)&time_end);
     os_printf("read time end:%d\r\n", time_end);
     os_printf("cost time:%d\r\n", time_end - time_start);
 
-	return kNoErr;
+    return kNoErr;
 }
 
 static beken_mutex_t hal_flash_mutex;
 
 int hal_flash_lock(void)
 {
-	rtos_lock_mutex(&hal_flash_mutex);
-	return kNoErr;
+    rtos_lock_mutex(&hal_flash_mutex);
+    return kNoErr;
 }
 
 int hal_flash_unlock(void)
 {
-	rtos_unlock_mutex(&hal_flash_mutex);
-	return kNoErr;
+    rtos_unlock_mutex(&hal_flash_mutex);
+    return kNoErr;
 }
 
 // EOF

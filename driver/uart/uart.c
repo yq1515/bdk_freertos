@@ -23,7 +23,7 @@ static struct uart_callback_des uart_tx_end_callback[2] = {{NULL}, {NULL}};
 UART_S uart[2] =
 {
     {0, 0, 0},
-	{0, 0, 0}
+    {0, 0, 0}
 };
 
 static DD_OPERATIONS uart1_op =
@@ -48,7 +48,7 @@ static unsigned char kfifo_bufs[2][RX_RB_LENGTH + TX_RB_LENGTH];
 
 UINT8 uart_is_tx_fifo_empty(UINT8 uport)
 {
-	UINT32 param;
+    UINT32 param;
 
     if(UART1_PORT == uport)
         param = REG_READ(REG_UART1_FIFO_STATUS);
@@ -60,7 +60,7 @@ UINT8 uart_is_tx_fifo_empty(UINT8 uport)
 
 UINT8 uart_is_tx_fifo_full(UINT8 uport)
 {
-	UINT32 param;
+    UINT32 param;
 
     if(UART1_PORT == uport)
         param = REG_READ(REG_UART1_FIFO_STATUS);
@@ -82,13 +82,13 @@ void bk_send_byte(UINT8 uport, UINT8 data)
 
 void bk_send_string(UINT8 uport, const char *string)
 {
-	const char *p = string;
+    const char *p = string;
     while(*string)
     {
-		if (*string == '\n') {
-			if (p == string || *(string - 1) != '\r')
-				bk_send_byte(uport, '\r');	// append '\r'
-		}
+        if (*string == '\n') {
+            if (p == string || *(string - 1) != '\r')
+                bk_send_byte(uport, '\r');    // append '\r'
+        }
         bk_send_byte(uport, *string++);
     }
 }
@@ -108,14 +108,14 @@ void bk_printf(const char *fmt, ...)
 
 void print_hex_dump(const char *prefix, void *buf, int len)
 {
-	int i;
-	u8 *b = buf;
+    int i;
+    u8 *b = buf;
 
-	if (prefix)
-		os_printf("%s", prefix);
-	for (i = 0; i < len; i++)
-		os_printf("%02X ", b[i]);
-	os_printf("\n");
+    if (prefix)
+        os_printf("%s", prefix);
+    for (i = 0; i < len; i++)
+        os_printf("%02X ", b[i]);
+    os_printf("\n");
 }
 
 void uart_hw_init(UINT8 uport)
@@ -130,9 +130,9 @@ void uart_hw_init(UINT8 uport)
 
     if(UART1_PORT == uport)
     {
-    	#if UART1_BAUD_RATE != UART_BAUD_RATE
-    	baud_div = UART_CLOCK / UART1_BAUD_RATE;
-		#endif
+        #if UART1_BAUD_RATE != UART_BAUD_RATE
+        baud_div = UART_CLOCK / UART1_BAUD_RATE;
+        #endif
         conf_reg_addr = REG_UART1_CONFIG;
         fifo_conf_reg_addr = REG_UART1_FIFO_CONFIG;
         flow_conf_reg_addr = REG_UART1_FLOW_CONFIG;
@@ -142,7 +142,7 @@ void uart_hw_init(UINT8 uport)
     else
     {
 #if UART2_BAUD_RATE != UART_BAUD_RATE
-    	baud_div = UART_CLOCK / UART2_BAUD_RATE;
+        baud_div = UART_CLOCK / UART2_BAUD_RATE;
 #endif
         conf_reg_addr = REG_UART2_CONFIG;
         fifo_conf_reg_addr = REG_UART2_FIFO_CONFIG;
@@ -178,8 +178,8 @@ void uart_hw_init(UINT8 uport)
 void uart_hw_set_change(UINT8 uport, bk_uart_config_t *uart_config)
 {
     UINT32 reg, baud_div, width;
-    uart_parity_t 	     parity_en;
-    uart_stop_bits_t	  stop_bits;
+    uart_parity_t          parity_en;
+    uart_stop_bits_t      stop_bits;
     uart_flow_control_t  flow_control;
     UINT8 parity_mode = 0;
     UINT32 intr_ena_reg_addr, conf_reg_addr, fifi_conf_reg_addr;
@@ -209,7 +209,7 @@ void uart_hw_set_change(UINT8 uport, bk_uart_config_t *uart_config)
     parity_en = uart_config->parity;
     stop_bits = uart_config->stop_bits;
     flow_control = uart_config->flow_control;
-	(void)flow_control;
+    (void)flow_control;
 
     if(parity_en)
     {
@@ -246,8 +246,8 @@ void uart_hw_set_change(UINT8 uport, bk_uart_config_t *uart_config)
 
 UINT32 uart_sw_init(UINT8 uport)
 {
-    uart[uport].rx = kfifo_alloc(uport, kfifo_bufs[uport], RX_RB_LENGTH);
-    uart[uport].tx = kfifo_alloc(uport, kfifo_bufs[uport] + RX_RB_LENGTH, TX_RB_LENGTH);
+    uart[uport].rx = kfifo_alloc(kfifo_bufs[uport], RX_RB_LENGTH);
+    uart[uport].tx = kfifo_alloc(kfifo_bufs[uport] + RX_RB_LENGTH, TX_RB_LENGTH);
 
     if((!uart[uport].tx) || (!uart[uport].rx))
     {
@@ -424,51 +424,51 @@ UINT32 uart_read_fifo_frame(UINT8 uport, KFIFO_PTR rx_ptr)
 
 void uart_set_tx_fifo_needwr_int(UINT8 uport, UINT8 set)
 {
-	UINT32 reg;
+    UINT32 reg;
 
-	if(UART1_PORT == uport)
-		reg = REG_READ(REG_UART1_INTR_ENABLE);
-	else
-		reg = REG_READ(REG_UART2_INTR_ENABLE);
+    if(UART1_PORT == uport)
+        reg = REG_READ(REG_UART1_INTR_ENABLE);
+    else
+        reg = REG_READ(REG_UART2_INTR_ENABLE);
 
-	if(set == 1)
-	{
-		reg |= (TX_FIFO_NEED_WRITE_EN);
-	}
-	else
-	{
-		reg &= ~(TX_FIFO_NEED_WRITE_EN);
-	}
+    if(set == 1)
+    {
+        reg |= (TX_FIFO_NEED_WRITE_EN);
+    }
+    else
+    {
+        reg &= ~(TX_FIFO_NEED_WRITE_EN);
+    }
 
-	if(UART1_PORT == uport){
-		REG_WRITE(REG_UART1_INTR_ENABLE, reg);
-	}
-	else
-		REG_WRITE(REG_UART2_INTR_ENABLE, reg);
+    if(UART1_PORT == uport){
+        REG_WRITE(REG_UART1_INTR_ENABLE, reg);
+    }
+    else
+        REG_WRITE(REG_UART2_INTR_ENABLE, reg);
 }
 
 void uart_set_tx_stop_end_int(UINT8 uport, UINT8 set)
 {
-	UINT32 reg;
+    UINT32 reg;
 
-	if(UART1_PORT == uport)
-		reg = REG_READ(REG_UART1_INTR_ENABLE);
-	else
-		reg = REG_READ(REG_UART2_INTR_ENABLE);
+    if(UART1_PORT == uport)
+        reg = REG_READ(REG_UART1_INTR_ENABLE);
+    else
+        reg = REG_READ(REG_UART2_INTR_ENABLE);
 
-	if(set == 1)
-	{
-		reg |= (UART_TX_STOP_END_EN);
-	}
-	else
-	{
-		reg &= ~(UART_TX_STOP_END_EN);
-	}
+    if(set == 1)
+    {
+        reg |= (UART_TX_STOP_END_EN);
+    }
+    else
+    {
+        reg &= ~(UART_TX_STOP_END_EN);
+    }
 
-	if(UART1_PORT == uport)
-		REG_WRITE(REG_UART1_INTR_ENABLE, reg);
-	else
-		REG_WRITE(REG_UART2_INTR_ENABLE, reg);
+    if(UART1_PORT == uport)
+        REG_WRITE(REG_UART1_INTR_ENABLE, reg);
+    else
+        REG_WRITE(REG_UART2_INTR_ENABLE, reg);
 }
 
 /*******************************************************************/
@@ -498,7 +498,7 @@ void uart1_isr(void)
         }
         else
         {
-        	uart_read_byte(UART1_PORT); /*drop data for rtt*/
+            uart_read_byte(UART1_PORT); /*drop data for rtt*/
         }
     }
 
@@ -535,7 +535,7 @@ void uart1_isr(void)
         }
     }
 
-	if(status & UART_RXD_WAKEUP_STA)
+    if(status & UART_RXD_WAKEUP_STA)
     {
     }
 }
@@ -619,9 +619,9 @@ UINT32 uart1_write(char *user_buf, UINT32 count, UINT32 op_flag)
 UINT32 uart1_ctrl(UINT32 cmd, void *parm)
 {
     UINT32 ret;
-	int baud;
-	UINT32 conf_reg_addr;
-	UINT32 baud_div,reg;
+    int baud;
+    UINT32 conf_reg_addr;
+    UINT32 baud_div,reg;
 
     //peri_busy_count_add();
 
@@ -704,24 +704,24 @@ UINT32 uart1_ctrl(UINT32 cmd, void *parm)
             uart_tx_fifo_needwr_callback_set(UART1_PORT, NULL, NULL);
         }
         break;
-	case CMD_SET_STOP_END:
-		uart_set_tx_stop_end_int(UART1_PORT, *(UINT8 *)parm);
-		break;
+    case CMD_SET_STOP_END:
+        uart_set_tx_stop_end_int(UART1_PORT, *(UINT8 *)parm);
+        break;
 
-	case CMD_SET_TX_FIFO_NEEDWR_INT:
-		uart_set_tx_fifo_needwr_int(UART1_PORT, *(UINT8 *)parm);
-		break;
-	case CMD_SET_BAUT:
+    case CMD_SET_TX_FIFO_NEEDWR_INT:
+        uart_set_tx_fifo_needwr_int(UART1_PORT, *(UINT8 *)parm);
+        break;
+    case CMD_SET_BAUT:
 
-		baud =  *((int*)parm);
-		baud_div = UART_CLOCK / baud;
-		baud_div = baud_div - 1;
-		conf_reg_addr = REG_UART1_CONFIG;//current uart
-		reg = (REG_READ(conf_reg_addr))&(~(UART_CLK_DIVID_MASK<< UART_CLK_DIVID_POSI));
-		reg = reg | ((baud_div & UART_CLK_DIVID_MASK) << UART_CLK_DIVID_POSI);
-		REG_WRITE(conf_reg_addr, reg);
+        baud =  *((int*)parm);
+        baud_div = UART_CLOCK / baud;
+        baud_div = baud_div - 1;
+        conf_reg_addr = REG_UART1_CONFIG;//current uart
+        reg = (REG_READ(conf_reg_addr))&(~(UART_CLK_DIVID_MASK<< UART_CLK_DIVID_POSI));
+        reg = reg | ((baud_div & UART_CLK_DIVID_MASK) << UART_CLK_DIVID_POSI);
+        REG_WRITE(conf_reg_addr, reg);
 
-		break;
+        break;
     default:
         break;
     }
@@ -757,11 +757,11 @@ void uart2_isr(void)
         }
         else
         {
-        	uart_read_byte(UART2_PORT); /*drop data for rtt*/
+            uart_read_byte(UART2_PORT); /*drop data for rtt*/
         }
     }
 
-	if(status & TX_FIFO_NEED_WRITE_STA)
+    if(status & TX_FIFO_NEED_WRITE_STA)
     {
         if (uart_txfifo_needwr_callback[1].callback != 0)
         {
@@ -771,20 +771,20 @@ void uart2_isr(void)
         }
     }
 
-	if(status & RX_FIFO_OVER_FLOW_STA)
+    if(status & RX_FIFO_OVER_FLOW_STA)
     {
     }
 
-	if(status & UART_RX_PARITY_ERR_STA)
+    if(status & UART_RX_PARITY_ERR_STA)
     {
         uart_fifo_flush(UART2_PORT);
     }
 
-	if(status & UART_RX_STOP_ERR_STA)
+    if(status & UART_RX_STOP_ERR_STA)
     {
     }
 
-	if(status & UART_TX_STOP_END_STA)
+    if(status & UART_TX_STOP_END_STA)
     {
         if (uart_tx_end_callback[1].callback != 0)
         {
@@ -794,7 +794,7 @@ void uart2_isr(void)
         }
     }
 
-	if(status & UART_RXD_WAKEUP_STA)
+    if(status & UART_RXD_WAKEUP_STA)
     {
     }
 }
@@ -878,9 +878,9 @@ UINT32 uart2_write(char *user_buf, UINT32 count, UINT32 op_flag)
 UINT32 uart2_ctrl(UINT32 cmd, void *parm)
 {
     UINT32 ret;
-	int baud;
-	UINT32 conf_reg_addr;
-	UINT32 baud_div,reg;
+    int baud;
+    UINT32 conf_reg_addr;
+    UINT32 baud_div,reg;
     //peri_busy_count_add();
 
     ret = UART_SUCCESS;
@@ -962,23 +962,23 @@ UINT32 uart2_ctrl(UINT32 cmd, void *parm)
             uart_tx_fifo_needwr_callback_set(UART2_PORT, NULL, NULL);
         }
         break;
-	case CMD_SET_STOP_END:
-		uart_set_tx_stop_end_int(UART2_PORT, *(UINT8 *)parm);
-		break;
+    case CMD_SET_STOP_END:
+        uart_set_tx_stop_end_int(UART2_PORT, *(UINT8 *)parm);
+        break;
 
-	case CMD_SET_TX_FIFO_NEEDWR_INT:
-		uart_set_tx_fifo_needwr_int(UART2_PORT, *(UINT8 *)parm);
-		break;
-	case CMD_SET_BAUT:
-		baud =  *((int*)parm);
-		baud_div = UART_CLOCK / baud;
-		baud_div = baud_div - 1;
-		conf_reg_addr = REG_UART2_CONFIG;//current uart
-		reg = (REG_READ(conf_reg_addr))&(~(UART_CLK_DIVID_MASK<< UART_CLK_DIVID_POSI));
-		reg = reg | ((baud_div & UART_CLK_DIVID_MASK) << UART_CLK_DIVID_POSI);
-		REG_WRITE(conf_reg_addr, reg);
+    case CMD_SET_TX_FIFO_NEEDWR_INT:
+        uart_set_tx_fifo_needwr_int(UART2_PORT, *(UINT8 *)parm);
+        break;
+    case CMD_SET_BAUT:
+        baud =  *((int*)parm);
+        baud_div = UART_CLOCK / baud;
+        baud_div = baud_div - 1;
+        conf_reg_addr = REG_UART2_CONFIG;//current uart
+        reg = (REG_READ(conf_reg_addr))&(~(UART_CLK_DIVID_MASK<< UART_CLK_DIVID_POSI));
+        reg = reg | ((baud_div & UART_CLK_DIVID_MASK) << UART_CLK_DIVID_POSI);
+        REG_WRITE(conf_reg_addr, reg);
 
-		break;
+        break;
     default:
         break;
     }

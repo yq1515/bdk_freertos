@@ -32,7 +32,7 @@
  * @param _data 8-bit datum
  */
 #define REG_WR8(_pBase, _offset, _data) \
-	(*((volatile UINT8 *)(_pBase + _offset)) = _data)
+    (*((volatile UINT8 *)(_pBase + _offset)) = _data)
 
 /**
  * WR a 16-bit core register
@@ -41,7 +41,7 @@
  * @param _data 16-bit datum
  */
 #define REG_WR16(_pBase, _offset, _data) \
-	(*((volatile UINT16 *)(_pBase + _offset)) = _data)
+    (*((volatile UINT16 *)(_pBase + _offset)) = _data)
 
 /**
  * WR a 32-bit core register
@@ -50,9 +50,9 @@
  * @param _data 32-bit datum
  */
 #define REG_WR32(_pBase, _offset, _data) \
-	(*((volatile UINT32 *)(_pBase + _offset)) = _data)
+    (*((volatile UINT32 *)(_pBase + _offset)) = _data)
 
 #define REG_READ(addr)          (*((volatile UINT32 *)(addr)))
-#define REG_WRITE(addr, _data) 	(*((volatile UINT32 *)(addr)) = (_data))
+#define REG_WRITE(addr, _data)     (*((volatile UINT32 *)(addr)) = (_data))
 
 #endif

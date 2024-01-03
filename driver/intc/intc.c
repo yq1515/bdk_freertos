@@ -214,12 +214,12 @@ void intc_irq(void)
 
     irq_status = icu_ctrl(CMD_GET_INTR_STATUS, 0);
     irq_status = irq_status & 0xFFFF;
-	if(0 == irq_status)
-	{
-	    #if (! CFG_USE_STA_PS)
-		os_printf("irq:dead\r\n");
+    if(0 == irq_status)
+    {
+        #if (! CFG_USE_STA_PS)
+        os_printf("irq:dead\r\n");
         #endif
-	}
+    }
 
     icu_ctrl(CMD_CLR_INTR_STATUS, &irq_status);
 
@@ -278,9 +278,9 @@ void intc_deinit(void)
     UINT32 param;
 
     for( int i = 0; i<=FIQ_DPLL_UNLOCK; i++)
-	{
+    {
         intc_disable(i);
-	}
+    }
 
     param = GINTR_FIQ_BIT | GINTR_IRQ_BIT;
     sddev_control(ICU_DEV_NAME, CMD_ICU_GLOBAL_INT_DISABLE, &param);
@@ -296,7 +296,7 @@ void bk_cpu_shutdown(void)
 
     GLOBAL_INT_DISABLE();
     while(1);
-	GLOBAL_INT_RESTORE();
+    GLOBAL_INT_RESTORE();
 }
 
 void bk_show_register (struct arm_registers *regs)
@@ -420,12 +420,12 @@ uint32_t platform_is_in_irq_context( void )
     uint32_t mode;
 
     __asm volatile(
-		"MRS %0,CPSR\n"
-		"AND %0,%0,#0x1f\n"
-		:"=r" (mode)
-		:
-		:"memory"
-	);
+        "MRS %0,CPSR\n"
+        "AND %0,%0,#0x1f\n"
+        :"=r" (mode)
+        :
+        :"memory"
+    );
 
     return (ARM968_IRQ_MODE == mode);
 }
@@ -437,12 +437,12 @@ uint32_t platform_is_in_fiq_context( void )
     uint32_t mode;
 
     __asm volatile(
-		"MRS %0,CPSR\n"
-		"AND %0,%0,#0x1f\n"
-		:"=r" (mode)
-		:
-		:"memory"
-	);
+        "MRS %0,CPSR\n"
+        "AND %0,%0,#0x1f\n"
+        :"=r" (mode)
+        :
+        :"memory"
+    );
 
     return (ARM968_FIQ_MODE == mode);
 }
@@ -458,27 +458,27 @@ uint32_t platform_is_in_interrupt_context( void )
 __attribute__((target("arm")))
 void portENABLE_IRQ(void)
 {
-	unsigned long temp;
-	__asm volatile(
-	"mrs	%0, cpsr		@ local_irq_enable\n"
-       "bic	%0, %0, #0x80\n"
-       "msr	cpsr_c, %0"
-	: "=r" (temp)
-	:
-	: "memory");
+    unsigned long temp;
+    __asm volatile(
+    "mrs    %0, cpsr        @ local_irq_enable\n"
+       "bic    %0, %0, #0x80\n"
+       "msr    cpsr_c, %0"
+    : "=r" (temp)
+    :
+    : "memory");
 }
 
 __attribute__((target("arm")))
 void portENABLE_FIQ(void)
 {
-	unsigned long temp;
-	__asm volatile(
-	"mrs	%0, cpsr		@ local_irq_enable\n"
-       "bic	%0, %0, #0x40\n"
-       "msr	cpsr_c, %0"
-	: "=r" (temp)
-	:
-	: "memory");
+    unsigned long temp;
+    __asm volatile(
+    "mrs    %0, cpsr        @ local_irq_enable\n"
+       "bic    %0, %0, #0x40\n"
+       "msr    cpsr_c, %0"
+    : "=r" (temp)
+    :
+    : "memory");
 }
 
 /*
@@ -487,52 +487,52 @@ void portENABLE_FIQ(void)
 __attribute__((target("arm")))
 int portDISABLE_FIQ(void)
 {
-	unsigned long temp;
-	unsigned long mask;
+    unsigned long temp;
+    unsigned long mask;
 
-	__asm volatile(
-	"mrs	%1, cpsr		@ local_irq_disable\n"
-	"orr	%0, %1, #0x40\n"
-	"msr	cpsr_c, %0"
-	: "=r" (temp),"=r" (mask)
-	:
-	: "memory");
+    __asm volatile(
+    "mrs    %1, cpsr        @ local_irq_disable\n"
+    "orr    %0, %1, #0x40\n"
+    "msr    cpsr_c, %0"
+    : "=r" (temp),"=r" (mask)
+    :
+    : "memory");
 
-	return (!!(mask & 0x40));
+    return (!!(mask & 0x40));
 }
 
 __attribute__((target("arm")))
 int port_disable_interrupts_flag(void)
 {
-	unsigned long temp;
-	unsigned long mask;
+    unsigned long temp;
+    unsigned long mask;
 
-	__asm volatile(
-	"mrs	%1, cpsr		@ local_irq_disable\n"
-	"orr	%0, %1, #0xC0\n"
-	"msr	cpsr_c, %0"
-	: "=r" (temp),"=r" (mask)
-	:
-	: "memory");
+    __asm volatile(
+    "mrs    %1, cpsr        @ local_irq_disable\n"
+    "orr    %0, %1, #0xC0\n"
+    "msr    cpsr_c, %0"
+    : "=r" (temp),"=r" (mask)
+    :
+    : "memory");
 
-	return (mask & 0xC0);
+    return (mask & 0xC0);
 }
 
 __attribute__((target("arm")))
 int portDISABLE_IRQ(void)
 {
-	unsigned long temp;
-	unsigned long mask;
+    unsigned long temp;
+    unsigned long mask;
 
-	__asm volatile(
-	"mrs	%1, cpsr		@ local_irq_disable\n"
-	"orr	%0, %1, #0x80\n"
-	"msr	cpsr_c, %0"
-	: "=r" (temp),"=r" (mask)
-	:
-	: "memory");
+    __asm volatile(
+    "mrs    %1, cpsr        @ local_irq_disable\n"
+    "orr    %0, %1, #0x80\n"
+    "msr    cpsr_c, %0"
+    : "=r" (temp),"=r" (mask)
+    :
+    : "memory");
 
-	return (!!(mask & 0x80));
+    return (!!(mask & 0x80));
 }
 #endif
 //eof

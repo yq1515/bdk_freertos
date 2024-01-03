@@ -59,45 +59,39 @@ BEKEN_DIR ?= .
 # Include folder list
 # -------------------------------------------------------------------
 INCLUDES =
-INCLUDES += -I./config
-INCLUDES += -I./release
-INCLUDES += -I./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es
-INCLUDES += -I./os/FreeRTOSv9.0.0/FreeRTOS/Source/include
+INCLUDES += -I$(BEKEN_DIR)/components/user_driver
 INCLUDES += -I$(BEKEN_DIR)/include
-INCLUDES += -I$(BEKEN_DIR)/app/config
-INCLUDES += -I$(BEKEN_DIR)/driver/entry
-INCLUDES += -I$(BEKEN_DIR)/driver/intc
-INCLUDES += -I$(BEKEN_DIR)/driver/pwm
-INCLUDES += -I$(BEKEN_DIR)/driver/flash
 INCLUDES += -I$(BEKEN_DIR)/driver/common
-INCLUDES += -I$(BEKEN_DIR)/driver/uart
-INCLUDES += -I$(BEKEN_DIR)/driver/sys_ctrl
+INCLUDES += -I$(BEKEN_DIR)/driver/entry
+INCLUDES += -I$(BEKEN_DIR)/driver/flash
 INCLUDES += -I$(BEKEN_DIR)/driver/gpio
 INCLUDES += -I$(BEKEN_DIR)/driver/icu
-INCLUDES += -I$(BEKEN_DIR)/components/user_driver
-INCLUDES += -I$(BEKEN_DIR)/components/uart_debug
-INCLUDES += -I$(BEKEN_DIR)/os/include
-INCLUDES += -I$(BEKEN_DIR)/os/FreeRTOSv9.0.0
-INCLUDES += -I$(BEKEN_DIR)/components/utf8
-INCLUDES += -I$(BEKEN_DIR)/app/http
+INCLUDES += -I$(BEKEN_DIR)/driver/intc
+INCLUDES += -I$(BEKEN_DIR)/driver/pwm
+INCLUDES += -I$(BEKEN_DIR)/driver/sys_ctrl
+INCLUDES += -I$(BEKEN_DIR)/driver/uart
 
 # CherryUSB
 ifeq ($(CFG_CHERRY_USB),1)
-INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/common
-INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/core
-INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/osal
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/audio
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/cdc
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/hid
-INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/msc
-INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/audio
-INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/video
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/hub
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/msc
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/class/video
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/common
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/core
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/demo
 INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device
+INCLUDES += -I$(BEKEN_DIR)/components/CherryUSB/osal
 ifeq ($(CFG_UF2),1)
 INCLUDES += -I$(BEKEN_DIR)/components/uf2
 INCLUDES += -I$(BEKEN_DIR)/components/uf2/ports
 endif
+endif
+
+ifeq ($(CFG_YMODEM),1)
+INCLUDES += -I$(BEKEN_DIR)/components/ymodem
 endif
 
 
@@ -109,7 +103,11 @@ SRC_C =
 SRC_OS =
 SRC_S =
 
-#SRC_OS += ./os/FreeRTOSv9.0.0/FreeRTOS/Source/portable/Keil/ARM968es/port.c
+SRC_C += $(BEKEN_DIR)/components/func.c
+SRC_C += $(BEKEN_DIR)/components/misc/fake_clock.c
+SRC_C += $(BEKEN_DIR)/components/misc/start_type.c
+SRC_C += $(BEKEN_DIR)/components/misc/target_util.c
+SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverWdg.c
 SRC_C += $(BEKEN_DIR)/driver/common/dd.c
 SRC_C += $(BEKEN_DIR)/driver/common/drv_model.c
 SRC_C += $(BEKEN_DIR)/driver/driver.c
@@ -120,19 +118,14 @@ SRC_C += $(BEKEN_DIR)/driver/icu/icu.c
 SRC_C += $(BEKEN_DIR)/driver/intc/intc.c
 SRC_C += $(BEKEN_DIR)/driver/pwm/bk_timer.c
 SRC_C += $(BEKEN_DIR)/driver/sys_ctrl/sys_ctrl.c
-SRC_C += $(BEKEN_DIR)/driver/uart/uart.c
 SRC_C += $(BEKEN_DIR)/driver/uart/printf.c
+SRC_C += $(BEKEN_DIR)/driver/uart/uart.c
 SRC_C += $(BEKEN_DIR)/driver/wdt/wdt.c
-SRC_C += $(BEKEN_DIR)/components/func.c
-SRC_C += $(BEKEN_DIR)/components/misc/fake_clock.c
-SRC_C += $(BEKEN_DIR)/components/misc/target_util.c
-SRC_C += $(BEKEN_DIR)/components/misc/start_type.c
-SRC_C += $(BEKEN_DIR)/components/user_driver/BkDriverWdg.c
 
 # CherryUSB
 ifeq ($(CFG_CHERRY_USB),1)
-SRC_C += $(BEKEN_DIR)/components/CherryUSB/core/usbd_core.c
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/msc/usbd_msc.c
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/core/usbd_core.c
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/port/beken_musb/usb_dc_beken_musb.c
 
 # UF2
@@ -142,6 +135,11 @@ SRC_C += $(BEKEN_DIR)/components/uf2/msc_desc.c
 SRC_C += $(BEKEN_DIR)/components/uf2/ports/board_flash.c
 endif # CFG_UF2
 endif
+
+# Ymodem
+ifeq ($(CFG_YMODEM),1)
+SRC_C += $(BEKEN_DIR)/components/ymodem/ymodem.c
+endif # CFG_YMODEM
 
 #assembling files
 SRC_S +=  $(BEKEN_DIR)/driver/entry/boot_handlers.S
@@ -155,9 +153,6 @@ DEPENDENCY_LIST = $(SRC_C:%.c=$(OBJ_DIR)/%.d)
 
 OBJ_S_LIST = $(SRC_S:%.S=$(OBJ_DIR)/%.O)
 DEPENDENCY_S_LIST = $(SRC_S:%.S=$(OBJ_DIR)/%.d)
-
-OBJ_OS_LIST = $(SRC_OS:%.c=$(OBJ_DIR)/%.marm.o)
-DEPENDENCY_OS_LIST = $(SRC_OS:%.c=$(OBJ_DIR)/%.d)
 
 ifeq ($(CFG_SOC_NAME), 1)
 SOC_NAME_ELF = beken7231.elf
@@ -186,23 +181,18 @@ SOC_NAME_BSP_LDS = bk7231n_bsp.lds
 endif
 SOC_NAME_BSP_ELF = beken7231_bsp.elf
 SOC_NAME_BSP_BIN = beken7231_bsp.bin
+SOC_NAME_BSP_CRC_BIN = beken7231_bsp_crc.bin
 SOC_NAME_BSP_MAP = beken7231_bsp.map
+SOC_NAME_BSP_UF2 = beken7231_bsp.uf2
 
 # Compile options
 # -------------------------------------------------------------------
-CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -nostdlib -fno-strict-aliasing
-#CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-unused-function -fsigned-char -fdata-sections -Wunknown-pragmas -nostdlib -Wl,--gc-sections
-
-OSFLAGS += -g -marm -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -fsigned-char -fdata-sections -Wunknown-pragmas
-#OSFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -fsigned-char -fdata-sections -Wunknown-pragmas -Wl,--gc-sections
-
-ASMFLAGS = 
-ASMFLAGS += -g -marm -mthumb-interwork -mcpu=arm968e-s -march=armv5te -x assembler-with-cpp
+CFLAGS = -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Werror -fsigned-char -fdata-sections -nostdlib
+ASMFLAGS = -g -marm -mthumb-interwork -mcpu=arm968e-s -march=armv5te -x assembler-with-cpp
 
 LFLAGS = 
-LFLAGS += -g -Wl,--gc-sections -marm -mcpu=arm968e-s -mthumb-interwork -nostdlib  -Xlinker -Map=beken.map
+LFLAGS += -g -Wl,--gc-sections -marm -mcpu=arm968e-s -mthumb-interwork -nostdlib -Xlinker -Map=beken.map
 LFLAGS += -Wl,-wrap,printf -Wl,-wrap,vsnprintf -Wl,-wrap,snprintf -Wl,-wrap,sprintf -Wl,-wrap,puts
-#LFLAGS += -g -Wl,--gc-sections -mthumb -mcpu=arm968e-s -mthumb-interwork -nostdlib
 
 
 .PHONY: application
@@ -219,6 +209,7 @@ application: $(OBJ_LIST) $(OBJ_S_LIST) $(OBJ_OS_LIST)
 	$(Q)$(OBJCOPY) -O binary $(BIN_DIR)/$(SOC_NAME_BSP_ELF) $(BIN_DIR)/$(SOC_NAME_BSP_BIN)
 #	$(Q)(cd ./tools/beken_packager; ./beken_packager_wrapper -i $(CFG_SOC_NAME))
 	$(Q)$(ENCRYPT) $(BIN_DIR)/$(SOC_NAME_BSP_BIN) 0 $(ENCRYPT_ARGS) > /dev/null
+	$(Q)./tools/uf2/uf2conv.py -c $(BIN_DIR)/$(SOC_NAME_BSP_CRC_BIN) -f BK7231U -o $(BIN_DIR)/$(SOC_NAME_BSP_UF2) -b 0x11000
 
 $(OBJ_DIR)/%.o: %.c
 	$(Q)if [ ! -d $(dir $@) ]; then mkdir -p $(dir $@); fi
@@ -232,23 +223,11 @@ $(OBJ_DIR)/%.O: %.S
 	$(Q)$(CC) $(ASMFLAGS) $(INCLUDES) -c $< -o $@
 	$(Q)$(CC) $(ASMFLAGS) $(INCLUDES) -c $< -MM -MT $@ -MF $(patsubst %.O,%.d,$@)
 
-$(OBJ_DIR)/%.marm.o: %.c
-	$(Q)if [ ! -d $(dir $@) ]; then mkdir -p $(dir $@); fi
-	$(Q)$(ECHO) "  $(GREEN)CC   $<$(NC)"
-	$(Q)$(CC) $(OSFLAGS) $(INCLUDES) -c $< -o $@
-	$(Q)$(CC) $(OSFLAGS) $(INCLUDES) -c $< -MM -MT $@ -MF $(patsubst %.marm.o,%.d,$@)
-
 -include $(DEPENDENCY_LIST)
 -include $(DEPENDENCY_S_LIST)
--include $(DEPENDENCY_OS_LIST)
 
 .PHONY: clean
 clean:
 	$(Q)-rm -rf $(TARGET)
 	$(Q)-rm -f .config
-	@$(ECHO) "$(GREEN)Done$(NC)"
-
-.PHONY: cleanlib
-cleanlib:
-	$(Q)-rm -rf $(RWNX_LIB) $(WPA_LIB) $(USB_LIB) $(BLE_LIB) $(SENSOR_LIB) $(CAL_LIB) $(SUPPLICANT_LIB) $(UART_DEBUG_LIB) $(RF_TEST_LIB) $(RF_USE_LIB)
 	@$(ECHO) "$(GREEN)Done$(NC)"

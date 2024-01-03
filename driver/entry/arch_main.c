@@ -21,15 +21,21 @@
 
 #define APPLICATION_START_ADDR 0x10000
 
+extern int Ymodem_Receive_Main(void);
+extern void delay(int num);
+extern void ymodem_init();
+
 bool dfu_mode;
 int dfu_gpio_port = GPIO36;
 volatile bool dfu_complete = false;
 uint64_t dfu_complete_tick;
+int button_pressed_count = 0;
+int gpio_last_value = -1;
 
 void board_dfu_complete(void)
 {
-	dfu_complete = true;
-	dfu_complete_tick = fclk_get_tick();
+    dfu_complete = true;
+    dfu_complete_tick = fclk_get_tick();
 }
 
 void dfu_gpio_init(void)
@@ -53,9 +59,40 @@ void dfu_mode_check(void)
     os_printf("dfu_mode: %d\n", dfu_mode);
 }
 
+bool dfu_button_pressed()
+{
+    uint32_t ret;
+    uint32_t param;
+
+    param = dfu_gpio_port;
+    ret = gpio_ctrl(CMD_GPIO_INPUT, &param);
+
+    return ret == 0;
+}
+
 bool dfu_enabled()
 {
     return dfu_mode;
+}
+
+void gpio_button_check()
+{
+    uint32_t ret;
+    uint32_t param;
+
+    param = dfu_gpio_port;
+    ret = gpio_ctrl(CMD_GPIO_INPUT, &param);
+
+    if (gpio_last_value == 1 && ret == 0)
+        button_pressed_count++;
+    gpio_last_value = ret;
+
+    delay(1000);
+}
+
+int dfu_pressed_count()
+{
+    return button_pressed_count;
 }
 
 void dfu_app_init(void)
@@ -109,26 +146,41 @@ static void application_start(void)
 void entry_main(void)
 {
     driver_init();
-	dfu_app_init();
+    dfu_app_init();
     fclk_init();
-	func_init_basic();
+    func_init_basic();
+#if CFG_YMODEM
+    ymodem_init();
+#endif
 
-	portENABLE_FIQ();
-	portENABLE_IRQ();
+    portENABLE_FIQ();
+    portENABLE_IRQ();
 
-	if (dfu_enabled()) {
-		while (1) {
-			// If DFU complete, wait for 10 ticks
-			if (dfu_complete) {
-				if (fclk_get_tick() - dfu_complete_tick > 10) {
-					os_printf("DFU complete\n");
-					application_start();
-				}
-			}
-		}
-	} else {
-		application_start();
-	}
+    if (dfu_enabled()) {
+        while (1) {
+            // If DFU complete, wait for 10 ticks
+            if (dfu_complete) {
+                if (fclk_get_tick() - dfu_complete_tick > 10) {
+                    os_printf("DFU complete\n");
+                    application_start();
+                }
+            }
+
+#if CFG_YMODEM
+            gpio_button_check();
+            if (dfu_pressed_count() >= 1) {
+                if (Ymodem_Receive_Main() == 0) {
+                    os_printf("DFU complete 1\n");
+                    application_start();
+                } else {
+                    os_printf("DFU failed 1\n");
+                }
+            }
+#endif
+        }
+    } else {
+        application_start();
+    }
 }
 // eof
 

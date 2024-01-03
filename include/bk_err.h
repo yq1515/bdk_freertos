@@ -67,10 +67,10 @@ typedef int bk_err_t;
 #define BK_ERR_TRY_AGAIN           (BK_ERR_COMMON_BASE - 8)
 
 #define BK_ERR_CHECK(_x) do {\
-	bk_err_t _err = (_x);\
-	if (_err != BK_OK) {\
-		os_printf("%s %d: ret=-0x%x\n", __FUNCTION__, __LINE__, -_err);\
-	}\
+    bk_err_t _err = (_x);\
+    if (_err != BK_OK) {\
+        os_printf("%s %d: ret=-0x%x\n", __FUNCTION__, __LINE__, -_err);\
+    }\
 } while(0)
 
 #ifdef __cplusplus

@@ -1,6 +1,6 @@
 .platform
 .config
-config/sys_config.h
+include/sys_config.h
 out/
 lib/libble.a
 lib/libcal.a

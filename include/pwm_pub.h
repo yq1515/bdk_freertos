@@ -64,7 +64,7 @@ typedef void (*PFUNC)(UINT8);
 
 #define PWM_CLK_32K                 (0x00)
 #define PWM_CLK_26M                 (0x01)
-#define PWM_CLK_DCO					(0x02)
+#define PWM_CLK_DCO                    (0x02)
 
 typedef struct
 {
@@ -137,8 +137,8 @@ typedef struct
     UINT32 duty_cycle2;
     UINT32 duty_cycle3;
 #else
-	UINT32 end_value;
-	UINT32 duty_cycle;
+    UINT32 end_value;
+    UINT32 duty_cycle;
 #endif
     PFUNC p_Int_Handler;
 } pwm_param_t;

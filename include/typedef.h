@@ -2,25 +2,25 @@
 #define _TYPEDEF_H_
 #include <stdint.h>
 
-typedef unsigned char  		  uint8;          /* unsigned  8 bit quantity        */
-typedef signed   char  		  int8;           /* signed    8 bit quantity        */
-typedef unsigned short 		  uint16;         /* unsigned 16 bit quantity        */
-typedef signed   short 		  int16;          /* signed   16 bit quantity        */
-typedef unsigned int   		  uint32;         /* unsigned 32 bit quantity        */
-typedef signed   int   		  int32;          /* signed   32 bit quantity        */
-typedef unsigned long long    uint64;			/* unsigned 32 bit quantity        */
-typedef signed   long long    int64;			/* signed   32 bit quantity        */
+typedef unsigned char            uint8;          /* unsigned  8 bit quantity        */
+typedef signed   char            int8;           /* signed    8 bit quantity        */
+typedef unsigned short           uint16;         /* unsigned 16 bit quantity        */
+typedef signed   short           int16;          /* signed   16 bit quantity        */
+typedef unsigned int             uint32;         /* unsigned 32 bit quantity        */
+typedef signed   int             int32;          /* signed   32 bit quantity        */
+typedef unsigned long long    uint64;            /* unsigned 32 bit quantity        */
+typedef signed   long long    int64;            /* signed   32 bit quantity        */
 
-typedef unsigned char  		  UINT8;          /* Unsigned  8 bit quantity        */
-typedef signed   char  		  INT8;           /* Signed    8 bit quantity        */
-typedef unsigned short 		  UINT16;         /* Unsigned 16 bit quantity        */
-typedef signed   short 		  INT16;          /* Signed   16 bit quantity        */
-typedef unsigned int   		  UINT32;         /* Unsigned 32 bit quantity        */
-typedef signed   int   		  INT32;          /* Signed   32 bit quantity        */
-typedef unsigned long long    UINT64;			/* Unsigned 32 bit quantity        */
-typedef signed   long long    INT64;			/* Signed   32 bit quantity        */
-typedef float         		  FP32;			/* Single precision floating point */
-typedef double         		  FP64;			/* Double precision floating point */
+typedef unsigned char            UINT8;          /* Unsigned  8 bit quantity        */
+typedef signed   char            INT8;           /* Signed    8 bit quantity        */
+typedef unsigned short           UINT16;         /* Unsigned 16 bit quantity        */
+typedef signed   short           INT16;          /* Signed   16 bit quantity        */
+typedef unsigned int             UINT32;         /* Unsigned 32 bit quantity        */
+typedef signed   int             INT32;          /* Signed   32 bit quantity        */
+typedef unsigned long long    UINT64;            /* Unsigned 32 bit quantity        */
+typedef signed   long long    INT64;            /* Signed   32 bit quantity        */
+typedef float                   FP32;            /* Single precision floating point */
+typedef double                   FP64;            /* Double precision floating point */
 typedef unsigned int          size_t;
 typedef unsigned char         BOOLEAN;
 typedef unsigned char         BOOL;

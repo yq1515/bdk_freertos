@@ -31,7 +31,7 @@
 #define __ALIGN4                     __attribute__((aligned(4)))
 #endif
 
-#define __MODULE__ 				  __BASE_FILE__
+#define __MODULE__                   __BASE_FILE__
 
 /// define the BLE IRQ handler attribute for this compiler
 #define __BLEIRQ
@@ -58,11 +58,11 @@
 #endif
 
 #ifndef likely
-#define likely(x)   		__builtin_expect(!!(x), 1)
+#define likely(x)           __builtin_expect(!!(x), 1)
 #endif
 
 #ifndef likely
-#define unlikely(x) 		__builtin_expect(!!(x), 0)
+#define unlikely(x)         __builtin_expect(!!(x), 0)
 #endif
 
 #define __deprecated        __attribute__((deprecated))

@@ -34,7 +34,7 @@
 
 OSStatus BkGpioAssert( bk_gpio_t gpio )
 {
-	return 0;
+    return 0;
 }
 
 OSStatus BkGpioInitialize( bk_gpio_t gpio, bk_gpio_config_t configuration )

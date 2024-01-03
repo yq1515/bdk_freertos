@@ -22,12 +22,32 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "flash_if.h"
-#include "common.h"
+//#include "flash_if.h"
+//#include "common.h"
+#include <string.h>
+#include <stdint.h>
+#include "drv_model_pub.h"
+#include "error.h"
 #include "ymodem.h"
-#include "string.h"
-#include "main.h"
-#include "menu.h"
+#include "fake_clock_pub.h"
+#include "uart_pub.h"
+#include "arm_arch.h"
+
+#define USER_FLASH_SIZE     (2*1024*1024)
+#define APPLICATION_ADDRESS 0x11000
+
+#define FLASHIF_OK          0
+#define FLASHIF_ERROR       -1
+
+#define IS_CAP_LETTER(c)    (((c) >= 'A') && ((c) <= 'F'))
+#define IS_LC_LETTER(c)     (((c) >= 'a') && ((c) <= 'f'))
+#define IS_09(c)            (((c) >= '0') && ((c) <= '9'))
+#define ISVALIDHEX(c)       (IS_CAP_LETTER(c) || IS_LC_LETTER(c) || IS_09(c))
+#define ISVALIDDEC(c)       IS_09(c)
+#define CONVERTDEC(c)       (c - '0')
+
+#define CONVERTHEX_ALPHA(c) (IS_CAP_LETTER(c) ? ((c) - 'A'+10) : ((c) - 'a'+10))
+#define CONVERTHEX(c)       (IS_09(c) ? ((c) - '0') : CONVERTHEX_ALPHA(c))
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -36,6 +56,8 @@
 /* Private variables ---------------------------------------------------------*/
 /* @note ATTENTION - please keep this variable 32bit aligned */
 uint8_t aPacketData[PACKET_1K_SIZE + PACKET_DATA_INDEX + PACKET_TRAILER_SIZE];
+char aFileName[FILE_NAME_LENGTH];
+DD_HANDLE UartHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 static void PrepareIntialPacket(uint8_t *p_data, const uint8_t *p_file_name, uint32_t length);
@@ -44,36 +66,190 @@ static HAL_StatusTypeDef ReceivePacket(uint8_t *p_data, uint32_t *p_length, uint
 uint16_t UpdateCRC16(uint16_t crc_in, uint8_t byte);
 uint16_t Cal_CRC16(const uint8_t* p_data, uint32_t size);
 uint8_t CalcChecksum(const uint8_t *p_data, uint32_t size);
+uint32_t Str2Int(uint8_t *p_inputstr, uint32_t *p_intnum);
+extern void bk_send_byte(uint8_t uport, uint8_t data);
+extern void board_flash_write(uint32_t addr, void const *data, uint32_t len);
+extern void flash_unlock();
+extern void flash_lock();
+
+void FLASH_If_Erase(uint32_t addr)
+{
+}
+
+int FLASH_If_Write(uint32_t flash_addr, uint32_t *ram_addr, int len)
+{
+    // os_printf("%x, len %d\n", flash_addr, len);
+    board_flash_write(flash_addr, ram_addr, len);
+    return FLASHIF_OK;
+}
+
+void HAL_Delay(int delay)
+{
+}
+
+void __HAL_UART_FLUSH_DRREGISTER(DD_HANDLE *handle)
+{
+}
 
 /* Private functions ---------------------------------------------------------*/
 
-DD_HANDLE UartHandle;
+/**
+  * @brief  Convert an Integer to a string
+  * @param  p_str: The string output pointer
+  * @param  intnum: The integer to be converted
+  * @retval None
+  */
+void Int2Str(uint8_t *p_str, uint32_t intnum)
+{
+  uint32_t i, divider = 1000000000, pos = 0, status = 0;
+
+  for (i = 0; i < 10; i++)
+  {
+    p_str[pos++] = (intnum / divider) + 48;
+
+    intnum = intnum % divider;
+    divider /= 10;
+    if ((p_str[pos-1] == '0') & (status == 0))
+    {
+      pos = 0;
+    }
+    else
+    {
+      status++;
+    }
+  }
+}
+
+/**
+  * @brief  Convert a string to an integer
+  * @param  p_inputstr: The string to be converted
+  * @param  p_intnum: The integer value
+  * @retval 1: Correct
+  *         0: Error
+  */
+uint32_t Str2Int(uint8_t *p_inputstr, uint32_t *p_intnum)
+{
+  uint32_t i = 0, res = 0;
+  uint32_t val = 0;
+
+  if ((p_inputstr[0] == '0') && ((p_inputstr[1] == 'x') || (p_inputstr[1] == 'X')))
+  {
+    i = 2;
+    while ( ( i < 11 ) && ( p_inputstr[i] != '\0' ) )
+    {
+      if (ISVALIDHEX(p_inputstr[i]))
+      {
+        val = (val << 4) + CONVERTHEX(p_inputstr[i]);
+      }
+      else
+      {
+        /* Return 0, Invalid input */
+        res = 0;
+        break;
+      }
+      i++;
+    }
+
+    /* valid result */
+    if (p_inputstr[i] == '\0')
+    {
+      *p_intnum = val;
+      res = 1;
+    }
+  }
+  else /* max 10-digit decimal input */
+  {
+    while ( ( i < 11 ) && ( res != 1 ) )
+    {
+      if (p_inputstr[i] == '\0')
+      {
+        *p_intnum = val;
+        /* return 1 */
+        res = 1;
+      }
+      else if (((p_inputstr[i] == 'k') || (p_inputstr[i] == 'K')) && (i > 0))
+      {
+        val = val << 10;
+        *p_intnum = val;
+        res = 1;
+      }
+      else if (((p_inputstr[i] == 'm') || (p_inputstr[i] == 'M')) && (i > 0))
+      {
+        val = val << 20;
+        *p_intnum = val;
+        res = 1;
+      }
+      else if (ISVALIDDEC(p_inputstr[i]))
+      {
+        val = val * 10 + CONVERTDEC(p_inputstr[i]);
+      }
+      else
+      {
+        /* return 0, Invalid input */
+        res = 0;
+        break;
+      }
+      i++;
+    }
+  }
+
+  return res;
+}
+
 
 
 // bk_uart_recv
+// timeout: in ms
 HAL_StatusTypeDef HAL_UART_Receive(DD_HANDLE *uart_hdl, uint8_t *data, size_t size, int timeout)
 {
-    UINT32 ret;
-    UINT32 status;
+    uint64_t end_time = fclk_get_tick() + BK_MS_TO_TICKS(timeout);
+    int read;
+    char *ptr = (char *)data;
+    int remain = size;
 
-    ret = ddev_control(*uart_hdl, CMD_RX_COUNT, 0);
-    if(ret < size)
-    {
-        return kGeneralErr;
+    while (fclk_get_tick() < end_time) {
+        read = ddev_read(*uart_hdl, ptr, remain, 0);
+        ptr += read;
+        remain -= read;
+        if (!remain)
+            break;
     }
 
-    ret = ddev_read(uart_hdl, data, size, 0);
-    ASSERT(size == ret);
+    if (!remain) {
+        return HAL_OK;
+    }
 
-    return kNoErr;
+    // read zero packet
+    if (remain == size)
+        return HAL_ERROR;
+
+    return HAL_IMCOMPLETE;
 }
 
 void Serial_PutByte(uint8_t byte)
 {
+    bk_send_byte(UART1_PORT, byte);
 }
 
-void HAL_UART_Transmit(DD_HANDLE *uart_hdl, uint8_t *data, size_t size, int timeout)
+HAL_StatusTypeDef HAL_UART_Transmit(DD_HANDLE *uart_hdl, uint8_t *data, size_t size, int timeout)
 {
+    uint64_t end_time = fclk_get_tick() + BK_MS_TO_TICKS(timeout);
+    int sent;
+    char *ptr = (char *)data;
+    int remain = size;
+
+    while (fclk_get_tick() < end_time) {
+        sent = ddev_write(*uart_hdl, ptr, remain, 0);
+        ptr += sent;
+        remain -= sent;
+        if (!remain)
+            break;
+    }
+
+    if (!remain)
+        return HAL_OK;
+
+    return HAL_ERROR;
 }
 
 /**
@@ -87,6 +263,7 @@ void HAL_UART_Transmit(DD_HANDLE *uart_hdl, uint8_t *data, size_t size, int time
   * @retval HAL_OK: normally return
   *         HAL_BUSY: abort by user
   */
+__attribute__((optimize("-O0")))
 static HAL_StatusTypeDef ReceivePacket(uint8_t *p_data, uint32_t *p_length, uint32_t timeout)
 {
   uint32_t crc;
@@ -309,6 +486,7 @@ uint8_t CalcChecksum(const uint8_t *p_data, uint32_t size)
 
   return (sum & 0xffu);
 }
+#define USB_DEBUG_GPIO                 (0x0802800 +(15*4))
 
 /* Public functions ---------------------------------------------------------*/
 /**
@@ -323,6 +501,7 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
   uint8_t *file_ptr;
   uint8_t file_size[FILE_SIZE_LENGTH], tmp;
   COM_StatusTypeDef result = COM_OK;
+  int ret;
 
   /* Initialize flashdestination variable */
   flashdestination = APPLICATION_ADDRESS;
@@ -333,7 +512,8 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
     file_done = 0;
     while ((file_done == 0) && (result == COM_OK))
     {
-      switch (ReceivePacket(aPacketData, &packet_length, DOWNLOAD_TIMEOUT))
+      ret = ReceivePacket(aPacketData, &packet_length, DOWNLOAD_TIMEOUT);
+      switch (ret)
       {
         case HAL_OK:
           errors = 0;
@@ -353,6 +533,8 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
               /* Normal packet */
               if (aPacketData[PACKET_NUMBER_INDEX] != (0xFFU & packets_received))
               {
+                // REG_WRITE(USB_DEBUG_GPIO, 2);
+                // os_printf("%x %x\n", aPacketData[PACKET_NUMBER_INDEX], (0xFFU & packets_received));
                 Serial_PutByte(NAK);
               }
               else
@@ -412,7 +594,7 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
                   ramsource = (uint32_t) & aPacketData[PACKET_DATA_INDEX];
 
                   /* Write received data in Flash */
-                  if (FLASH_If_Write(flashdestination, (uint32_t*) ramsource, packet_length/4) == FLASHIF_OK)
+                  if (FLASH_If_Write(flashdestination, (uint32_t*) ramsource, packet_length) == FLASHIF_OK)
                   {
                     flashdestination += packet_length;
                     Serial_PutByte(ACK);
@@ -425,6 +607,7 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
                     result = COM_DATA;
                   }
                 }
+                // REG_WRITE(USB_DEBUG_GPIO, 0);
                 packets_received ++;
                 session_begin = 1;
               }
@@ -435,6 +618,9 @@ COM_StatusTypeDef Ymodem_Receive ( uint32_t *p_size )
           Serial_PutByte(CA);
           Serial_PutByte(CA);
           result = COM_ABORT;
+          break;
+        case HAL_IMCOMPLETE:
+          Serial_PutByte(NAK); /* Ask for retransmit */
           break;
         default:
           if (session_begin > 0)
@@ -671,6 +857,26 @@ COM_StatusTypeDef Ymodem_Transmit (uint8_t *p_buf, const uint8_t *p_file_name, u
   }
 
   return result; /* file transmitted successfully */
+}
+
+void ymodem_init()
+{
+    UINT32 status;
+
+    UartHandle = ddev_open(UART1_DEV_NAME, &status, 0);
+}
+
+int Ymodem_Receive_Main(void)
+{
+    int ret;
+    uint32_t size;
+
+    //set_flash_protect(NONE);
+    ret = Ymodem_Receive(&size);
+    flash_lock();
+    //set_flash_protect(ALL);
+    // os_printf("ymodem ret %d\n", ret);
+    return ret;
 }
 
 /**

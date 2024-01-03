@@ -188,9 +188,9 @@
 #define REG_GPIO_INTSTA2                     (GPIO_BASE_ADDR + 58*4)
 
 #if(!((CFG_SOC_NAME == SOC_BK7231U) || (CFG_SOC_NAME == SOC_BK7231N) || (CFG_SOC_NAME == SOC_BK7221U)))
-#define REG_GPIO_X_CONGFIG_ADDR(x)			(GPIO_BASE_ADDR + (x)*4)
+#define REG_GPIO_X_CONGFIG_ADDR(x)            (GPIO_BASE_ADDR + (x)*4)
 #else
-#define REG_GPIO_X_CONGFIG_ADDR(x)			(GPIO_BASE_ADDR +  (((x)<32) ? (x) : ((x)+0x10)) * 4)
+#define REG_GPIO_X_CONGFIG_ADDR(x)            (GPIO_BASE_ADDR +  (((x)<32) ? (x) : ((x)+0x10)) * 4)
 #endif
 
 #endif // #if (CFG_SOC_NAME == SOC_BK7231)

@@ -50,8 +50,8 @@
 #define PAR_OPT_READ_POS      ( 0 )
 #define PAR_OPT_WRITE_POS     ( 1 )
 
-#define PAR_OPT_READ_MASK  	  ( 0x1u << PAR_OPT_READ_POS )
-#define PAR_OPT_WRITE_MASK 	  ( 0x1u << PAR_OPT_WRITE_POS )
+#define PAR_OPT_READ_MASK        ( 0x1u << PAR_OPT_READ_POS )
+#define PAR_OPT_WRITE_MASK       ( 0x1u << PAR_OPT_WRITE_POS )
 
 #define PAR_OPT_READ_DIS      ( 0x0u << PAR_OPT_READ_POS )
 #define PAR_OPT_READ_EN       ( 0x1u << PAR_OPT_READ_POS )
@@ -125,7 +125,7 @@ bk_logic_partition_t *bk_flash_get_info( bk_partition_t inPartition );
  *
  * @param  inPartition     : The target flash logical partition which should be erased
  * @param  off_set         : Start address of the erased flash area
- * @param  size    	   : Size of the erased flash area
+ * @param  size           : Size of the erased flash area
  *
  * @return  kNoErr        : On success.
  * @return  kGeneralErr   : If an error occurred with any step

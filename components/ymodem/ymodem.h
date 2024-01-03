@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    IAP_Main/Inc/ymodem.h 
+  * @file    IAP_Main/Inc/ymodem.h
   * @author  MCD Application Team
-  * @brief   This file provides all the software function headers of the ymodem.c 
+  * @brief   This file provides all the software function headers of the ymodem.c
   *          file.
   ******************************************************************************
   * @attention
@@ -53,7 +53,7 @@ typedef enum
 #define PACKET_1K_SIZE          ((uint32_t)1024)
 
 /* /-------- Packet in IAP memory ------------------------------------------\
- * | 0      |  1    |  2     |  3   |  4      | ... | n+4     | n+5  | n+6  | 
+ * | 0      |  1    |  2     |  3   |  4      | ... | n+4     | n+5  | n+6  |
  * |------------------------------------------------------------------------|
  * | unused | start | number | !num | data[0] | ... | data[n] | crc0 | crc1 |
  * \------------------------------------------------------------------------/
@@ -75,7 +75,7 @@ typedef enum
 #define ABORT2                  ((uint8_t)0x61)  /* 'a' == 0x61, abort by user */
 
 #define NAK_TIMEOUT             ((uint32_t)0x100000)
-#define DOWNLOAD_TIMEOUT        ((uint32_t)10000) /* 10 second retry delay */
+#define DOWNLOAD_TIMEOUT        ((uint32_t)200) /* 200 ms retry delay */
 #define MAX_ERRORS              ((uint32_t)5)
 
 /* Exported functions ------------------------------------------------------- */

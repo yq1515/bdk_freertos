@@ -12,6 +12,8 @@
 #define CFG_JTAG_ENABLE                            1
 #define OSMALLOC_STATISTICAL                       0
 
+#define CFG_YMODEM                                 0
+
 /*section 0-----app macro config-----*/
 #define CFG_IEEE80211N                             1
 

@@ -11,8 +11,8 @@
 
 #define DPLL_DELAY_EN                         1
 
-#define DPLL_DELAY_TIME_10US	              120
-#define DPLL_DELAY_TIME_200US	              3400
+#define DPLL_DELAY_TIME_10US                  120
+#define DPLL_DELAY_TIME_200US                  3400
 
 #define SCTRL_BASE                            (0x00800000)
 
@@ -528,8 +528,8 @@ enum
 #define ROSC_CAL_TRIG_BIT                        (1 << 1)
 #define ROSC_CAL_EN_BIT                          (1 << 0)
 
-#define SCTRL_BLOCK_EN_MUX						(SCTRL_BASE + 79 * 4)
-#define SCTRL_ROSC_TIMER_H		                (SCTRL_BASE + 80 * 4)
+#define SCTRL_BLOCK_EN_MUX                        (SCTRL_BASE + 79 * 4)
+#define SCTRL_ROSC_TIMER_H                        (SCTRL_BASE + 80 * 4)
 #define ROSC_TIMER_H_PERIOD_POSI                 (0)
 #define ROSC_TIMER_H_PERIOD_MASK                 (0xFFFF)
 
@@ -540,14 +540,14 @@ enum
 #include "arm_arch.h"
 __inline static UINT32 sctrl_analog_get(UINT32 address)
 {
-	while(REG_READ(SCTRL_ANALOG_SPI) & (ANA_SPI_STAET_MASK<<ANA_SPI_STATE_POSI));
-	return REG_READ(address);                      
+    while(REG_READ(SCTRL_ANALOG_SPI) & (ANA_SPI_STAET_MASK<<ANA_SPI_STATE_POSI));
+    return REG_READ(address);                      
 }
 
 __inline static void sctrl_analog_set(UINT32 address, UINT32 value)
 {
-	REG_WRITE(address, value);
-	while(REG_READ(SCTRL_ANALOG_SPI) & (ANA_SPI_STAET_MASK<<ANA_SPI_STATE_POSI));
+    REG_WRITE(address, value);
+    while(REG_READ(SCTRL_ANALOG_SPI) & (ANA_SPI_STAET_MASK<<ANA_SPI_STATE_POSI));
 }
 
 typedef struct  sctrl_ps_save_values{

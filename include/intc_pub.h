@@ -33,7 +33,7 @@
 #define IRQ_UART1                        (0)
 #else
 #define FIQ_PSRAM                        (31) 
-#define FIQ_BLE							 (30)
+#define FIQ_BLE                             (30)
 #define FIQ_JPEG_ENCODER                 (29) 
 #define FIQ_DPLL_UNLOCK                  (28) 
 #define FIQ_SPI_DMA                      (27) 

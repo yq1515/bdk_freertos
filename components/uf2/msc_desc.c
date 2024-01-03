@@ -161,7 +161,7 @@ int usbd_msc_sector_write(uint32_t sector, uint8_t *buffer, uint32_t length) {
                 flashing_flag = true;
             }
 #else
-			board_dfu_complete();
+            board_dfu_complete();
 #endif
         }
     }

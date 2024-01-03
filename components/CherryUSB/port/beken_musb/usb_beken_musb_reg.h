@@ -1,9 +1,9 @@
 #ifndef __USB_MUSB_REG_H__
 #define __USB_MUSB_REG_H__
 
-#define	__I	volatile const	/* defines 'read only' permissions */
-#define __O	volatile	/* defines 'write only' permissions */
-#define __IO	volatile	/* defines 'read / write' permissions */
+#define    __I    volatile const    /* defines 'read only' permissions */
+#define __O    volatile    /* defines 'write only' permissions */
+#define __IO    volatile    /* defines 'read / write' permissions */
 
 /**
   * @brief Register map for USB0 peripheral (USB0)

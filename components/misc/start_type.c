@@ -14,20 +14,20 @@
 
 void bk_misc_crash_xat0_reboot(void)
 {
-	UINT32 wdt_val = 5;
+    UINT32 wdt_val = 5;
 
-	os_printf("xat0_reboot\r\n");
+    os_printf("xat0_reboot\r\n");
 
-	GLOBAL_INT_DECLARATION();
+    GLOBAL_INT_DECLARATION();
 
-	GLOBAL_INT_DISABLE();
+    GLOBAL_INT_DISABLE();
 
-	sddev_control(WDT_DEV_NAME, WCMD_POWER_DOWN, NULL);
-	delay_ms(100);
-	sddev_control(WDT_DEV_NAME, WCMD_SET_PERIOD, &wdt_val);
-	sddev_control(WDT_DEV_NAME, WCMD_POWER_UP, NULL);
-	while(1);
-	GLOBAL_INT_RESTORE();
+    sddev_control(WDT_DEV_NAME, WCMD_POWER_DOWN, NULL);
+    delay_ms(100);
+    sddev_control(WDT_DEV_NAME, WCMD_SET_PERIOD, &wdt_val);
+    sddev_control(WDT_DEV_NAME, WCMD_POWER_UP, NULL);
+    while(1);
+    GLOBAL_INT_RESTORE();
 }
 
 static RESET_SOURCE_STATUS start_type;
@@ -77,7 +77,7 @@ extern UINT32 sctrl_ctrl(UINT32 cmd, void *param);
                 case (CRASH_UNUSED_VALUE & SW_RETENTION_VAL_MASK):
                     start_type = RESET_SOURCE_CRASH_UNUSED;
                     break;
-				case (CRASH_2ND_XAT0_VALUE & SW_RETENTION_VAL_MASK):
+                case (CRASH_2ND_XAT0_VALUE & SW_RETENTION_VAL_MASK):
                     start_type = RESET_SOURCE_CRASH_XAT0;
                     break;
 
@@ -107,11 +107,11 @@ void bk_misc_update_set_type(RESET_SOURCE_STATUS type)
 
 void bk_misc_check_start_type()
 {
-	if (RESET_SOURCE_CRASH_PER_XAT0 == start_type) {
-		uint32_t misc_value = CRASH_2ND_XAT0_VALUE & SW_RETENTION_VAL_MASK;
-		sctrl_ctrl(CMD_SET_SCTRL_RETETION, &misc_value);
-		bk_misc_crash_xat0_reboot();
-	}
+    if (RESET_SOURCE_CRASH_PER_XAT0 == start_type) {
+        uint32_t misc_value = CRASH_2ND_XAT0_VALUE & SW_RETENTION_VAL_MASK;
+        sctrl_ctrl(CMD_SET_SCTRL_RETETION, &misc_value);
+        bk_misc_crash_xat0_reboot();
+    }
 }
 #else
 //only can be do once
@@ -164,7 +164,7 @@ void bk_misc_check_start_type()
     }
 
     *((volatile uint32_t *)(START_TYPE_DMEMORY_ADDR)) = (uint32_t)CRASH_XAT0_VALUE;
-	*((volatile uint32_t *)(START_TYPE_ADDR)) = (uint32_t)CRASH_XAT0_VALUE;
+    *((volatile uint32_t *)(START_TYPE_ADDR)) = (uint32_t)CRASH_XAT0_VALUE;
 
     //os_printf("bk_misc_init_start_type %x %x\r\n",start_type,misc_value);
     return start_type;

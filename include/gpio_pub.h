@@ -29,9 +29,9 @@ enum
     CMD_GPIO_OUTPUT                     = GPIO_CMD_MAGIC + 4,
     CMD_GPIO_CLR_DPLL_UNLOOK_INT_BIT    = GPIO_CMD_MAGIC + 5,
     CMD_GPIO_EN_DPLL_UNLOOK_INT         = GPIO_CMD_MAGIC + 6,
-    CMD_GPIO_INT_ENABLE 	            = GPIO_CMD_MAGIC + 7,
-    CMD_GPIO_INT_DISABLE	            = GPIO_CMD_MAGIC + 8,
-    CMD_GPIO_INT_CLEAR		            = GPIO_CMD_MAGIC + 9,
+    CMD_GPIO_INT_ENABLE                 = GPIO_CMD_MAGIC + 7,
+    CMD_GPIO_INT_DISABLE                = GPIO_CMD_MAGIC + 8,
+    CMD_GPIO_INT_CLEAR                    = GPIO_CMD_MAGIC + 9,
     CMD_GPIO_EN_USB_PLUG_IN_INT         = GPIO_CMD_MAGIC + 10,
     CMD_GPIO_EN_USB_PLUG_OUT_INT        = GPIO_CMD_MAGIC + 11,
 };
@@ -150,7 +150,7 @@ enum
     GFUNC_MODE_JTAG,    
     GFUNC_MODE_CLK26M,    
     GFUNC_MODE_ADC3,
-    GFUNC_MODE_DCMI,	
+    GFUNC_MODE_DCMI,    
     GFUNC_MODE_ADC4,
     GFUNC_MODE_ADC5,
     GFUNC_MODE_ADC6,
@@ -176,11 +176,11 @@ enum
 
 typedef struct gpio_int_st
 {
-	UINT32 id;
-	UINT32 mode;
-	void * phandler;
+    UINT32 id;
+    UINT32 mode;
+    void * phandler;
 }GPIO_INT_ST;
-				
+                
 __inline static void bk_gpio_config_input(GPIO_INDEX id)
 {
     UINT32 ret;
@@ -189,10 +189,10 @@ __inline static void bk_gpio_config_input(GPIO_INDEX id)
     param = GPIO_CFG_PARAM(id, GMODE_INPUT);
     ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_CFG, &param);
 
-	if(ret !=0 )
-		os_printf("gpio config fail\r\n");
+    if(ret !=0 )
+        os_printf("gpio config fail\r\n");
 }
-								
+                                
 __inline static void bk_gpio_config_input_pup(GPIO_INDEX id)
 {
     UINT32 ret;
@@ -201,21 +201,21 @@ __inline static void bk_gpio_config_input_pup(GPIO_INDEX id)
     param = GPIO_CFG_PARAM(id, GMODE_INPUT_PULLUP);
     ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_CFG, &param);
 
-	if(ret !=0 )
-		os_printf("gpio config fail\r\n");
+    if(ret !=0 )
+        os_printf("gpio config fail\r\n");
 
 }
 
 __inline static void bk_gpio_config_input_pdwn(GPIO_INDEX id)
 {
     UINT32 ret;
-	UINT32 param;
+    UINT32 param;
 
-	param = GPIO_CFG_PARAM(id, GMODE_INPUT_PULLDOWN);
-	ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_CFG, &param);
+    param = GPIO_CFG_PARAM(id, GMODE_INPUT_PULLDOWN);
+    ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_CFG, &param);
 
-	if(ret !=0 )
-		os_printf("gpio config fail\r\n");
+    if(ret !=0 )
+        os_printf("gpio config fail\r\n");
 
 }
 
@@ -233,11 +233,11 @@ __inline static void bk_gpio_config_output(GPIO_INDEX id)
 {
     UINT32 ret;
     
-	UINT32 param;
+    UINT32 param;
     
-	param = GPIO_CFG_PARAM(id, GMODE_OUTPUT);
-	ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_CFG, &param);
-	ASSERT(GPIO_SUCCESS == ret);  
+    param = GPIO_CFG_PARAM(id, GMODE_OUTPUT);
+    ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_CFG, &param);
+    ASSERT(GPIO_SUCCESS == ret);  
 }
 
 __inline static void bk_gpio_output(GPIO_INDEX id,UINT32 val)
@@ -258,7 +258,7 @@ __inline static void bk_gpio_output_reverse(GPIO_INDEX id)
     ret = sddev_control(GPIO_DEV_NAME, CMD_GPIO_OUTPUT_REVERSE, &param);
     ASSERT(GPIO_SUCCESS == ret);            
 }
-		
+        
 #if ((SOC_BK7231U == CFG_SOC_NAME) || (SOC_BK7221U == CFG_SOC_NAME))
 #define GPIO_USB_DP_PIN               GPIO25
 #define GPIO_USB_DN_PIN               GPIO28

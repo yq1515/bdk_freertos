@@ -79,14 +79,14 @@
 
 
 #define COMPILE_DOS_DATE ( \
-	((COMPILE_YEAR_INT  - 1980u) << 9u) | \
-	( COMPILE_MONTH_INT          << 5u) | \
-	( COMPILE_DAY_INT            << 0u) )
+    ((COMPILE_YEAR_INT  - 1980u) << 9u) | \
+    ( COMPILE_MONTH_INT          << 5u) | \
+    ( COMPILE_DAY_INT            << 0u) )
 
 #define COMPILE_DOS_TIME ( \
-	( COMPILE_HOUR_INT    << 11u) | \
-	( COMPILE_MINUTE_INT  <<  5u) | \
-	( COMPILE_SECONDS_INT <<  0u) )
+    ( COMPILE_HOUR_INT    << 11u) | \
+    ( COMPILE_MINUTE_INT  <<  5u) | \
+    ( COMPILE_SECONDS_INT <<  0u) )
 
 #endif // COMPILE_DATE_H
 

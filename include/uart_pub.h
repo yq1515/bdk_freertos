@@ -19,8 +19,8 @@
 
 #define UART_CMD_MAGIC               (0xC124000)
 
-#define UART1_PORT				0
-#define UART2_PORT				1
+#define UART1_PORT                0
+#define UART2_PORT                1
 
 enum
 {
@@ -99,12 +99,12 @@ typedef enum
 
 typedef struct
 {
-    uint32_t				  baud_rate;
+    uint32_t                  baud_rate;
     uart_data_width_t         data_width;
-    uart_parity_t 	          parity;
-    uart_stop_bits_t	      stop_bits;
+    uart_parity_t               parity;
+    uart_stop_bits_t          stop_bits;
     uart_flow_control_t       flow_control;
-    uint8_t				      flags;	 /**< if set, UART can wake up MCU from stop mode, reference: @ref UART_WAKEUP_DISABLE and @ref UART_WAKEUP_ENABLE*/
+    uint8_t                      flags;     /**< if set, UART can wake up MCU from stop mode, reference: @ref UART_WAKEUP_DISABLE and @ref UART_WAKEUP_ENABLE*/
 } bk_uart_config_t;
 
 extern int uart_print_port;

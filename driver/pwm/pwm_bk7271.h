@@ -5,14 +5,14 @@
 #include "bk_err.h"
 #include "bk_log.h"
 
-#define TAG						"pwm"
-#define PWM_LOGE				BK_LOGE
-#define PWM_LOGI				BK_LOGI
-#define PWM_LOGW				BK_LOGW
-#define PWM_LOGD				BK_LOGD
+#define TAG                        "pwm"
+#define PWM_LOGE                BK_LOGE
+#define PWM_LOGI                BK_LOGI
+#define PWM_LOGW                BK_LOGW
+#define PWM_LOGD                BK_LOGD
 
-#define PWM_HIGH_LEVEL			1
-#define PWM_LOW_LEVEL			0
+#define PWM_HIGH_LEVEL            1
+#define PWM_LOW_LEVEL            0
 
 #define PWM_DEBUG
 #ifdef PWM_DEBUG
@@ -25,7 +25,7 @@
 #define PWM_FATAL    null_prf
 #endif
 
-#define PWM_CHANNEL_NUM								 12
+#define PWM_CHANNEL_NUM                                 12
 #define PWM_GROUNP_BASE(x)                           (0x00802800 +0x40 *x)
 
 #define PWM_GROUNP_CTL(x)                            (PWM_GROUNP_BASE(x) + 0 * 4)
@@ -41,7 +41,7 @@
 #define PWM_MODE_SET_BIT(x)                          ( x*5+2)
 
 
-#define PWM_CLK_DIV									 (16)
+#define PWM_CLK_DIV                                     (16)
 
 #define PWM_GROUNP_INTERRUPT_STATUS(x)               (PWM_GROUNP_BASE(x)+ 1 * 4)
 
@@ -63,33 +63,33 @@
 #define PWM2_DUTY_CYCLE(x)                           (PWM_GROUNP_BASE(x)  + 9 * 4)
 #define PWM2_CAP_VALUE(x)                            (PWM_GROUNP_BASE(x)  + 0xa * 4)
 
-#define PWM0_UPDATE(x)							     (PWM_GROUNP_BASE(x)  + 0xb * 4)
-#define PWM1_UPDATE(x)							     (PWM_GROUNP_BASE(x)  + 0xc * 4)
-#define PWM2_UPDATE(x)								 (PWM_GROUNP_BASE(x)  + 0xd * 4)
+#define PWM0_UPDATE(x)                                 (PWM_GROUNP_BASE(x)  + 0xb * 4)
+#define PWM1_UPDATE(x)                                 (PWM_GROUNP_BASE(x)  + 0xc * 4)
+#define PWM2_UPDATE(x)                                 (PWM_GROUNP_BASE(x)  + 0xd * 4)
 
-#define PWM_UPDATE_ENABLE							 1<<0
+#define PWM_UPDATE_ENABLE                             1<<0
 
-#define PWM_GROUNP_READ(x)							 (PWM_GROUNP_BASE(x)  + 0xe * 4)
+#define PWM_GROUNP_READ(x)                             (PWM_GROUNP_BASE(x)  + 0xe * 4)
 
-#define PWM_READ_CNT_ENABLE							(1 << 0)
-#define PWM_READ_CNT_ENABLE_MASK						(1 << 0)
+#define PWM_READ_CNT_ENABLE                            (1 << 0)
+#define PWM_READ_CNT_ENABLE_MASK                        (1 << 0)
 
-#define PWM_READ_CNT_CHANNEL(x)							(x << 1)
-#define PWM_READ_CNT_CHANNEL_MASK						(3 << 1)
+#define PWM_READ_CNT_CHANNEL(x)                            (x << 1)
+#define PWM_READ_CNT_CHANNEL_MASK                        (3 << 1)
 
-#define PWM_GROUNP_READ_CNT(x)						 (PWM_GROUNP_BASE(x)  + 0xf * 4)
+#define PWM_GROUNP_READ_CNT(x)                         (PWM_GROUNP_BASE(x)  + 0xf * 4)
 
-#define CHANNEL_NO									12
-#define CHANNEL_3									3
-#define CHANNEL_6									6
-#define CHANNEL_9									9
+#define CHANNEL_NO                                    12
+#define CHANNEL_3                                    3
+#define CHANNEL_6                                    6
+#define CHANNEL_9                                    9
 
 enum
 {
-	group0	 = 0,
-	group1,
-	group2,
-	group3
+    group0     = 0,
+    group1,
+    group2,
+    group3
 };
 
 /*******************************************************************************

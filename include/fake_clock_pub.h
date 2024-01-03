@@ -26,14 +26,8 @@ typedef enum
 #define CAL_TIMER_ID           BKTIMER2
 #endif
 
-#if (CFG_SUPPORT_RTT)
-#define FCLK_DURATION_MS      (1000 / RT_TICK_PER_SECOND)
-#define FCLK_SECOND           (RT_TICK_PER_SECOND)
-#else
 #define FCLK_DURATION_MS      2
 #define FCLK_SECOND           (1000/FCLK_DURATION_MS)
-#endif
-
 #define TICK_PER_SECOND       FCLK_SECOND
 
 #define BK_MS_TO_TICKS(x)     ((x) / (FCLK_DURATION_MS))

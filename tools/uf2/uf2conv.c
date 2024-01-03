@@ -34,14 +34,14 @@ int main(int argc, char **argv) {
     bl.targetAddr = APP_START_ADDRESS;
     bl.numBlocks = (sz + 255) / 256;
     bl.payloadSize = 256;
-	// familiy ID
-	bl.flags = UF2_FLAG_FAMILYID;
-	bl.familyID = BOARD_UF2_FAMILY_ID;
+    // familiy ID
+    bl.flags = UF2_FLAG_FAMILYID;
+    bl.familyID = BOARD_UF2_FAMILY_ID;
     int numbl = 0;
     while (fread(bl.data, 1, bl.payloadSize, f)) {
         bl.blockNo = numbl++;
         fwrite(&bl, 1, sizeof(bl), fout);
-		printf("la: %x\n", bl.targetAddr);
+        printf("la: %x\n", bl.targetAddr);
         bl.targetAddr += bl.payloadSize;
         // clear for next iteration, in case we get a short read
         memset(bl.data, 0, sizeof(bl.data));

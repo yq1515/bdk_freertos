@@ -23,9 +23,9 @@ void icu_init(void)
     param = PCLK_POSI;
     #else
     param = PCLK_POSI_UART1 | PCLK_POSI_UART2
-		#if (CFG_SOC_NAME == SOC_BK7231N)
-			| PCLK_POSI_SARADC
-		#endif
+        #if (CFG_SOC_NAME == SOC_BK7231N)
+            | PCLK_POSI_SARADC
+        #endif
             | PCLK_POSI_PWMS | PCLK_POSI_SDIO
             | PCLK_POSI_I2C1 | PCLK_POSI_I2C2;
     #endif // (CFG_SOC_NAME == SOC_BK7231)
@@ -180,14 +180,14 @@ UINT32 icu_ctrl(UINT32 cmd, void *param)
         break;
 
     case CMD_ARM_WAKEUP:
-		reg = (*(UINT32*)param);
-		REG_WRITE(ICU_ARM_WAKEUP_EN, reg);            
+        reg = (*(UINT32*)param);
+        REG_WRITE(ICU_ARM_WAKEUP_EN, reg);            
         break;
-		
-	case CMD_QSPI_CLK_SEL:
-		reg = REG_READ(ICU_PERI_CLK_MUX);
+        
+    case CMD_QSPI_CLK_SEL:
+        reg = REG_READ(ICU_PERI_CLK_MUX);
         reg &= (~(3 << 16));
-		reg |= (*(UINT32 *)param);
+        reg |= (*(UINT32 *)param);
         REG_WRITE(ICU_PERI_CLK_MUX, reg);
         break;
 

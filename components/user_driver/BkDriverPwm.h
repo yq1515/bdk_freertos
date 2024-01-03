@@ -153,8 +153,8 @@ UINT32 bk_pwm_get_capvalue(bk_pwm_t pwm);
  *
  * @note  Start pwm group mode ,pwm0/1  pwm2/3  pwm4/5 
  *
- * @param pwm1        		: the PWM1 interface which should be started
- * @param  pwm2        		: the PWM2 interface which should be started
+ * @param pwm1                : the PWM1 interface which should be started
+ * @param  pwm2                : the PWM2 interface which should be started
  * @param frequency         : pwm frequency
  * @param duty_cycle1       : set first level change time
  * @param duty_cycle2       : set 2nd level change time

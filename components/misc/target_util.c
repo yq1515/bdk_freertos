@@ -10,9 +10,9 @@
 * Function Implemantation
 *******************************************************************************/
 /*
-	MCLK:26MHz, delay(1): about 25us
-				delay(10):about 125us
-				delay(100):about 850us
+    MCLK:26MHz, delay(1): about 25us
+                delay(10):about 125us
+                delay(100):about 850us
  */
 void delay(INT32 num)
 {
@@ -26,7 +26,7 @@ void delay(INT32 num)
 }
 
 /*
-	when parameter is 1, the return result is approximately 1 ms;
+    when parameter is 1, the return result is approximately 1 ms;
  */
 void delay_ms(UINT32 ms_count)
 {
@@ -66,7 +66,7 @@ void delay_ms(UINT32 ms_count)
 }
 
 /*
-	[delay offset]worst case: delay about 1 second;
+    [delay offset]worst case: delay about 1 second;
  */
 void delay_sec(UINT32 ms_count)
 {
@@ -85,7 +85,7 @@ void delay_sec(UINT32 ms_count)
 }
 
 /*
-	[delay offset]worst case: delay about 1 tick;
+    [delay offset]worst case: delay about 1 tick;
  */
 void delay_tick(UINT32 tick_count)
 {

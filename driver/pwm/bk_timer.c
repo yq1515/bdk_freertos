@@ -59,9 +59,9 @@ static UINT32 bk_timer_cal_endvalue_us(UINT32 ucChannel, UINT32 time_us, UINT32 
 
 static UINT32 init_timer_param(timer_param_t *timer_param)
 {
-    UINT32 value;	
-	GLOBAL_INT_DECLARATION();
-    UINT32 ucChannel = timer_param->channel;	
+    UINT32 value;    
+    GLOBAL_INT_DECLARATION();
+    UINT32 ucChannel = timer_param->channel;    
 
 
     if (timer_param == NULL)
@@ -81,7 +81,7 @@ static UINT32 init_timer_param(timer_param_t *timer_param)
 
     p_TIMER_Int_Handler[ucChannel] = timer_param->t_Int_Handler;
 
-	GLOBAL_INT_DISABLE();
+    GLOBAL_INT_DISABLE();
     if (ucChannel < 3)
     {
         value = (PWD_TIMER_26M_CLK_BIT);
@@ -110,7 +110,7 @@ static UINT32 init_timer_param(timer_param_t *timer_param)
         value |= (1 << (ucChannel - 3));
         REG_WRITE(TIMER3_5_CTL, value);
     }
-	GLOBAL_INT_RESTORE();
+    GLOBAL_INT_RESTORE();
 
     intc_enable(IRQ_TIMER);
 
@@ -121,7 +121,7 @@ static UINT32 init_timer_param_us(timer_param_t *timer_param)
 {
     UINT32 value;
     UINT32 ucChannel = timer_param->channel;
-	GLOBAL_INT_DECLARATION();
+    GLOBAL_INT_DECLARATION();
 
     if (timer_param == NULL)
     {
@@ -134,7 +134,7 @@ static UINT32 init_timer_param_us(timer_param_t *timer_param)
     }
 
     p_TIMER_Int_Handler[ucChannel] = timer_param->t_Int_Handler;
-	GLOBAL_INT_DISABLE();
+    GLOBAL_INT_DISABLE();
 
     value = (PWD_TIMER_26M_CLK_BIT);
     sddev_control(ICU_DEV_NAME, CMD_CLK_PWR_UP, (void *)&value);
@@ -147,7 +147,7 @@ static UINT32 init_timer_param_us(timer_param_t *timer_param)
     value |= ((timer_param->div - 1) << TIMERCTLA_CLKDIV_POSI);
     value |= (1 << ucChannel );
     REG_WRITE(TIMER0_2_CTL, value);
-	GLOBAL_INT_RESTORE();
+    GLOBAL_INT_RESTORE();
 
     intc_enable(IRQ_TIMER);
 
@@ -161,7 +161,7 @@ UINT32 bk_timer_ctrl(UINT32 cmd, void *param)
     UINT32 ucChannel;
     UINT32 value;
     timer_param_t *p_param;
-	GLOBAL_INT_DECLARATION();
+    GLOBAL_INT_DECLARATION();
 
     switch(cmd)
     {
@@ -173,7 +173,7 @@ UINT32 bk_timer_ctrl(UINT32 cmd, void *param)
             break;
         }
 
-		GLOBAL_INT_DISABLE();
+        GLOBAL_INT_DISABLE();
         if(ucChannel < 3)
         {
             value = REG_READ(TIMER0_2_CTL);
@@ -190,9 +190,9 @@ UINT32 bk_timer_ctrl(UINT32 cmd, void *param)
             value |= (0x1 << (TIMERCTLB_INT_POSI + (ucChannel - 3)));
             REG_WRITE(TIMER3_5_CTL, value);
         }
-		GLOBAL_INT_RESTORE();
+        GLOBAL_INT_RESTORE();
         break;
-		
+        
     case CMD_TIMER_UNIT_DISABLE:
         ucChannel = (*(UINT32 *)param);
         if(ucChannel > 5)
@@ -201,7 +201,7 @@ UINT32 bk_timer_ctrl(UINT32 cmd, void *param)
             break;
         }
 
-		GLOBAL_INT_DISABLE();
+        GLOBAL_INT_DISABLE();
         if(ucChannel < 3)
         {
             value = REG_READ(TIMER0_2_CTL);
@@ -218,14 +218,14 @@ UINT32 bk_timer_ctrl(UINT32 cmd, void *param)
             value |= (0x1 << (TIMERCTLB_INT_POSI + (ucChannel - 3)));
             REG_WRITE(TIMER3_5_CTL, value);
         }
-		GLOBAL_INT_RESTORE();
+        GLOBAL_INT_RESTORE();
         break;
-		
+        
     case CMD_TIMER_INIT_PARAM:
         p_param = (timer_param_t *)param;
         ret = init_timer_param(p_param);
         break;
-		
+        
     case CMD_TIMER_INIT_PARAM_US:
         p_param = (timer_param_t *)param;
         ret = init_timer_param_us(p_param);
@@ -279,17 +279,17 @@ UINT32 bk_timer_ctrl(UINT32 cmd, void *param)
 
 void bk_timer_init(void)
 {
-	UINT32 value;   
-	 
-	value = REG_READ(TIMER0_2_CTL);
-	value &= ~(0x7 );
-	value &= ~(0x7 << TIMERCTLB_INT_POSI);
-	REG_WRITE(TIMER0_2_CTL, value);
-	
-	value = REG_READ(TIMER3_5_CTL);  
-	value &= ~(0x7);    
-	value &= ~(0x7 << TIMERCTLB_INT_POSI);  
-	REG_WRITE(TIMER3_5_CTL, value);
+    UINT32 value;   
+     
+    value = REG_READ(TIMER0_2_CTL);
+    value &= ~(0x7 );
+    value &= ~(0x7 << TIMERCTLB_INT_POSI);
+    REG_WRITE(TIMER0_2_CTL, value);
+    
+    value = REG_READ(TIMER3_5_CTL);  
+    value &= ~(0x7);    
+    value &= ~(0x7 << TIMERCTLB_INT_POSI);  
+    REG_WRITE(TIMER3_5_CTL, value);
 
     intc_service_register(IRQ_TIMER, PRI_IRQ_TIMER, bk_timer_isr);
     sddev_register_dev(TIMER_DEV_NAME, &bk_timer_op);

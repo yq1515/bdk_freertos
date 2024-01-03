@@ -113,8 +113,8 @@ static void usbd_msc_send_csw(uint8_t CSW_Status)
     g_usbd_msc.csw.bStatus = CSW_Status;
 
     /* updating the State Machine , so that we wait CSW when this
-	 * transfer is complete, ie when we get a bulk in callback
-	 */
+     * transfer is complete, ie when we get a bulk in callback
+     */
     g_usbd_msc.stage = MSC_WAIT_CSW;
 
     USB_LOG_DBG("Send csw\r\n");
@@ -126,8 +126,8 @@ static void usbd_msc_send_info(uint8_t *buffer, uint8_t size)
     size = MIN(size, g_usbd_msc.cbw.dDataLength);
 
     /* updating the State Machine , so that we send CSW when this
-	 * transfer is complete, ie when we get a bulk in callback
-	 */
+     * transfer is complete, ie when we get a bulk in callback
+     */
     g_usbd_msc.stage = MSC_SEND_CSW;
 
     usbd_ep_start_write(mass_ep_data[MSD_IN_EP_IDX].ep_addr, buffer, size);

@@ -88,6 +88,7 @@
 #define HAL_OK                       0
 #define HAL_ERROR                   -1
 #define HAL_BUSY                    -2
+#define HAL_IMCOMPLETE              -3
 
 #endif
 // eof

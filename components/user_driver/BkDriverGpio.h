@@ -73,8 +73,8 @@ typedef enum
  */
 typedef enum
 {
-    IRQ_TRIGGER_LOW_LEVEL = 0x0,	/* Interrupt triggered at input signal's LOW LEVEL  */
-    IRQ_TRIGGER_HGIH_LEVEL = 0x1,	/* Interrupt triggered at input signal's HIGH LEVEL  */
+    IRQ_TRIGGER_LOW_LEVEL = 0x0,    /* Interrupt triggered at input signal's LOW LEVEL  */
+    IRQ_TRIGGER_HGIH_LEVEL = 0x1,    /* Interrupt triggered at input signal's HIGH LEVEL  */
     IRQ_TRIGGER_RISING_EDGE  = 0x2, /* Interrupt triggered at input signal's rising edge  */
     IRQ_TRIGGER_FALLING_EDGE = 0x3 /* Interrupt triggered at input signal's falling edge */
 } platform_gpio_irq_trigger_t;

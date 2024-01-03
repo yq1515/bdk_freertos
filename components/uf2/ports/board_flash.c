@@ -90,7 +90,7 @@ static bool flash_erase(uint32_t addr) {
     return true;
 }
 
-static void flash_unlock()
+void flash_unlock()
 {
     int param;
 
@@ -106,7 +106,7 @@ static void flash_unlock()
     flash_unlocked = true;
 }
 
-static void flash_lock()
+void flash_lock()
 {
     if (protect_type != FLASH_PROTECT_NONE)
         ddev_control(flash_handle, CMD_FLASH_SET_PROTECT, (void *)&protect_type);

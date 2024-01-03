@@ -31,12 +31,12 @@ UINT32 func_init_basic(void)
     intc_init();
 
 #if CFG_UF2
-	if (dfu_enabled()) {
-		sctrl_overclock(1);
-		board_flash_init();
-		uf2_init();
-		msc_init();
-	}
+    if (dfu_enabled()) {
+        sctrl_overclock(1);
+        board_flash_init();
+        uf2_init();
+        msc_init();
+    }
 #endif
 
     return 0;

@@ -31,8 +31,8 @@ typedef struct _sdd_operations_
 
 typedef enum _DD_OPEN_METHOD_
 {
-    DD_OPEN_METHOD_ONE_TIME = 0,	// open one time only
-    DD_OPEN_METHOD_MUTI_TIME	    // open multi times
+    DD_OPEN_METHOD_ONE_TIME = 0,    // open one time only
+    DD_OPEN_METHOD_MUTI_TIME        // open multi times
 } DD_OPEN_METHOD;
 
 /*******************************************************************************

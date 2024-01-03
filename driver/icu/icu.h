@@ -243,7 +243,7 @@
 #define BTDM_WAKEUP_EN_BIT                          (1 << 29) 
 #define DPLL_WAKEUP_EN_BIT                          (1 << 28) 
 #endif
-#define MAC_ARM_WAKEUP_EN_BIT                       	 (1 << 26) 
+#define MAC_ARM_WAKEUP_EN_BIT                            (1 << 26) 
 #if (CFG_SOC_NAME != SOC_BK7231N)
 #define MAILBOX1_ARM_WAKEUP_EN_BIT                      (1 << 25)
 #define MAILBOX0_ARM_WAKEUP_EN_BIT                      (1 << 24)

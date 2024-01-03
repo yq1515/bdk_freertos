@@ -10,11 +10,11 @@
 
 typedef enum _dd_state_
 {
-    DD_STATE_NODEVICE = 0,	// find no such device when you open
-    DD_STATE_CLOSED,		//
-    DD_STATE_OPENED,		//
-    DD_STATE_BREAK,			//
-    DD_STATE_SUCCESS		//
+    DD_STATE_NODEVICE = 0,    // find no such device when you open
+    DD_STATE_CLOSED,        //
+    DD_STATE_OPENED,        //
+    DD_STATE_BREAK,            //
+    DD_STATE_SUCCESS        //
 } DD_STATE;
 
 typedef struct _drv_dev_

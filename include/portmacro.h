@@ -101,13 +101,13 @@ extern "C" {
 #define CONTROL_IRQ_WITH_NORMAL_FUNCTION    1
 
 /* Type definitions. */
-#define portCHAR			char
-#define portFLOAT			float
-#define portDOUBLE			double
-#define portLONG			long
-#define portSHORT			short
-#define portSTACK_TYPE		uint32_t
-#define portBASE_TYPE		long
+#define portCHAR            char
+#define portFLOAT            float
+#define portDOUBLE            double
+#define portLONG            long
+#define portSHORT            short
+#define portSTACK_TYPE        uint32_t
+#define portBASE_TYPE        long
 
 typedef portSTACK_TYPE StackType_t;
 typedef long BaseType_t;
@@ -116,54 +116,54 @@ typedef uint32_t TickType_t;
 #define portMAX_DELAY ( TickType_t )        0xffffffffUL
 
 /* Constants required to setup the initial stack. */
-#define portINITIAL_SPSR 			    ( ( StackType_t ) 0x1f ) /* System mode, ARM mode, interrupts enabled. */
-#define portINSTRUCTION_SIZE	        ( ( StackType_t ) 4 )
+#define portINITIAL_SPSR                 ( ( StackType_t ) 0x1f ) /* System mode, ARM mode, interrupts enabled. */
+#define portINSTRUCTION_SIZE            ( ( StackType_t ) 4 )
 
-#define ARM968_SYS_MODE 	 	        0x1f
-#define ARM968_MODE_MASK 	 	        0x1f
-#define ARM968_IF_MASK       	        0xC0
-#define ARM968_IRQ_ENABLE    	        0x80
-#define ARM968_IF_MASK       	        0xC0
-#define ARM968_FIQ_ENABLE    	        0x40
-#define ARM968_IRQ_MODE      	        0x12
-#define ARM968_FIQ_MODE     	        0x11
+#define ARM968_SYS_MODE                  0x1f
+#define ARM968_MODE_MASK                  0x1f
+#define ARM968_IF_MASK                   0xC0
+#define ARM968_IRQ_ENABLE                0x80
+#define ARM968_IF_MASK                   0xC0
+#define ARM968_FIQ_ENABLE                0x40
+#define ARM968_IRQ_MODE                  0x12
+#define ARM968_FIQ_MODE                 0x11
 
 /* Constants required to handle critical sections. */
-#define portNO_CRITICAL_NESTING 		((uint32_t ) 0 )
+#define portNO_CRITICAL_NESTING         ((uint32_t ) 0 )
 
 /*-----------------------------------------------------------*/
 enum arm_mode {
-	ARM_MODE_USR = 16,
-	ARM_MODE_FIQ = 17,
-	ARM_MODE_IRQ = 18,
-	ARM_MODE_SVC = 19,
-	ARM_MODE_MON = 22,
-	ARM_MODE_ABT = 23,
-	ARM_MODE_HYP = 26,
-	ARM_MODE_UND = 27,
-	ARM_MODE_1176_MON = 28,
-	ARM_MODE_SYS = 31,
+    ARM_MODE_USR = 16,
+    ARM_MODE_FIQ = 17,
+    ARM_MODE_IRQ = 18,
+    ARM_MODE_SVC = 19,
+    ARM_MODE_MON = 22,
+    ARM_MODE_ABT = 23,
+    ARM_MODE_HYP = 26,
+    ARM_MODE_UND = 27,
+    ARM_MODE_1176_MON = 28,
+    ARM_MODE_SYS = 31,
 
-	ARM_MODE_THREAD = 0,
-	ARM_MODE_USER_THREAD = 1,
-	ARM_MODE_HANDLER = 2,
+    ARM_MODE_THREAD = 0,
+    ARM_MODE_USER_THREAD = 1,
+    ARM_MODE_HANDLER = 2,
 
-	ARMV8_64_EL0T = 0x0,
-	ARMV8_64_EL1T = 0x4,
-	ARMV8_64_EL1H = 0x5,
-	ARMV8_64_EL2T = 0x8,
-	ARMV8_64_EL2H = 0x9,
-	ARMV8_64_EL3T = 0xC,
-	ARMV8_64_EL3H = 0xD,
+    ARMV8_64_EL0T = 0x0,
+    ARMV8_64_EL1T = 0x4,
+    ARMV8_64_EL1H = 0x5,
+    ARMV8_64_EL2T = 0x8,
+    ARMV8_64_EL2H = 0x9,
+    ARMV8_64_EL3T = 0xC,
+    ARMV8_64_EL3H = 0xD,
 
-	ARM_MODE_ANY = -1
+    ARM_MODE_ANY = -1
 };
 
 /* Hardware specifics. */
-#define portSTACK_GROWTH			( -1 )
-#define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
-#define portBYTE_ALIGNMENT			8
-#define portYIELD()					__asm ( "SWI 0" )
+#define portSTACK_GROWTH            ( -1 )
+#define portTICK_PERIOD_MS            ( ( TickType_t ) 1000 / configTICK_RATE_HZ )
+#define portBYTE_ALIGNMENT            8
+#define portYIELD()                    __asm ( "SWI 0" )
 #define portNOP()                   __asm ( "NOP" )
 
 /*-----------------------------------------------------------*/
@@ -180,7 +180,7 @@ void vPortExitCritical( void );
 
 /*
  * Enable Interrupts
- */	
+ */    
 #ifdef CONTROL_IRQ_WITH_NORMAL_FUNCTION
 extern void portENABLE_IRQ(void);
 extern void portENABLE_FIQ(void);
@@ -190,90 +190,90 @@ extern int portDISABLE_IRQ(void);
 extern int port_disable_interrupts_flag(void);
 extern void port_enable_interrupts_flag(int val);
 #else
-#define portENABLE_IRQ()					\
-	({							            \
-		unsigned long temp;				    \
-		__asm volatile(					    \
-		"mrs	%0, cpsr		@ local_irq_enable\n"	\
-	       "bic	%0, %0, #0x80\n"					    \
-	       "msr	cpsr_c, %0"					            \
-		: "=r" (temp)						            \
-		:							                    \
-		: "memory");						            \
-	})
-	
-#define port_enable_interrupts_flag(val)					\
-	({							              \
-		unsigned long temp;				\
-		unsigned long mask;				\
-		mask = val & 0xC0;				\
-		__asm volatile(					\
-		"mrs	%0, cpsr		@ local_irq_enable\n"	\
-	       "bic	%0, %0, %1\n"				        	\
-	       "msr	cpsr_c, %0"					            \
-		: "=r" (temp)						            \
-		: "r" (mask)				                    \
-		: );						            \
-	})
-	
-#define portENABLE_FIQ()					\
-	({							              \
-		unsigned long temp;				\
-		__asm volatile(					\
-		"mrs	%0, cpsr		@ local_irq_enable\n"	\
-	       "bic	%0, %0, #0x40\n"					\
-	       "msr	cpsr_c, %0"					       \
-		: "=r" (temp)						       \
-		:							              \
-		: "memory");						       \
-	})
-	
+#define portENABLE_IRQ()                    \
+    ({                                        \
+        unsigned long temp;                    \
+        __asm volatile(                        \
+        "mrs    %0, cpsr        @ local_irq_enable\n"    \
+           "bic    %0, %0, #0x80\n"                        \
+           "msr    cpsr_c, %0"                                \
+        : "=r" (temp)                                    \
+        :                                                \
+        : "memory");                                    \
+    })
+    
+#define port_enable_interrupts_flag(val)                    \
+    ({                                          \
+        unsigned long temp;                \
+        unsigned long mask;                \
+        mask = val & 0xC0;                \
+        __asm volatile(                    \
+        "mrs    %0, cpsr        @ local_irq_enable\n"    \
+           "bic    %0, %0, %1\n"                            \
+           "msr    cpsr_c, %0"                                \
+        : "=r" (temp)                                    \
+        : "r" (mask)                                    \
+        : );                                    \
+    })
+    
+#define portENABLE_FIQ()                    \
+    ({                                          \
+        unsigned long temp;                \
+        __asm volatile(                    \
+        "mrs    %0, cpsr        @ local_irq_enable\n"    \
+           "bic    %0, %0, #0x40\n"                    \
+           "msr    cpsr_c, %0"                           \
+        : "=r" (temp)                               \
+        :                                          \
+        : "memory");                               \
+    })
+    
 static inline  int portDISABLE_FIQ(void)
-{						                     
-	unsigned long temp;				       
-	unsigned long mask;		
-	
-	__asm volatile(					
-	"mrs	%1, cpsr		@ local_irq_disable\n"	
-	"orr	%0, %1, #0x40\n"					
-	"msr	cpsr_c, %0"					       
-	: "=r" (temp),"=r" (mask)						       
-	:							              
-	: "memory");		
+{                                             
+    unsigned long temp;                       
+    unsigned long mask;        
+    
+    __asm volatile(                    
+    "mrs    %1, cpsr        @ local_irq_disable\n"    
+    "orr    %0, %1, #0x40\n"                    
+    "msr    cpsr_c, %0"                           
+    : "=r" (temp),"=r" (mask)                               
+    :                                          
+    : "memory");        
 
-	return (!!(mask & 0x40));
+    return (!!(mask & 0x40));
 }
 
 static inline  int port_disable_interrupts_flag(void)
-{						                     
-	unsigned long temp;				       
-	unsigned long mask;		
-	
-	__asm volatile(					
-	"mrs	%1, cpsr		@ local_irq_disable\n"	
-	"orr	%0, %1, #0xC0\n"					
-	"msr	cpsr_c, %0"					       
-	: "=r" (temp),"=r" (mask)						       
-	:							              
-	: "memory");		
+{                                             
+    unsigned long temp;                       
+    unsigned long mask;        
+    
+    __asm volatile(                    
+    "mrs    %1, cpsr        @ local_irq_disable\n"    
+    "orr    %0, %1, #0xC0\n"                    
+    "msr    cpsr_c, %0"                           
+    : "=r" (temp),"=r" (mask)                               
+    :                                          
+    : "memory");        
 
-	return (mask & 0xC0);
+    return (mask & 0xC0);
 }
 
 static inline  int portDISABLE_IRQ(void)
-{						                     
-	unsigned long temp;				       
-	unsigned long mask;		
-	
-	__asm volatile(					
-	"mrs	%1, cpsr		@ local_irq_disable\n"	
-	"orr	%0, %1, #0x80\n"					
-	"msr	cpsr_c, %0"					       
-	: "=r" (temp),"=r" (mask)						       
-	:							              
-	: "memory");		
+{                                             
+    unsigned long temp;                       
+    unsigned long mask;        
+    
+    __asm volatile(                    
+    "mrs    %1, cpsr        @ local_irq_disable\n"    
+    "orr    %0, %1, #0x80\n"                    
+    "msr    cpsr_c, %0"                           
+    : "=r" (temp),"=r" (mask)                               
+    :                                          
+    : "memory");        
 
-	return (!!(mask & 0x80));
+    return (!!(mask & 0x80));
 }
 #endif
 
@@ -282,42 +282,42 @@ extern uint32_t platform_is_in_fiq_context( void );
 extern uint32_t platform_is_in_irq_context( void );
 extern uint32_t platform_interrupt_compare( void );
 
-#define portENABLE_INTERRUPTS()			do{		\
-												if(platform_is_in_fiq_context())\
-													break;\
-												if(platform_is_in_irq_context()) {\
-													portENABLE_FIQ();\
-													break;\
-												}\
-												portENABLE_IRQ();\
-												portENABLE_FIQ();\
-										    }while(0)
+#define portENABLE_INTERRUPTS()            do{        \
+                                                if(platform_is_in_fiq_context())\
+                                                    break;\
+                                                if(platform_is_in_irq_context()) {\
+                                                    portENABLE_FIQ();\
+                                                    break;\
+                                                }\
+                                                portENABLE_IRQ();\
+                                                portENABLE_FIQ();\
+                                            }while(0)
             
-										    
+                                            
 /*
  * Disable Interrupts
  */
-#define portDISABLE_INTERRUPTS()		do{		\
-												if(platform_is_in_fiq_context())\
-													break;\
-												if(platform_is_in_irq_context()) {\
-													portDISABLE_FIQ();\
-													break;\
-												}\
-												portDISABLE_FIQ();\
-												portDISABLE_IRQ();\
-										    }while(0)
+#define portDISABLE_INTERRUPTS()        do{        \
+                                                if(platform_is_in_fiq_context())\
+                                                    break;\
+                                                if(platform_is_in_irq_context()) {\
+                                                    portDISABLE_FIQ();\
+                                                    break;\
+                                                }\
+                                                portDISABLE_FIQ();\
+                                                portDISABLE_IRQ();\
+                                            }while(0)
 
 /*-----------------------------------------------------------*/
 /* Task utilities. */
-#define portEND_SWITCHING_ISR( xSwitchRequired ) 	\
-{													\
-extern void vTaskSwitchContext( void ); 			\
-													\
-	if( xSwitchRequired )							\
-	{												\
-		vTaskSwitchContext();						\
-	}												\
+#define portEND_SWITCHING_ISR( xSwitchRequired )     \
+{                                                    \
+extern void vTaskSwitchContext( void );             \
+                                                    \
+    if( xSwitchRequired )                            \
+    {                                                \
+        vTaskSwitchContext();                        \
+    }                                                \
 }
 
 /* Task function macros as described on the FreeRTOS.org WEB site. */
