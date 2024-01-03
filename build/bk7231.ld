@@ -119,8 +119,8 @@ SECTIONS
 }
  GROUP(
    libgcc.a
-   libg.a
-   libc.a
+   libg_nano.a
+   libc_nano.a
    libm.a
    libnosys.a
  )
