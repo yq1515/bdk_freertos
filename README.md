@@ -55,6 +55,18 @@ Default baudrate is 115200 8N1, and console log is at UART1.
 
 Then enjoy!
 
+## Bootloader
+
+```sh
+git checkout bootloader  # change to bootloader branch
+make clean
+make bk7231u -j8
+```
+
+uf2 bootloader is `out/beken7231u_crc.bin`，use `hidprogram` to flash.
+
+After uf2 bootloader is flashed, press USER button before plug USB or press CEN button. Then copy uf2 firmware to usb disk, uf2 bootloader will reboot after write firmware to flash automatically.
+
 ## Supported functions
 
 * WiFi (use `sta` command to connect to AP, or `softap` command to setup a hotspot)
@@ -63,7 +75,6 @@ Then enjoy!
 
 ## Todo
 
-- [ ] opensource bootloader
 - [ ] USB SPI, I2C, PWM, SD/SDIO, ADC, IrDA, MJPEG, etc devices
 - [ ] Linux device drivers for these USB device
 - [ ] opensource wifi 4 protocol stack (softmac)
