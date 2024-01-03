@@ -212,8 +212,10 @@ static UINTMAX_T cast(LDOUBLE);
 static UINTMAX_T myround(LDOUBLE);
 static LDOUBLE mypow10(int);
 #endif
+#if CFG_PRINT_MAC
 static void fmtmac(char *buf, size_t *len, size_t size, const unsigned char *mac, int caps);
 static void fmtip(char *buf, size_t *len, size_t size, unsigned int value);
+#endif
 
 int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
 {
@@ -527,13 +529,15 @@ int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
                     precision, flags);
                 break;
             case 'p':
+                if (0) {
+#if CFG_PRINT_MAC
                 /*
                  * C99 says: "The value of the pointer is
                  * converted to a sequence of printing
                  * characters, in an implementation-defined
                  * manner." (C99: 7.19.6.1, 8)
                  */
-                if (*format == 'm' || *format == 'M') {
+                } else if (*format == 'm' || *format == 'M') {
                     unsigned char *macstr;
                     if (*format == 'M')
                         flags |= PRINT_F_UP;
@@ -548,6 +552,7 @@ int __wrap_vsnprintf(char *str, size_t size, const char *format, va_list args)
                     value = va_arg(args, unsigned int);
                     fmtip(str, &len, size, (unsigned int)value);
                     break;
+#endif
                 } else {
                     if ((strvalue = va_arg(args, void *)) == NULL) {
                         /*
@@ -1102,6 +1107,7 @@ static int convert(UINTMAX_T value, char *buf, size_t size, int base, int caps)
     return (int)pos;
 }
 
+#if CFG_PRINT_MAC
 static int convert_ip(unsigned int value, char *buf, size_t size)
 {
     const char *digits = "0123456789";
@@ -1151,6 +1157,7 @@ static void fmtmac(char *buf, size_t *len, size_t size, const unsigned char *mac
             OUTCHAR(buf, *len, size, ':');
     }
 }
+#endif
 
 #if CFG_PRINT_FLOAT
 static UINTMAX_T cast(LDOUBLE value)
