@@ -768,10 +768,15 @@ int usbd_ep_start_write(const uint8_t ep, const uint8_t *data, uint32_t data_len
     return 0;
 }
 
+#define USB_DEBUG_GPIO                 (0x0802800 +(15*4))
+
+// MGC_FdrcStartRx
 int usbd_ep_start_read(const uint8_t ep, uint8_t *data, uint32_t data_len)
 {
     uint8_t ep_idx = USB_EP_GET_IDX(ep);
     uint8_t old_ep_idx;
+    uint8_t csr;
+    uint16_t read_count;
 
     if (!data && data_len) {
         return -1;
@@ -797,6 +802,34 @@ int usbd_ep_start_read(const uint8_t ep, uint8_t *data, uint32_t data_len)
     if (ep_idx == 0) {
         usb_ep0_state = USB_EP0_STATE_OUT_DATA;
     } else {
+        csr = HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET);
+
+        while (csr & USB_RXCSRL1_RXRDY) {
+#ifdef CFG_CHERRYUSB_DEBUG_OUT_EP
+            REG_WRITE(USB_DEBUG_GPIO, 2);
+#endif
+            // csr |= USB_RXCSRL1_FLUSH;
+            read_count = HWREGH(USB_BASE + MUSB_IND_RXCOUNT_OFFSET);
+
+            musb_read_packet(ep_idx, g_musb_udc.out_ep[ep_idx].xfer_buf, read_count);
+            HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) &= ~(USB_RXCSRL1_RXRDY);
+
+            g_musb_udc.out_ep[ep_idx].xfer_buf += read_count;
+            g_musb_udc.out_ep[ep_idx].actual_xfer_len += read_count;
+            g_musb_udc.out_ep[ep_idx].xfer_len -= read_count;
+
+            if ((read_count < g_musb_udc.out_ep[ep_idx].ep_mps) || (g_musb_udc.out_ep[ep_idx].xfer_len == 0)) {
+                // FIXME: maybe infinite loop here !!!
+                USB_LOG_WRN("%s: may infinite loop\n", __func__);
+                usbd_event_ep_out_complete_handler(ep_idx, g_musb_udc.out_ep[ep_idx].actual_xfer_len);
+            }
+            csr = HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET);
+#ifdef CFG_CHERRYUSB_DEBUG_OUT_EP
+            REG_WRITE(USB_DEBUG_GPIO, 0);
+#endif
+        }
+        // HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) = csr;
+
         HWREGB(USB_BASE + MUSB_RXIEL_OFFSET) |= (1 << ep_idx);
     }
     musb_set_active_ep(old_ep_idx);
