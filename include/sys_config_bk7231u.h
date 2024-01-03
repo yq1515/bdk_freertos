@@ -80,6 +80,7 @@
 #define CFG_MENTOR_USB                             0
 #define CFG_CHERRY_USB                             1
 #define CFG_UF2                                    1
+#define CFG_UF2_INCLUDE_FW                         0
 #define CFG_USE_USB_HOST                           0
 #define CFG_USE_USB_DEVICE                         1
 #if CFG_MENTOR_USB

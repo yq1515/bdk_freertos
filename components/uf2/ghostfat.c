@@ -138,13 +138,19 @@ const char indexFile[] = "<!doctype html>\n"
 static FileContent_t info[] = {
     {.name = "INFO_UF2TXT", .content = infoUf2File, .size = sizeof(infoUf2File) - 1},
     {.name = "INDEX   HTM", .content = indexFile, .size = sizeof(indexFile) - 1},
+#if CFG_UF2_INCLUDE_FW
     // current.uf2 must be the last element and its content must be NULL
     {.name = "CURRENT UF2", .content = NULL, .size = 0},
+#endif
 };
 
 enum {
     NUM_FILES      = sizeof(info) / sizeof(info[0]),
+#if CFG_UF2_INCLUDE_FW
     FID_UF2        = NUM_FILES - 1,
+#else
+    FID_UF2        = NUM_FILES,
+#endif
     NUM_DIRENTRIES = NUM_FILES + 1 // including volume label as first root directory entry
 };
 
@@ -229,8 +235,10 @@ void uf2_init(void) {
     // TODO maybe limit to application size only if possible board_flash_app_size()
     _flash_size = board_flash_size();
 
+#if CFG_UF2_INCLUDE_FW
     // update CURRENT.UF2 file size
     info[FID_UF2].size = UF2_BYTE_COUNT;
+#endif
 
     init_starting_clusters();
 }
@@ -270,7 +278,12 @@ void uf2_read_block(uint32_t block_no, uint8_t *data) {
         uint16_t *data16 = (uint16_t *)(void *)data;
 
         uint32_t sectorFirstCluster = sectionRelativeSector * FAT_ENTRIES_PER_SECTOR;
-        uint32_t firstUnusedCluster = info[FID_UF2].cluster_end + 1;
+        uint32_t firstUnusedCluster;
+#if CFG_UF2_INCLUDE_FW
+        firstUnusedCluster = info[FID_UF2].cluster_end + 1;
+#else
+        firstUnusedCluster = info[NUM_FILES - 1].cluster_end + 1;
+#endif
 
         // OPTIMIZATION:
         // Because all files are contiguous, the FAT CHAIN entries
@@ -378,6 +391,7 @@ void uf2_read_block(uint32_t block_no, uint8_t *data) {
                 memcpy(data, dataStart, bytesToCopy);
             }
         } else {
+#if CFG_UF2_INCLUDE_FW
             // CURRENT.UF2: generate data on-the-fly
             uint32_t addr = BOARD_FLASH_APP_START + (fileRelativeSector * UF2_FIRMWARE_BYTES_PER_SECTOR);
             if (addr < _flash_size) // TODO abstract this out
@@ -395,6 +409,7 @@ void uf2_read_block(uint32_t block_no, uint8_t *data) {
 
                 board_flash_read(addr, bl->data, bl->payloadSize);
             }
+#endif
         }
     }
 }
