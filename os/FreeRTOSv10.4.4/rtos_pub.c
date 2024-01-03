@@ -75,7 +75,7 @@ uint32_t rtos_max_priorities = RTOS_HIGHEST_PRIORITY - RTOS_LOWEST_PRIORITY + 1;
 /******************************************************
  *               Function Definitions
  ******************************************************/
-OSStatus rtos_create_thread( beken_thread_t* thread, uint8_t priority, const char* name,
+OSStatus rtos_create_thread( beken_thread_t* thread, uint8_t priority, const char* name, 
                         beken_thread_function_t function, uint32_t stack_size, beken_thread_arg_t arg )
 {
     /* Limit priority to default lib priority */
@@ -84,9 +84,9 @@ OSStatus rtos_create_thread( beken_thread_t* thread, uint8_t priority, const cha
         priority = RTOS_HIGHEST_PRIORITY;
     }
 
-    if( pdPASS == _xTaskCreate( (native_thread_t)function, name,
-            (unsigned short) (stack_size/sizeof( portSTACK_TYPE )),
-            (void *)arg, BK_PRIORITY_TO_NATIVE_PRIORITY(priority),
+    if( pdPASS == _xTaskCreate( (native_thread_t)function, name, 
+            (unsigned short) (stack_size/sizeof( portSTACK_TYPE )), 
+            (void *)arg, BK_PRIORITY_TO_NATIVE_PRIORITY(priority), 
             (TaskHandle_t *)thread ) )
     {
         return kNoErr;
@@ -116,7 +116,7 @@ OSStatus rtos_thread_join(beken_thread_t* thread)
     {
         rtos_delay_milliseconds(10);
     }
-
+    
     return kNoErr;
 }
 
@@ -143,17 +143,17 @@ OSStatus rtos_print_thread_status( char* pcWriteBuffer, int xWriteBufferLen )
 {
     cmd_printf("%-30s Status  Prio    Stack   TCB\r\n", "Name");
     cmd_printf("------------------------------------------------------------");
-
+	
     if (xWriteBufferLen >= 256)
         vTaskList((signed char *)pcWriteBuffer);
-    else
+    else 
 	{
         char buf[256];
 
         vTaskList((signed char *)buf);
         strncpy(pcWriteBuffer, buf, xWriteBufferLen);
     }
-
+	
     return kNoErr;
 }
 
@@ -335,7 +335,7 @@ OSStatus rtos_get_semaphore( beken_semaphore_t* semaphore, uint32_t timeout_ms )
         time = portMAX_DELAY;
     else
         time = timeout_ms / ms_to_tick_ratio;
-
+        
     if ( pdTRUE == xSemaphoreTake( *semaphore, (portTickType) (time) ) )
     {
         return kNoErr;
@@ -465,12 +465,12 @@ OSStatus rtos_push_to_queue( beken_queue_t* queue, void* message, uint32_t timeo
     else
     {
         uint32_t time;
-
+        
         if(timeout_ms == BEKEN_WAIT_FOREVER)
             time = portMAX_DELAY;
         else
             time = timeout_ms / ms_to_tick_ratio;
-
+        
         result = xQueueSendToBack( *queue, message, (portTickType) ( time ) );
     }
 
@@ -497,12 +497,12 @@ OSStatus rtos_push_to_queue_front( beken_queue_t* queue, void* message, uint32_t
     else
     {
         uint32_t time;
-
+        
         if(timeout_ms == BEKEN_WAIT_FOREVER)
             time = portMAX_DELAY;
         else
             time = timeout_ms / ms_to_tick_ratio;
-
+        
         result = xQueueSendToFront( *queue, message, (portTickType) ( time ) );
     }
 
@@ -518,7 +518,7 @@ OSStatus rtos_pop_from_queue( beken_queue_t* queue, void* message, uint32_t time
         time = portMAX_DELAY;
     else
         time = timeout_ms / ms_to_tick_ratio;
-
+    
     if ( xQueueReceive( *queue, message, ( time ) ) != pdPASS )
     {
         return kGeneralErr;
@@ -589,7 +589,7 @@ OSStatus rtos_start_oneshot_timer( beken2_timer_t* timer )
         signed portBASE_TYPE xHigherPriorityTaskWoken;
         result = xTimerStartFromISR(timer->handle, &xHigherPriorityTaskWoken );
         portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
-    }
+    } 
 	else
 	{
         result = xTimerStart( timer->handle, BEKEN_WAIT_FOREVER );
@@ -660,12 +660,12 @@ OSStatus rtos_oneshot_reload_timer( beken2_timer_t* timer )
 {
     signed portBASE_TYPE result;
 
-    if ( platform_is_in_interrupt_context() == RTOS_SUCCESS )
+    if ( platform_is_in_interrupt_context() == RTOS_SUCCESS ) 
 	{
         signed portBASE_TYPE xHigherPriorityTaskWoken;
         result = xTimerResetFromISR(timer->handle, &xHigherPriorityTaskWoken );
         portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
-    }
+    } 
 	else
         result = xTimerReset( timer->handle, BEKEN_WAIT_FOREVER );
 
@@ -677,25 +677,25 @@ OSStatus rtos_oneshot_reload_timer( beken2_timer_t* timer )
     return kNoErr;
 }
 
-OSStatus rtos_init_oneshot_timer( beken2_timer_t *timer,
-									uint32_t time_ms,
+OSStatus rtos_init_oneshot_timer( beken2_timer_t *timer, 
+									uint32_t time_ms, 
 									timer_2handler_t function,
-									void* larg,
+									void* larg, 
 									void* rarg )
 {
 	OSStatus ret = kNoErr;
-
+	
 	GLOBAL_INT_DECLARATION();
 
 	GLOBAL_INT_DISABLE();
     timer->function = function;
     timer->left_arg = larg;
-    timer->right_arg = rarg;
+    timer->right_arg = rarg;	
 	timer->beken_magic = BEKEN_MAGIC_WORD;
-    timer->handle = _xTimerCreate("",
-								(portTickType)( time_ms / ms_to_tick_ratio ),
-								pdFALSE,
-								timer,
+    timer->handle = _xTimerCreate("", 
+								(portTickType)( time_ms / ms_to_tick_ratio ), 
+								pdFALSE, 
+								timer, 
 								(native_timer_handler_t) timer_callback2 );
     if ( timer->handle == NULL )
     {
@@ -707,23 +707,23 @@ OSStatus rtos_init_oneshot_timer( beken2_timer_t *timer,
     return ret;
 }
 
-OSStatus rtos_init_timer( beken_timer_t *timer,
-									uint32_t time_ms,
-									timer_handler_t function,
+OSStatus rtos_init_timer( beken_timer_t *timer, 
+									uint32_t time_ms, 
+									timer_handler_t function, 
 									void* arg )
 {
 	OSStatus ret = kNoErr;
-
+	
 	GLOBAL_INT_DECLARATION();
 
 	GLOBAL_INT_DISABLE();
     timer->function = function;
     timer->arg      = arg;
-
-    timer->handle = _xTimerCreate("",
-								(portTickType)( time_ms / ms_to_tick_ratio ),
-								pdTRUE,
-								timer,
+	
+    timer->handle = _xTimerCreate("", 
+								(portTickType)( time_ms / ms_to_tick_ratio ), 
+								pdTRUE, 
+								timer, 
 								(native_timer_handler_t) timer_callback1 );
     if ( timer->handle == NULL )
     {
@@ -798,12 +798,12 @@ OSStatus rtos_change_period( beken_timer_t* timer, uint32_t time_ms)
 
     if ( platform_is_in_interrupt_context() == RTOS_SUCCESS ) {
         signed portBASE_TYPE xHigherPriorityTaskWoken;
-        result = xTimerChangePeriodFromISR(timer->handle,
+        result = xTimerChangePeriodFromISR(timer->handle, 
                                      (portTickType)( time_ms / ms_to_tick_ratio ),
                                      &xHigherPriorityTaskWoken);
         portEND_SWITCHING_ISR( xHigherPriorityTaskWoken );
     } else
-        result = xTimerChangePeriod( timer->handle,
+        result = xTimerChangePeriod( timer->handle, 
                                      (portTickType)( time_ms / ms_to_tick_ratio ),
                                      0 );
 
@@ -813,7 +813,7 @@ OSStatus rtos_change_period( beken_timer_t* timer, uint32_t time_ms)
     }
 
     return kNoErr;
-
+   
 }
 
 OSStatus rtos_deinit_timer( beken_timer_t* timer )
@@ -865,7 +865,7 @@ BOOL rtos_is_timer_running( beken_timer_t* timer )
 OSStatus rtos_init_event_flags( beken_event_flags_t* event_flags )
 {
     UNUSED_PARAMETER( event_flags );
-
+	
     return kUnsupportedErr;
 }
 
@@ -885,14 +885,14 @@ OSStatus rtos_set_event_flags( beken_event_flags_t* event_flags, uint32_t flags_
 {
     UNUSED_PARAMETER( event_flags );
     UNUSED_PARAMETER( flags_to_set );
-
+	
     return kUnsupportedErr;
 }
 
 OSStatus rtos_deinit_event_flags( beken_event_flags_t* event_flags )
 {
     UNUSED_PARAMETER( event_flags );
-
+	
     return kUnsupportedErr;
 }
 
@@ -950,10 +950,10 @@ OSStatus rtos_delay_milliseconds( uint32_t num_ms )
 }
 
 /*-----------------------------------------------------------*/
-void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed portCHAR *pcTaskName )
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName )
 {
-    UNUSED_PARAMETER( pxTask );
-    UNUSED_PARAMETER( pcTaskName );
+    UNUSED_PARAMETER( xTask );
+    UNUSED_PARAMETER( pcTaskName ); 
 
     rtos_stack_overflow((char*)pcTaskName);
 }

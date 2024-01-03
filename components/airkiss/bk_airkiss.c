@@ -8,7 +8,7 @@
 static int bk_airkiss_decode_status;
 uint32_t airkiss_start_flag = 0;
 static volatile uint8_t airkiss_current_channel;
-xTaskHandle  airkiss_thread_handle = NULL;
+beken_thread_t airkiss_thread_handle = NULL;
 static beken_semaphore_t airkiss_decode_over_sema;
 static airkiss_context_t *airkiss_context_ptr = NULL;
 static beken_timer_t airkiss_switch_channel_timer;
@@ -126,8 +126,8 @@ uint32_t bk_airkiss_resource_create(void)
 		                        bk_airkiss_lock_timeout_handler,
 		                        (void *)0);
     ASSERT(kNoErr == result);
-	
-	if(NULL == airkiss_decode_over_sema) 
+
+	if(NULL == airkiss_decode_over_sema)
 	{
 		result = rtos_init_semaphore(&airkiss_decode_over_sema, 1);
 		ASSERT(kNoErr == result);
@@ -168,7 +168,7 @@ static void bk_airkiss_wifi_connect(airkiss_result_t *airkiss_result)
 void bk_airkiss_start_udp_boardcast(u8 random_data)
 {
     int err, i;
-    int udp_broadcast_fd = -1; 
+    int udp_broadcast_fd = -1;
     struct sockaddr_in remote_skt;
 
 	BK_AIRKISS_PRT("bk_airkiss_start_udp_boardcast\n");
@@ -182,16 +182,16 @@ void bk_airkiss_start_udp_boardcast(u8 random_data)
     remote_skt.sin_family = AF_INET;
     remote_skt.sin_addr.s_addr = INADDR_BROADCAST;//INADDR_ANY;
     remote_skt.sin_port = htons(10000);
-	
+
  	i = MAX_UDP_RANDOM_SEND;
-    while(i --) 
-    {    	
+    while(i --)
+    {
 		BK_AIRKISS_PRT("udp-sendto:%d\r\n", i);
-		
+
         err = sendto(udp_broadcast_fd, &random_data, 1, 0, (struct sockaddr *)&remote_skt, sizeof(remote_skt));
 		vTaskDelay(2);
-		
-        if(err == -1) 
+
+        if(err == -1)
         {
             BK_AIRKISS_WARN("send udp boardcast failed\r\n");
         }
@@ -225,12 +225,12 @@ void bk_airkiss_decode_complete_handle(void)
     BK_AIRKISS_PRT("bk_airkiss_wifi_connecting\r\n");
     bk_airkiss_wifi_connect(&airkiss_result);
     BK_AIRKISS_PRT("bk_airkiss_wifi_connect\r\n");
-	
+
     do
     {
         chunk ++;
         rtos_delay_milliseconds(1000);
-		
+
     	BK_AIRKISS_PRT("airkiss is waiting for network connection\r\n");
         if (chunk >= 30)
         {
@@ -266,7 +266,7 @@ static void bk_airkiss_thread_entry(void *parameter)
     /*step 1: init the parameter of switching channel, and then monitor*/
     airkiss_current_channel = 1;
 	bk_wlan_set_channel_sync(airkiss_current_channel);
-	
+
     bk_wlan_register_monitor_cb(bk_airkiss_monitor_callback);
     bk_wlan_start_monitor();
 
@@ -295,7 +295,7 @@ _exit:
 }
 
 uint32_t bk_airkiss_init(void)
-{	
+{
 	OSStatus ret;
 
 	BK_AIRKISS_PRT("bk_airkiss_init:%d\r\n", xPortGetFreeHeapSize());
@@ -314,11 +314,11 @@ uint32_t bk_airkiss_init(void)
         if (ret != kNoErr)
         {
             BK_AIRKISS_PRT("Error: airkiss_start_process: %d\r\n", ret);
-			
+
             return -1;
         }
     }
-	
+
 	return AIRKISS_SUCCESS;
 }
 
@@ -332,13 +332,13 @@ uint32_t bk_airkiss_stop(void)
 {
 	BK_AIRKISS_PRT("bk_airkiss_stop\r\n");
 
-	if(rtos_is_timer_init(&airkiss_switch_channel_timer) 
+	if(rtos_is_timer_init(&airkiss_switch_channel_timer)
 		&& rtos_is_timer_running(&airkiss_switch_channel_timer))
 	{
 		rtos_stop_timer(&airkiss_switch_channel_timer);
 	}
 
-	if(rtos_is_timer_init(&airkiss_lock_channel_timer) 
+	if(rtos_is_timer_init(&airkiss_lock_channel_timer)
 		&& rtos_is_timer_running(&airkiss_lock_channel_timer))
 	{
 		rtos_stop_timer(&airkiss_lock_channel_timer);
@@ -348,7 +348,7 @@ uint32_t bk_airkiss_stop(void)
 	{
 		rtos_set_semaphore(&airkiss_decode_over_sema);
 	}
-	
+
 	return AIRKISS_SUCCESS;
 }
 
@@ -361,7 +361,7 @@ uint32_t bk_airkiss_start(void)
 uint32_t bk_airkiss_process(uint32_t start)
 {
 	uint32_t ret;
-	
+
 	if(start)
 	{
 		ret = bk_airkiss_start();
@@ -370,8 +370,8 @@ uint32_t bk_airkiss_process(uint32_t start)
 	{
 		ret = bk_airkiss_stop();
 	}
-	
-	return ret;	
+
+	return ret;
 }
 
 // eof

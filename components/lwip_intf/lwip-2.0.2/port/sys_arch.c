@@ -51,7 +51,7 @@ static sys_mutex_t sys_arch_mutex;
 err_t sys_mbox_new(sys_mbox_t *mbox, int size)
 {
 	(void ) size;
-	
+
 	if (size > 0)
 		*mbox = xQueueCreate( size, sizeof( void * ) );
 	else
@@ -85,7 +85,7 @@ void sys_mbox_free(sys_mbox_t *mbox)
 #if SYS_STATS
 	    lwip_stats.sys.mbox.err++;
 #endif /* SYS_STATS */
-			
+
 		// TODO notify the user of failure.
 	}
 
@@ -117,11 +117,11 @@ err_t result;
    else {
       // could not post, queue must be full
       result = ERR_MEM;
-			
+
 #if SYS_STATS
       lwip_stats.sys.mbox.err++;
 #endif /* SYS_STATS */
-			
+
    }
 
    return result;
@@ -154,20 +154,20 @@ portTickType StartTime, EndTime, Elapsed;
 	{
 		msg = &dummyptr;
 	}
-		
+
 	if ( timeout != 0 )
 	{
 		if ( pdTRUE == xQueueReceive( *mbox, &(*msg), timeout / portTICK_RATE_MS ) )
 		{
 			EndTime = xTaskGetTickCount();
 			Elapsed = (EndTime - StartTime) * portTICK_RATE_MS;
-			
+
 			return ( Elapsed );
 		}
 		else // timed out blocking for message
 		{
 			*msg = NULL;
-			
+
 			return SYS_ARCH_TIMEOUT;
 		}
 	}
@@ -176,8 +176,8 @@ portTickType StartTime, EndTime, Elapsed;
 		while( pdTRUE != xQueueReceive( *mbox, &(*msg), portMAX_DELAY ) ){} // time is arbitrary
 		EndTime = xTaskGetTickCount();
 		Elapsed = (EndTime - StartTime) * portTICK_RATE_MS;
-		
-		return ( Elapsed ); // return time blocked TODO test	
+
+		return ( Elapsed ); // return time blocked TODO test
 	}
 }
 
@@ -205,18 +205,18 @@ void *dummyptr;
    }
 }
 /*----------------------------------------------------------------------------------*/
-int sys_mbox_valid(sys_mbox_t *mbox)          
-{      
-  if (*mbox == SYS_MBOX_NULL) 
+int sys_mbox_valid(sys_mbox_t *mbox)
+{
+  if (*mbox == SYS_MBOX_NULL)
     return 0;
   else
     return 1;
-}                                             
-/*-----------------------------------------------------------------------------------*/                                              
-void sys_mbox_set_invalid(sys_mbox_t *mbox)   
-{                                             
-  *mbox = SYS_MBOX_NULL;                      
-}                                             
+}
+/*-----------------------------------------------------------------------------------*/
+void sys_mbox_set_invalid(sys_mbox_t *mbox)
+{
+  *mbox = SYS_MBOX_NULL;
+}
 
 /*-----------------------------------------------------------------------------------*/
 //  Creates a new semaphore. The "count" argument specifies
@@ -226,13 +226,13 @@ err_t sys_sem_new(sys_sem_t *sem, u8_t count)
 	vSemaphoreCreateBinary(*sem );
 	if(*sem == NULL)
 	{
-		
+
 #if SYS_STATS
       ++lwip_stats.sys.sem.err;
-#endif /* SYS_STATS */	
+#endif /* SYS_STATS */
 		return ERR_MEM;
 	}
-	
+
 	if(count == 0)	// Means it can't be taken
 	{
 		xSemaphoreTake(*sem,1);
@@ -244,7 +244,7 @@ err_t sys_sem_new(sys_sem_t *sem, u8_t count)
 		lwip_stats.sys.sem.max = lwip_stats.sys.sem.used;
 	}
 #endif /* SYS_STATS */
-		
+
 	return ERR_OK;
 }
 
@@ -276,8 +276,8 @@ u32_t sys_arch_sem_wait(sys_sem_t *sem, u32_t timeout)
 		{
 			EndTime = xTaskGetTickCount();
 			Elapsed = (EndTime - StartTime) * portTICK_RATE_MS;
-			
-			return (Elapsed); // return time blocked TODO test	
+
+			return (Elapsed); // return time blocked TODO test
 		}
 		else
 		{
@@ -290,11 +290,11 @@ u32_t sys_arch_sem_wait(sys_sem_t *sem, u32_t timeout)
 		{
 			;
 		}
-		
+
 		EndTime = xTaskGetTickCount();
 		Elapsed = (EndTime - StartTime) * portTICK_RATE_MS;
 
-		return ( Elapsed ); // return time blocked	
+		return ( Elapsed ); // return time blocked
 	}
 }
 
@@ -312,30 +312,30 @@ void sys_sem_free(sys_sem_t *sem)
 #if SYS_STATS
       --lwip_stats.sys.sem.used;
 #endif /* SYS_STATS */
-			
+
 	vQueueDelete(*sem);
 }
 /*-----------------------------------------------------------------------------------*/
-int sys_sem_valid(sys_sem_t *sem)                                               
+int sys_sem_valid(sys_sem_t *sem)
 {
   if (*sem == SYS_SEM_NULL)
     return 0;
   else
-    return 1;                                       
+    return 1;
 }
 
-/*-----------------------------------------------------------------------------------*/                                                                                                                                                                
-void sys_sem_set_invalid(sys_sem_t *sem)                                        
-{                                                                               
-  *sem = SYS_SEM_NULL;                                                          
-} 
+/*-----------------------------------------------------------------------------------*/
+void sys_sem_set_invalid(sys_sem_t *sem)
+{
+  *sem = SYS_SEM_NULL;
+}
 
-/*-----------------------------------------------------------------------------------*/        
+/*-----------------------------------------------------------------------------------*/
 err_t sys_mutex_trylock(sys_mutex_t *pxMutex)
 {
-	if (xSemaphoreTake(*pxMutex, 0) == pdPASS) 
+	if (xSemaphoreTake(*pxMutex, 0) == pdPASS)
 		return 0;
-	else 
+	else
 		return -1;
 }
 
@@ -359,7 +359,7 @@ err_t sys_mutex_new(sys_mutex_t *mutex) {
 	{
 #if SYS_STATS
       ++lwip_stats.sys.mutex.err;
-#endif /* SYS_STATS */	
+#endif /* SYS_STATS */
 		return ERR_MEM;
 	}
 
@@ -379,21 +379,21 @@ void sys_mutex_free(sys_mutex_t *mutex)
 #if SYS_STATS
       --lwip_stats.sys.mutex.used;
 #endif /* SYS_STATS */
-			
+
 	vQueueDelete(*mutex);
 }
 /*-----------------------------------------------------------------------------------*/
 /* Lock a mutex*/
 void sys_mutex_lock(sys_mutex_t *mutex)
 {
-	sys_arch_sem_wait(mutex, BEKEN_WAIT_FOREVER);
+	rtos_lock_mutex(mutex);
 }
 
 /*-----------------------------------------------------------------------------------*/
 /* Unlock a mutex*/
 void sys_mutex_unlock(sys_mutex_t *mutex)
 {
-	xSemaphoreGive(*mutex);
+	rtos_unlock_mutex(mutex);
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -409,7 +409,7 @@ sys_thread_t sys_thread_new(const char *name, lwip_thread_fn thread , void *arg,
 {
 	xTaskHandle CreatedTask;
 	int result;
-   
+
 	result = xTaskCreate( thread, ( portCHAR * ) name, stacksize, arg, prio, &CreatedTask );
 	if(result == pdPASS)
 	{
@@ -440,14 +440,14 @@ int sys_thread_delete(xTaskHandle pid)
   system.
 */
 sys_prot_t sys_arch_protect(void)
-{	
+{
 #if CFG_ENABLE_LWIP_MUTEX
 	sys_mutex_lock(&sys_arch_mutex);
 
 	return 0;
 #else
 	return port_disable_interrupts_flag();
-#endif	
+#endif
 }
 
 /*
@@ -470,14 +470,14 @@ void sys_arch_unprotect(sys_prot_t pval)
  * Prints an assertion messages and aborts execution.
  */
 void sys_assert( const char *msg )
-{	
+{
 	(void) msg;
-	
+
 	/*FSL:only needed for debugging*/
 	os_printf(msg);
-	os_printf("\n\r");		
+	os_printf("\n\r");
     vPortEnterCritical();
-	
+
     for(;;)
     ;
 }

@@ -29,7 +29,7 @@ const airkiss_config_t ak_conf =
 
 beken_timer_t ak_chan_timer;
 beken_timer_t ak_doing_timer;
-xTaskHandle  ak_thread_handle = NULL;
+beken_thread_t  ak_thread_handle = NULL;
 beken_semaphore_t ak_semaphore = NULL;
 beken_semaphore_t ak_connect_semaphore = NULL;
 airkiss_channel_t g_chans;
@@ -43,7 +43,7 @@ extern void net_set_sta_ipup_callback(void *fn);
 static unsigned char calcrc_1byte(unsigned char abyte)
 {
     unsigned char i, crc_1byte;
-	
+
     crc_1byte = 0;
     for(i = 0; i < 8; i++)
     {
@@ -87,7 +87,7 @@ void airkiss_count_usefull_packet(const unsigned char *frame, int size)
     if(!frame || !size)
         return;
 
-    if((MAC_FCTRL_BEACON == (fmac_hdr->fctl & MAC_FCTRL_TYPESUBTYPE_MASK)) 
+    if((MAC_FCTRL_BEACON == (fmac_hdr->fctl & MAC_FCTRL_TYPESUBTYPE_MASK))
 		|| (MAC_FCTRL_PROBERSP == (fmac_hdr->fctl & MAC_FCTRL_TYPESUBTYPE_MASK)))
     {
         cur_chan->bcn_cnt++;
@@ -98,7 +98,7 @@ void airkiss_count_usefull_packet(const unsigned char *frame, int size)
         {
             channel = co_read8p(elmt_addr + MAC_DS_CHANNEL_OFT);
         }
-		
+
         for(i = 0; i < g_macs.mac_cnt; i++)
         {
             if((mac_crc == g_macs.mac[i].mac_crc))
@@ -110,7 +110,7 @@ void airkiss_count_usefull_packet(const unsigned char *frame, int size)
                 break;
             }
         }
-		
+
         if(i == g_macs.mac_cnt)
         {
             g_macs.mac[i].mac_crc = mac_crc;
@@ -273,7 +273,7 @@ void airkiss_switch_channel_callback(void *data)
 void airkiss_doing_timeout_callback(void *data)
 {
     int ret;
-	
+
     AIRKISS_WARN("airkiss_doing_timeout, restart channel switch timer\r\n");
 
     // stop doing timer
@@ -306,9 +306,9 @@ void airkiss_monitor_callback(uint8_t *data, int len, wifi_link_info_t *info)
     {
         return;
     }
-			
+
     airkiss_count_usefull_packet(data, len);
-	
+
     GLOBAL_INT_DISABLE();
 	write_to_pingpong_buf(data, AIRKISS_MIN_RX_BUF_SIZE, len);
     GLOBAL_INT_RESTORE();
@@ -474,7 +474,7 @@ void airkiss_main( void *arg )
     ak_result.ssid = NULL;
 
     while(0 == airkiss_exit)
-    {    	
+    {
 		uint32_t actual;
 
         result = rtos_get_semaphore(&ak_semaphore, BEKEN_WAIT_FOREVER);

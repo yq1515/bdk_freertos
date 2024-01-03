@@ -779,7 +779,7 @@ void cli_monitor_cb(uint8_t *data, int len, wifi_link_info_t *info)
 }
 
 xTaskHandle mtr_thread_handle = NULL;
-xTaskHandle cli_thread_handle = NULL;
+beken_thread_t cli_thread_handle = NULL;
 
 uint32_t  mtr_stack_size = 2000;
 #define THD_MTR_PRIORITY                    5
