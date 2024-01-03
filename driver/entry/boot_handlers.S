@@ -41,7 +41,7 @@
  *                                Macros
  * ======================================================================== */
 #define _FIQ_STACK_SIZE_                  0x7F0
-#define _IRQ_STACK_SIZE_                  0xFF0
+#define _IRQ_STACK_SIZE_                  0x7F0
 #define _SVC_STACK_SIZE_                  0x3F0
 #define _SYS_STACK_SIZE_                  0x3F0
 #define _UND_STACK_SIZE_                  0x010
