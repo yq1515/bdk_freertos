@@ -15,6 +15,9 @@ GDB = $(CROSS_COMPILE)gdb
 OBJCOPY = $(CROSS_COMPILE)objcopy
 OBJDUMP = $(CROSS_COMPILE)objdump
 
+# GIT_COMMIT := $(shell git rev-parse --short HEAD)
+GIT_COMMIT := $(shell git describe --long)
+
 Q := @
 ifeq ($(V),1)
 Q := 
@@ -187,7 +190,8 @@ SOC_NAME_BSP_UF2 = beken7231_bsp.uf2
 
 # Compile options
 # -------------------------------------------------------------------
-CFLAGS = -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Werror -fsigned-char -fdata-sections -nostdlib
+CFLAGS = -DUF2_VERSION=\"$(GIT_COMMIT)\"
+CFLAGS += -g -mthumb -mcpu=arm968e-s -march=armv5te -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Werror -fsigned-char -fdata-sections -nostdlib
 ASMFLAGS = -g -marm -mthumb-interwork -mcpu=arm968e-s -march=armv5te -x assembler-with-cpp
 
 LFLAGS = 

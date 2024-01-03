@@ -53,8 +53,9 @@
 #define UF2_INDEX_URL         "https://tiancj.github.io/"
 
 #define BOARD_UF2_FAMILY_ID  0xe9f35d3b
-#define UF2_VERSION_BASE     "v1.1.0-2-ge56ec45"
+#ifndef UF2_VERSION
 #define UF2_VERSION          "v1.1.0-2-ge56ec45"
+#endif
 
 #define CFG_UF2_FLASH_SIZE   (2 * 1024 * 1024)
 
