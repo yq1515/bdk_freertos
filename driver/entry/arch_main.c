@@ -18,6 +18,8 @@
 #include "portmacro.h"
 #include "icu_pub.h"
 #include "uart_pub.h"
+#include "arm_arch.h"
+#include "board_api.h"
 
 #define APPLICATION_START_ADDR 0x10000
 
@@ -27,6 +29,7 @@ extern void ymodem_init();
 
 bool dfu_mode;
 int dfu_gpio_port = GPIO36;
+int led_gpio_port = GPIO24;
 volatile bool dfu_complete = false;
 uint64_t dfu_complete_tick;
 int button_pressed_count = 0;
@@ -36,6 +39,14 @@ void board_dfu_complete(void)
 {
     dfu_complete = true;
     dfu_complete_tick = fclk_get_tick();
+}
+
+void board_led_write(uint32_t state)
+{
+    if (state)
+        REG_WRITE(0x00802800 + 0x18 * 4, 2);
+    else
+        REG_WRITE(0x00802800 + 0x18 * 4, 0);
 }
 
 void dfu_gpio_init(void)
@@ -131,6 +142,11 @@ static void application_start(void)
     param = 0;
     sddev_control(ICU_DEV_NAME, CMD_CLR_INTR_RAW_STATUS, &param);
     sddev_control(ICU_DEV_NAME, CMD_CLR_INTR_STATUS, &param);
+
+#if LED_PIN
+    // reset led pin
+    board_led_write(0);
+#endif
 
     //
     os_printf("jump to 0x%x\n", APPLICATION_START_ADDR);

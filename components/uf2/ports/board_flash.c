@@ -39,10 +39,18 @@ static uint8_t erased_sectors[SECTOR_COUNT] = {0};
 static DD_HANDLE flash_handle;
 static int protect_type;
 static int flash_unlocked = false;
+#if LED_PIN
+static int led_state = 0;
+void board_led_write(uint32_t state);
+#endif
 
 static void flash_sector_erase(uint32_t addr)
 {
     // os_printf("e:%x\n", addr);
+#if LED_PIN
+    board_led_write(led_state);
+    led_state ^= 1;
+#endif
     ddev_control(flash_handle, CMD_FLASH_ERASE_SECTOR, (void *)&addr);
 }
 
