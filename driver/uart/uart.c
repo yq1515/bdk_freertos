@@ -91,6 +91,18 @@ void bk_send_byte(UINT8 uport, UINT8 data)
     UART_WRITE_BYTE(uport, data);
 }
 
+void bkreg_send_byte(UINT8 dummy_port, UINT8 data)
+{
+    UINT8 uport = uart_print_port;
+
+    if (UART1_PORT == uport)
+        while(!UART1_TX_WRITE_READY);
+    else
+        while(!UART2_TX_WRITE_READY);
+
+    UART_WRITE_BYTE(uport, data);
+}
+
 void bk_send_string(UINT8 uport, const char *string)
 {
 	const char *p = string;
