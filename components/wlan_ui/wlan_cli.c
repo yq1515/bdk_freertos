@@ -2601,6 +2601,10 @@ static void cli_usb_device_hid(char *pcWriteBuffer, int xWriteBufferLen, int arg
 }
 #endif
 
+#if CFG_USB_SPI_DL
+void spi_dl_init(void);
+#endif
+
 static const struct cli_command built_ins[] =
 {
     {"help", NULL, help_command},
@@ -3611,6 +3615,10 @@ int cli_init(void)
 
     pCli->initialized = 1;
     pCli->echo_disabled = 0;
+
+#if CFG_USB_SPI_DL
+    spi_dl_init();
+#endif
 
     return kNoErr;
 

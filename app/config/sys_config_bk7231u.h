@@ -75,6 +75,15 @@
 #define CFG_MSDU_RESV_HEAD_LEN                    96
 #define CFG_MSDU_RESV_TAIL_LEN                    16
 
+
+#define CFG_USB_SPI_DL                             1
+
+#if CFG_USB_SPI_DL
+#define CFG_USE_SPI_MASTER                         1
+#define CFG_USE_SPI_SLAVE                          1
+#define CFG_USE_SPI_DMA                            1
+#endif
+
 #define CFG_MENTOR_USB                             0
 #define CFG_CHERRY_USB                             1
 #define CFG_UF2                                    0

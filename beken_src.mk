@@ -519,6 +519,8 @@ ifeq ($(CFG_SOC_NAME), 2)
 SRC_C += $(BEKEN_DIR)/driver/spi/spi.c
 SRC_C += $(BEKEN_DIR)/driver/spi/spi_master.c
 SRC_C += $(BEKEN_DIR)/driver/spi/spi_slave.c
+SRC_C += $(BEKEN_DIR)/driver/spi/spi_flash_dl.c
+SRC_C += $(BEKEN_DIR)/driver/spi/spi_dl_protocol.c
 endif
 
 # For BK7231N
@@ -770,8 +772,8 @@ SRC_C += $(BEKEN_DIR)/components/ble_wifi_exchange/ble_wifi_port.c
 #
 ifeq ($(CFG_CHERRY_USB),1)
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/core/usbd_core.c
-#SRC_C += $(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
-#SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/cdc/usbd_cdc.c
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device/cdc/cdc_acm.c
+SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/cdc/usbd_cdc.c
 #SRC_C += $(BEKEN_DIR)/components/CherryUSB/demo/beken/usb_device/hid/hid_common.c
 #SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/hid/usbd_hid.c
 SRC_C += $(BEKEN_DIR)/components/CherryUSB/class/msc/usbd_msc.c

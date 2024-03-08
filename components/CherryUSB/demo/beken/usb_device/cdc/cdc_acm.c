@@ -1,6 +1,7 @@
 #include "usbd_core.h"
 #include "usbd_cdc.h"
 #include "uart_pub.h"
+#include "rtos_pub.h"
 
 
 /*!< endpoint address */
@@ -139,25 +140,38 @@ void usbd_event_handler(uint8_t event)
     }
 }
 
+beken_semaphore_t bk_get_spi_sema();
+void bk_set_spi_usb_info(const void *tx_data,uint32_t tx_size,void *rx_data,uint32_t rx_size);
+
 void usbd_cdc_acm_bulk_out(uint8_t ep, uint32_t nbytes)
 {
-    USB_LOG_RAW("actual out len:%d\r\n", nbytes);
+    usbd_ep_start_read(CDC_OUT_EP, read_buffer, nbytes);
+#if CFG_USB_SPI_DL
+    bk_set_spi_usb_info(read_buffer,nbytes,NULL,0);
+    rtos_set_semaphore(bk_get_spi_sema());
+#endif
+
+    // USB_LOG_RAW("actual out len:%d\r\n", nbytes);
     // for (int i = 0; i < 100; i++) {
     //     printf("%02x ", read_buffer[i]);
     // }
     // printf("\r\n");
-    /* setup next out ep read transfer */
-    print_hex_dump("OUT: ", read_buffer, nbytes);
-    usbd_ep_start_read(CDC_OUT_EP, read_buffer, 2048);
+    // /*setup next out ep read transfer */
+    // print_hex_dump("OUT: ", read_buffer, nbytes);
 
     //os_printf("\n");
 }
 
+void cdc_write_info(uint8_t* write_data,uint32_t len)
+{
+    usbd_ep_start_write(CDC_IN_EP,write_data,len);
+}
+
 void usbd_cdc_acm_bulk_in(uint8_t ep, uint32_t nbytes)
 {
-    USB_LOG_RAW("actual in len:%d\r\n", nbytes);
+    // USB_LOG_RAW("actual in len:%d\r\n", nbytes);
 
-#if 0
+#if 1
     if ((nbytes % CDC_MAX_MPS) == 0 && nbytes) {
         /* send zlp */
         usbd_ep_start_write(CDC_IN_EP, NULL, 0);
